@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdaptivConcept FL | Landing</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Comfortaa:wght@300;400;500;600;700&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap"
+        rel="stylesheet">
+
+    <!-- Google Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <!-- favicon -->
+    <link rel="icon" type="image/x-icon" href="./media/favicon.ico">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            /* background-image: url(./media/0_75xLogo.png);
+            background-position: center;
+            background-size: contain;
+            background-clip: content-box;
+            background-attachment: fixed; */
+        }
+
+        .poppins-font {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .be-vietnam-pro-font {
+            font-family: 'Be Vietnam Pro', sans-serif;
+        }
+
+        .comfortaa-font {
+            font-family: 'Comfortaa', cursive;
+        }
+
+        /* Style the video: 100% width and height to cover the entire window */
+        #bgVideo {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        /* Add some content at the bottom of the video/page */
+        .content {
+            /* position: fixed;
+            bottom: 0; */
+            background: rgba(0, 0, 0, 0.5);
+            color: #f1f1f1;
+            width: 100vw;
+            padding: 20px;
+            z-index: 1;
+        }
+
+        .blank-window {
+            height: 100vh;
+            width: 100vw;
+        }
+
+        /* Style the button used to pause/play the video */
+        #gotoWebsite {
+            /* width: 200px; */
+            font-size: 18px;
+            padding: 20px;
+            border: none;
+            background: rgb(255, 55, 21);
+            color: #fff;
+            cursor: pointer;
+            border-radius: 15px;
+            transition: 0.3s;
+        }
+
+        #gotoWebsite:hover {
+            background: #fff;
+            color: rgb(255, 55, 21);
+            transform: scale(1.05, 1.05);
+        }
+
+        .icons-transform {
+            transition: 0.3s;
+        }
+
+        .icons-transform:hover {
+            transform: scale(1.05, 1.05);
+        }
+
+        .noselect {
+            -webkit-touch-callout: none;
+            /* iOS Safari */
+            -webkit-user-select: none;
+            /* Safari */
+            -khtml-user-select: none;
+            /* Konqueror HTML */
+            -moz-user-select: none;
+            /* Old versions of Firefox */
+            -ms-user-select: none;
+            /* Internet Explorer/Edge */
+            user-select: none;
+            /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+        }
+
+        a {
+            color: #fff;
+        }
+
+        a:hover {
+            color: rgb(255, 55, 21);
+        }
+
+        /* gradients */
+        .white-grad-btm {
+            /* background: rgb(255, 255, 255);
+            background: -moz-linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+            background: -webkit-linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+            background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff", endColorstr="#ffffff", GradientType=1); */
+            /* background: rgb(255, 255, 255);
+            background: -moz-linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 10%, rgba(255, 255, 255, 0) 100%);
+            background: -webkit-linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 10%, rgba(255, 255, 255, 0) 100%);
+            background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 10%, rgba(255, 255, 255, 0) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff", endColorstr="#ffffff", GradientType=1); */
+            background: rgb(255, 255, 255);
+            background: -moz-linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.8) 10%, rgba(255, 255, 255, 0.5019257703081232) 20%, rgba(255, 255, 255, 0) 35%, rgba(255, 255, 255, 0) 100%);
+            background: -webkit-linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.8) 10%, rgba(255, 255, 255, 0.5019257703081232) 20%, rgba(255, 255, 255, 0) 35%, rgba(255, 255, 255, 0) 100%);
+            background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.8) 10%, rgba(255, 255, 255, 0.5019257703081232) 20%, rgba(255, 255, 255, 0) 35%, rgba(255, 255, 255, 0) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff", endColorstr="#ffffff", GradientType=1);
+        }
+
+        /* scrollbar styling */
+        /* width */
+        *::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        /* Track */
+        *::-webkit-scrollbar-track {
+            background: #fff !important;
+        }
+
+        /* Handle */
+        *::-webkit-scrollbar-thumb {
+            background: rgb(255, 55, 21) !important;
+            /*border-radius: 50rem;*/
+        }
+    </style>
+</head>
+
+<body class="noselect">
+
+    <!-- Blank view for bg vid -->
+    <div class="blank-window white-grad-btm">
+        <div class="blank-window d-flex align-items-end justify-content-center pb-5" style="color: rgb(255, 55, 21);">
+            <div class="d-grid gap-2 text-center">
+                <p class="m-0 fs-5 be-vietnam-pro-font fw-bold px-2">We are making changes to our brand &amp; website.
+                </p>
+                <span class="material-icons material-icons-roFund" style="font-size: 40px !important;">
+                    keyboard_arrow_down
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Description overlay -->
+    <div class="content">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-3 py-4">
+                    <div class="text-center">
+                        <span class="material-icons material-icons-round bg-white p-5 rounded-circle shadow"
+                            style="font-size: 160px !important; color: rgb(255, 55, 21);">
+                            tips_and_updates
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="container">
+                        <h1 class="poppins-font">We are going into Freelancing!</h1>
+                        <p class="be-vietnam-pro-font">
+                            In our <a href="https://adaptivconcept.co.za/blog/change-of-strategy-2023/"
+                                class="fw-bold">Public Letter
+                                posted on 11 January 2023</a>, we provided insight into how the first year
+                            of Project.Adapt 2022 went and it was unfortunately not successfull.
+                            We have realized that we need to change our strategy for the 2023/24 financial year in order
+                            to effectively accomplish the tasks we set out to do
+                            and we need to find new ways of financing the projects we have inititated and to build the
+                            team we need to complete the projects as well as secure
+                            them and be able to effectively maintain them in the future.
+                        </p>
+
+                        <div class="d-grid my-4">
+                            <p class="be-vietnam-pro-font">
+                                Click the button below to read the Public letter on our blog.
+                            </p>
+                            <button type="button" class="my-4 shadow" id="gotoWebsite"
+                                onclick="gotoLink('adaptivconcept.co.za/blog/change-of-strategy-2023/')">
+                                <span class="material-icons material-icons-round align-middle">history_edu</span>
+                                <span class="align-middle"> Change of Strategy for AdaptivConcept NPC and Project.Adapt
+                                    for 2023 going forward.</span>
+                            </button>
+                        </div>
+
+                        <hr class="text-white">
+
+                        <p class="be-vietnam-pro-font mt-4 fs-5">We will be offering services on these three major
+                            platforms:
+                        </p>
+
+                        <div class="row align-items-center bg-white py-4 shadow" style="border-radius: 15px;">
+                            <div class="col-md-3 py-2 text-center">
+                                <img src="./media/Fiverr_Logo-3370437793.png" class="img-fluid icons-transform"
+                                    style="max-height: 150px; cursor: pointer;" alt="logo"
+                                    onclick="gotoLink('www.fiverr.com/')">
+                            </div>
+                            <div class="col-md py-2 text-center">
+                                <img src="./media/Freelancer_logo-929054186.png" class="img-fluid icons-transform"
+                                    style="max-height: 100px; cursor: pointer;" alt="logo"
+                                    onclick="gotoLink('www.freelancer.com/')">
+                            </div>
+                            <div class="col-md py-2 text-center">
+                                <img src="./media/upwork-logo-png-transparent-3390692246.png"
+                                    class="img-fluid icons-transform" style="max-height: 80px; cursor: pointer;"
+                                    alt="logo" onclick="gotoLink('www.upwork.com/')">
+                            </div>
+                        </div>
+                        <p class="text-center">
+                            <small class="text-white">
+                                The above logo's / trademarks are the intellectual property of
+                                their respective holders. Please click the logo's to visit the respective websites.
+                            </small>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="content text-center bg-white">
+        <p class="poppins-font my-1" style="color: rgb(255, 55, 21);"><span
+                class="comfortaa-font fw-bold">AdaptivConcept&trade; Freelancing</span> &copy; 2023.
+            All rights reserved.</p>
+    </div>
+
+    <!-- Background video -->
+    <video autoplay muted loop id="bgVideo">
+        <source src="./media/adaptivconcept_fl_bgvid_2.mp4" type="video/mp4">
+    </video>
+
+    <script>
+        function gotoLink(link) {
+            // , target
+            // target ? null : target = "_self";
+
+            window.location.href = "https://" + link;
+
+            // switch (target) {
+            //     case "_self":
+            //         window.location.href = link;
+            //         break;
+            //     case "_blank":
+            //         window.open(link, "_blank");
+            //         break;
+            //     case "_parent":
+
+            //         break;
+            //     case "_top":
+
+            //         break;
+
+            //     default:
+            //         break;
+            // }
+
+        }
+    </script>
+
+    <!-- Bootstrap CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
