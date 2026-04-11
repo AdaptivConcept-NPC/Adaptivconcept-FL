@@ -1,0 +1,13 @@
+[build]
+  # The directory where Netlify will run the build command
+  base = "adaptivconcept-react"
+  
+  # The command to build the application
+  command = "npm run build"
+  
+  # The directory to publish (relative to the base directory)
+  publish = "dist"
+
+[build.environment]
+  # Ensuring a modern Node version
+  NODE_VERSION = "22"
