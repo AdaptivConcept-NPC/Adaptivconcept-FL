@@ -1,0 +1,135 @@
+/* Base styles */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+}
+
+.App {
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.poppins-font {
+  font-family: 'Poppins', sans-serif;
+}
+
+.be-vietnam-pro-font {
+  font-family: 'Be Vietnam Pro', sans-serif;
+}
+
+.comfortaa-font {
+  font-family: 'Comfortaa', cursive;
+}
+
+/* Style the video: 100% width and height to cover the entire window */
+#bgVideo {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+/* Content overlay sections */
+.content {
+  background: rgba(0, 0, 0, 0.5);
+  color: #f1f1f1;
+  width: 100%;
+  padding: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.content.bg-white {
+  background: #fff !important;
+  color: inherit;
+  padding: 10px 0;
+}
+
+.blank-window {
+  height: 100vh;
+  width: 100vw;
+}
+
+/* Style the button used to pause/play the video */
+#gotoWebsite {
+  font-size: 18px;
+  padding: 20px;
+  border: none;
+  background: rgb(255, 55, 21);
+  color: #fff;
+  cursor: pointer;
+  border-radius: 15px;
+  transition: 0.3s;
+}
+
+#gotoWebsite:hover {
+  background: #fff;
+  color: rgb(255, 55, 21);
+  transform: scale(1.05, 1.05);
+}
+
+.icons-transform {
+  transition: 0.3s;
+}
+
+.icons-transform:hover {
+  transform: scale(1.05, 1.05);
+}
+
+.noselect {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+}
+
+a {
+  color: #fff;
+}
+
+a:hover {
+  color: rgb(255, 55, 21);
+}
+
+/* gradients */
+.white-grad-btm {
+  background: rgb(255, 255, 255);
+  background: -moz-linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.8) 10%, rgba(255, 255, 255, 0.5019257703081232) 20%, rgba(255, 255, 255, 0) 35%, rgba(255, 255, 255, 0) 100%);
+  background: -webkit-linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.8) 10%, rgba(255, 255, 255, 0.5019257703081232) 20%, rgba(255, 255, 255, 0) 35%, rgba(255, 255, 255, 0) 100%);
+  background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.8) 10%, rgba(255, 255, 255, 0.5019257703081232) 20%, rgba(255, 255, 255, 0) 35%, rgba(255, 255, 255, 0) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff", endColorstr="#ffffff", GradientType=1);
+}
+
+/* scrollbar styling */
+/* width */
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+*::-webkit-scrollbar-track {
+  background: #fff !important;
+}
+
+/* Handle */
+*::-webkit-scrollbar-thumb {
+  background: rgb(255, 55, 21) !important;
+  /*border-radius: 50rem;*/
+}
