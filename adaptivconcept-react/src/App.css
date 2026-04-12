@@ -1,135 +1,74 @@
-/* Base styles */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Base styles & Core Design System */
+:root {
+  --primary: rgb(255, 55, 21);
+  --primary-hover: rgb(220, 45, 15);
+  --bg-dark: #0a0a0a;
+  --surface-glass: rgba(15, 15, 15, 0.7);
+  --border-glass: rgba(255, 255, 255, 0.1);
+}
+
 html, body {
   margin: 0;
   padding: 0;
+  background-color: var(--bg-dark);
+  color: #f8f9fa;
+  font-family: 'Poppins', sans-serif;
   overflow-x: hidden;
   height: 100%;
+}
+
+/* Ensure background is visible */
+body {
+  background: transparent;
 }
 
 #root {
-  height: 100%;
-}
-
-.App {
-  position: relative;
   min-height: 100vh;
-  overflow-x: hidden;
+  position: relative;
+  z-index: 1;
 }
 
-.poppins-font {
-  font-family: 'Poppins', sans-serif;
-}
-
-.be-vietnam-pro-font {
-  font-family: 'Be Vietnam Pro', sans-serif;
-}
-
-.comfortaa-font {
-  font-family: 'Comfortaa', cursive;
-}
-
-/* Style the video: 100% width and height to cover the entire window */
+/* Background Control */
 #bgVideo {
   position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
   z-index: -1;
+  transform: translate(-50%, -50%);
+  filter: brightness(0.3) contrast(1.1);
+  background-color: var(--bg-dark);
 }
 
-/* Content overlay sections */
-.content {
-  background: rgba(0, 0, 0, 0.5);
-  color: #f1f1f1;
-  width: 100%;
-  padding: 20px;
-  position: relative;
-  z-index: 2;
-}
+/* Typography Helpers - still useful for quick application */
+.font-comfortaa { font-family: 'Comfortaa', cursive; }
+.font-vietnam { font-family: 'Be Vietnam Pro', sans-serif; }
+.font-poppins { font-family: 'Poppins', sans-serif; }
 
-.content.bg-white {
-  background: #fff !important;
-  color: inherit;
-  padding: 10px 0;
-}
-
-.blank-window {
-  height: 100vh;
-  width: 100vw;
-}
-
-/* Style the button used to pause/play the video */
-#gotoWebsite {
-  font-size: 18px;
-  padding: 20px;
-  border: none;
-  background: rgb(255, 55, 21);
-  color: #fff;
-  cursor: pointer;
-  border-radius: 15px;
-  transition: 0.3s;
-}
-
-#gotoWebsite:hover {
-  background: #fff;
-  color: rgb(255, 55, 21);
-  transform: scale(1.05, 1.05);
-}
-
-.icons-transform {
-  transition: 0.3s;
-}
-
-.icons-transform:hover {
-  transform: scale(1.05, 1.05);
-}
-
-.noselect {
-  -webkit-touch-callout: none;
-  /* iOS Safari */
-  -webkit-user-select: none;
-  /* Safari */
-  -khtml-user-select: none;
-  /* Konqueror HTML */
-  -moz-user-select: none;
-  /* Old versions of Firefox */
-  -ms-user-select: none;
-  /* Internet Explorer/Edge */
-  user-select: none;
-  /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
-}
-
-a {
-  color: #fff;
-}
-
-a:hover {
-  color: rgb(255, 55, 21);
-}
-
-/* gradients */
-.white-grad-btm {
-  background: rgb(255, 255, 255);
-  background: -moz-linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.8) 10%, rgba(255, 255, 255, 0.5019257703081232) 20%, rgba(255, 255, 255, 0) 35%, rgba(255, 255, 255, 0) 100%);
-  background: -webkit-linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.8) 10%, rgba(255, 255, 255, 0.5019257703081232) 20%, rgba(255, 255, 255, 0) 35%, rgba(255, 255, 255, 0) 100%);
-  background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.8) 10%, rgba(255, 255, 255, 0.5019257703081232) 20%, rgba(255, 255, 255, 0) 35%, rgba(255, 255, 255, 0) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff", endColorstr="#ffffff", GradientType=1);
-}
-
-/* scrollbar styling */
-/* width */
-*::-webkit-scrollbar {
-  width: 10px;
-}
-
-/* Track */
-*::-webkit-scrollbar-track {
-  background: #fff !important;
-}
-
-/* Handle */
+/* Scrollbar */
+*::-webkit-scrollbar { width: 8px; }
+*::-webkit-scrollbar-track { background: var(--bg-dark); }
 *::-webkit-scrollbar-thumb {
-  background: rgb(255, 55, 21) !important;
-  /*border-radius: 50rem;*/
+  background: var(--border-glass);
+  border-radius: 10px;
+}
+*::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+
+/* Custom Animations */
+
+/* Custom Helpers */
+.text-glow-orange {
+  text-shadow: 0 0 15px rgba(255, 55, 21, 0.4);
 }

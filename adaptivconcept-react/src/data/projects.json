@@ -1,0 +1,72 @@
+[
+  {
+    "id": "ollama-opt",
+    "title": "OllamaOpt",
+    "description": "Enterprise-grade local LLM optimization engine for Intel AI PCs. Orchestrates workload routing between NPU and iGPU for maximum throughput.",
+    "category": "Automation",
+    "tags": ["Python", "OpenVINO", "Intel AI", "LLM"],
+    "isHero": true,
+    "githubUrl": "https://github.com/iarxii/OllamaOpt",
+    "detailedStory": "Developed to solve memory contention issues in local AI development. This tool provides a 'Hybrid Booster' mode that intelligently segments inference tasks."
+  },
+  {
+    "id": "ai-codex",
+    "title": "AICodex",
+    "description": "A comprehensive knowledge base and code generation pipeline for Senior AI Engineers, designed for rapid prototyping and architecture mapping.",
+    "category": "Automation",
+    "tags": ["Node.js", "GPT-4", "VectorDB", "RAG"],
+    "isHero": true,
+    "githubUrl": "https://github.com/iarxii/AICodex",
+    "detailedStory": "AICodex serves as the brain for the AdaptivConcept ecosystem, automating documentation and initial code structure generation."
+  },
+  {
+    "id": "medimix-dash",
+    "title": "MediMixDash Saga",
+    "description": "High-performance medical dashboard with a 'Saga' state management pattern. Designed for real-time surgical procedure tracking and hospital resource allocation.",
+    "category": "Fullstack",
+    "tags": ["React", "Redux Saga", "Tailwind", "Healthcare"],
+    "isHero": true,
+    "githubUrl": "https://github.com/iarxii/MediMixDash_Saga",
+    "detailedStory": "This project showcases how complex medical data can be managed with high reliability and visual clarity in high-pressure environments."
+  },
+  {
+    "id": "wave-shooter",
+    "title": "WaveShooter",
+    "description": "A performance-optimized 3D wave-based survival game built with Three.js and custom physics, pushing the limits of browser-based 3D rendering.",
+    "category": "Game Dev",
+    "tags": ["Three.js", "WebGL", "Physics", "Vite"],
+    "isHero": true,
+    "githubUrl": "https://github.com/iarxii/WaveShooter",
+    "detailedStory": "Experimental game development focused on spatial partitioning and high-count particle systems in the browser."
+  },
+  {
+    "id": "surgical-listing",
+    "title": "Surgical Listing App",
+    "description": "Digital coordination platform for surgical procedure listings, reducing scheduling errors by 40% in large-scale provincial health facilities.",
+    "category": "Fullstack",
+    "tags": ["Laravel", "React", "PostgreSQL", "HealthTech"],
+    "isHero": true,
+    "githubUrl": "https://github.com/iarxii/Surgical_Procedure_Listings_App",
+    "detailedStory": "Real-world impact project that transformed manual paperwork into a streamlined digital workflow for surgical teams."
+  },
+  {
+    "id": "onefit-app",
+    "title": "Onefit.app",
+    "description": "Community-centric fitness and wellness platform connecting trainers with trainees.",
+    "category": "AdaptivConcept",
+    "tags": ["React", "Firebase", "Social"],
+    "isHero": false,
+    "githubUrl": "https://github.com/AdaptivConcept-NPC/Onefit.app",
+    "detailedStory": "A platform built to empower fitness enthusiasts through instruction and community connectivity."
+  },
+  {
+    "id": "onefit-3d",
+    "title": "3D Studio",
+    "description": "Advanced 3D visualization for medical assessment and physical therapy.",
+    "category": "Game Dev",
+    "tags": ["Three.js", "React", "Medical"],
+    "isHero": false,
+    "githubUrl": "https://github.com/AdaptivConcept-NPC/onefit-3d-studio",
+    "detailedStory": "A mock application using Three.js to indicate temperature, pain, and strain on 3D body models."
+  }
+]
