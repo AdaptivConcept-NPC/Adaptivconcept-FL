@@ -23,6 +23,7 @@ const ProjectBoard = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       className="container mx-auto px-6 py-20 min-h-screen"
+      style={{ backgroundColor: "rgb(51 51 51 / 80%)"}}
     >
       <div className="text-center mb-16">
         <h1 className="text-5xl md:text-6xl font-comfortaa font-bold text-white mb-6">

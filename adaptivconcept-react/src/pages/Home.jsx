@@ -12,6 +12,7 @@ const Home = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       className="w-full relative"
+      style={{ backgroundColor: "rgb(51 51 51 / 80%)"}}
     >
       {/* Hero Section */}
       <section className="min-h-screen flex items-center justify-center text-center px-6 relative overflow-hidden">
@@ -100,7 +101,7 @@ const Home = () => {
         <div className="container mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-end gap-6 mb-16">
             <div className="max-w-2xl text-center md:text-left">
-              <h3 className="text-4xl md:text-5xl font-comfortaa font-bold text-white mb-4">Hero Projects</h3>
+              <h3 className="text-4xl md:text-5xl font-comfortaa font-bold text-white mb-4">Latest Projects</h3>
               <p className="text-xl text-gray-400">Selection of high-impact engineering work</p>
             </div>
             <button className="group flex items-center gap-2 text-adaptiv-orange font-bold text-lg hover:text-white transition-colors">
@@ -113,7 +114,7 @@ const Home = () => {
               <motion.div 
                 key={project.id}
                 whileHover={{ y: -12 }}
-                className="group bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 flex flex-column h-full transition-all hover:bg-white/[0.08] hover:border-white/20"
+                className="group bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 flex flex-col h-full transition-all hover:bg-white/[0.08] hover:border-white/20"
               >
                 <div className="flex justify-between items-start mb-8">
                   <span className="px-4 py-1.5 rounded-lg bg-adaptiv-orange/10 text-adaptiv-orange text-sm font-bold uppercase tracking-wider">

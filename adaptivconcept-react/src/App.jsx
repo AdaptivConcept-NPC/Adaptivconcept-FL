@@ -5,6 +5,7 @@ import './App.css';
 
 // Components
 import BackgroundVideo from './components/BackgroundVideo';
+import BackgroundWallpaper from './components/BackgroundWallpaper';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/Footer';
 
@@ -14,6 +15,8 @@ import ProjectBoard from './pages/ProjectBoard';
 import ProjectDetail from './pages/ProjectDetail';
 
 function App() {
+  const useVideoBackground = false; // Toggle this to switch between video and static wallpaper
+
   return (
     <Router>
       <div className="App noselect">
@@ -27,7 +30,11 @@ function App() {
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
 
 
-        <BackgroundVideo />
+        {useVideoBackground ? (
+          <BackgroundVideo />
+        ) : (
+          <BackgroundWallpaper imageUrl="/media/thabang_vector_wallpaper.png" />
+        )}
         
         <Navbar />
 
