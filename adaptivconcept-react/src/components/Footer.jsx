@@ -198,7 +198,7 @@ const Footer = () => {
                           Thabang Mposula
                         </h6>
                         <p className="text-[#8b949e] text-[10px] font-black uppercase tracking-[0.2em] mb-4">
-                          Systems Developer (Fullstack)
+                          Fullstack Systems Developer
                         </p>
                       </div>
 
@@ -259,9 +259,14 @@ const Footer = () => {
                     title: "Email",
                   },
                   {
-                    icon: <i className="bi bi-twitter-x text-lg"></i>,
-                    href: "https://twitter.com/adaptivconcept",
-                    title: "Twitter",
+                    icon: <i className="bi bi-linkedin text-lg"></i>,
+                    href: "https://www.linkedin.com/in/thabang-mposula-iarxii/",
+                    title: "LinkedIn",
+                  },
+                  {
+                    icon: <i className="bi bi-whatsapp text-xl"></i>,
+                    href: "https://wa.me/#",
+                    title: "WhatsApp",
                   },
                 ].map((social, i) => (
                   <a

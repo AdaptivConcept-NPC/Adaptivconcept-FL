@@ -37,15 +37,18 @@ const Navbar = () => {
           <div className="flex items-center">
             <span className="text-xl font-comfortaa font-bold text-white tracking-tight">
               AdaptivConcept
-              <span
+              <div
                 style={{
+                  position: "absolute",
                   fontSize: "12px",
                   marginTop: "-12px",
                   marginLeft: "2px",
+                  top: "0",
+                  right: "0",
                 }}
               >
                 ™
-              </span>
+              </div>
             </span>
             <FLFontCarousel size="text-2xl" className="ml-2 w-auto min-h-0" />
           </div>
@@ -71,7 +74,7 @@ const Navbar = () => {
           <ul className="flex flex-col lg:flex-row items-center gap-8 m-0 p-0">
             <li>
               <Link
-                className={`flex items-center gap-2 text-md font-medium transition-colors hover:text-white ${isActive("/") ? "text-white font-bold" : "text-gray-400"}`}
+                className={`flex items-center gap-2 text-sm font-medium transition-colors hover:text-white ${isActive("/") ? "text-white font-bold" : "text-gray-400"}`}
                 to="/"
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -80,7 +83,7 @@ const Navbar = () => {
             </li>
             <li>
               <Link
-                className={`flex items-center gap-2 text-md font-medium transition-colors hover:text-white ${isActive("/projects") ? "text-white font-bold" : "text-gray-400"}`}
+                className={`flex items-center gap-2 text-sm font-medium transition-colors hover:text-white ${isActive("/projects") ? "text-white font-bold" : "text-gray-400"}`}
                 to="/projects"
                 onClick={() => setIsMenuOpen(false)}
               >
