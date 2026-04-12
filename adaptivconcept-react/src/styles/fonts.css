@@ -1,0 +1,113 @@
+@font-face {
+    font-family: 'BigPartyBlue';
+    src: url('../../public/fonts/bigparty4blue/BigParty4Blue.ttf') format('truetype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'BigPartyGreen';
+    src: url('../../public/fonts/bigpartyo2green/BigPartyO2Green.ttf') format('truetype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'BlackTakora';
+    src: url('../../public/fonts/black-takora/Black Takora.otf') format('opentype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Fattern';
+    src: url('../../public/fonts/fattern/fattern.otf') format('opentype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GraffitiStream';
+    src: url('../../public/fonts/graffiti-stream-extrude/Graffiti Stream Extrude.otf') format('opentype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GrindyBrush';
+    src: url('../../public/fonts/grindy-brush/Grindy Brush.otf') format('opentype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'HelpMe';
+    src: url('../../public/fonts/help-me/Help Me.otf') format('opentype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'IslandSplash';
+    src: url('../../public/fonts/island-splash-demo/Island Splash Demo.otf') format('opentype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Measter';
+    src: url('../../public/fonts/measter-demo/Measter Demo.otf') format('opentype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'NoctraDrip';
+    src: url('../../public/fonts/noctra-drip/Noctra Drip.otf') format('opentype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'PermanentMarker';
+    src: url('../../public/fonts/permanent-marker/Permanent Marker.ttf') format('truetype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'PunkKid';
+    src: url('../../public/fonts/punk-kid/Punk Kid.otf') format('opentype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'StormGust';
+    src: url('../../public/fonts/storm-gust/Storm Gust.otf') format('opentype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SudegnakRed';
+    src: url('../../public/fonts/sudegnakno4/SudegnakNo4-Red.ttf') format('truetype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SudegnakBlue';
+    src: url('../../public/fonts/sudegnakno4/SudegnakNo4-Blue.ttf') format('truetype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SudegnakGreen';
+    src: url('../../public/fonts/sudegnakno4/SudegnakNo4-Green.ttf') format('truetype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SudegnakOrange';
+    src: url('../../public/fonts/sudegnakno4/SudegnakNo4-Orange.ttf') format('truetype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SuperBalloon';
+    src: url('../../public/fonts/super-balloon/SuperBalloon-Regular.otf') format('opentype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Jacatra';
+    src: url('../../public/fonts/the-jacatra/THE_JACATRA.otf') format('opentype');
+    font-display: swap;
+}

@@ -16,6 +16,11 @@ export default {
         vietnam: ['"Be Vietnam Pro"', 'sans-serif'],
         poppins: ['Poppins', 'sans-serif'],
       },
+      fontSize: {
+        '10xl': '9rem',
+        '11xl': '10rem',
+        '12xl': '12rem',
+      },
     },
   },
   plugins: [],
