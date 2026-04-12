@@ -52,6 +52,11 @@ body {
   background-color: var(--bg-dark);
 }
 
+.navbar-logo {
+  height: 50px;
+  width: auto;
+}
+
 /* Typography Helpers - still useful for quick application */
 .font-comfortaa { font-family: 'Comfortaa', cursive; }
 .font-vietnam { font-family: 'Be Vietnam Pro', sans-serif; }

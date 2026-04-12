@@ -16,9 +16,10 @@ const Navbar = () => {
           to="/"
           onClick={() => setIsMenuOpen(false)}
         >
-          <span className="material-icons-round text-adaptiv-orange group-hover:scale-110 transition-transform">
+          {/* <span className="material-icons-round text-adaptiv-orange group-hover:scale-110 transition-transform">
             auto_awesome
-          </span>
+          </span> */}
+          <img src="media/Adaptiv Media Concept Logo.png" alt="Adaptivconcept FL Logo" className='navbar-logo' />
           <span className="text-xl font-comfortaa font-bold text-white tracking-tight">
             AdaptivConcept <span className="text-adaptiv-orange">FL</span>
           </span>
