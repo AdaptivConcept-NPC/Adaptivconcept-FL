@@ -125,13 +125,58 @@ const Home = () => {
                 </div>
               </div>
 
+              {/* Premium Contact Form Replacement */}
               <div className="relative">
-                <div className="aspect-square rounded-[60px] bg-gradient-to-br from-white/5 to-transparent border border-white/10 flex items-center justify-center relative group">
-                  <span className="material-icons-round text-white/10 text-[240px] select-none group-hover:text-white/20 transition-all duration-700">
-                    token
-                  </span>
-                  <div className="absolute inset-0 bg-adaptiv-orange/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-[60px]"></div>
-                </div>
+                <motion.div 
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  className="rounded-[60px] bg-white/[0.03] backdrop-blur-3xl border border-white/10 p-10 md:p-14 relative group overflow-hidden"
+                >
+                  <div className="absolute -bottom-24 -left-24 w-[300px] h-[300px] bg-adaptiv-orange/5 blur-[80px] rounded-full group-hover:bg-adaptiv-orange/10 transition-all duration-1000"></div>
+
+                  <div className="relative z-10">
+                    <h3 className="text-3xl font-comfortaa font-bold text-white mb-2">Initiate <span className="text-adaptiv-orange">Collaboraton</span></h3>
+                    <p className="text-gray-400 text-sm font-poppins mb-10">Ready to engineer the future? Drop a brief below.</p>
+                    
+                    <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+                      <div className="space-y-2">
+                        <label className="text-[10px] font-bold text-gray-500 uppercase tracking-[0.2em] ml-2">Identificaton</label>
+                        <input 
+                          type="text" 
+                          placeholder="Professional Name"
+                          className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/20 focus:border-adaptiv-orange/50 focus:bg-white/[0.08] transition-all outline-none font-poppins"
+                        />
+                      </div>
+
+                      <div className="space-y-2">
+                        <label className="text-[10px] font-bold text-gray-500 uppercase tracking-[0.2em] ml-2">Communication Channel</label>
+                        <input 
+                          type="email" 
+                          placeholder="email@organization.com"
+                          className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/20 focus:border-adaptiv-orange/50 focus:bg-white/[0.08] transition-all outline-none font-poppins"
+                        />
+                      </div>
+
+                      <div className="space-y-2">
+                        <label className="text-[10px] font-bold text-gray-500 uppercase tracking-[0.2em] ml-2">Mission Parameters</label>
+                        <textarea 
+                          rows="4"
+                          placeholder="Describe the architectural challenge..."
+                          className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/20 focus:border-adaptiv-orange/50 focus:bg-white/[0.08] transition-all outline-none font-poppins resize-none"
+                        ></textarea>
+                      </div>
+
+                      <motion.button 
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        className="w-full py-5 rounded-2xl bg-adaptiv-orange text-white font-bold text-lg hover:shadow-2xl hover:shadow-adaptiv-orange/30 transition-all flex items-center justify-center gap-3 mt-4"
+                      >
+                        Deploy Brief <Rocket size={20} />
+                      </motion.button>
+                    </form>
+                  </div>
+                </motion.div>
               </div>
             </div>
           </div>
