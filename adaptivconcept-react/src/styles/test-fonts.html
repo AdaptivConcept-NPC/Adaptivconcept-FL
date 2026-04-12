@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdaptivConcept FL | Font Preview</title>
+    <link rel="stylesheet" href="fonts.css">
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #ff6600;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-primary);
+            font-family: system-ui, -apple-system, sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #fff, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .font-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .font-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .font-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 102, 0, 0.3);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        .font-name {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 8px;
+        }
+
+        .preview-text {
+            color: var(--accent);
+            line-height: 1.2;
+            word-break: break-all;
+        }
+
+        .size-l { font-size: 4rem; }
+        .size-m { font-size: 2.5rem; }
+        
+        .char-set {
+            margin-top: 15px;
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>AdaptivConcept FL</h1>
+        <p class="subtitle">Artistic Font Plugin Preview Registry</p>
+    </header>
+
+    <div class="font-grid">
+        <!-- BigPartyBlue -->
+        <div class="font-card">
+            <div class="font-name">BigPartyBlue</div>
+            <div class="preview-text size-l" style="font-family: 'BigPartyBlue';">FL</div>
+            <div class="char-set" style="font-family: 'BigPartyBlue';">Freelancing</div>
+        </div>
+
+        <!-- BigPartyGreen -->
+        <div class="font-card">
+            <div class="font-name">BigPartyGreen</div>
+            <div class="preview-text size-l" style="font-family: 'BigPartyGreen';">FL</div>
+            <div class="char-set" style="font-family: 'BigPartyGreen';">Freelancing</div>
+        </div>
+
+        <!-- BlackTakora -->
+        <div class="font-card">
+            <div class="font-name">BlackTakora</div>
+            <div class="preview-text size-l" style="font-family: 'BlackTakora';">FL</div>
+            <div class="char-set" style="font-family: 'BlackTakora';">Freelancing</div>
+        </div>
+
+        <!-- Fattern -->
+        <div class="font-card">
+            <div class="font-name">Fattern</div>
+            <div class="preview-text size-l" style="font-family: 'Fattern';">FL</div>
+            <div class="char-set" style="font-family: 'Fattern';">Freelancing</div>
+        </div>
+
+        <!-- GraffitiStream -->
+        <div class="font-card">
+            <div class="font-name">GraffitiStream</div>
+            <div class="preview-text size-l" style="font-family: 'GraffitiStream';">FL</div>
+            <div class="char-set" style="font-family: 'GraffitiStream';">Freelancing</div>
+        </div>
+
+        <!-- GrindyBrush -->
+        <div class="font-card">
+            <div class="font-name">GrindyBrush</div>
+            <div class="preview-text size-l" style="font-family: 'GrindyBrush';">FL</div>
+            <div class="char-set" style="font-family: 'GrindyBrush';">Freelancing</div>
+        </div>
+
+        <!-- HelpMe -->
+        <div class="font-card">
+            <div class="font-name">HelpMe</div>
+            <div class="preview-text size-l" style="font-family: 'HelpMe';">FL</div>
+            <div class="char-set" style="font-family: 'HelpMe';">Freelancing</div>
+        </div>
+
+        <!-- IslandSplash -->
+        <div class="font-card">
+            <div class="font-name">IslandSplash</div>
+            <div class="preview-text size-l" style="font-family: 'IslandSplash';">FL</div>
+            <div class="char-set" style="font-family: 'IslandSplash';">Freelancing</div>
+        </div>
+
+        <!-- Measter -->
+        <div class="font-card">
+            <div class="font-name">Measter</div>
+            <div class="preview-text size-l" style="font-family: 'Measter';">FL</div>
+            <div class="char-set" style="font-family: 'Measter';">Freelancing</div>
+        </div>
+
+        <!-- NoctraDrip -->
+        <div class="font-card">
+            <div class="font-name">NoctraDrip</div>
+            <div class="preview-text size-l" style="font-family: 'NoctraDrip';">FL</div>
+            <div class="char-set" style="font-family: 'NoctraDrip';">Freelancing</div>
+        </div>
+
+        <!-- PermanentMarker -->
+        <div class="font-card">
+            <div class="font-name">PermanentMarker</div>
+            <div class="preview-text size-l" style="font-family: 'PermanentMarker';">FL</div>
+            <div class="char-set" style="font-family: 'PermanentMarker';">Freelancing</div>
+        </div>
+
+        <!-- PunkKid -->
+        <div class="font-card">
+            <div class="font-name">PunkKid</div>
+            <div class="preview-text size-l" style="font-family: 'PunkKid';">FL</div>
+            <div class="char-set" style="font-family: 'PunkKid';">Freelancing</div>
+        </div>
+
+        <!-- StormGust -->
+        <div class="font-card">
+            <div class="font-name">StormGust</div>
+            <div class="preview-text size-l" style="font-family: 'StormGust';">FL</div>
+            <div class="char-set" style="font-family: 'StormGust';">Freelancing</div>
+        </div>
+
+        <!-- Sudegnak -->
+        <div class="font-card">
+            <div class="font-name">Sudegnak</div>
+            <div class="preview-text size-l" style="font-family: 'Sudegnak';">FL</div>
+            <div class="char-set" style="font-family: 'Sudegnak';">Freelancing</div>
+        </div>
+
+        <!-- SuperBalloon -->
+        <div class="font-card">
+            <div class="font-name">SuperBalloon</div>
+            <div class="preview-text size-l" style="font-family: 'SuperBalloon';">FL</div>
+            <div class="char-set" style="font-family: 'SuperBalloon';">Freelancing</div>
+        </div>
+
+        <!-- Jacatra -->
+        <div class="font-card">
+            <div class="font-name">Jacatra</div>
+            <div class="preview-text size-l" style="font-family: 'Jacatra';">FL</div>
+            <div class="char-set" style="font-family: 'Jacatra';">Freelancing</div>
+        </div>
+    </div>
+</body>
+</html>
