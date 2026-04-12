@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Home, FolderKanban, Download, Mail, Menu, X } from 'lucide-react';
+import './Navbar.css';
 
 const Navbar = () => {
   const location = useLocation();

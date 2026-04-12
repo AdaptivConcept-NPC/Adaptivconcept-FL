@@ -1,6 +1,6 @@
-import React from 'react';
-import { Mail, ChevronRight } from 'lucide-react';
-import { motion } from 'framer-motion';
+import React from "react";
+import { ChevronRight, ExternalLink } from "lucide-react";
+import { motion } from "framer-motion";
 
 const Footer = () => {
   return (
@@ -11,71 +11,122 @@ const Footer = () => {
           <div className="col-span-1 md:col-span-2">
             <div className="flex flex-col md:flex-row gap-10 items-center">
               <div className="text-center md:text-left">
-                <h5 className="text-3xl font-comfortaa font-bold mb-4 bg-gradient-to-r from-orange-500 to-orange-400 bg-clip-text text-transparent">
-                  Adaptivconcept FL
-                </h5>
-                <p className="text-gray-400 text-sm leading-relaxed max-w-xs mx-auto md:mx-0 font-poppins">
-                  High-performance solutions for technical excellence. <br />
-                  © {new Date().getFullYear()} All Rights Reserved.
+                <div className="flex items-center gap-2 mb-6 group cursor-default">
+                  <img
+                    src="/media/Adaptiv Media Concept Logo.png"
+                    className="w-10 h-10 group-hover:scale-110 transition-transform duration-300"
+                    alt="adaptivconcept fl logo"
+                  />
+                  <h5 className="text-xl font-comfortaa font-bold text-white tracking-tight">
+                    AdaptivConcept <span className="text-adaptiv-orange">FL</span>
+                  </h5>
+                </div>
+                
+                <motion.div
+                  whileHover={{ y: -5, scale: 1.01 }}
+                  className="group relative flex flex-col sm:flex-row items-center gap-6 p-6 rounded-[24px] bg-white/[0.02] border border-white/5 backdrop-blur-3xl hover:border-[#0077b5]/50 transition-all duration-500 max-w-lg w-full overflow-hidden"
+                >
+                  {/* LinkedIn-branded accent */}
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#0077b5]/10 blur-[60px] -mr-10 -mt-10 group-hover:bg-[#0077b5]/20 transition-all duration-700"></div>
+                  
+                  <div className="relative w-24 h-24 rounded-2xl bg-[#0077b5] flex items-center justify-center text-white border border-[#0077b5]/30 overflow-hidden shadow-2xl shrink-0 group-hover:scale-105 transition-transform duration-500">
+                    <i className="bi bi-linkedin text-5xl"></i>
+                    <span className="absolute bottom-2 right-2 w-4 h-4 bg-green-500 rounded-full border-2 border-[#0077b5] shadow-sm animate-pulse"></span>
+                  </div>
+
+                  <div className="flex-grow z-10 text-center sm:text-left">
+                    <div className="flex flex-col">
+                      <h6 className="text-2xl font-bold text-white mb-0.5 font-comfortaa">
+                        Thabang Mposula
+                      </h6>
+                      <p className="text-[#0077b5] text-[10px] font-black uppercase tracking-[0.2em] mb-4">
+                        Founder & Senior AI Engineer
+                      </p>
+                    </div>
+
+                    <div className="flex flex-wrap justify-center sm:justify-start gap-3">
+                      <a 
+                        href="https://www.linkedin.com/in/thabang-mposula-iarxii/" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="px-4 py-2 rounded-xl bg-[#0077b5] text-white text-[11px] font-bold uppercase tracking-wider hover:bg-white hover:text-[#0077b5] transition-all flex items-center gap-2 shadow-lg"
+                      >
+                        Profile <ExternalLink size={12} />
+                      </a>
+                      <a 
+                        href="https://www.linkedin.com/company/adaptivconcept-fl" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="px-4 py-2 rounded-xl bg-white/5 border border-[#0077b5]/30 text-[#0077b5] text-[11px] font-bold uppercase tracking-wider hover:bg-[#0077b5]/10 transition-all flex items-center gap-2"
+                      >
+                        Company <ExternalLink size={12} />
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="hidden sm:flex w-10 h-10 rounded-full bg-white/5 text-[#0077b5] items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
+                    <ChevronRight size={20} />
+                  </div>
+                </motion.div>
+                
+                <p className="text-gray-400 text-sm leading-relaxed mt-8 mx-auto md:mx-0 font-poppins font-medium opacity-80">
+                  Engineering high-performance solutions for technical excellence. <br />
+                  <span className="text-xs opacity-60">© {new Date().getFullYear()} AdaptivConcept FL. All Rights Reserved.</span>
                 </p>
               </div>
-
-              {/* Distinct LinkedIn Card */}
-              <motion.a 
-                href="https://linkedin.com/in/adaptivconcept" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                whileHover={{ y: -10, scale: 1.02 }}
-                className="group relative flex items-center gap-6 p-6 rounded-[32px] bg-white/[0.03] border border-white/10 backdrop-blur-3xl hover:border-adaptiv-orange/40 transition-all duration-500 max-w-md w-full"
-              >
-                <div className="absolute inset-0 bg-adaptiv-orange/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-[32px]"></div>
-                
-                <div className="relative w-20 h-20 rounded-2xl bg-adaptiv-orange/20 flex items-center justify-center text-adaptiv-orange border border-adaptiv-orange/30 overflow-hidden shadow-2xl">
-                   <i className="bi bi-linkedin text-4xl"></i>
-                   {/* Animated pulse for 'Connected' feel */}
-                   <span className="absolute top-1 right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-[#0f0f10] animate-pulse"></span>
-                </div>
-
-                <div className="flex-grow">
-                  <h6 className="text-xl font-bold text-white mb-1 font-comfortaa">Thabang M.</h6>
-                  <p className="text-adaptiv-orange text-xs font-bold uppercase tracking-widest mb-3 opacity-80">Senior AI Engineer</p>
-                  <div className="flex items-center gap-2 text-xs text-gray-500 font-poppins whitespace-nowrap">
-                    <span className="px-2 py-0.5 rounded bg-white/5 border border-white/5 line-clamp-1">Digital Architect</span>
-                    <span className="px-2 py-0.5 rounded bg-white/5 border border-white/5 line-clamp-1">Expert Hub</span>
-                  </div>
-                </div>
-
-                <div className="w-12 h-12 rounded-full bg-adaptiv-orange text-white flex items-center justify-center shadow-lg transform group-hover:rotate-45 transition-transform duration-500">
-                  <ChevronRight size={24} />
-                </div>
-              </motion.a>
             </div>
           </div>
-          
+
           {/* Secondary Socials & Action */}
           <div className="flex flex-col items-center md:items-end gap-6 text-center md:text-right">
             <div className="flex gap-4">
               {[
-                { icon: <i className="bi bi-github"></i>, href: "https://github.com/iarxii", title: "GitHub" },
-                { icon: <Mail size={20} />, href: "mailto:contact@adaptivconcept.co.za", title: "Email" },
-                { icon: <i className="bi bi-twitter-x"></i>, href: "https://twitter.com/adaptivconcept", title: "Twitter" }
+                {
+                  icon: <i className="bi bi-github text-xl"></i>,
+                  href: "https://github.com/iarxii",
+                  title: "GitHub",
+                },
+                {
+                  icon: <i className="bi bi-envelope-at text-xl"></i>,
+                  href: "mailto:contact@adaptivconcept.co.za",
+                  title: "Email",
+                },
+                {
+                  icon: <i className="bi bi-twitter-x text-lg"></i>,
+                  href: "https://twitter.com/adaptivconcept",
+                  title: "Twitter",
+                },
               ].map((social, i) => (
-                <a key={i} href={social.href} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-adaptiv-orange hover:text-white hover:border-adaptiv-orange transition-all duration-300" title={social.title}>
+                <a
+                  key={i}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-adaptiv-orange hover:text-white hover:border-adaptiv-orange hover:-translate-y-1 transition-all duration-300 shadow-xl"
+                  title={social.title}
+                >
                   {social.icon}
                 </a>
               ))}
             </div>
-            <p className="text-gray-500 text-xs font-poppins italic max-w-[200px]">
+            <p className="text-gray-500 text-xs font-poppins italic max-w-[200px] border-r-2 border-adaptiv-orange pr-4 py-1">
               "Professional integrity in every line of code."
             </p>
           </div>
         </div>
       </div>
-      
+
       <style jsx>{`
-        .hover-white:hover { color: white !important; transform: translateY(-3px); }
-        .text-primary-accent { color: var(--primary); }
-        .bg-primary-accent { background-color: var(--primary); }
+        .hover-white:hover {
+          color: white !important;
+          transform: translateY(-3px);
+        }
+        .text-primary-accent {
+          color: var(--primary);
+        }
+        .bg-primary-accent {
+          background-color: var(--primary);
+        }
       `}</style>
     </footer>
   );

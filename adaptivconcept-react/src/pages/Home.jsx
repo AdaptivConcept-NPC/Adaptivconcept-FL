@@ -24,10 +24,10 @@ const ParallaxSection = ({ children, index, total }) => {
   return (
     <div 
       ref={container} 
-      className="relative h-screen"
+      className="relative min-h-screen"
       style={{ zIndex: index + 10 }}
     >
-      <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center">
+      <div className="sticky top-0 min-h-screen w-full overflow-hidden flex items-center justify-center">
         <motion.div 
           style={{ 
             scale, 
@@ -64,11 +64,14 @@ const Home = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.8 }}
           >
+            {/* spacer */}
+            <div className="h-80"></div>
+
             <span className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-white/5 border border-white/10 text-white text-sm font-vietnam mb-10 backdrop-blur-xl">
               <span className="w-2.5 h-2.5 rounded-full bg-adaptiv-orange animate-pulse"></span>
               Available for Strategic Collaboration
             </span>
-            <h1 className="text-6xl md:text-8xl font-comfortaa font-bold mb-10 tracking-tight text-white leading-tight">
+            <h1 className="text-2xl md:text-4xl font-comfortaa font-bold mb-10 tracking-tight text-white leading-tight">
               Senior <span className="text-adaptiv-orange italic">AI Engineer</span> & <br />
               <span className="text-white/90">Digital Architect</span>
             </h1>
@@ -136,12 +139,12 @@ const Home = () => {
                   <div className="absolute -bottom-24 -left-24 w-[300px] h-[300px] bg-adaptiv-orange/5 blur-[80px] rounded-full group-hover:bg-adaptiv-orange/10 transition-all duration-1000"></div>
 
                   <div className="relative z-10">
-                    <h3 className="text-3xl font-comfortaa font-bold text-white mb-2">Initiate <span className="text-adaptiv-orange">Collaboraton</span></h3>
+                    <h3 className="text-3xl font-comfortaa font-bold text-white mb-2">Initiate <span className="text-adaptiv-orange">Collaboration</span></h3>
                     <p className="text-gray-400 text-sm font-poppins mb-10">Ready to engineer the future? Drop a brief below.</p>
                     
                     <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
                       <div className="space-y-2">
-                        <label className="text-[10px] font-bold text-gray-500 uppercase tracking-[0.2em] ml-2">Identificaton</label>
+                        <label className="text-[10px] font-bold text-gray-500 uppercase tracking-[0.2em] ml-2">Identification</label>
                         <input 
                           type="text" 
                           placeholder="Professional Name"
