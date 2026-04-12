@@ -1,6 +1,11 @@
 .text-adaptiv-orange {
     /* use this font:  */
-    font-family: 'Be Vietnam Pro', sans-serif;
+    font-family: 'GrindyBrush', sans-serif;
     font-style: italic !important;
-    font-weight: 900 !important;
+    font-weight: bold !important;
+    text-shadow: 3px 3px 0px rgba(0,0,0,0.8);
+}
+
+.border-adaptiv-white {
+    border-color: #ffffff;
 }

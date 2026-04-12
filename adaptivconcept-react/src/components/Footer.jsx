@@ -1,6 +1,6 @@
-import React from "react";
 import { ChevronRight, ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
+import FLFontCarousel from "./FLFontCarousel";
 
 const Footer = () => {
   return (
@@ -11,15 +11,19 @@ const Footer = () => {
           <div className="col-span-1 md:col-span-2">
             <div className="flex flex-col md:flex-row gap-10 items-center">
               <div className="text-center md:text-left">
-                <div className="flex items-center gap-2 mb-6 group cursor-default">
-                  <img
-                    src="/media/Adaptiv Media Concept Logo.png"
-                    className="w-10 h-10 group-hover:scale-110 transition-transform duration-300"
-                    alt="adaptivconcept fl logo"
-                  />
-                  <h5 className="text-xl font-comfortaa font-bold text-white tracking-tight">
-                    AdaptivConcept <span className="text-adaptiv-orange">FL</span>
-                  </h5>
+                <div className="flex items-center justify-center gap-2 mb-6 group cursor-default">
+                  <div className="flex flex-col items-center">
+                    <img
+                      // src="/media/0_75xLogo.png"
+                      src="/media/Adaptiv Media Concept Logo.png"
+                      className="h-20 group-hover:scale-110 transition-transform duration-300"
+                      alt="adaptivconcept fl logo"
+                    />
+                    <h5 className="text-xl font-comfortaa font-bold text-white tracking-tight">
+                      AdaptivConcept
+                    </h5>
+                    <FLFontCarousel size="text-2xl"  useFullText={true} className="ml-2 w-auto min-h-0" />
+                  </div>
                 </div>
                 
                 <motion.div
@@ -116,7 +120,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         .hover-white:hover {
           color: white !important;
           transform: translateY(-3px);

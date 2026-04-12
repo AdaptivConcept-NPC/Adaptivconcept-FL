@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Home, FolderKanban, Download, Mail, Menu, X } from 'lucide-react';
+import { Home, FolderKanban, Download, Mail, Menu, X, Handshake } from 'lucide-react';
+import FLFontCarousel from '../FLFontCarousel';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -21,9 +22,12 @@ const Navbar = () => {
             auto_awesome
           </span> */}
           <img src="media/Adaptiv Media Concept Logo.png" alt="Adaptivconcept FL Logo" className='navbar-logo' />
-          <span className="text-xl font-comfortaa font-bold text-white tracking-tight">
-            AdaptivConcept <span className="text-adaptiv-orange">FL</span>
-          </span>
+          <div className="flex items-center">
+            <span className="text-xl font-comfortaa font-bold text-white tracking-tight">
+              AdaptivConcept
+            </span>
+            <FLFontCarousel size="text-2xl" className="ml-2 w-auto min-h-0" />
+          </div>
         </Link>
         
         {/* Mobile Toggle */}
@@ -67,17 +71,19 @@ const Navbar = () => {
               href="/cv-public.pdf" 
               className="px-5 py-2.5 rounded-xl border border-white/10 text-white font-medium hover:bg-white/5 transition-all flex items-center gap-2"
             >
-              <Download size={16} /> Public CV
+              <Download size={16} /> Open Résumé
             </a>
-            <button className="px-5 py-2.5 rounded-xl border-2 border-adaptiv-orange text-white font-medium hover:bg-adaptiv-orange transition-all flex items-center gap-2">
+            <button className="px-5 py-2.5 rounded-xl border-2 border-adaptiv-white text-white font-medium hover:bg-adaptiv-orange transition-all flex items-center gap-2">
               <Mail size={16} /> Request Detailed CV
             </button>
             <Link 
               to="/projects" 
               className="px-6 py-2.5 rounded-xl bg-adaptiv-orange text-white font-bold hover:bg-white hover:text-adaptiv-orange transition-all lg:ml-2"
               onClick={() => setIsMenuOpen(false)}
+              style={{display: 'flex', gap: 6, alignItems: 'center'}}
             >
-              Hire Me
+              Hire Me 
+              <Handshake size={26} /> 
             </Link>
           </div>
         </div>
