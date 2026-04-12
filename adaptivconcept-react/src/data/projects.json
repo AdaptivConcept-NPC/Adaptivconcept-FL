@@ -17,7 +17,7 @@
     "tags": ["Node.js", "GPT-4", "VectorDB", "RAG"],
     "isHero": true,
     "githubUrl": "https://github.com/iarxii/AICodex",
-    "detailedStory": "AICodex serves as the brain for the AdaptivConcept ecosystem, automating documentation and initial code structure generation."
+    "detailedStory": "AICodex serves as the brain for the AdaptivConcept™ ecosystem, automating documentation and initial code structure generation."
   },
   {
     "id": "medimix-dash",
@@ -53,7 +53,7 @@
     "id": "onefit-app",
     "title": "Onefit.app",
     "description": "Community-centric fitness and wellness platform connecting trainers with trainees.",
-    "category": "AdaptivConcept",
+    "category": "AdaptivConcept™",
     "tags": ["React", "Firebase", "Social"],
     "isHero": false,
     "githubUrl": "https://github.com/AdaptivConcept-NPC/Onefit.app",

@@ -8,7 +8,7 @@ const ProjectBoard = () => {
   const [activeCategory, setActiveCategory] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
 
-  const categories = ['All', 'Automation', 'Game Dev', 'Frontend', 'Backend', 'Fullstack', 'AdaptivConcept'];
+  const categories = ['All', 'Automation', 'Game Dev', 'Frontend', 'Backend', 'Fullstack', 'AdaptivConcept™'];
 
   const filteredProjects = projectsData.filter(project => {
     const matchesCategory = activeCategory === 'All' || project.category === activeCategory;

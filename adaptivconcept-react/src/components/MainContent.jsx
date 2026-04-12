@@ -45,7 +45,7 @@ const MainContent = () => {
                   onClick={() => gotoLink('adaptivconcept.co.za/blog/change-of-strategy-2023/')}
                 >
                   <span className="material-icons material-icons-round align-middle">history_edu</span>
-                  <span className="align-middle"> Change of Strategy for AdaptivConcept NPC and Project.Adapt
+                  <span className="align-middle"> Change of Strategy for AdaptivConcept™ NPC and Project.Adapt
                     for 2023 going forward.</span>
                 </button>
               </div>

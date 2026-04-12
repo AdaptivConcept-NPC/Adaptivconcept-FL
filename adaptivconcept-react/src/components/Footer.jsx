@@ -1,19 +1,110 @@
+import React, { useState } from "react";
 import { ChevronRight, ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
 import FLFontCarousel from "./FLFontCarousel";
 
+const ProfilePersonas = ({ onPersonaHover }) => {
+  const personas = [
+    {
+      id: 1,
+      src: "/media/my-profile-pic-microsoft-original.png",
+      label: "Professional",
+    },
+    {
+      id: 2,
+      src: "/media/my-profile-pic-microsoft-vector.png",
+      label: "Corporate Vector",
+    },
+    {
+      id: 3,
+      src: "/media/my-profile-pic-github-vector.png",
+      label: "Tech Vector",
+    },
+    { id: 4, src: "/media/my-profile-pic-github.jpg", label: "Developer" },
+  ];
+
+  return (
+    <motion.div 
+      whileHover="hover"
+      className="relative group w-64 h-64 mx-auto md:ml-auto md:mr-0 perspective-1000"
+    >
+      {personas.map((persona, index) => (
+        <motion.div
+          key={persona.id}
+          className="absolute inset-0 rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-black/40 backdrop-blur-sm cursor-pointer"
+          style={{
+            zIndex: personas.length - index,
+          }}
+          initial={{
+            rotateZ: index * -3,
+            x: index * 2,
+            y: index * 2,
+            opacity: 1,
+          }}
+          animate={{
+            rotateZ: index * -3,
+            x: index * 2,
+            y: index * 2,
+            scale: 1,
+            boxShadow: "0 10px 20px -5px rgba(0, 0, 0, 0.3)",
+          }}
+          variants={{
+            hover: {
+              rotateZ: (index - 3) * 15,
+              x: (index - 3) * 130,
+              y: index * -5 - 30,
+              scale: 0.9, 
+              transition: { type: "spring", stiffness: 300, damping: 25 }
+            }
+          }}
+          whileHover={{
+            scale: 1.15,
+            y: index * -5 - 60,
+            zIndex: 100,
+            boxShadow: "0 50px 100px -20px rgba(0, 0, 0, 1)",
+            rotateZ: (index - 3) * 20,
+            transition: { type: "spring", stiffness: 450, damping: 15 }
+          }}
+          onHoverStart={() => onPersonaHover(persona.id)}
+          onHoverEnd={() => onPersonaHover(null)}
+          transition={{
+            type: "spring",
+            stiffness: 260,
+            damping: 20,
+          }}
+        >
+          <img
+            src={persona.src}
+            alt={persona.label}
+            className="w-full h-full object-cover grayscale-[0.5] group-hover:grayscale-0 transition-all duration-500"
+          />
+          <div className="absolute inset-x-0 bottom-0 p-3 bg-gradient-to-t from-black/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <span className="text-[10px] font-black uppercase tracking-[0.25em] text-white block text-center">
+              {persona.label}
+            </span>
+          </div>
+        </motion.div>
+      ))}
+    </motion.div>
+  );
+};
+
 const Footer = () => {
+  const [hoveredPersona, setHoveredPersona] = useState(null);
+
+  const personaMessages = {
+    1: "Enterprise-grade engineering with Microsoft-standard precision and reliable architectural patterns.",
+    2: "Architecting the technical future through strategic digital transformation and high-level design.",
+    3: "Specializing in the visual intelligence layer: bridging the gap between raw data and clarity.",
+    4: "Rapid innovation powered by local LLMs, open-source stacks, and agile development cycles.",
+  };
+
+  const defaultMessage = "Professional integrity in every line of code.";
+
   return (
     <footer className="py-12 mt-20 relative z-10 bg-black/80 border-t border-white/5">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
-    {/* Add a profile picture card widget for these images (onhover events - sleek animations): 
-    projects\adaptivconcept-npc\Adaptivconcept-FL\adaptivconcept-react\public\media\my-profile-pic-github-vector.png
-    projects\adaptivconcept-npc\Adaptivconcept-FL\adaptivconcept-react\public\media\my-profile-pic-github.jpg
-    projects\adaptivconcept-npc\Adaptivconcept-FL\adaptivconcept-react\public\media\my-profile-pic-microsoft-original.png
-    projects\adaptivconcept-npc\Adaptivconcept-FL\adaptivconcept-react\public\media\my-profile-pic-microsoft-vector.png
-    */}
-
           {/* Brand & LinkedIn Card */}
           <div className="col-span-1 md:col-span-2">
             <div className="flex flex-col md:flex-row gap-10 items-center">
@@ -27,7 +118,7 @@ const Footer = () => {
                       alt="adaptivconcept fl logo"
                     />
                     <h5 className="text-xl font-comfortaa font-bold text-white tracking-tight">
-                      AdaptivConcept
+                      AdaptivConcept™
                     </h5>
                     <FLFontCarousel
                       size="text-2xl"
@@ -107,7 +198,7 @@ const Footer = () => {
                           Thabang Mposula
                         </h6>
                         <p className="text-[#8b949e] text-[10px] font-black uppercase tracking-[0.2em] mb-4">
-                          Founder & Senior AI Engineer
+                          Systems Developer (Fullstack)
                         </p>
                       </div>
 
@@ -142,7 +233,7 @@ const Footer = () => {
                   Engineering high-performance solutions for technical
                   excellence. <br />
                   <span className="text-xs opacity-60">
-                    © {new Date().getFullYear()} AdaptivConcept FL. All Rights
+                    © {new Date().getFullYear()} AdaptivConcept™ FL. All Rights
                     Reserved.
                   </span>
                 </p>
@@ -151,40 +242,44 @@ const Footer = () => {
           </div>
 
           {/* Secondary Socials & Action */}
-          <div className="flex flex-col items-center md:items-end gap-6 text-center md:text-right">
-            <div className="flex gap-4">
-              {[
-                {
-                  icon: <i className="bi bi-github text-xl"></i>,
-                  href: "https://github.com/iarxii",
-                  title: "GitHub",
-                },
-                {
-                  icon: <i className="bi bi-envelope-at text-xl"></i>,
-                  href: "mailto:contact@adaptivconcept.co.za",
-                  title: "Email",
-                },
-                {
-                  icon: <i className="bi bi-twitter-x text-lg"></i>,
-                  href: "https://twitter.com/adaptivconcept",
-                  title: "Twitter",
-                },
-              ].map((social, i) => (
-                <a
-                  key={i}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-adaptiv-orange hover:text-white hover:border-adaptiv-orange hover:-translate-y-1 transition-all duration-300 shadow-xl"
-                  title={social.title}
-                >
-                  {social.icon}
-                </a>
-              ))}
+          <div className="flex flex-col items-center md:items-end gap-10">
+            <ProfilePersonas onPersonaHover={setHoveredPersona} />
+
+            <div className="flex flex-col items-center md:items-end gap-6 text-center md:text-right">
+              <div className="flex gap-4">
+                {[
+                  {
+                    icon: <i className="bi bi-github text-xl"></i>,
+                    href: "https://github.com/iarxii",
+                    title: "GitHub",
+                  },
+                  {
+                    icon: <i className="bi bi-envelope-at text-xl"></i>,
+                    href: "mailto:contact@adaptivconcept.co.za",
+                    title: "Email",
+                  },
+                  {
+                    icon: <i className="bi bi-twitter-x text-lg"></i>,
+                    href: "https://twitter.com/adaptivconcept",
+                    title: "Twitter",
+                  },
+                ].map((social, i) => (
+                  <a
+                    key={i}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-adaptiv-orange hover:text-white hover:border-adaptiv-orange hover:-translate-y-1 transition-all duration-300 shadow-xl"
+                    title={social.title}
+                  >
+                    {social.icon}
+                  </a>
+                ))}
+              </div>
+              <p className="text-white text-sm font-poppins italic max-w-[280px] border-r-2 border-adaptiv-orange pr-4 py-1 transition-all duration-500">
+                "{hoveredPersona ? personaMessages[hoveredPersona] : defaultMessage}"
+              </p>
             </div>
-            <p className="text-gray-500 text-xs font-poppins italic max-w-[200px] border-r-2 border-adaptiv-orange pr-4 py-1">
-              "Professional integrity in every line of code."
-            </p>
           </div>
         </div>
       </div>
