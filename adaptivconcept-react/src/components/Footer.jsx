@@ -24,7 +24,7 @@ const ProfilePersonas = ({ onPersonaHover }) => {
   ];
 
   return (
-    <motion.div 
+    <motion.div
       whileHover="hover"
       className="relative group w-64 h-64 mx-auto md:ml-auto md:mr-0 perspective-1000"
     >
@@ -53,9 +53,9 @@ const ProfilePersonas = ({ onPersonaHover }) => {
               rotateZ: (index - 3) * 15,
               x: (index - 3) * 130,
               y: index * -5 - 30,
-              scale: 0.9, 
-              transition: { type: "spring", stiffness: 300, damping: 25 }
-            }
+              scale: 0.9,
+              transition: { type: "spring", stiffness: 300, damping: 25 },
+            },
           }}
           whileHover={{
             scale: 1.15,
@@ -63,7 +63,7 @@ const ProfilePersonas = ({ onPersonaHover }) => {
             zIndex: 100,
             boxShadow: "0 50px 100px -20px rgba(0, 0, 0, 1)",
             rotateZ: (index - 3) * 20,
-            transition: { type: "spring", stiffness: 450, damping: 15 }
+            transition: { type: "spring", stiffness: 450, damping: 15 },
           }}
           onHoverStart={() => onPersonaHover(persona.id)}
           onHoverEnd={() => onPersonaHover(null)}
@@ -117,8 +117,20 @@ const Footer = () => {
                       className="h-20 group-hover:scale-110 transition-transform duration-300"
                       alt="adaptivconcept fl logo"
                     />
-                    <h5 className="text-xl font-comfortaa font-bold text-white tracking-tight">
-                      AdaptivConcept™
+                    <h5 className="text-xl font-comfortaa font-bold text-white tracking-tight relative">
+                      AdaptivConcept
+                      <div
+                        style={{
+                          position: "absolute",
+                          fontSize: "8px",
+                          marginTop: "-6px",
+                          marginRight: "-4px",
+                          top: "0",
+                          right: "0",
+                        }}
+                      >
+                        ™
+                      </div>
                     </h5>
                     <FLFontCarousel
                       size="text-2xl"
@@ -282,7 +294,11 @@ const Footer = () => {
                 ))}
               </div>
               <p className="text-white text-sm font-poppins italic max-w-[280px] border-r-2 border-adaptiv-orange pr-4 py-1 transition-all duration-500">
-                "{hoveredPersona ? personaMessages[hoveredPersona] : defaultMessage}"
+                "
+                {hoveredPersona
+                  ? personaMessages[hoveredPersona]
+                  : defaultMessage}
+                "
               </p>
             </div>
           </div>

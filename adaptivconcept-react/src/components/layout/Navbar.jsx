@@ -35,14 +35,14 @@ const Navbar = () => {
             className="navbar-logo"
           />
           <div className="flex items-center">
-            <span className="text-xl font-comfortaa font-bold text-white tracking-tight">
+            <span className="text-xl font-comfortaa font-bold text-white tracking-tight relative">
               AdaptivConcept
               <div
                 style={{
                   position: "absolute",
-                  fontSize: "12px",
-                  marginTop: "-12px",
-                  marginLeft: "2px",
+                  fontSize: "8px",
+                  marginTop: "-6px",
+                  marginRight: "-4px",
                   top: "0",
                   right: "0",
                 }}
