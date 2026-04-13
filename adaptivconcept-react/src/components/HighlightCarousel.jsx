@@ -1,92 +1,192 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const highlights = [
-    { 
-        title: "Frontend Engineering", 
-        subtitle: "Specializing in React, Vanilla JS, and jQuery to build 100% pixel-perfect, highly interactive user interfaces. #HTML #CSS #VanillaJS #jQuery" 
-    },
-    { 
-        title: "Backend Authority", 
-        subtitle: "Architecting robust systems with Vanilla PHP and Laravel for secure, high-traffic governmental applications. #PHP #Laravel #Node" 
-    },
-    { 
-        title: "Data Intelligence", 
-        subtitle: "Leveraging Python and Power BI to transform complex health data into visual, actionable strategic insights. #Python #DataAnalysis" 
-    },
-    { 
-        title: "Process Automation", 
-        subtitle: "Mastering Microsoft Power Automate and Power Apps to streamline enterprise-level business operations. #PowerPlatform" 
-    },
-    { 
-        title: "Database Scalability", 
-        subtitle: "Expert-level administration of MySQL and SQL Server environments for mission-critical data integrity. #MySQL #SQLServer" 
-    },
-    { 
-        title: "Award-Winning Innovation", 
-        subtitle: "Gold Award Innovator recognized for pioneering digital patient experience solutions at a national level." 
-    },
-    { 
-        title: "Microsoft 365 Ecosystem", 
-        subtitle: "Bridging the gap between enterprise legacy and modern cloud-native solutions with Microsoft 365 and Azure. #M365 #Azure" 
-    }
+  {
+    title: "Frontend Engineering",
+    subtitle:
+      "Specializing in React, Vanilla JS, and jQuery to build 100% pixel-perfect, highly interactive user interfaces. #HTML #CSS #VanillaJS #jQuery",
+    techStack: ["react", "wordpress", "vscode", "github", "canva", "illustrator", "figma"],
+  },
+  {
+    title: "Backend Authority",
+    subtitle:
+      "Architecting robust systems with Vanilla PHP, Laravel, Node.js, C# and Python for secure, high-traffic governmental applications. #PHP #Laravel #csharp #Node",
+    techStack: ["php", "mysql", "docker", "redis", "linux", "azure", "csharp"], // add csharp icon
+  },
+  {
+    title: "Data Intelligence",
+    subtitle:
+      "Leveraging Python and Power BI to transform complex business and community health data into visual, actionable strategic insights. #Python #DataAnalysis",
+    techStack: ["python", "powerbi", "postgresql"], 
+  },
+  {
+    title: "Process Automation",
+    subtitle:
+      "Mastering Microsoft Fabric, Power Automate and Power Apps to streamline enterprise-level business operations. #PowerPlatform",
+    techStack: ["powerautomate", "powerapps", "m365", "terminal", "api"], // add terminal and api
+  },
+  {
+    title: "Database Scalability",
+    subtitle:
+      "Expert-level administration of MySQL and SQL Server environments for mission-critical data integrity. #MySQL #SQLServer",
+    techStack: ["mysql", "sqlserver", "postgresql", "redis", "firebase", "supabase"],// add firebase and supabase <- I have added the folders
+  },
+  {
+    title: "Award-Winning Innovation",
+    subtitle:
+      "Gold Award Innovator recognized for pioneering digital patient experience solutions at a national level.",
+    techStack: ["ai", "chatgpt", "claude", "ollama"], // add Ollama [projects\adaptivconcept-npc\Adaptivconcept-FL\adaptivconcept-react\public\icons\ollama\ollama-color.svg]
+  },
+  {
+    title: "Cloud & Shared-Hosting Ecosystems",
+    subtitle:
+      "Bridging the gap between enterprise legacy and modern cloud-native solutions with Linux, CPanel, Microsoft 365 and Azure. #M365 #Azure",
+    techStack: ["m365", "azure", "copilot", "github-copilot", "cpanel"],
+  },
 ];
 
+const iconMap = {
+  react: "/icons/icons8-react-shadow/icons8-react-96.png",
+  vscode:
+    "/icons/icons8-visual-studio-code-2019-windows-11-color/icons8-visual-studio-code-2019-96.png",
+  github: "/icons/icons8-github-shadow/icons8-github-96.png",
+  php: "/icons/icons8-php-shadow/icons8-php-96.png",
+  mysql: "/icons/icons8-mysql-shadow/icons8-mysql-96.png",
+  docker: "/icons/icons8-docker-shadow/icons8-docker-96.png",
+  redis: "/icons/icons8-redis-shadow/icons8-redis-96.png",
+  linux: "/icons/icons8-linux-shadow/icons8-linux-96.png",
+  azure: "/icons/icons8-azure-windows-11-color/icons8-azure-96.png",
+  python: "/icons/icons8-python-shadow/icons8-python-96.png",
+  powerbi:
+    "/icons/icons8-power-bi-2021-windows-11-color/icons8-power-bi-2021-96.png",
+  postgresql: "/icons/icons8-postgresql-shadow/icons8-postgresql-96.png",
+  powerautomate:
+    "/icons/icons8-microsoft-power-automate-2020-windows-11-color/icons8-microsoft-power-automate-2020-96.png",
+  powerapps:
+    "/icons/icons8-microsoft-power-apps-2020-windows-11-color/icons8-microsoft-power-apps-2020-96.png",
+  m365: "/icons/icons8-microsoft-365-windows-11-color/icons8-microsoft-365-96.png",
+  ai: "/icons/icons8-ai-windows-11-color/icons8-ai-96.png",
+  chatgpt: "/icons/icons8-chatgpt-windows-11-color/icons8-chatgpt-96.png",
+  claude: "/icons/icons8-claude-ai-windows-11-color/icons8-claude-ai-96.png",
+  copilot:
+    "/icons/icons8-microsoft-copilot-windows-11-color/icons8-microsoft-copilot-96.png",
+  "github-copilot":
+    "/icons/icons8-github-copilot-windows-11-color/icons8-github-copilot-96.png",
+  sqlserver:
+    "/icons/icons8-microsoft-sql-server-color/icons8-microsoft-sql-server-96.png",
+  wordpress: "/icons/icons8-wordpress-color/icons8-wordpress-96.png",
+  canva: "/icons/icons8-canva-windows-11-color/icons8-canva-96.png",
+  illustrator: "/icons/icons8-illustrator-color/icons8-illustrator-96.png",
+  figma: "/icons/icons8-figma-color/icons8-figma-96.png",
+  cpanel: "/icons/icons8-cpanel-windows-10/icons8-cpanel-96.png",
+  csharp: "/icons/icons8-c-sharp-logo-gradient/icons8-c-sharp-logo-96.png",
+  terminal: "/icons/icons8-terminal-3d-fluency/icons8-terminal-94.png",
+  api: "/icons/icons8-api-3d-fluency/icons8-api-94.png",
+  firebase: "/icons/icons8-firebase-color/icons8-firebase-96.png",
+  supabase: "/icons/icons8-supabase-windows-11-color/icons8-supabase-96.png",
+  ollama: "/icons/ollama/ollama-color.svg",
+};
+
 const HighlightCarousel = ({ className = "" }) => {
-    const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(0);
 
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setIndex((prev) => (prev + 1) % highlights.length);
-        }, 8000);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % highlights.length);
+    }, 8000);
 
-        return () => clearInterval(timer);
-    }, []);
+    return () => clearInterval(timer);
+  }, []);
 
-    const current = highlights[index];
+  const current = highlights[index];
 
-    return (
-        <div className={`flex flex-col items-center justify-center text-center px-4 ${className}`}>
-            <AnimatePresence mode="wait">
+  // Variants for the wave hover animation
+  const containerVariants = {
+    hover: { transition: { staggerChildren: 0.1 } },
+  };
+
+  const iconVariants = {
+    initial: { y: 0 },
+    hover: {
+      y: [0, -10, 0],
+      transition: {
+        duration: 0.6,
+        repeat: Infinity,
+        repeatType: "reverse",
+        ease: "easeInOut",
+      },
+    },
+  };
+
+  return (
+    <div
+      className={`flex flex-col items-center justify-center text-center px-4 ${className}`}
+    >
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={`highlight-${index}`}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="flex flex-col items-center gap-4"
+        >
+          {/* Stack-aware Tech Icons with Wave Animation */}
+          <div className="p-2 rounded-full shadow-2xl bg-white border-b-4 border-adaptiv-orange">
+            <motion.div
+              variants={containerVariants}
+              whileHover="hover"
+              className="hidden md:flex items-center h-12 p-4"
+            >
+              {current.techStack?.map((tech, i) => (
                 <motion.div
-                    key={`highlight-${index}`}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={{ duration: 0.6, ease: "easeOut" }}
-                    className="flex flex-col items-center gap-2"
+                  key={`${tech}-${i}`}
+                  variants={iconVariants}
+                  className="relative group m-0"
+                  style={{ zIndex: 10 + i }}
                 >
-                    <h3 
-                        className="text-5xl md:text-6xl font-bold text-adaptiv-orange tracking-tight uppercase"
-                        style={{ textShadow: '3px 3px 0px rgba(0,0,0,0.8)' }}
-                    >
-                        {current.title}
-                    </h3>
-                    <motion.p 
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.2, duration: 0.5 }}
-                        className="text-white text-lg md:text-xl max-w-2xl font-light italic"
-                        style={{ textShadow: '1px 1px 0px rgba(0,0,0,0.9)' }}
-                    >
-                        {current.subtitle}
-                    </motion.p>
+                  <img
+                    src={iconMap[tech]}
+                    alt={tech}
+                    className="w-10 h-10 mx-4 object-contain drop-shadow-lg filter brightness-110 group-hover:scale-125 transition-transform duration-300"
+                  />
                 </motion.div>
-            </AnimatePresence>
-            
-            {/* Subtle indicator */}
-            <div className="flex gap-2 mt-8">
-                {highlights.map((_, i) => (
-                    <div 
-                        key={i}
-                        className={`h-1 w-4 rounded-full transition-all duration-500 ${
-                            i === index ? "bg-adaptiv-orange w-8" : "bg-gray-800"
-                        }`}
-                    />
-                ))}
-            </div>
-        </div>
-    );
+              ))}
+            </motion.div>
+          </div>
+
+          <h3
+            className="text-5xl md:text-6xl font-bold text-adaptiv-orange tracking-tight uppercase"
+            style={{ textShadow: "3px 3px 0px rgba(0,0,0,0.8)" }}
+          >
+            {current.title}
+          </h3>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            className="text-white text-lg md:text-xl max-w-2xl font-light italic"
+            style={{ textShadow: "1px 1px 0px rgba(0,0,0,0.9)" }}
+          >
+            {current.subtitle}
+          </motion.p>
+        </motion.div>
+      </AnimatePresence>
+
+      {/* Subtle indicator */}
+      <div className="flex gap-2 mt-8">
+        {highlights.map((_, i) => (
+          <div
+            key={i}
+            className={`h-1 w-4 rounded-full transition-all duration-500 ${
+              i === index ? "bg-adaptiv-orange w-8" : "bg-gray-800"
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default HighlightCarousel;
