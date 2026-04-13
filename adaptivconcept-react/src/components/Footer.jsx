@@ -26,7 +26,7 @@ const ProfilePersonas = ({ onPersonaHover }) => {
   return (
     <motion.div
       whileHover="hover"
-      className="relative group w-64 h-64 mx-auto md:ml-auto md:mr-0 perspective-1000"
+      className="relative group w-48 h-48 md:w-64 md:h-64 mx-auto md:ml-auto md:mr-0 perspective-1000"
     >
       {personas.map((persona, index) => (
         <motion.div
@@ -117,7 +117,7 @@ const Footer = () => {
                       className="h-20 group-hover:scale-110 transition-transform duration-300"
                       alt="adaptivconcept fl logo"
                     />
-                    <h5 className="text-xl font-comfortaa font-bold text-white tracking-tight relative">
+                    <h5 className="text-lg md:text-xl font-comfortaa font-bold text-white tracking-tight relative">
                       AdaptivConcept
                       <div
                         style={{
@@ -133,7 +133,7 @@ const Footer = () => {
                       </div>
                     </h5>
                     <FLFontCarousel
-                      size="text-2xl"
+                      size="text-xl md:text-2xl"
                       useFullText={true}
                       className="ml-2 w-auto min-h-0"
                     />
@@ -144,19 +144,19 @@ const Footer = () => {
                 <div className="mb-5">
                   <motion.div
                     whileHover={{ y: -5, scale: 1.01 }}
-                    className="group relative flex flex-col sm:flex-row items-center gap-6 p-6 rounded-[24px] bg-white/[0.02] border border-white/5 backdrop-blur-3xl hover:border-[#0077b5]/50 transition-all duration-500 max-w-lg w-full overflow-hidden"
+                    className="group relative flex flex-col sm:flex-row items-center gap-6 p-4 md:p-6 rounded-2xl md:rounded-[24px] bg-white/[0.02] border border-white/5 backdrop-blur-3xl hover:border-[#0077b5]/50 transition-all duration-500 max-w-lg w-full overflow-hidden"
                   >
                     {/* LinkedIn-branded accent */}
                     <div className="absolute top-0 right-0 w-32 h-32 bg-[#0077b5]/10 blur-[60px] -mr-10 -mt-10 group-hover:bg-[#0077b5]/20 transition-all duration-700"></div>
 
-                    <div className="relative w-24 h-24 rounded-2xl bg-[#0077b5] flex items-center justify-center text-white border border-[#0077b5]/30 overflow-hidden shadow-2xl shrink-0 group-hover:scale-105 transition-transform duration-500">
+                    <div className="relative w-16 h-16 md:w-24 md:h-24 rounded-xl md:rounded-2xl bg-[#0077b5] flex items-center justify-center text-white border border-[#0077b5]/30 overflow-hidden shadow-2xl shrink-0 group-hover:scale-105 transition-transform duration-500">
                       <i className="bi bi-linkedin text-5xl"></i>
                       <span className="absolute bottom-2 right-2 w-4 h-4 bg-green-500 rounded-full border-2 border-[#0077b5] shadow-sm animate-pulse"></span>
                     </div>
 
                     <div className="flex-grow z-10 text-center sm:text-left">
                       <div className="flex flex-col">
-                        <h6 className="text-2xl font-bold text-white mb-0.5 font-comfortaa">
+                        <h6 className="text-xl md:text-2xl font-bold text-white mb-0.5 font-comfortaa">
                           Thabang Mposula
                         </h6>
                         <p className="text-[#0077b5] text-[10px] font-black uppercase tracking-[0.2em] mb-4">
@@ -194,19 +194,19 @@ const Footer = () => {
                 <div className="mb-5">
                   <motion.div
                     whileHover={{ y: -5, scale: 1.01 }}
-                    className="group relative flex flex-col sm:flex-row items-center gap-6 p-6 rounded-[24px] bg-white/[0.02] border border-white/5 backdrop-blur-3xl hover:border-[#8b949e]/50 transition-all duration-500 max-w-lg w-full overflow-hidden mb-5"
+                    className="group relative flex flex-col sm:flex-row items-center gap-6 p-4 md:p-6 rounded-2xl md:rounded-[24px] bg-white/[0.02] border border-white/5 backdrop-blur-3xl hover:border-[#8b949e]/50 transition-all duration-500 max-w-lg w-full overflow-hidden mb-5"
                   >
                     {/* Github-branded accent */}
                     <div className="absolute top-0 right-0 w-32 h-32 bg-[#f0f6fc]/5 blur-[60px] -mr-10 -mt-10 group-hover:bg-[#58a6ff]/10 transition-all duration-700"></div>
 
-                    <div className="relative w-24 h-24 rounded-2xl bg-[#24292f] flex items-center justify-center text-white border border-white/10 overflow-hidden shadow-2xl shrink-0 group-hover:scale-105 transition-transform duration-500">
+                    <div className="relative w-16 h-16 md:w-24 md:h-24 rounded-xl md:rounded-2xl bg-[#24292f] flex items-center justify-center text-white border border-white/10 overflow-hidden shadow-2xl shrink-0 group-hover:scale-105 transition-transform duration-500">
                       <i className="bi bi-github text-5xl"></i>
                       <span className="absolute bottom-2 right-2 w-4 h-4 bg-green-500 rounded-full border-2 border-[#24292f] shadow-sm animate-pulse"></span>
                     </div>
 
                     <div className="flex-grow z-10 text-center sm:text-left">
                       <div className="flex flex-col">
-                        <h6 className="text-2xl font-bold text-white mb-0.5 font-comfortaa">
+                        <h6 className="text-xl md:text-2xl font-bold text-white mb-0.5 font-comfortaa">
                           Thabang Mposula
                         </h6>
                         <p className="text-[#8b949e] text-[10px] font-black uppercase tracking-[0.2em] mb-4">

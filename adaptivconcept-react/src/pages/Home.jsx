@@ -89,7 +89,7 @@ const Home = () => {
 
       {/* Section 1: Hero */}
       <ParallaxSection index={0} total={sectionsCount}>
-        <div className="max-w-5xl px-6 text-center bg-[#0f0f10]/60  backdrop-blur-3xl border border-white/10 rounded-[60px] p-10 md:p-20 relative">
+        <div className="max-w-5xl px-6 text-center bg-[#0f0f10]/60  backdrop-blur-3xl border border-white/10 rounded-[32px] md:rounded-[60px] p-6 md:p-20 relative">
           <motion.div
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -99,22 +99,22 @@ const Home = () => {
               <span className="w-2.5 h-2.5 rounded-full bg-adaptiv-orange animate-pulse"></span>
               Available for Strategic Collaboration
             </span>
-            <h1 className="text-2xl md:text-4xl font-comfortaa font-bold mb-10 tracking-tight text-white leading-tight">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-comfortaa font-bold mb-10 tracking-tight text-white leading-tight">
               Senior{" "}
               <span className="text-adaptiv-orange italic">AI Engineer</span> &{" "}
               <br />
               <span className="text-white/90">Digital Architect</span>
             </h1>
-            <p className="text-xl md:text-2xl font-poppins text-gray-400 mb-14 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg md:text-2xl font-poppins text-gray-400 mb-14 max-w-3xl mx-auto leading-relaxed">
               Engineering high-performance intelligence pipelines and
               interactive 3D ecosystems. Converting complex legacy
               infrastructure into automated future-states.
             </p>
             <div className="flex flex-wrap justify-center gap-6">
-              <button className="px-10 py-5 rounded-2xl bg-adaptiv-orange text-white text-lg font-bold hover:scale-105 hover:shadow-2xl hover:shadow-adaptiv-orange/30 transition-all flex items-center gap-3">
+              <button className="px-6 py-4 md:px-10 md:py-5 rounded-xl md:rounded-2xl bg-adaptiv-orange text-white text-base md:text-lg font-bold hover:scale-105 hover:shadow-2xl hover:shadow-adaptiv-orange/30 transition-all flex items-center gap-3">
                 Let's Talk <ChevronRight size={22} />
               </button>
-              <button className="px-10 py-5 rounded-2xl border-2 border-white/10 text-white text-lg font-bold hover:bg-white/5 hover:border-white/20 transition-all backdrop-blur-sm">
+              <button className="px-6 py-4 md:px-10 md:py-5 rounded-xl md:rounded-2xl border-2 border-white/10 text-white text-base md:text-lg font-bold hover:bg-white/5 hover:border-white/20 transition-all backdrop-blur-sm">
                 Project Catalog
               </button>
             </div>
@@ -125,17 +125,17 @@ const Home = () => {
       {/* Section 2: Strategy */}
       <ParallaxSection index={1} total={sectionsCount}>
         <div className="container mx-auto px-6">
-          <div className="bg-[#0f0f10]/60 backdrop-blur-3xl border border-white/10 rounded-[60px] p-10 md:p-20 relative overflow-hidden group">
+          <div className="bg-[#0f0f10]/60 backdrop-blur-3xl border border-white/10 rounded-[32px] md:rounded-[60px] p-6 md:p-20 relative overflow-hidden group">
             {/* Subtle glow effect */}
             <div className="absolute -top-24 -right-24 w-[500px] h-[500px] bg-adaptiv-orange/5 blur-[120px] rounded-full group-hover:bg-adaptiv-orange/10 transition-colors duration-1000"></div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
               <div>
-                <h2 className="text-5xl md:text-6xl font-comfortaa font-bold text-white mb-10 leading-tight">
+                <h2 className="text-3xl sm:text-4xl md:text-6xl font-comfortaa font-bold text-white mb-10 leading-tight">
                   Design for <br />
                   <span className="text-adaptiv-orange">Transformation</span>
                 </h2>
-                <p className="text-lg text-gray-400 font-poppins mb-16 leading-relaxed max-w-xl">
+                <p className="text-base md:text-lg text-gray-400 font-poppins mb-16 leading-relaxed max-w-xl">
                   Leveraging deep expertise in public sector innovation and AI
                   research to help forward-thinking teams skip the prototype
                   phase and build production-ready systems.
@@ -182,12 +182,12 @@ const Home = () => {
                   initial={{ opacity: 0, x: 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  className="rounded-[60px] bg-white/[0.05] backdrop-blur-3xl border border-white/10 p-10 md:p-14 relative group overflow-hidden"
+                  className="rounded-[32px] md:rounded-[60px] bg-white/[0.05] backdrop-blur-3xl border border-white/10 p-6 md:p-14 relative group overflow-hidden"
                 >
                   <div className="absolute -bottom-24 -left-24 w-[300px] h-[300px] bg-adaptiv-orange/5 blur-[80px] rounded-full group-hover:bg-adaptiv-orange/10 transition-all duration-1000"></div>
 
                   <div className="relative z-10">
-                    <h3 className="text-3xl font-comfortaa font-bold text-white mb-2">
+                    <h3 className="text-2xl md:text-3xl font-comfortaa font-bold text-white mb-2">
                       Initiate{" "}
                       <span className="text-adaptiv-orange">Collaboration</span>
                     </h3>
@@ -235,7 +235,7 @@ const Home = () => {
                       <motion.button
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
-                        className="w-full py-5 rounded-2xl bg-adaptiv-orange text-white font-bold text-lg hover:shadow-2xl hover:shadow-adaptiv-orange/30 transition-all flex items-center justify-center gap-3 mt-4"
+                        className="w-full py-4 md:py-5 rounded-xl md:rounded-2xl bg-adaptiv-orange text-white font-bold text-lg hover:shadow-2xl hover:shadow-adaptiv-orange/30 transition-all flex items-center justify-center gap-3 mt-4"
                       >
                         Deploy Brief <Rocket size={20} />
                       </motion.button>
@@ -250,13 +250,13 @@ const Home = () => {
 
       {/* Section 3: Projects Grid */}
       <ParallaxSection index={2} total={sectionsCount}>
-        <div className="container mx-auto px-6 bg-[#0f0f10]/60  backdrop-blur-3xl border border-white/10 rounded-[60px] p-10 md:p-20 relative">
+        <div className="container mx-auto px-6 bg-[#0f0f10]/60  backdrop-blur-3xl border border-white/10 rounded-[32px] md:rounded-[60px] p-6 md:p-20 relative">
           <div className="flex flex-col md:flex-row justify-between items-end gap-10 mb-16">
             <div className="max-w-3xl">
-              <h3 className="text-5xl md:text-6xl font-comfortaa font-bold text-white mb-6">
+              <h3 className="text-3xl sm:text-4xl md:text-6xl font-comfortaa font-bold text-white mb-6">
                 Masterpieces
               </h3>
-              <p className="text-2xl text-gray-400 font-comfortaa">
+              <p className="text-lg md:text-2xl text-gray-400 font-comfortaa">
                 Selected engineering feats and design systems.
               </p>
             </div>
@@ -274,7 +274,7 @@ const Home = () => {
               <motion.div
                 key={project.id}
                 whileHover={{ y: -15, scale: 1.02 }}
-                className="group bg-white/5 backdrop-blur-2xl border border-white/10 rounded-[40px] p-10 flex flex-col h-full transition-all duration-500 hover:bg-white/10 hover:border-adaptiv-orange/30 shadow-2xl"
+                className="group bg-white/5 backdrop-blur-2xl border border-white/10 rounded-[24px] md:rounded-[40px] p-6 md:p-10 flex flex-col h-full transition-all duration-500 hover:bg-white/10 hover:border-adaptiv-orange/30 shadow-2xl"
               >
                 <div className="flex justify-between items-start mb-10">
                   <span className="px-5 py-2 rounded-xl bg-adaptiv-orange/10 text-adaptiv-orange text-sm font-bold uppercase tracking-[0.2em]">
@@ -296,11 +296,11 @@ const Home = () => {
                   </div>
                 </div>
 
-                <h4 className="text-3xl font-comfortaa font-bold text-white mb-6 group-hover:text-adaptiv-orange transition-colors">
+                <h4 className="text-2xl md:text-3xl font-comfortaa font-bold text-white mb-6 group-hover:text-adaptiv-orange transition-colors">
                   {project.title}
                 </h4>
 
-                <p className="text-gray-400 font-poppins line-clamp-3 mb-10 text-lg flex-grow">
+                <p className="text-gray-400 font-poppins line-clamp-3 mb-10 text-base md:text-lg flex-grow">
                   {project.description}
                 </p>
 

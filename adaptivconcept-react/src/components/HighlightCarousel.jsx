@@ -203,7 +203,7 @@ const HighlightCarousel = ({ className = "" }) => {
             </div>
 
             <h3
-              className="text-5xl md:text-6xl font-bold text-adaptiv-orange tracking-tight uppercase select-none"
+              className="text-2xl sm:text-4xl md:text-6xl font-bold text-adaptiv-orange tracking-tight uppercase select-none"
               style={{ textShadow: "3px 3px 0px rgba(0,0,0,0.8)" }}
             >
               {current.title}
@@ -212,7 +212,7 @@ const HighlightCarousel = ({ className = "" }) => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.5 }}
-              className="text-white text-lg md:text-xl max-w-2xl font-light italic select-none"
+              className="text-white text-base md:text-lg max-w-2xl font-light italic select-none"
               style={{ textShadow: "1px 1px 0px rgba(0,0,0,0.9)" }}
             >
               {current.subtitle}

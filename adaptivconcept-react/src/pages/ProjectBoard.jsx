@@ -22,21 +22,21 @@ const ProjectBoard = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="container mx-auto px-6 py-20 min-h-screen"
+      className="container mx-auto px-6 py-10 md:py-20 min-h-screen"
       style={{ backgroundColor: "rgb(51 51 51 / 80%)"}}
     >
       <div className="text-center mb-16">
-        <h1 className="text-5xl md:text-6xl font-comfortaa font-bold text-white mb-6">
+        <h1 className="text-3xl sm:text-4xl md:text-6xl font-comfortaa font-bold text-white mb-6">
           Project <span className="text-adaptiv-orange">Board</span>
         </h1>
-        <p className="text-xl text-gray-400 font-poppins max-w-2xl mx-auto">
+        <p className="text-lg md:text-xl text-gray-400 font-poppins max-w-2xl mx-auto">
           A segmented showcase of technical explorations, business solutions, and research.
         </p>
       </div>
 
       {/* Filters & Search */}
       <div className="max-w-5xl mx-auto mb-20">
-        <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[32px] p-4 flex flex-col lg:flex-row items-center gap-6 shadow-2xl">
+        <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[24px] md:rounded-[32px] p-3 md:p-4 flex flex-col lg:flex-row items-center gap-4 md:gap-6 shadow-2xl">
           <div className="w-full lg:flex-grow relative group">
             <Search className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within:text-adaptiv-orange transition-colors" size={20} />
             <input 
@@ -77,7 +77,7 @@ const ProjectBoard = () => {
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.3 }}
             >
-              <div className="group bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 flex flex-col h-full transition-all hover:bg-white/[0.08] hover:border-white/20">
+              <div className="group bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 md:p-8 flex flex-col h-full transition-all hover:bg-white/[0.08] hover:border-white/20">
                 <div className="mb-6 flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div className="text-adaptiv-orange">

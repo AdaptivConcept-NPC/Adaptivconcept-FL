@@ -13,8 +13,8 @@ const MainContent = () => {
           <div className="col-md-3 py-4">
             <div className="text-center">
               <span 
-                className="material-icons material-icons-round bg-white p-5 rounded-circle shadow"
-                style={{fontSize: '160px !important', color: 'rgb(255, 55, 21)'}}
+                className="material-icons material-icons-round bg-white p-3 md:p-5 rounded-full shadow-lg text-[80px] md:text-[160px]"
+                style={{color: 'rgb(255, 55, 21)'}}
               >
                 tips_and_updates
               </span>
@@ -22,7 +22,7 @@ const MainContent = () => {
           </div>
           <div className="col-md-9">
             <div className="container">
-              <h1 className="poppins-font">We are going into Freelancing!</h1>
+              <h1 className="poppins-font text-2xl md:text-4xl font-bold mb-6">We are going into Freelancing!</h1>
               <p className="be-vietnam-pro-font">
                 In our <a href="https://adaptivconcept.co.za/blog/change-of-strategy-2023/" className="fw-bold">Public Letter
                 posted on 11 January 2023</a>, we provided insight into how the first year
