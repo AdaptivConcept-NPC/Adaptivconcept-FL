@@ -13,6 +13,8 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import ProjectBoard from './pages/ProjectBoard';
 import ProjectDetail from './pages/ProjectDetail';
+import Blog from './pages/Blog';
+import BlogDetail from './pages/BlogDetail';
 
 function App() {
   const useVideoBackground = false; // Toggle this to switch between video and static wallpaper
@@ -44,6 +46,8 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/projects" element={<ProjectBoard />} />
               <Route path="/projects/:id" element={<ProjectDetail />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:id" element={<BlogDetail />} />
             </Routes>
           </AnimatePresence>
         </main>

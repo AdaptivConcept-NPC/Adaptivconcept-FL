@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import {
   Home,
   FolderKanban,
+  Newspaper,
   Download,
   Mail,
   Menu,
@@ -88,6 +89,15 @@ const Navbar = () => {
                 onClick={() => setIsMenuOpen(false)}
               >
                 <FolderKanban size={18} /> Project Board
+              </Link>
+            </li>
+            <li>
+              <Link
+                className={`flex items-center gap-2 text-sm font-medium transition-colors hover:text-white ${isActive("/blog") ? "text-white font-bold" : "text-gray-400"}`}
+                to="/blog"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <Newspaper size={18} /> Blog
               </Link>
             </li>
           </ul>
