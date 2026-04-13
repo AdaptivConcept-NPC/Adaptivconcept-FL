@@ -7,6 +7,7 @@ import {
   ChevronRight,
   ExternalLink,
 } from "lucide-react";
+import { useTheme } from "../context/ThemeContext";
 import projectsData from "../data/projects.json";
 import FLFontCarousel from "../components/FLFontCarousel";
 import HighlightCarousel from "../components/HighlightCarousel";
@@ -60,6 +61,7 @@ const ParallaxSection = ({ children, index, total }) => {
 };
 
 const Home = () => {
+  const { currentFont, themeColor } = useTheme();
   const heroProjects = projectsData.filter((p) => p.isHero);
   const sectionsCount = 3;
 
@@ -96,14 +98,27 @@ const Home = () => {
             transition={{ delay: 0.2, duration: 0.8 }}
           >
             <span className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-white/5 border border-white/10 text-white text-sm font-vietnam mb-10 backdrop-blur-xl">
-              <span className="w-2.5 h-2.5 rounded-full bg-adaptiv-orange animate-pulse"></span>
+              <span 
+                className="w-2.5 h-2.5 rounded-full animate-pulse"
+                style={{ backgroundColor: themeColor.value }}
+              ></span>
               Available for Strategic Collaboration
             </span>
             <h1 className="text-2xl sm:text-3xl md:text-4xl font-comfortaa font-bold mb-10 tracking-tight text-white leading-tight">
               Senior{" "}
-              <span className="text-adaptiv-orange italic">AI Engineer</span> &{" "}
+              <span 
+                className="italic transition-all duration-500"
+                style={{ fontFamily: currentFont.fontname, color: themeColor.value }}
+              >
+                AI Engineer
+              </span> &{" "}
               <br />
-              <span className="text-white/90">Digital Architect</span>
+              <span 
+                className="transition-all duration-500"
+                style={{ fontFamily: currentFont.fontname, color: 'rgba(255,255,255,0.9)' }}
+              >
+                Digital Architect
+              </span>
             </h1>
             <p className="text-base sm:text-lg md:text-2xl font-poppins text-gray-400 mb-14 max-w-3xl mx-auto leading-relaxed">
               Engineering high-performance intelligence pipelines and
@@ -111,7 +126,13 @@ const Home = () => {
               infrastructure into automated future-states.
             </p>
             <div className="flex flex-wrap justify-center gap-6">
-              <button className="px-6 py-4 md:px-10 md:py-5 rounded-xl md:rounded-2xl bg-adaptiv-orange text-white text-base md:text-lg font-bold hover:scale-105 hover:shadow-2xl hover:shadow-adaptiv-orange/30 transition-all flex items-center gap-3">
+              <button 
+                className="px-6 py-4 md:px-10 md:py-5 rounded-xl md:rounded-2xl text-white text-base md:text-lg font-bold hover:scale-105 hover:shadow-2xl transition-all flex items-center gap-3"
+                style={{ 
+                    backgroundColor: themeColor.value,
+                    boxShadow: `0 10px 30px -10px ${themeColor.value}4d` 
+                }}
+              >
                 Let's Talk <ChevronRight size={22} />
               </button>
               <button className="px-6 py-4 md:px-10 md:py-5 rounded-xl md:rounded-2xl border-2 border-white/10 text-white text-base md:text-lg font-bold hover:bg-white/5 hover:border-white/20 transition-all backdrop-blur-sm">
@@ -133,7 +154,7 @@ const Home = () => {
               <div>
                 <h2 className="text-3xl sm:text-4xl md:text-6xl font-comfortaa font-bold text-white mb-10 leading-tight">
                   Design for <br />
-                  <span className="text-adaptiv-orange">Transformation</span>
+                  <span style={{ color: themeColor.value }}>Transformation</span>
                 </h2>
                 <p className="text-base md:text-lg text-gray-400 font-poppins mb-16 leading-relaxed max-w-xl">
                   Leveraging deep expertise in public sector innovation and AI
@@ -160,7 +181,10 @@ const Home = () => {
                     },
                   ].map((service, i) => (
                     <div key={i} className="flex gap-8 group/item">
-                      <div className="w-16 h-16 rounded-[22px] bg-white/5 border border-white/10 flex items-center justify-center text-adaptiv-orange group-hover/item:bg-adaptiv-orange group-hover/item:text-white transition-all duration-500 shadow-inner">
+                      <div 
+                        className="w-16 h-16 rounded-[22px] bg-white/5 border border-white/10 flex items-center justify-center transition-all duration-500 shadow-inner group-hover/item:text-white"
+                        style={{ color: themeColor.value }}
+                      >
                         {service.icon}
                       </div>
                       <div>

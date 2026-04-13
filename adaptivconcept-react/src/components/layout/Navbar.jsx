@@ -9,17 +9,23 @@ import {
   Menu,
   X,
   Handshake,
+  Palette,
 } from "lucide-react";
+import { useTheme } from "../../context/ThemeContext";
 import FLFontCarousel from "../FLFontCarousel";
 import "./Navbar.css";
 
 const Navbar = () => {
+  const { themeColor, nextColor } = useTheme();
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isActive = (path) => location.pathname === path;
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-black/40 backdrop-blur-md border-b border-white/10 px-6 py-4">
+    <nav 
+      className="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-black/40 backdrop-blur-md border-b px-6 py-4"
+      style={{ borderBottomColor: `${themeColor.value}33` }}
+    >
       <div className="container mx-auto flex items-center justify-between">
         {/* Brand */}
         <Link
@@ -33,7 +39,12 @@ const Navbar = () => {
           <img
             src="media/Adaptiv Media Concept Logo.png"
             alt="Adaptivconcept FL Logo"
-            className="navbar-logo"
+            className="navbar-logo cursor-pointer hover:scale-110 transition-transform active:rotate-12"
+            onClick={(e) => {
+                e.preventDefault();
+                nextColor();
+            }}
+            title="Click to cycle theme color"
           />
           <div className="flex items-center">
             <span className="text-xl font-comfortaa font-bold text-white tracking-tight relative">
@@ -114,9 +125,15 @@ const Navbar = () => {
             </button>
             <Link
               to="/projects"
-              className="px-6 py-2.5 rounded-xl bg-adaptiv-orange text-white font-bold hover:bg-white hover:text-adaptiv-orange transition-all lg:ml-2"
+              className="px-6 py-2.5 rounded-xl text-white font-bold hover:bg-white transition-all lg:ml-2"
               onClick={() => setIsMenuOpen(false)}
-              style={{ display: "flex", gap: 6, alignItems: "center" }}
+              style={{ 
+                display: "flex", 
+                gap: 6, 
+                alignItems: "center",
+                backgroundColor: themeColor.value,
+                color: '#fff'
+              }}
             >
               Hire Me
               <Handshake size={26} />

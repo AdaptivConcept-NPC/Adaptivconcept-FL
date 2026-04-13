@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Rocket } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { useTheme } from "../context/ThemeContext";
 
 const highlights = [
   {
@@ -92,6 +94,8 @@ const iconMap = {
 const HighlightCarousel = ({ className = "" }) => {
   const [index, setIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const navigate = useNavigate();
+  const { themeColor } = useTheme();
 
   useEffect(() => {
     if (isPaused) return;
@@ -140,6 +144,10 @@ const HighlightCarousel = ({ className = "" }) => {
     },
   };
 
+  const handleTechClick = () => {
+    navigate("/tech-wall");
+  };
+
   return (
     <div
       className={`relative w-full flex flex-col items-center justify-center text-center px-4 py-8 group/carousel ${className}`}
@@ -179,7 +187,12 @@ const HighlightCarousel = ({ className = "" }) => {
             className="flex flex-col items-center gap-4 cursor-grab active:cursor-grabbing touch-none"
           >
             {/* Stack-aware Tech Icons with Wave Animation */}
-            <div className="p-2 rounded-full shadow-2xl bg-white border-b-4 border-adaptiv-orange">
+            <div 
+                className="p-1 md:p-2 rounded-full shadow-2xl bg-white border-b-4 cursor-pointer hover:scale-105 transition-transform group/icons"
+                style={{ borderBottomColor: themeColor.value }}
+                onClick={handleTechClick}
+                title="View Wall of Stacked-Tech🔥"
+            >
               <motion.div
                 variants={containerVariants}
                 whileHover="hover"
@@ -200,11 +213,21 @@ const HighlightCarousel = ({ className = "" }) => {
                   </motion.div>
                 ))}
               </motion.div>
+
+              {/* Mobile Label */}
+              <div className="flex md:hidden items-center justify-center h-12 px-8">
+                 <span className="text-xl font-bold tracking-tighter text-black flex items-center gap-2">
+                    Wall of Stacked-Tech🔥 <Rocket size={16} />
+                 </span>
+              </div>
             </div>
 
             <h3
-              className="text-2xl sm:text-4xl md:text-6xl font-bold text-adaptiv-orange tracking-tight uppercase select-none"
-              style={{ textShadow: "3px 3px 0px rgba(0,0,0,0.8)" }}
+              className="text-2xl sm:text-4xl md:text-6xl font-bold tracking-tight uppercase select-none mt-4"
+              style={{ 
+                textShadow: "3px 3px 0px rgba(0,0,0,0.8)",
+                color: themeColor.value 
+              }}
             >
               {current.title}
             </h3>
@@ -228,8 +251,9 @@ const HighlightCarousel = ({ className = "" }) => {
             key={i}
             onClick={() => setIndex(i)}
             className={`h-1 rounded-full transition-all duration-500 ${
-              i === index ? "bg-adaptiv-orange w-8" : "bg-gray-800 w-4"
+              i === index ? "w-8" : "bg-gray-800 w-4"
             }`}
+            style={{ backgroundColor: i === index ? themeColor.value : undefined }}
             aria-label={`Go to slide ${i + 1}`}
           />
         ))}

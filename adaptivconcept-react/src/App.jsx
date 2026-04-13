@@ -9,18 +9,23 @@ import BackgroundWallpaper from './components/BackgroundWallpaper';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/Footer';
 
+// context
+import { ThemeProvider } from './context/ThemeContext';
+
 // Pages
 import Home from './pages/Home';
 import ProjectBoard from './pages/ProjectBoard';
 import ProjectDetail from './pages/ProjectDetail';
 import Blog from './pages/Blog';
 import BlogDetail from './pages/BlogDetail';
+import TechWall from './pages/TechWall';
 
 function App() {
   const useVideoBackground = false; // Toggle this to switch between video and static wallpaper
 
   return (
-    <Router>
+    <ThemeProvider>
+      <Router>
       <div className="App noselect">
         {/* Assets & Dependencies */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -48,6 +53,7 @@ function App() {
               <Route path="/projects/:id" element={<ProjectDetail />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:id" element={<BlogDetail />} />
+              <Route path="/tech-wall" element={<TechWall />} />
             </Routes>
           </AnimatePresence>
         </main>
@@ -55,6 +61,7 @@ function App() {
         <Footer />
       </div>
     </Router>
+    </ThemeProvider>
   );
 }
 
