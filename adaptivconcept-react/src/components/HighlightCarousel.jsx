@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const highlights = [
   {
@@ -90,14 +91,34 @@ const iconMap = {
 
 const HighlightCarousel = ({ className = "" }) => {
   const [index, setIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
+    if (isPaused) return;
+
     const timer = setInterval(() => {
       setIndex((prev) => (prev + 1) % highlights.length);
     }, 8000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [isPaused]);
+
+  const handleNext = () => {
+    setIndex((prev) => (prev + 1) % highlights.length);
+  };
+
+  const handlePrev = () => {
+    setIndex((prev) => (prev + highlights.length - 1) % highlights.length);
+  };
+
+  const handleDragEnd = (event, info) => {
+    const swipeThreshold = 50;
+    if (info.offset.x < -swipeThreshold) {
+      handleNext();
+    } else if (info.offset.x > swipeThreshold) {
+      handlePrev();
+    }
+  };
 
   const current = highlights[index];
 
@@ -121,67 +142,95 @@ const HighlightCarousel = ({ className = "" }) => {
 
   return (
     <div
-      className={`flex flex-col items-center justify-center text-center px-4 ${className}`}
+      className={`relative w-full flex flex-col items-center justify-center text-center px-4 py-8 group/carousel ${className}`}
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      onTouchStart={() => setIsPaused(true)}
+      onTouchEnd={() => setIsPaused(false)}
     >
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={`highlight-${index}`}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="flex flex-col items-center gap-4"
-        >
-          {/* Stack-aware Tech Icons with Wave Animation */}
-          <div className="p-2 rounded-full shadow-2xl bg-white border-b-4 border-adaptiv-orange">
-            <motion.div
-              variants={containerVariants}
-              whileHover="hover"
-              className="hidden md:flex items-center h-12 p-4"
-            >
-              {current.techStack?.map((tech, i) => (
-                <motion.div
-                  key={`${tech}-${i}`}
-                  variants={iconVariants}
-                  className="relative group m-0"
-                  style={{ zIndex: 10 + i }}
-                >
-                  <img
-                    src={iconMap[tech]}
-                    alt={tech}
-                    className="w-10 h-10 mx-4 object-contain drop-shadow-lg filter brightness-110 group-hover:scale-125 transition-transform duration-300"
-                  />
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
+      {/* Navigation Buttons - Hidden on Mobile, Desktop Only */}
+      <button
+        onClick={handlePrev}
+        className="hidden lg:flex absolute left-8 top-1/2 -translate-y-1/2 z-50 p-4 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-white/50 hover:text-adaptiv-orange hover:bg-white/10 hover:border-adaptiv-orange/50 transition-all duration-300 group shadow-xl"
+        aria-label="Previous slide"
+      >
+        <ChevronLeft size={32} className="transition-transform group-hover:-translate-x-1" />
+      </button>
 
-          <h3
-            className="text-5xl md:text-6xl font-bold text-adaptiv-orange tracking-tight uppercase"
-            style={{ textShadow: "3px 3px 0px rgba(0,0,0,0.8)" }}
+      <button
+        onClick={handleNext}
+        className="hidden lg:flex absolute right-8 top-1/2 -translate-y-1/2 z-50 p-4 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-white/50 hover:text-adaptiv-orange hover:bg-white/10 hover:border-adaptiv-orange/50 transition-all duration-300 group shadow-xl"
+        aria-label="Next slide"
+      >
+        <ChevronRight size={32} className="transition-transform group-hover:translate-x-1" />
+      </button>
+
+      <div className="w-full max-w-5xl overflow-visible">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={`highlight-${index}`}
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -100 }}
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            onDragEnd={handleDragEnd}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="flex flex-col items-center gap-4 cursor-grab active:cursor-grabbing touch-none"
           >
-            {current.title}
-          </h3>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-            className="text-white text-lg md:text-xl max-w-2xl font-light italic"
-            style={{ textShadow: "1px 1px 0px rgba(0,0,0,0.9)" }}
-          >
-            {current.subtitle}
-          </motion.p>
-        </motion.div>
-      </AnimatePresence>
+            {/* Stack-aware Tech Icons with Wave Animation */}
+            <div className="p-2 rounded-full shadow-2xl bg-white border-b-4 border-adaptiv-orange">
+              <motion.div
+                variants={containerVariants}
+                whileHover="hover"
+                className="hidden md:flex items-center h-12 p-4"
+              >
+                {current.techStack?.map((tech, i) => (
+                  <motion.div
+                    key={`${tech}-${i}`}
+                    variants={iconVariants}
+                    className="relative group m-0"
+                    style={{ zIndex: 10 + i }}
+                  >
+                    <img
+                      src={iconMap[tech]}
+                      alt={tech}
+                      className="w-10 h-10 mx-4 object-contain drop-shadow-lg filter brightness-110 group-hover:scale-125 transition-transform duration-300"
+                    />
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+
+            <h3
+              className="text-5xl md:text-6xl font-bold text-adaptiv-orange tracking-tight uppercase select-none"
+              style={{ textShadow: "3px 3px 0px rgba(0,0,0,0.8)" }}
+            >
+              {current.title}
+            </h3>
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+              className="text-white text-lg md:text-xl max-w-2xl font-light italic select-none"
+              style={{ textShadow: "1px 1px 0px rgba(0,0,0,0.9)" }}
+            >
+              {current.subtitle}
+            </motion.p>
+          </motion.div>
+        </AnimatePresence>
+      </div>
 
       {/* Subtle indicator */}
       <div className="flex gap-2 mt-8">
         {highlights.map((_, i) => (
-          <div
+          <button
             key={i}
-            className={`h-1 w-4 rounded-full transition-all duration-500 ${
-              i === index ? "bg-adaptiv-orange w-8" : "bg-gray-800"
+            onClick={() => setIndex(i)}
+            className={`h-1 rounded-full transition-all duration-500 ${
+              i === index ? "bg-adaptiv-orange w-8" : "bg-gray-800 w-4"
             }`}
+            aria-label={`Go to slide ${i + 1}`}
           />
         ))}
       </div>
