@@ -6,11 +6,11 @@ import { ArrowLeft, Rocket } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const TechWall = () => {
-    const { themeColor, currentFont, activeFontFamily } = useTheme();
+    const { themeColor, currentFont, activeFontFamily, activeFontScale } = useTheme();
     const navigate = useNavigate();
 
     return (
-        <div className="min-h-screen pt-32 pb-20 px-6">
+        <div className="min-h-screen pt-32 pb-20 px-6 rounded-[32px] md:rounded-[60px]" style={{ marginTop: "200px" }}>
             <div className="max-w-7xl mx-auto">
                 {/* Header Area — Glassmorphic Card */}
                 <div className="relative mb-16 bg-[#0f0f10]/50 backdrop-blur-md border border-white/10 rounded-[32px] md:rounded-[48px] p-8 md:p-14 overflow-hidden">
@@ -33,7 +33,8 @@ const TechWall = () => {
                                 className="text-4xl md:text-7xl font-bold tracking-tight text-white mb-4"
                                 style={{ 
                                     fontFamily: activeFontFamily,
-                                    textShadow: '3px 3px 0px rgba(0,0,0,0.5)' 
+                                    textShadow: '3px 3px 0px rgba(0,0,0,0.5)',
+                                    fontSize: `calc(1em * ${activeFontScale})` 
                                 }}
                             >
                                 Wall of <br />

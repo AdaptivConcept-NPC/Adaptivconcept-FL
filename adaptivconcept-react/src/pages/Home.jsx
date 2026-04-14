@@ -61,7 +61,7 @@ const ParallaxSection = ({ children, index, total }) => {
 };
 
 const Home = () => {
-  const { themeColor, currentFont, activeFontFamily } = useTheme();
+  const { themeColor, currentFont, activeFontFamily, activeFontScale } = useTheme();
   const heroProjects = projectsData.filter((p) => p.isHero);
   const sectionsCount = 3;
 
@@ -107,15 +107,25 @@ const Home = () => {
             <h1 className="text-2xl sm:text-3xl md:text-4xl font-comfortaa font-bold mb-10 tracking-tight text-white leading-tight">
               Senior{" "}
               <span 
-                className="italic transition-all duration-500"
-                style={{ fontFamily: activeFontFamily, color: themeColor.value }}
+                className="italic transition-all duration-500 inline-block"
+                style={{ 
+                  fontFamily: activeFontFamily, 
+                  color: themeColor.value,
+                  fontSize: `${activeFontScale}em`,
+                  lineHeight: 1
+                }}
               >
                 AI Engineer
               </span> &{" "}
               <br />
               <span 
-                className="transition-all duration-500"
-                style={{ fontFamily: activeFontFamily, color: 'rgba(255,255,255,0.9)' }}
+                className="italic transition-all duration-500 inline-block"
+                style={{ 
+                  fontFamily: activeFontFamily, 
+                  color: themeColor.value,
+                  fontSize: `${activeFontScale}em`,
+                  lineHeight: 1
+                }}
               >
                 Digital Architect
               </span>
@@ -156,7 +166,8 @@ const Home = () => {
                   className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-10 leading-tight transition-all duration-500"
                   style={{ 
                     fontFamily: activeFontFamily,
-                    textShadow: '3px 3px 0px rgba(0,0,0,0.5)' 
+                    textShadow: '3px 3px 0px rgba(0,0,0,0.5)',
+                    fontSize: `calc(3em * ${activeFontScale})`
                   }}
                 >
                   Design for <br />
