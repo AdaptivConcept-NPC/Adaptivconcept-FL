@@ -15,16 +15,39 @@ const fonts = [
 ];
 
 const colors = [
-    { name: 'Adaptiv Orange', value: '#ff6600', class: 'text-adaptiv-orange' },
-    { name: 'Neon Blue', value: '#00f2ff', class: 'text-adaptiv-blue' },
-    { name: 'Cyber Green', value: '#39ff14', class: 'text-adaptiv-green' },
-    { name: 'Vibrant Purple', value: '#bc13fe', class: 'text-adaptiv-purple' },
+    { name: 'Adaptiv Orange', value: '#ff6600', class: 'text-adaptiv-orange', washType: 'none' },
+    { name: 'Neon Blue', value: '#00f2ff', class: 'text-adaptiv-blue', washType: 'white' },
+    { name: 'Cyber Green', value: '#39ff14', class: 'text-adaptiv-green', washType: 'white' },
+    { name: 'Vibrant Purple', value: '#bc13fe', class: 'text-adaptiv-purple', washType: 'white' },
 ];
+
+
 
 export const ThemeProvider = ({ children }) => {
     const [currentFontIndex, setCurrentFontIndex] = useState(0);
     const [isFontLocked, setIsFontLocked] = useState(false);
     const [themeColor, setThemeColor] = useState(colors[0]);
+
+    useEffect(() => {
+        const root = document.documentElement;
+        
+        // Helper to convert hex to RGB
+        const hexToRgb = (hex) => {
+            const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+            return result ? 
+                `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}` : 
+                '255, 102, 0';
+        };
+
+        const rgb = hexToRgb(themeColor.value);
+        
+        root.style.setProperty('--theme-color', themeColor.value);
+        root.style.setProperty('--theme-color-rgb', rgb);
+        
+        // High intensity version for UI elements
+        root.style.setProperty('--theme-color-glow', `rgba(${rgb}, 0.4)`);
+        
+    }, [themeColor]);
 
     useEffect(() => {
         if (isFontLocked) return;
@@ -81,3 +104,4 @@ export const useTheme = () => {
     }
     return context;
 };
+

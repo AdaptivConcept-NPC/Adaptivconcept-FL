@@ -47,7 +47,7 @@ const OpenResume = () => {
       initial="hidden"
       animate="visible"
       variants={containerVariants}
-      className="container mx-auto px-6 py-20 min-h-screen rounded-[32px] md:rounded-[60px]"
+      className="container mx-auto px-6 py-20 min-h-screen rounded-[32px] md:rounded-[60px] glass-theme"
       style={{ backgroundColor: "rgba(15, 15, 16, 0.7)", marginTop: "120px" }}
     >
       <div className="max-w-5xl mx-auto space-y-16">

@@ -7,10 +7,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        'adaptiv-orange': 'rgb(255, 55, 21)',
-        'adaptiv-orange-hover': 'rgb(220, 45, 15)',
+        'adaptiv-orange': 'var(--theme-color)',
+        'adaptiv-orange-hover': 'var(--theme-color)',
+        'theme-accent': 'var(--theme-color)',
         'dark-bg': '#0a0a0a',
       },
+
       fontFamily: {
         comfortaa: ['Comfortaa', 'cursive'],
         vietnam: ['"Be Vietnam Pro"', 'sans-serif'],

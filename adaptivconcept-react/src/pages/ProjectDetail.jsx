@@ -40,7 +40,7 @@ const ProjectDetail = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
         {/* Project Visual Section */}
         <div className="lg:col-span-7">
-          <div className="bg-[#0a0a0a]/90 border border-white/10 rounded-[24px] md:rounded-[40px] overflow-hidden relative group aspect-video lg:aspect-auto lg:h-[500px]">
+          <div className="glass-theme rounded-[24px] md:rounded-[40px] overflow-hidden relative group aspect-video lg:aspect-auto lg:h-[500px]">
             <div className="w-full h-full flex flex-col items-center justify-center bg-black/40">
               <div className="text-center">
                  <div className="text-adaptiv-orange mb-6 flex justify-center">
@@ -67,7 +67,7 @@ const ProjectDetail = () => {
 
         {/* Project Meta Section */}
         <div className="lg:col-span-5">
-          <div className="bg-[#0a0a0a]/90 border border-white/10 rounded-[24px] md:rounded-[40px] p-6 md:p-10 h-full flex flex-col group relative overflow-hidden">
+          <div className="glass-theme rounded-[24px] md:rounded-[40px] p-6 md:p-10 h-full flex flex-col group relative overflow-hidden">
             {/* Ambient subtle glow */}
             <div className="absolute top-0 right-0 w-48 h-48 bg-adaptiv-orange/5 blur-[80px] rounded-full -mr-24 -mt-24 group-hover:bg-adaptiv-orange/10 transition-colors"></div>
 
@@ -108,7 +108,7 @@ const ProjectDetail = () => {
 
         {/* Deep Dive Content Section */}
         <div className="lg:col-span-12">
-          <div className="bg-[#0a0a0a]/90 border border-white/10 rounded-[24px] md:rounded-[40px] p-6 md:p-16">
+          <div className="glass-theme rounded-[24px] md:rounded-[40px] p-6 md:p-16">
             <div className="flex items-center gap-4 mb-8">
               <div className="w-12 h-12 rounded-2xl bg-adaptiv-orange/10 flex items-center justify-center text-adaptiv-orange">
                 <Info size={28} />
@@ -129,7 +129,7 @@ const ProjectDetail = () => {
                 required for professional applications.
               </p>
 
-              <div className="bg-white/[0.02] border-l-4 border-adaptiv-orange p-6 md:p-8 rounded-r-2xl md:rounded-r-3xl mb-12">
+              <div className="glass-theme border-l-4 !border-theme-accent p-6 md:p-8 rounded-r-2xl md:rounded-r-3xl mb-12">
                 <h5 className="text-white text-xl font-bold mb-6">Impact & Key Outcomes</h5>
                 <ul className="space-y-4 list-none p-0 m-0">
                   {[

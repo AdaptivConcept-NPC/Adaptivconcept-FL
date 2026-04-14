@@ -1,29 +1,33 @@
-import React, { useState, useMemo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Search, PenLine, Filter } from 'lucide-react';
-import blogPostsData from '../data/blog-posts.json';
-import BlogPost from '../components/BlogPost';
+import React, { useState, useMemo } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Search, PenLine, Filter } from "lucide-react";
+import blogPostsData from "../data/blog-posts.json";
+import BlogPost from "../components/BlogPost";
 
 const Blog = () => {
-  const [activeTag, setActiveTag] = useState('All');
-  const [searchQuery, setSearchQuery] = useState('');
+  const [activeTag, setActiveTag] = useState("All");
+  const [searchQuery, setSearchQuery] = useState("");
 
   // Extract unique tags from all posts
   const allTags = useMemo(() => {
     const tagSet = new Set();
-    blogPostsData.forEach((post) => post.tags.forEach((tag) => tagSet.add(tag)));
-    return ['All', ...Array.from(tagSet).sort()];
+    blogPostsData.forEach((post) =>
+      post.tags.forEach((tag) => tagSet.add(tag)),
+    );
+    return ["All", ...Array.from(tagSet).sort()];
   }, []);
 
   // Filter and sort posts (newest first for display)
   const filteredPosts = useMemo(() => {
     return blogPostsData
       .filter((post) => {
-        const matchesTag = activeTag === 'All' || post.tags.includes(activeTag);
+        const matchesTag = activeTag === "All" || post.tags.includes(activeTag);
         const matchesSearch =
           post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
           post.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          post.tags.some((t) => t.toLowerCase().includes(searchQuery.toLowerCase()));
+          post.tags.some((t) =>
+            t.toLowerCase().includes(searchQuery.toLowerCase()),
+          );
         return matchesTag && matchesSearch;
       })
       .sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -34,8 +38,8 @@ const Blog = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="container mx-auto px-6 py-10 md:py-20 min-h-screen rounded-[32px] md:rounded-[60px]"
-      style={{ backgroundColor: 'rgb(51 51 51 / 80%)', marginTop: "200px" }}
+      className="container mx-auto px-6 py-10 md:py-20 min-h-screen rounded-[32px] md:rounded-[60px] glass-theme"
+      style={{ marginTop: "200px" }}
     >
       {/* Hero Header */}
       <div className="text-center mb-16">
@@ -61,7 +65,7 @@ const Blog = () => {
           className="mt-6 flex items-center justify-center gap-2 text-gray-500 text-sm font-medium"
         >
           <PenLine size={16} className="text-adaptiv-orange" />
-          {filteredPosts.length} article{filteredPosts.length !== 1 ? 's' : ''}
+          {filteredPosts.length} article{filteredPosts.length !== 1 ? "s" : ""}
         </motion.div>
       </div>
 
@@ -94,12 +98,12 @@ const Blog = () => {
                 onClick={() => setActiveTag(tag)}
                 className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
                   activeTag === tag
-                    ? 'bg-adaptiv-orange text-white shadow-lg shadow-adaptiv-orange/20'
-                    : 'bg-white/5 text-gray-400 border border-white/5 hover:bg-white/10 hover:text-white'
+                    ? "bg-adaptiv-orange text-white shadow-lg shadow-adaptiv-orange/20"
+                    : "bg-white/5 text-gray-400 border border-white/5 hover:bg-white/10 hover:text-white"
                 }`}
-                id={`blog-filter-${tag.toLowerCase().replace(/\s+/g, '-')}`}
+                id={`blog-filter-${tag.toLowerCase().replace(/\s+/g, "-")}`}
               >
-                {tag !== 'All' && <Filter size={10} />}
+                {tag !== "All" && <Filter size={10} />}
                 {tag}
               </button>
             ))}

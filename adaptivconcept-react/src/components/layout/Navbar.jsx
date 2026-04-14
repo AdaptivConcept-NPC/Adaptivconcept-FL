@@ -24,8 +24,12 @@ const Navbar = () => {
 
   return (
     <nav
-      className="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-black/40 backdrop-blur-md border-b px-6 py-4"
-      style={{ borderBottomColor: `${themeColor.value}33` }}
+      className="fixed top-0 left-0 w-full z-50 transition-all duration-500 border-b px-6 py-4"
+      style={{ 
+        backgroundColor: `rgba(var(--theme-color-rgb), 0.1)`,
+        backdropFilter: 'blur(16px)',
+        borderBottomColor: `rgba(var(--theme-color-rgb), 0.2)` 
+      }}
     >
       <div className="container-fluid mx-auto flex items-center justify-between">
         {/* Brand */}

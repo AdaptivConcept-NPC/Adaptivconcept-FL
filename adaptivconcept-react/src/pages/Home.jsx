@@ -82,7 +82,10 @@ const Home = () => {
       className="w-full relative bg-transparent"
     >
       {/* Background Overlay to ensure contrast over the video/wallpaper */}
-      <div className="fixed inset-0 bg-[#0f0f10]/10 -z-10 pointer-events-none"></div>
+      <div
+        className="fixed inset-0 transition-colors duration-1000 -z-10 pointer-events-none"
+        style={{ backgroundColor: `rgba(var(--theme-color-rgb), 0.05)` }}
+      ></div>
 
       {/* spacer */}
       <div className="h-screen flex flex-col justify-end items-center p-8">
@@ -100,13 +103,13 @@ const Home = () => {
 
       {/* Section 1: Hero */}
       <ParallaxSection index={0} total={sectionsCount}>
-        <div className="max-w-5xl px-6 text-center bg-[#0f0f10]/60  backdrop-blur-3xl border border-white/10 rounded-[32px] md:rounded-[60px] p-6 md:p-20 relative">
+        <div className="max-w-5xl px-6 text-center glass-theme rounded-[32px] md:rounded-[60px] p-6 md:p-20 relative">
           <motion.div
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.8 }}
           >
-            <span className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-white/5 border border-white/10 text-white text-sm font-vietnam mb-10 backdrop-blur-xl">
+            <span className="inline-flex items-center gap-2 px-6 py-2 rounded-full glass-theme text-white text-sm font-vietnam mb-10">
               <span
                 className="w-2.5 h-2.5 rounded-full animate-pulse"
                 style={{ backgroundColor: themeColor.value }}
@@ -169,7 +172,7 @@ const Home = () => {
       {/* Section 2: Strategy */}
       <ParallaxSection index={1} total={sectionsCount}>
         <div ref={contactRef} className="container mx-auto px-6">
-          <div className="bg-[#0f0f10]/60 backdrop-blur-3xl border border-white/10 rounded-[32px] md:rounded-[60px] p-6 md:p-20 relative overflow-hidden group">
+          <div className="glass-theme rounded-[32px] md:rounded-[60px] p-6 md:p-20 relative overflow-hidden group">
             {/* Subtle glow effect */}
             <div className="absolute -top-24 -right-24 w-[500px] h-[500px] bg-adaptiv-orange/5 blur-[120px] rounded-full group-hover:bg-adaptiv-orange/10 transition-colors duration-1000"></div>
 
@@ -215,7 +218,7 @@ const Home = () => {
                   ].map((service, i) => (
                     <div key={i} className="flex gap-8 group/item">
                       <div
-                        className="w-16 h-16 rounded-[22px] bg-white/5 border border-white/10 flex items-center justify-center transition-all duration-500 shadow-inner group-hover/item:text-white"
+                        className="w-16 h-16 rounded-[22px] glass-theme flex items-center justify-center transition-all duration-500 shadow-inner group-hover/item:text-white"
                         style={{ color: themeColor.value }}
                       >
                         {service.icon}
@@ -239,7 +242,7 @@ const Home = () => {
                   initial={{ opacity: 0, x: 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  className="rounded-[32px] md:rounded-[60px] bg-white/[0.05] backdrop-blur-3xl border border-white/10 p-6 md:p-14 relative group overflow-hidden"
+                  className="rounded-[32px] md:rounded-[60px] glass-theme p-6 md:p-14 relative group overflow-hidden"
                 >
                   <div className="absolute -bottom-24 -left-24 w-[300px] h-[300px] bg-adaptiv-orange/5 blur-[80px] rounded-full group-hover:bg-adaptiv-orange/10 transition-all duration-1000"></div>
 
@@ -315,7 +318,7 @@ const Home = () => {
 
       {/* Section 3: Projects Grid */}
       <ParallaxSection index={2} total={sectionsCount}>
-        <div className="container mx-auto px-6 bg-[#0f0f10]/60  backdrop-blur-3xl border border-white/10 rounded-[32px] md:rounded-[60px] p-6 md:p-20 relative">
+        <div className="container mx-auto px-6 rounded-[32px] md:rounded-[60px] p-6 md:p-20 relative glass-theme">
           <div className="flex flex-col md:flex-row justify-between items-end gap-10 mb-16">
             <div className="max-w-3xl">
               <h3 className="text-3xl sm:text-4xl md:text-6xl font-comfortaa font-bold text-white mb-6">
@@ -353,7 +356,7 @@ const Home = () => {
               <motion.div
                 key={project.id}
                 whileHover={{ y: -15, scale: 1.02 }}
-                className="group bg-white/5 backdrop-blur-2xl border border-white/10 rounded-[24px] md:rounded-[40px] p-6 md:p-10 flex flex-col h-full transition-all duration-500 hover:bg-white/10 hover:border-adaptiv-orange/30 shadow-2xl"
+                className="group glass-theme glass-theme-hover rounded-[24px] md:rounded-[40px] p-6 md:p-10 flex flex-col h-full transition-all duration-500 shadow-2xl"
               >
                 <div className="flex justify-between items-start mb-10">
                   <span className="px-5 py-2 rounded-xl bg-adaptiv-orange/10 text-adaptiv-orange text-sm font-bold uppercase tracking-[0.2em]">
