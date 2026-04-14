@@ -4,13 +4,14 @@ import {
   Home,
   FolderKanban,
   Newspaper,
-  Download,
+  FileUser,
   Mail,
   Menu,
   X,
   Handshake,
   Palette,
 } from "lucide-react";
+import { motion } from "framer-motion";
 import { useTheme } from "../../context/ThemeContext";
 import FLFontCarousel from "../FLFontCarousel";
 import "./Navbar.css";
@@ -22,11 +23,11 @@ const Navbar = () => {
   const isActive = (path) => location.pathname === path;
 
   return (
-    <nav 
+    <nav
       className="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-black/40 backdrop-blur-md border-b px-6 py-4"
       style={{ borderBottomColor: `${themeColor.value}33` }}
     >
-      <div className="container mx-auto flex items-center justify-between">
+      <div className="container-fluid mx-auto flex items-center justify-between">
         {/* Brand */}
         <Link
           className="flex items-center gap-2 group"
@@ -41,8 +42,8 @@ const Navbar = () => {
             alt="Adaptivconcept FL Logo"
             className="navbar-logo cursor-pointer hover:scale-110 transition-transform active:rotate-12"
             onClick={(e) => {
-                e.preventDefault();
-                nextColor();
+              e.preventDefault();
+              nextColor();
             }}
             title="Click to cycle theme color"
           />
@@ -81,6 +82,7 @@ const Navbar = () => {
           lg:flex flex-col lg:flex-row items-center absolute lg:static top-full left-0 w-full lg:w-auto 
           bg-black/95 lg:bg-transparent backdrop-blur-xl lg:backdrop-blur-none 
           p-8 lg:p-0 gap-8 lg:gap-10 border-b lg:border-none border-white/10
+          no-scrollbar overflow-x-auto
         `}
         >
           <ul className="flex flex-col lg:flex-row items-center gap-8 m-0 p-0">
@@ -90,7 +92,7 @@ const Navbar = () => {
                 to="/"
                 onClick={() => setIsMenuOpen(false)}
               >
-                <Home size={18} /> Home
+                <Home size={18} /> <p className="truncate">Home</p>
               </Link>
             </li>
             <li>
@@ -99,7 +101,8 @@ const Navbar = () => {
                 to="/projects"
                 onClick={() => setIsMenuOpen(false)}
               >
-                <FolderKanban size={18} /> Project Board
+                <FolderKanban size={18} />{" "}
+                <p className="truncate">Project Board</p>
               </Link>
             </li>
             <li>
@@ -108,36 +111,59 @@ const Navbar = () => {
                 to="/blog"
                 onClick={() => setIsMenuOpen(false)}
               >
-                <Newspaper size={18} /> Blog
+                <Newspaper size={18} /> <p className="truncate">Blog</p>
               </Link>
             </li>
           </ul>
 
           <div className="flex flex-col lg:flex-row items-center gap-3">
-            <a
-              href="/cv-public.pdf"
-              className="px-5 py-2.5 rounded-xl border border-white/10 text-white font-medium hover:bg-white/5 transition-all flex items-center gap-2"
-            >
-              <Download size={16} /> Open Résumé
-            </a>
-            <button className="px-5 py-2.5 rounded-xl border-2 border-adaptiv-white text-white font-medium hover:bg-adaptiv-orange transition-all flex items-center gap-2">
-              <Mail size={16} /> Request Detailed CV
-            </button>
             <Link
-              to="/projects"
-              className="px-6 py-2.5 rounded-xl text-white font-bold hover:bg-white transition-all lg:ml-2"
+              to="/resume"
               onClick={() => setIsMenuOpen(false)}
-              style={{ 
-                display: "flex", 
-                gap: 6, 
-                alignItems: "center",
-                backgroundColor: themeColor.value,
-                color: '#fff'
+              className="px-5 py-2.5 rounded-xl border-2 border-adaptiv-white text-white font-medium hover:bg-adaptiv-orange transition-all flex items-center gap-2"
+            >
+              <FileUser size={16} /> <p className="truncate">Résumé</p>
+            </Link>
+            <button className="px-5 py-2.5 rounded-xl border-2 border-adaptiv-white text-white font-medium hover:bg-adaptiv-orange transition-all flex items-center gap-2">
+              <Mail size={16} /> <p className="truncate">Request Detailed CV</p>
+            </button>
+            <motion.div
+              animate={{ 
+                scale: [1, 1.05, 1],
+                filter: [
+                  `drop-shadow(0 0 0px ${themeColor.value}00)`,
+                  `drop-shadow(0 0 12px ${themeColor.value}66)`,
+                  `drop-shadow(0 0 0px ${themeColor.value}00)`
+                ]
+              }}
+              transition={{ 
+                duration: 3, 
+                repeat: Infinity, 
+                ease: "easeInOut" 
               }}
             >
-              Hire Me
-              <Handshake size={26} />
-            </Link>
+              <Link
+                to="/projects"
+                className="px-8 py-3.5 rounded-2xl text-white font-black hover:bg-white transition-all lg:ml-2 cta-shimmer speech-bubble-cta me-4"
+                onClick={() => setIsMenuOpen(false)}
+                style={{
+                  display: "flex",
+                  gap: 10,
+                  alignItems: "center",
+                  backgroundColor: themeColor.value,
+                  color: "#fff",
+                  fontSize: "1.1rem",
+                  "--cta-color": themeColor.value,
+                  position: "relative"
+                }}
+              >
+                {/* Shimmer Layer inside for overflow containment */}
+                <div className="shimmer-layer"></div>
+                
+                <p className="truncate relative z-10">Hire Me</p>
+                <Handshake size={28} className="relative z-10" />
+              </Link>
+            </motion.div>
           </div>
         </div>
       </div>
