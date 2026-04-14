@@ -3,15 +3,15 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 const ThemeContext = createContext();
 
 const fonts = [
-    { id: 1, fontname: 'StormGust', fontsize: '1.8em' },
-    { id: 2, fontname: 'BigPartyBlue', fontsize: '2.2em' },
-    { id: 3, fontname: 'GraffitiStream', fontsize: '1.8em' },
-    { id: 4, fontname: 'GrindyBrush', fontsize: '1.4em' },
-    { id: 5, fontname: 'IslandSplash', fontsize: '1.6em' },
-    { id: 6, fontname: 'SudegnakRed', fontsize: '2.2em' },
-    // { id: 7, fontname: 'SudegnakOrange', fontsize: '2.2em' },
-    { id: 8, fontname: 'SuperBalloon', fontsize: '1.4em' },
-    { id: 9, fontname: 'Jacatra', fontsize: '1.4em' },
+    { id: 1, fontname: 'StormGust', scale: 1.5 },
+    { id: 2, fontname: 'BigPartyBlue', scale: 1.6 },
+    { id: 3, fontname: 'GraffitiStream', scale: 1.4 },
+    { id: 4, fontname: 'GrindyBrush', scale: 1.0 },
+    { id: 5, fontname: 'IslandSplash', scale: 1.3 },
+    { id: 6, fontname: 'SudegnakRed', scale: 2.2 },
+    // { id: 7, fontname: 'SudegnakOrange', scale: 2.2 },
+    { id: 8, fontname: 'SuperBalloon', scale: 1.2 },
+    { id: 9, fontname: 'Jacatra', scale: 1.3 },
 ];
 
 const colors = [
@@ -51,6 +51,7 @@ export const ThemeProvider = ({ children }) => {
     };
 
     const activeFontFamily = isFontLocked ? fonts[currentFontIndex].fontname : 'GrindyBrush';
+    const activeFontScale = isFontLocked ? fonts[currentFontIndex].scale : fonts.find(f => f.id === 4).scale;
 
     return (
         <ThemeContext.Provider value={{
@@ -65,7 +66,8 @@ export const ThemeProvider = ({ children }) => {
             themeColor,
             nextColor,
             setThemeColor,
-            activeFontFamily
+            activeFontFamily,
+            activeFontScale
         }}>
             {children}
         </ThemeContext.Provider>

@@ -30,7 +30,7 @@ const FLFontCarousel = ({ size = "text-8xl", className = "", useFullText = false
                     className="font-bold select-none whitespace-nowrap relative"
                     style={{ 
                         fontFamily: currentFont.fontname,
-                        fontSize: currentFont.fontsize,
+                        fontSize: `${currentFont.scale}em`,
                         color: themeColor.value,
                         textShadow: '3px 3px 0px rgba(0,0,0,0.8)'
                     }}
