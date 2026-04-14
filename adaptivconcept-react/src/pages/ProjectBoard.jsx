@@ -22,8 +22,8 @@ const ProjectBoard = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="container mx-auto px-6 py-10 md:py-20 min-h-screen"
-      style={{ backgroundColor: "rgb(51 51 51 / 80%)"}}
+      className="container mx-auto px-6 py-10 md:py-20 min-h-screen rounded-[32px] md:rounded-[60px]"
+      style={{ backgroundColor: "rgb(51 51 51 / 80%)", marginTop: "200px" }}
     >
       <div className="text-center mb-16">
         <h1 className="text-3xl sm:text-4xl md:text-6xl font-comfortaa font-bold text-white mb-6">

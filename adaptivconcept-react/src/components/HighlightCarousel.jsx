@@ -9,7 +9,15 @@ const highlights = [
     title: "Frontend Engineering",
     subtitle:
       "Specializing in React, Vanilla JS, and jQuery to build 100% pixel-perfect, highly interactive user interfaces. #HTML #CSS #VanillaJS #jQuery",
-    techStack: ["react", "wordpress", "vscode", "github", "canva", "illustrator", "figma"],
+    techStack: [
+      "react",
+      "wordpress",
+      "vscode",
+      "github",
+      "canva",
+      "illustrator",
+      "figma",
+    ],
   },
   {
     title: "Backend Authority",
@@ -21,7 +29,7 @@ const highlights = [
     title: "Data Intelligence",
     subtitle:
       "Leveraging Python and Power BI to transform complex business and community health data into visual, actionable strategic insights. #Python #DataAnalysis",
-    techStack: ["python", "powerbi", "postgresql"], 
+    techStack: ["python", "powerbi", "postgresql", "tableau", "zebrabi"], // add tableau and zebrabi
   },
   {
     title: "Process Automation",
@@ -33,7 +41,14 @@ const highlights = [
     title: "Database Scalability",
     subtitle:
       "Expert-level administration of MySQL and SQL Server environments for mission-critical data integrity. #MySQL #SQLServer",
-    techStack: ["mysql", "sqlserver", "postgresql", "redis", "firebase", "supabase"],// add firebase and supabase <- I have added the folders
+    techStack: [
+      "mysql",
+      "sqlserver",
+      "postgresql",
+      "redis",
+      "firebase",
+      "supabase",
+    ], // add firebase and supabase <- I have added the folders
   },
   {
     title: "Award-Winning Innovation",
@@ -89,13 +104,15 @@ const iconMap = {
   firebase: "/icons/icons8-firebase-color/icons8-firebase-96.png",
   supabase: "/icons/icons8-supabase-windows-11-color/icons8-supabase-96.png",
   ollama: "/icons/ollama/ollama-color.svg",
+  tableau: "/icons/tableau/Tableau-Logo.png",
+  zebrabi: "/icons/zebrabi/Zebra BI logo landscape.png",
 };
 
 const HighlightCarousel = ({ className = "" }) => {
   const [index, setIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const navigate = useNavigate();
-  const { themeColor, activeFontFamily } = useTheme();
+  const { themeColor, activeFontFamily, activeFontScale } = useTheme();
 
   useEffect(() => {
     if (isPaused) return;
@@ -162,7 +179,10 @@ const HighlightCarousel = ({ className = "" }) => {
         className="hidden lg:flex absolute left-8 top-1/2 -translate-y-1/2 z-50 p-4 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-white/50 hover:text-adaptiv-orange hover:bg-white/10 hover:border-adaptiv-orange/50 transition-all duration-300 group shadow-xl"
         aria-label="Previous slide"
       >
-        <ChevronLeft size={32} className="transition-transform group-hover:-translate-x-1" />
+        <ChevronLeft
+          size={32}
+          className="transition-transform group-hover:-translate-x-1"
+        />
       </button>
 
       <button
@@ -170,7 +190,10 @@ const HighlightCarousel = ({ className = "" }) => {
         className="hidden lg:flex absolute right-8 top-1/2 -translate-y-1/2 z-50 p-4 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-white/50 hover:text-adaptiv-orange hover:bg-white/10 hover:border-adaptiv-orange/50 transition-all duration-300 group shadow-xl"
         aria-label="Next slide"
       >
-        <ChevronRight size={32} className="transition-transform group-hover:translate-x-1" />
+        <ChevronRight
+          size={32}
+          className="transition-transform group-hover:translate-x-1"
+        />
       </button>
 
       <div className="w-full max-w-5xl overflow-visible">
@@ -187,11 +210,11 @@ const HighlightCarousel = ({ className = "" }) => {
             className="flex flex-col items-center gap-4 cursor-grab active:cursor-grabbing touch-none"
           >
             {/* Stack-aware Tech Icons with Wave Animation */}
-            <div 
-                className="p-1 md:p-2 rounded-full shadow-2xl bg-white border-b-4 cursor-pointer hover:scale-105 transition-transform group/icons"
-                style={{ borderBottomColor: themeColor.value }}
-                onClick={handleTechClick}
-                title="View Wall of Stacked-Tech🔥"
+            <div
+              className="p-1 md:p-2 rounded-full shadow-2xl bg-white border-b-4 cursor-pointer hover:scale-105 transition-transform group/icons"
+              style={{ borderBottomColor: themeColor.value }}
+              onClick={handleTechClick}
+              title="View Wall of Stacked-Tech🔥"
             >
               <motion.div
                 variants={containerVariants}
@@ -216,18 +239,20 @@ const HighlightCarousel = ({ className = "" }) => {
 
               {/* Mobile Label */}
               <div className="flex md:hidden items-center justify-center h-12 px-8">
-                 <span className="text-xl font-bold tracking-tighter text-black flex items-center gap-2">
-                    Wall of Stacked-Tech🔥 <Rocket size={16} />
-                 </span>
+                <span className="text-sm font-bold tracking-tighter text-black flex items-center gap-2">
+                  Wall of Stacked-Tech🔥 <Rocket size={16} />
+                </span>
               </div>
             </div>
 
             <h3
               className="text-2xl sm:text-4xl md:text-6xl font-bold tracking-tight uppercase select-none mt-4 transition-all duration-500"
-              style={{ 
+              style={{
                 textShadow: "3px 3px 0px rgba(0,0,0,0.8)",
-                color: themeColor.value,
-                fontFamily: activeFontFamily 
+                WebkitTextStroke: "0.5px black",
+                 color: themeColor.value,
+                fontFamily: activeFontFamily,
+                fontSize: `calc(4em * ${activeFontScale})`,
               }}
             >
               {current.title}
@@ -254,7 +279,9 @@ const HighlightCarousel = ({ className = "" }) => {
             className={`h-1 rounded-full transition-all duration-500 ${
               i === index ? "w-8" : "bg-gray-800 w-4"
             }`}
-            style={{ backgroundColor: i === index ? themeColor.value : undefined }}
+            style={{
+              backgroundColor: i === index ? themeColor.value : undefined,
+            }}
             aria-label={`Go to slide ${i + 1}`}
           />
         ))}
