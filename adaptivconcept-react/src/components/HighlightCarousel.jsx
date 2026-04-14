@@ -95,7 +95,7 @@ const HighlightCarousel = ({ className = "" }) => {
   const [index, setIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const navigate = useNavigate();
-  const { themeColor } = useTheme();
+  const { themeColor, activeFontFamily } = useTheme();
 
   useEffect(() => {
     if (isPaused) return;
@@ -223,10 +223,11 @@ const HighlightCarousel = ({ className = "" }) => {
             </div>
 
             <h3
-              className="text-2xl sm:text-4xl md:text-6xl font-bold tracking-tight uppercase select-none mt-4"
+              className="text-2xl sm:text-4xl md:text-6xl font-bold tracking-tight uppercase select-none mt-4 transition-all duration-500"
               style={{ 
                 textShadow: "3px 3px 0px rgba(0,0,0,0.8)",
-                color: themeColor.value 
+                color: themeColor.value,
+                fontFamily: activeFontFamily 
               }}
             >
               {current.title}

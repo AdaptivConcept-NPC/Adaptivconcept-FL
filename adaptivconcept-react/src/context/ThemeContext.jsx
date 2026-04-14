@@ -9,7 +9,7 @@ const fonts = [
     { id: 4, fontname: 'GrindyBrush', fontsize: '1.4em' },
     { id: 5, fontname: 'IslandSplash', fontsize: '1.6em' },
     { id: 6, fontname: 'SudegnakRed', fontsize: '2.2em' },
-    { id: 7, fontname: 'SudegnakOrange', fontsize: '2.2em' },
+    // { id: 7, fontname: 'SudegnakOrange', fontsize: '2.2em' },
     { id: 8, fontname: 'SuperBalloon', fontsize: '1.4em' },
     { id: 9, fontname: 'Jacatra', fontsize: '1.4em' },
 ];
@@ -50,6 +50,8 @@ export const ThemeProvider = ({ children }) => {
         });
     };
 
+    const activeFontFamily = isFontLocked ? fonts[currentFontIndex].fontname : 'GrindyBrush';
+
     return (
         <ThemeContext.Provider value={{
             fonts,
@@ -62,7 +64,8 @@ export const ThemeProvider = ({ children }) => {
             colors,
             themeColor,
             nextColor,
-            setThemeColor
+            setThemeColor,
+            activeFontFamily
         }}>
             {children}
         </ThemeContext.Provider>

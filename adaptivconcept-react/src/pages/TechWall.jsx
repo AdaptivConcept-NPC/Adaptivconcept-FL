@@ -6,31 +6,43 @@ import { ArrowLeft, Rocket } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const TechWall = () => {
-    const { themeColor, currentFont } = useTheme();
+    const { themeColor, currentFont, activeFontFamily } = useTheme();
     const navigate = useNavigate();
 
     return (
         <div className="min-h-screen pt-32 pb-20 px-6">
             <div className="max-w-7xl mx-auto">
-                {/* Header Area */}
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-16">
-                    <div>
-                        <button 
-                            onClick={() => navigate(-1)}
-                            className="flex items-center gap-2 text-white/60 hover:text-white mb-6 transition-colors font-poppins"
-                        >
-                            <ArrowLeft size={18} /> Back to previous
-                        </button>
-                        <h1 
-                            className="text-4xl md:text-7xl font-bold tracking-tight text-white mb-4"
-                            style={{ fontFamily: currentFont.fontname }}
-                        >
-                            Wall of <br />
-                            <span style={{ color: themeColor.value }}>Stacked-Tech🔥</span>
-                        </h1>
-                        <p className="text-xl text-gray-400 font-poppins max-w-2xl leading-relaxed">
-                            My unique takes and strategic successes with the technologies that power my development approach.
-                        </p>
+                {/* Header Area — Glassmorphic Card */}
+                <div className="relative mb-16 bg-[#0f0f10]/50 backdrop-blur-md border border-white/10 rounded-[32px] md:rounded-[48px] p-8 md:p-14 overflow-hidden">
+                    {/* Ambient glow */}
+                    <div 
+                        className="absolute -top-20 -left-20 w-[300px] h-[300px] rounded-full blur-[120px] opacity-15 pointer-events-none"
+                        style={{ backgroundColor: themeColor.value }}
+                    ></div>
+
+                    <div className="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+                        <div>
+                            <button 
+                                onClick={() => navigate(-1)}
+                                className="group/back flex items-center gap-2 text-white/60 hover:text-white mb-6 transition-all font-poppins px-4 py-2 rounded-full border border-white/5 hover:border-white/20 bg-white/[0.03] hover:bg-white/[0.08] backdrop-blur-sm"
+                            >
+                                <ArrowLeft size={18} className="group-hover/back:-translate-x-1 transition-transform" /> 
+                                <span className="text-sm font-medium">Back</span>
+                            </button>
+                            <h1 
+                                className="text-4xl md:text-7xl font-bold tracking-tight text-white mb-4"
+                                style={{ 
+                                    fontFamily: activeFontFamily,
+                                    textShadow: '3px 3px 0px rgba(0,0,0,0.5)' 
+                                }}
+                            >
+                                Wall of <br />
+                                <span style={{ color: themeColor.value }}>Stacked-Tech🔥</span>
+                            </h1>
+                            <p className="text-xl text-gray-400 font-poppins max-w-2xl leading-relaxed">
+                                My unique takes and strategic successes with the technologies that power my development approach.
+                            </p>
+                        </div>
                     </div>
                 </div>
 
@@ -57,7 +69,7 @@ const TechWall = () => {
                                         className="group relative bg-[#0f0f10]/40 backdrop-blur-3xl border border-white/10 rounded-[32px] p-8 hover:bg-white/[0.05] hover:border-white/20 transition-all duration-500"
                                     >
                                         <div className="flex items-center gap-6 mb-8">
-                                            <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/5 flex items-center justify-center p-3 group-hover:scale-110 transition-transform duration-500">
+                                            <div className="w-16 h-16 rounded-2xl bg-white /5 border border-white/5 flex items-center justify-center p-3 group-hover:scale-110 transition-transform duration-500">
                                                 <img 
                                                     src={tech.icon} 
                                                     alt={tech.name} 
@@ -93,7 +105,7 @@ const TechWall = () => {
                     ></div>
                     
                     <Rocket size={48} className="mx-auto mb-8 text-white/20 group-hover:text-white/40 transition-colors" />
-                    <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Ready to Build?</h2>
+                    <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Ready to <span className='text-adaptiv-orange' style={{ color: themeColor.value }}>Build?</span></h2>
                     <p className="text-xl text-gray-400 font-poppins mb-12 max-w-2xl mx-auto">
                         Let's leverage this stacked tech-base to engineer your next strategic advantage.
                     </p>

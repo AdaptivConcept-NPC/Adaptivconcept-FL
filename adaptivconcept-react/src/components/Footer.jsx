@@ -15,12 +15,12 @@ const ProfilePersonas = ({ onPersonaHover }) => {
       src: "/media/my-profile-pic-microsoft-vector.png",
       label: "Corporate Vector",
     },
+    { id: 3, src: "/media/my-profile-pic-github.jpg", label: "Developer" },
     {
-      id: 3,
+      id: 4,
       src: "/media/my-profile-pic-github-vector.png",
       label: "Tech Vector",
     },
-    { id: 4, src: "/media/my-profile-pic-github.jpg", label: "Developer" },
   ];
 
   return (
