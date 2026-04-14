@@ -19,6 +19,7 @@ import ProjectDetail from './pages/ProjectDetail';
 import Blog from './pages/Blog';
 import BlogDetail from './pages/BlogDetail';
 import TechWall from './pages/TechWall';
+import OpenResume from './pages/OpenResume';
 
 function App() {
   const useVideoBackground = false; // Toggle this to switch between video and static wallpaper
@@ -26,7 +27,7 @@ function App() {
   return (
     <ThemeProvider>
       <Router>
-      <div className="App noselect">
+      <div className="App noselect h-screen overflow-y-scroll">
         {/* Assets & Dependencies */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
@@ -54,6 +55,7 @@ function App() {
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:id" element={<BlogDetail />} />
               <Route path="/tech-wall" element={<TechWall />} />
+              <Route path="/resume" element={<OpenResume />} />
             </Routes>
           </AnimatePresence>
         </main>
