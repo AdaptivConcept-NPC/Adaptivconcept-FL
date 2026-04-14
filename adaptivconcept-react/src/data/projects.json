@@ -2,71 +2,161 @@
   {
     "id": "ollama-opt",
     "title": "OllamaOpt",
-    "description": "Enterprise-grade local LLM optimization engine for Intel AI PCs. Orchestrates workload routing between NPU and iGPU for maximum throughput.",
+    "description": "Unified Intel AI Optimizer for local LLMs. Multi-tier acceleration strategy leveraging NPU, GPU, and CPU for maximum throughput.",
     "category": "Automation",
-    "tags": ["Python", "OpenVINO", "Intel AI", "LLM"],
+    "tags": ["Python", "Intel AI", "LLM", "NPU", "GPU"],
     "isHero": true,
     "githubUrl": "https://github.com/iarxii/OllamaOpt",
-    "detailedStory": "Developed to solve memory contention issues in local AI development. This tool provides a 'Hybrid Booster' mode that intelligently segments inference tasks."
+    "detailedStory": "Developed to optimize Ollama and local LLMs on Intel AI PCs (Core Ultra). It enables high-efficiency inference using IPEX-LLM and Vulkan fallbacks for mixed-hardware acceleration."
   },
   {
     "id": "ai-codex",
-    "title": "AICodex",
-    "description": "A comprehensive knowledge base and code generation pipeline for Senior AI Engineers, designed for rapid prototyping and architecture mapping.",
+    "title": "AdaptivIntelligenceCodex (AICodex)",
+    "description": "Comprehensive knowledge base and code generation pipeline for Senior AI Engineers. Features an AI-powered Health and Oversight Data Analysis engine.",
     "category": "Automation",
-    "tags": ["Node.js", "GPT-4", "VectorDB", "RAG"],
+    "tags": ["Node.js", "GPT-4", "Gemini", "RAG", "HealthTech"],
     "isHero": true,
-    "githubUrl": "https://github.com/iarxii/AICodex",
-    "detailedStory": "AICodex serves as the brain for the AdaptivConcept™ ecosystem, automating documentation and initial code structure generation."
+    "githubUrl": "https://github.com/iarxii/AI_Codex",
+    "detailedStory": "AICodex serves as the orchestration brain for AI-driven development. It integrates multi-provider LLM support (OpenAI/Gemini) for specialized data analysis and rapid architecture prototyping."
   },
   {
     "id": "medimix-dash",
     "title": "MediMixDash Saga",
-    "description": "High-performance medical dashboard with a 'Saga' state management pattern. Designed for real-time surgical procedure tracking and hospital resource allocation.",
-    "category": "Fullstack",
-    "tags": ["React", "Redux Saga", "Tailwind", "Healthcare"],
+    "description": "Interactive pharmacy simulation game leveraging Redux Saga for complex state orchestration. Experience the high-pressure workflow of a community pharmacist.",
+    "category": "Game Dev",
+    "tags": ["React", "Redux Saga", "Tailwind", "Pharmacy Simulation"],
     "isHero": true,
     "githubUrl": "https://github.com/iarxii/MediMixDash_Saga",
-    "detailedStory": "This project showcases how complex medical data can be managed with high reliability and visual clarity in high-pressure environments."
+    "detailedStory": "A deep dive into medical retail operations through gamification. This project simulates the multitasking challenges of a retail pharmacy, from prescription verification to inventory management, using a strictly typed Saga architecture for reliable state transitions."
   },
   {
     "id": "wave-shooter",
-    "title": "WaveShooter",
-    "description": "A performance-optimized 3D wave-based survival game built with Three.js and custom physics, pushing the limits of browser-based 3D rendering.",
+    "title": "WaveShooter: Healthcare Heroes",
+    "description": "Fast-paced top-down wave shooter built with React, Three.js, and Vite. Repel waves of mutagens and viruses as healthcare heroes.",
     "category": "Game Dev",
-    "tags": ["Three.js", "WebGL", "Physics", "Vite"],
+    "tags": ["React", "Three.js", "Vite", "WebGL"],
     "isHero": true,
     "githubUrl": "https://github.com/iarxii/WaveShooter",
-    "detailedStory": "Experimental game development focused on spatial partitioning and high-count particle systems in the browser."
+    "detailedStory": "Performance-optimized 3D game showcasing snapping controls and readable wave pressure. Features Bosses, Milestones, and persistence logic for high scores and play time."
   },
   {
     "id": "surgical-listing",
-    "title": "Surgical Listing App",
-    "description": "Digital coordination platform for surgical procedure listings, reducing scheduling errors by 40% in large-scale provincial health facilities.",
+    "title": "Surgical Procedure Listings App",
+    "description": "Digital coordination platform for surgical procedure listings, reducing scheduling errors by digitizing manual paperwork in health facilities.",
     "category": "Fullstack",
     "tags": ["Laravel", "React", "PostgreSQL", "HealthTech"],
     "isHero": true,
     "githubUrl": "https://github.com/iarxii/Surgical_Procedure_Listings_App",
-    "detailedStory": "Real-world impact project that transformed manual paperwork into a streamlined digital workflow for surgical teams."
+    "detailedStory": "Real-world impact project that transformed manual paperwork into a streamlined digital workflow for surgical teams, reducing scheduling errors by 40%."
   },
   {
     "id": "onefit-app",
     "title": "Onefit.app",
-    "description": "Community-centric fitness and wellness platform connecting trainers with trainees.",
+    "description": "Community-centric fitness and wellness platform connecting trainers with trainees through inspirational content and expert guidance.",
     "category": "AdaptivConcept™",
-    "tags": ["React", "Firebase", "Social"],
+    "tags": ["React", "Firebase", "Social", "Wellness"],
     "isHero": false,
     "githubUrl": "https://github.com/AdaptivConcept-NPC/Onefit.app",
-    "detailedStory": "A platform built to empower fitness enthusiasts through instruction and community connectivity."
+    "detailedStory": "A platform built to empower fitness enthusiasts through instruction and community connectivity. Features tailored training and nutrition plans."
   },
   {
     "id": "onefit-3d",
     "title": "3D Studio",
-    "description": "Advanced 3D visualization for medical assessment and physical therapy.",
+    "description": "Advanced 3D visualization for medical assessment and physical therapy, indicating strain on body models.",
     "category": "Game Dev",
-    "tags": ["Three.js", "React", "Medical"],
+    "tags": ["Three.js", "React", "Medical", "Visualizer"],
     "isHero": false,
     "githubUrl": "https://github.com/AdaptivConcept-NPC/onefit-3d-studio",
-    "detailedStory": "A mock application using Three.js to indicate temperature, pain, and strain on 3D body models."
+    "detailedStory": "A mock application using Three.js to indicate temperature, pain, and strain on 3D body models for physical therapy assessments."
+  },
+  {
+    "id": "pyswisschef",
+    "title": "PySwissChef",
+    "description": "Django-powered automation showcase platform. A \"Python Swiss Knife\" for unifying scripting workflows into a reusable catalogue.",
+    "category": "Automation",
+    "tags": ["Python", "Django", "Automation", "VPS"],
+    "isHero": false,
+    "githubUrl": "https://github.com/iarxii/PySwissChef",
+    "detailedStory": "Elegantly presents and executes Python scripts via an admin portal with real-time output display and guest access for public interaction."
+  },
+  {
+    "id": "db-to-html",
+    "title": "DB-To-HTML Form Generator",
+    "description": "Fetches database tables/objects and generates basic HTML forms automatically, eliminating manual typing.",
+    "category": "Fullstack",
+    "tags": ["PHP", "MySQL", "HTML Generator"],
+    "isHero": false,
+    "githubUrl": "https://github.com/iarxii/DB-To-HTML-Form-Generator",
+    "detailedStory": "Rids developers of the tedious task of manually building HTML forms by generating them directly from the database schema, allowing focus on CSS."
+  },
+  {
+    "id": "solidstatege",
+    "title": "SolidStateGE",
+    "description": "Native Game Engine built with C++ (Early Stage). Focused on low-level graphics and performance.",
+    "category": "Game Dev",
+    "tags": ["C++", "OpenGL", "Engine Architecture"],
+    "isHero": false,
+    "githubUrl": "https://github.com/iarxii/SolidStateGE",
+    "detailedStory": "An exploration into low-level graphics and engine core systems for high-performance builds, focusing on spatial partitioning and native systems."
+  },
+  {
+    "id": "manzini-carwash",
+    "title": "Manzini Car Wash",
+    "description": "Professional website design for a car wash business, focusing on high-fidelity UI and smooth user experience.",
+    "category": "Design",
+    "tags": ["UI/UX", "Web Design", "Small Business"],
+    "isHero": false,
+    "githubUrl": "https://github.com/iarxii/Manzini_Car_Wash",
+    "detailedStory": "A sleek, modern design for a local business to enhance its digital presence and user interaction with professional aesthetic touches."
+  },
+  {
+    "id": "adaptenginev1",
+    "title": "AdaptEngineV1",
+    "description": "Search Engine, Web Crawler, and Resource Distribution Platform for small-data knowledge bases.",
+    "category": "Automation",
+    "tags": ["Search Engine", "Crawler", "Small Data"],
+    "isHero": false,
+    "githubUrl": "https://github.com/iarxii/AdaptEngineV1",
+    "detailedStory": "A specialized tool for navigating and indexing datasets safely, intended as a localized search engine and resource distributor."
+  },
+  {
+    "id": "secret-santa",
+    "title": "Family Secret Santa",
+    "description": "Interactive Secret Santa mini-app with JavaScript mechanisms for holiday gift sharing.",
+    "category": "Fun",
+    "tags": ["JavaScript", "Interactive", "Holiday"],
+    "isHero": false,
+    "githubUrl": "https://github.com/iarxii/Family_Secret_Santa",
+    "detailedStory": "A festive design project built to simplify holiday gift sharing among family members using interactive JS mechanisms."
+  },
+  {
+    "id": "hns-housing",
+    "title": "HNS-Housing VMS",
+    "description": "Visit Management Information System (VMS) for housing projects, streamlining coordination across facilities.",
+    "category": "Fullstack",
+    "tags": ["PHP", "MySQL", "VMS", "Management"],
+    "isHero": false,
+    "githubUrl": "https://github.com/AdaptivConcept-NPC/HNS-Housing-VMS-Web-App",
+    "detailedStory": "A dedicated digital coordination platform for tracking and managing visitors in housing facilities, built as a dev project for HNS."
+  },
+  {
+    "id": "homewire",
+    "title": "Homewire.app",
+    "description": "E-commerce web application template for home services, featuring HTML, CSS, JS, and PHP.",
+    "category": "Fullstack",
+    "tags": ["HTML", "CSS", "JS", "PHP", "E-commerce"],
+    "isHero": false,
+    "githubUrl": "https://github.com/AdaptivConcept-NPC/homewire",
+    "detailedStory": "A comprehensive e-commerce template designed for home service providers, focusing on simplicity and conversion for mobile and web."
+  },
+  {
+    "id": "youth-lantern",
+    "title": "Youth Lantern",
+    "description": "Youth entrepreneurship and job application platform built with React, acting as an information hub.",
+    "category": "Fullstack",
+    "tags": ["React", "Entrepreneurship", "Job Platform"],
+    "isHero": false,
+    "githubUrl": "https://github.com/AdaptivConcept-NPC/Youth-Lantern",
+    "detailedStory": "An information hub and service provider platform empowering youth through employment opportunities and entrepreneurship tools."
   }
 ]
