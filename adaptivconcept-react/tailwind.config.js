@@ -15,6 +15,7 @@ export default {
         comfortaa: ['Comfortaa', 'cursive'],
         vietnam: ['"Be Vietnam Pro"', 'sans-serif'],
         poppins: ['Poppins', 'sans-serif'],
+        grindy: ['GrindyBrush', 'sans-serif'],
       },
       fontSize: {
         '10xl': '9rem',

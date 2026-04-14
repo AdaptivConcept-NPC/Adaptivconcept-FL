@@ -141,6 +141,10 @@ const Navbar = () => {
                 repeat: Infinity, 
                 ease: "easeInOut" 
               }}
+              style={{
+                display: "flex",
+                position: "relative"
+              }}
             >
               <Link
                 to="/projects"

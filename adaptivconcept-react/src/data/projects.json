@@ -7,6 +7,7 @@
     "tags": ["Python", "Intel AI", "LLM", "NPU", "GPU"],
     "isHero": true,
     "githubUrl": "https://github.com/iarxii/OllamaOpt",
+    "liveUrl": "#",
     "detailedStory": "Developed to optimize Ollama and local LLMs on Intel AI PCs (Core Ultra). It enables high-efficiency inference using IPEX-LLM and Vulkan fallbacks for mixed-hardware acceleration."
   },
   {
@@ -17,6 +18,7 @@
     "tags": ["Node.js", "GPT-4", "Gemini", "RAG", "HealthTech"],
     "isHero": true,
     "githubUrl": "https://github.com/iarxii/AI_Codex",
+    "liveUrl": "#",
     "detailedStory": "AICodex serves as the orchestration brain for AI-driven development. It integrates multi-provider LLM support (OpenAI/Gemini) for specialized data analysis and rapid architecture prototyping."
   },
   {
@@ -27,6 +29,7 @@
     "tags": ["React", "Redux Saga", "Tailwind", "Pharmacy Simulation"],
     "isHero": true,
     "githubUrl": "https://github.com/iarxii/MediMixDash_Saga",
+    "liveUrl": "#",
     "detailedStory": "A deep dive into medical retail operations through gamification. This project simulates the multitasking challenges of a retail pharmacy, from prescription verification to inventory management, using a strictly typed Saga architecture for reliable state transitions."
   },
   {
@@ -37,6 +40,7 @@
     "tags": ["React", "Three.js", "Vite", "WebGL"],
     "isHero": true,
     "githubUrl": "https://github.com/iarxii/WaveShooter",
+    "liveUrl": "#",
     "detailedStory": "Performance-optimized 3D game showcasing snapping controls and readable wave pressure. Features Bosses, Milestones, and persistence logic for high scores and play time."
   },
   {
@@ -47,6 +51,7 @@
     "tags": ["Laravel", "React", "PostgreSQL", "HealthTech"],
     "isHero": true,
     "githubUrl": "https://github.com/iarxii/Surgical_Procedure_Listings_App",
+    "liveUrl": "#",
     "detailedStory": "Real-world impact project that transformed manual paperwork into a streamlined digital workflow for surgical teams, reducing scheduling errors by 40%."
   },
   {
@@ -57,6 +62,7 @@
     "tags": ["React", "Firebase", "Social", "Wellness"],
     "isHero": false,
     "githubUrl": "https://github.com/AdaptivConcept-NPC/Onefit.app",
+    "liveUrl": "#",
     "detailedStory": "A platform built to empower fitness enthusiasts through instruction and community connectivity. Features tailored training and nutrition plans."
   },
   {
@@ -67,6 +73,7 @@
     "tags": ["Three.js", "React", "Medical", "Visualizer"],
     "isHero": false,
     "githubUrl": "https://github.com/AdaptivConcept-NPC/onefit-3d-studio",
+    "liveUrl": "#",
     "detailedStory": "A mock application using Three.js to indicate temperature, pain, and strain on 3D body models for physical therapy assessments."
   },
   {
@@ -77,6 +84,7 @@
     "tags": ["Python", "Django", "Automation", "VPS"],
     "isHero": false,
     "githubUrl": "https://github.com/iarxii/PySwissChef",
+    "liveUrl": "#",
     "detailedStory": "Elegantly presents and executes Python scripts via an admin portal with real-time output display and guest access for public interaction."
   },
   {
@@ -87,6 +95,7 @@
     "tags": ["PHP", "MySQL", "HTML Generator"],
     "isHero": false,
     "githubUrl": "https://github.com/iarxii/DB-To-HTML-Form-Generator",
+    "liveUrl": "#",
     "detailedStory": "Rids developers of the tedious task of manually building HTML forms by generating them directly from the database schema, allowing focus on CSS."
   },
   {
@@ -97,6 +106,7 @@
     "tags": ["C++", "OpenGL", "Engine Architecture"],
     "isHero": false,
     "githubUrl": "https://github.com/iarxii/SolidStateGE",
+    "liveUrl": "#",
     "detailedStory": "An exploration into low-level graphics and engine core systems for high-performance builds, focusing on spatial partitioning and native systems."
   },
   {
@@ -107,6 +117,7 @@
     "tags": ["UI/UX", "Web Design", "Small Business"],
     "isHero": false,
     "githubUrl": "https://github.com/iarxii/Manzini_Car_Wash",
+    "liveUrl": "#",
     "detailedStory": "A sleek, modern design for a local business to enhance its digital presence and user interaction with professional aesthetic touches."
   },
   {
@@ -117,6 +128,7 @@
     "tags": ["Search Engine", "Crawler", "Small Data"],
     "isHero": false,
     "githubUrl": "https://github.com/iarxii/AdaptEngineV1",
+    "liveUrl": "#",
     "detailedStory": "A specialized tool for navigating and indexing datasets safely, intended as a localized search engine and resource distributor."
   },
   {
@@ -127,6 +139,7 @@
     "tags": ["JavaScript", "Interactive", "Holiday"],
     "isHero": false,
     "githubUrl": "https://github.com/iarxii/Family_Secret_Santa",
+    "liveUrl": "#",
     "detailedStory": "A festive design project built to simplify holiday gift sharing among family members using interactive JS mechanisms."
   },
   {
@@ -137,6 +150,7 @@
     "tags": ["PHP", "MySQL", "VMS", "Management"],
     "isHero": false,
     "githubUrl": "https://github.com/AdaptivConcept-NPC/HNS-Housing-VMS-Web-App",
+    "liveUrl": "#",
     "detailedStory": "A dedicated digital coordination platform for tracking and managing visitors in housing facilities, built as a dev project for HNS."
   },
   {
@@ -147,6 +161,7 @@
     "tags": ["HTML", "CSS", "JS", "PHP", "E-commerce"],
     "isHero": false,
     "githubUrl": "https://github.com/AdaptivConcept-NPC/homewire",
+    "liveUrl": "#",
     "detailedStory": "A comprehensive e-commerce template designed for home service providers, focusing on simplicity and conversion for mobile and web."
   },
   {
@@ -157,6 +172,7 @@
     "tags": ["React", "Entrepreneurship", "Job Platform"],
     "isHero": false,
     "githubUrl": "https://github.com/AdaptivConcept-NPC/Youth-Lantern",
+    "liveUrl": "#",
     "detailedStory": "An information hub and service provider platform empowering youth through employment opportunities and entrepreneurship tools."
   }
 ]

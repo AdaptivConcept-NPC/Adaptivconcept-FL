@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import {
   Terminal,
@@ -61,7 +62,15 @@ const ParallaxSection = ({ children, index, total }) => {
 };
 
 const Home = () => {
-  const { themeColor, currentFont, activeFontFamily, activeFontScale } = useTheme();
+  const { themeColor, currentFont, activeFontFamily, activeFontScale } =
+    useTheme();
+  const navigate = useNavigate();
+  const contactRef = useRef(null);
+
+  const scrollToContact = () => {
+    contactRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   const heroProjects = projectsData.filter((p) => p.isHero);
   const sectionsCount = 3;
 
@@ -81,7 +90,7 @@ const Home = () => {
         FLFontCarousel component that is very large, below it shouuld be
         a scroll-down button that smooth-scolls to the Hero section. */}
         {/* <FLFontCarousel size="text-12xl" className="mb-8" useFullText={false} /> */}
-        
+
         <div className="w-full max-w-4xl min-h-[200px] flex items-center justify-center my-16">
           <HighlightCarousel />
         </div>
@@ -98,33 +107,33 @@ const Home = () => {
             transition={{ delay: 0.2, duration: 0.8 }}
           >
             <span className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-white/5 border border-white/10 text-white text-sm font-vietnam mb-10 backdrop-blur-xl">
-              <span 
+              <span
                 className="w-2.5 h-2.5 rounded-full animate-pulse"
                 style={{ backgroundColor: themeColor.value }}
               ></span>
               Available for Strategic Collaboration
             </span>
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-comfortaa font-bold mb-10 tracking-tight text-white leading-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-comfortaa font-bold mb-10 tracking-tight text-white leading-tight">
               Senior{" "}
-              <span 
+              <span
                 className="italic transition-all duration-500 inline-block"
-                style={{ 
-                  fontFamily: activeFontFamily, 
+                style={{
+                  fontFamily: activeFontFamily,
                   color: themeColor.value,
                   fontSize: `${activeFontScale}em`,
-                  lineHeight: 1
+                  lineHeight: 1,
                 }}
               >
                 AI Engineer
-              </span> &{" "}
-              <br />
-              <span 
+              </span>{" "}
+              & <br />
+              <span
                 className="italic transition-all duration-500 inline-block"
-                style={{ 
-                  fontFamily: activeFontFamily, 
+                style={{
+                  fontFamily: activeFontFamily,
                   color: themeColor.value,
                   fontSize: `${activeFontScale}em`,
-                  lineHeight: 1
+                  lineHeight: 1,
                 }}
               >
                 Digital Architect
@@ -136,16 +145,20 @@ const Home = () => {
               infrastructure into automated future-states.
             </p>
             <div className="flex flex-wrap justify-center gap-6">
-              <button 
+              <button
+                onClick={scrollToContact}
                 className="px-6 py-4 md:px-10 md:py-5 rounded-xl md:rounded-2xl text-white text-base md:text-lg font-bold hover:scale-105 hover:shadow-2xl transition-all flex items-center gap-3"
-                style={{ 
-                    backgroundColor: themeColor.value,
-                    boxShadow: `0 10px 30px -10px ${themeColor.value}4d` 
+                style={{
+                  backgroundColor: themeColor.value,
+                  boxShadow: `0 10px 30px -10px ${themeColor.value}4d`,
                 }}
               >
                 Let's Talk <ChevronRight size={22} />
               </button>
-              <button className="px-6 py-4 md:px-10 md:py-5 rounded-xl md:rounded-2xl border-2 border-white/10 text-white text-base md:text-lg font-bold hover:bg-white/5 hover:border-white/20 transition-all backdrop-blur-sm">
+              <button
+                onClick={() => navigate("/projects")}
+                className="px-6 py-4 md:px-10 md:py-5 rounded-xl md:rounded-2xl border-2 border-white/10 text-white text-base md:text-lg font-bold hover:bg-white/5 hover:border-white/20 transition-all backdrop-blur-sm"
+              >
                 Project Catalog
               </button>
             </div>
@@ -155,23 +168,26 @@ const Home = () => {
 
       {/* Section 2: Strategy */}
       <ParallaxSection index={1} total={sectionsCount}>
-        <div className="container mx-auto px-6">
+        <div ref={contactRef} className="container mx-auto px-6">
           <div className="bg-[#0f0f10]/60 backdrop-blur-3xl border border-white/10 rounded-[32px] md:rounded-[60px] p-6 md:p-20 relative overflow-hidden group">
             {/* Subtle glow effect */}
             <div className="absolute -top-24 -right-24 w-[500px] h-[500px] bg-adaptiv-orange/5 blur-[120px] rounded-full group-hover:bg-adaptiv-orange/10 transition-colors duration-1000"></div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
               <div>
-                <h2 
+                <h2
                   className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-10 leading-tight transition-all duration-500"
-                  style={{ 
+                  style={{
                     fontFamily: activeFontFamily,
-                    textShadow: '3px 3px 0px rgba(0,0,0,0.5)',
-                    fontSize: `calc(3em * ${activeFontScale})`
+                    textShadow: "3px 3px 0px rgba(0,0,0,0.5)",
+                    fontSize: `calc(3rem * ${activeFontScale})`,
+                    lineHeight: 1,
                   }}
                 >
                   Design for <br />
-                  <span style={{ color: themeColor.value }}>Transformation</span>
+                  <span style={{ color: themeColor.value }}>
+                    Transformation
+                  </span>
                 </h2>
                 <p className="text-base md:text-lg text-gray-400 font-poppins mb-16 leading-relaxed max-w-xl">
                   Leveraging deep expertise in public sector innovation and AI
@@ -198,7 +214,7 @@ const Home = () => {
                     },
                   ].map((service, i) => (
                     <div key={i} className="flex gap-8 group/item">
-                      <div 
+                      <div
                         className="w-16 h-16 rounded-[22px] bg-white/5 border border-white/10 flex items-center justify-center transition-all duration-500 shadow-inner group-hover/item:text-white"
                         style={{ color: themeColor.value }}
                       >
@@ -228,7 +244,15 @@ const Home = () => {
                   <div className="absolute -bottom-24 -left-24 w-[300px] h-[300px] bg-adaptiv-orange/5 blur-[80px] rounded-full group-hover:bg-adaptiv-orange/10 transition-all duration-1000"></div>
 
                   <div className="relative z-10">
-                    <h3 className="text-2xl md:text-3xl font-comfortaa font-bold text-white mb-2">
+                    <h3
+                      className="text-2xl md:text-3xl font-comfortaa font-bold text-white mb-2"
+                      style={{
+                        fontFamily: activeFontFamily,
+                        textShadow: "3px 3px 0px rgba(0,0,0,0.5)",
+                        fontSize: `calc(2rem * ${activeFontScale})`,
+                        lineHeight: 1,
+                      }}
+                    >
                       Initiate{" "}
                       <span className="text-adaptiv-orange">Collaboration</span>
                     </h3>
@@ -295,13 +319,27 @@ const Home = () => {
           <div className="flex flex-col md:flex-row justify-between items-end gap-10 mb-16">
             <div className="max-w-3xl">
               <h3 className="text-3xl sm:text-4xl md:text-6xl font-comfortaa font-bold text-white mb-6">
+                <div
+                  className="text-adaptiv-orange"
+                  style={{
+                    fontFamily: activeFontFamily,
+                    textShadow: "3px 3px 0px rgba(0,0,0,0.5)",
+                    fontSize: `calc(3rem * ${activeFontScale})`,
+                    lineHeight: 1,
+                  }}
+                >
+                  Github
+                </div>{" "}
                 Masterpieces
               </h3>
               <p className="text-lg md:text-2xl text-gray-400 font-comfortaa">
                 Selected engineering feats and design systems.
               </p>
             </div>
-            <button className="group flex items-center gap-3 text-adaptiv-orange font-bold text-xl hover:text-white transition-colors duration-300">
+            <button
+              onClick={() => navigate("/projects")}
+              className="group flex items-center gap-3 text-adaptiv-orange font-bold text-xl hover:text-white transition-colors duration-300"
+            >
               Explore Full Lab{" "}
               <ChevronRight
                 size={24}
@@ -323,13 +361,17 @@ const Home = () => {
                   </span>
                   <div className="flex gap-4">
                     <a
-                      href={project.github}
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-adaptiv-orange hover:border-adaptiv-orange hover:scale-110 transition-all duration-300"
                     >
                       <i className="bi bi-github text-xl"></i>
                     </a>
                     <a
-                      href={project.live}
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-adaptiv-orange hover:border-adaptiv-orange hover:scale-110 transition-all duration-300"
                     >
                       <ExternalLink size={22} />
@@ -356,7 +398,10 @@ const Home = () => {
                   ))}
                 </div>
 
-                <button className="w-full py-4 rounded-2xl border-2 border-white/10 text-white font-bold text-lg hover:bg-adaptiv-orange hover:border-adaptiv-orange transition-all duration-300 group-hover:shadow-lg group-hover:shadow-adaptiv-orange/20">
+                <button
+                  onClick={() => navigate(`/projects/${project.id}`)}
+                  className="w-full py-4 rounded-2xl border-2 border-white/10 text-white font-bold text-lg hover:bg-adaptiv-orange hover:border-adaptiv-orange transition-all duration-300 group-hover:shadow-lg group-hover:shadow-adaptiv-orange/20"
+                >
                   Case Study Details
                 </button>
               </motion.div>

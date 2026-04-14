@@ -250,9 +250,10 @@ const HighlightCarousel = ({ className = "" }) => {
               style={{
                 textShadow: "3px 3px 0px rgba(0,0,0,0.8)",
                 WebkitTextStroke: "0.5px black",
-                 color: themeColor.value,
+                color: themeColor.value,
                 fontFamily: activeFontFamily,
-                fontSize: `calc(4em * ${activeFontScale})`,
+                fontSize: `calc(4rem * ${activeFontScale})`,
+                lineHeight: "0.8",
               }}
             >
               {current.title}

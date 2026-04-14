@@ -26,6 +26,7 @@ const ProjectDetail = () => {
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -20 }}
       className="container mx-auto px-6 py-10 md:py-24 min-h-screen"
+      style={{paddingTop:"120px"}}
     >
       {/* Back Button */}
       <button 
@@ -118,7 +119,7 @@ const ProjectDetail = () => {
             <div className="w-full h-px bg-white/5 mb-12"></div>
             
             <div className="max-w-4xl text-gray-400 leading-[2] text-base md:text-lg font-poppins">
-              <p className="mb-10 first-letter:text-4xl md:first-letter:text-5xl first-letter:font-bold first-letter:text-adaptiv-orange first-letter:mr-3 first-letter:float-left">
+              <p className="mb-10 first-letter:text-6xl md:first-letter:text-5xl first-letter:font-bold first-letter:font-grindy first-letter:italic first-letter:text-adaptiv-orange first-letter:mr-3 first-letter:float-left first-letter:[text-shadow:3px_3px_0px_rgba(0,0,0,0.8)]">
                 {project.detailedStory}
               </p>
               

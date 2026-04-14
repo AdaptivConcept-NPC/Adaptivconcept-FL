@@ -78,3 +78,15 @@ body {
 .text-glow-orange {
   text-shadow: 0 0 15px rgba(255, 55, 21, 0.4);
 }
+
+.text-adaptiv-orange {
+    /* use this font:  */
+    font-family: 'GrindyBrush', sans-serif;
+    font-style: italic !important;
+    font-weight: bold !important;
+    text-shadow: 3px 3px 0px rgba(0,0,0,0.8);
+}
+
+.border-adaptiv-white {
+    border-color: #ffffff;
+}
