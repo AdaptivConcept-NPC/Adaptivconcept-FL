@@ -34,8 +34,8 @@ const Blog = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="container mx-auto px-6 py-10 md:py-20 min-h-screen"
-      style={{ backgroundColor: 'rgb(51 51 51 / 80%)' }}
+      className="container mx-auto px-6 py-10 md:py-20 min-h-screen rounded-[32px] md:rounded-[60px]"
+      style={{ backgroundColor: 'rgb(51 51 51 / 80%)', marginTop: "200px" }}
     >
       {/* Hero Header */}
       <div className="text-center mb-16">

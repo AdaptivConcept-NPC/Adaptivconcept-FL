@@ -197,7 +197,7 @@ const BlogDetail = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
         {/* Article Header */}
         <div className="lg:col-span-4">
-          <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[24px] md:rounded-[40px] p-6 md:p-10 sticky top-28 group relative overflow-hidden">
+          <div className="bg-[#0a0a0a]/90 border border-white/10 rounded-[24px] md:rounded-[40px] p-6 md:p-10 sticky top-28 group relative overflow-hidden">
             {/* Ambient glow */}
             <div className="absolute top-0 right-0 w-48 h-48 bg-adaptiv-orange/5 blur-[80px] rounded-full -mr-24 -mt-24 group-hover:bg-adaptiv-orange/10 transition-colors" />
 
@@ -272,7 +272,7 @@ const BlogDetail = () => {
 
         {/* Article Content */}
         <div className="lg:col-span-8">
-          <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[24px] md:rounded-[40px] p-6 md:p-16">
+          <div className="bg-[#0a0a0a]/90 border border-white/10 rounded-[24px] md:rounded-[40px] p-6 md:p-16">
             <div className="flex items-center gap-4 mb-8">
               <div className="w-12 h-12 rounded-2xl bg-adaptiv-orange/10 flex items-center justify-center text-adaptiv-orange">
                 <BookOpen size={28} />
