@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ChevronLeft, Globe, Info } from 'lucide-react';
-import projectsData from '../data/projects.json';
+import projectsDataLocal from '../data/projects.json';
+import { getProjects } from '../utils/dataStore';
+
 
 const ProjectDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const [projectsData, setProjectsData] = useState(projectsDataLocal);
   const project = projectsData.find(p => p.id === id);
+
+  useEffect(() => {
+    getProjects().then(setProjectsData);
+  }, []);
+
 
   if (!project) {
     return (

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
@@ -9,7 +9,9 @@ import {
   BookOpen,
   Share2,
 } from 'lucide-react';
-import blogPostsData from '../data/blog-posts.json';
+import blogPostsDataLocal from '../data/blog-posts.json';
+import { getBlogPosts } from '../utils/dataStore';
+
 
 /**
  * Render markdown-like content as structured JSX.
@@ -151,7 +153,13 @@ const renderContent = (content) => {
 const BlogDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const [blogPostsData, setBlogPostsData] = useState(blogPostsDataLocal);
   const post = blogPostsData.find((p) => p.id === id);
+
+  useEffect(() => {
+    getBlogPosts().then(setBlogPostsData);
+  }, []);
+
 
   if (!post) {
     return (

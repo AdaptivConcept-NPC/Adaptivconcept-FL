@@ -1,12 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, Rocket, Terminal, Cpu, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import projectsData from "../data/projects.json";
+import projectsDataLocal from "../data/projects.json";
+import { getProjects } from "../utils/dataStore";
 
 const ProjectBoard = () => {
   const [activeCategory, setActiveCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
+  const [projectsData, setProjectsData] = useState(projectsDataLocal);
+
+  useEffect(() => {
+    getProjects().then(setProjectsData);
+  }, []);
 
   const categories = [
     "All",
@@ -35,7 +41,7 @@ const ProjectBoard = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       className="container mx-auto px-6 py-10 md:py-20 min-h-screen rounded-[32px] md:rounded-[60px] glass-theme"
-      style={{ marginTop: "200px" }}
+      style={{ marginTop: "200px", backgroundColor: "rgba(15, 15, 16, 0.7)", opacity: 1}}
     >
       <div className="text-center mb-16">
         <h1 className="text-3xl sm:text-4xl md:text-6xl font-comfortaa font-bold text-white mb-6">

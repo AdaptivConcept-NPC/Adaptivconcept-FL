@@ -1,12 +1,18 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, PenLine, Filter } from "lucide-react";
-import blogPostsData from "../data/blog-posts.json";
+import blogPostsDataLocal from "../data/blog-posts.json";
+import { getBlogPosts } from "../utils/dataStore";
 import BlogPost from "../components/BlogPost";
 
 const Blog = () => {
   const [activeTag, setActiveTag] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
+  const [blogPostsData, setBlogPostsData] = useState(blogPostsDataLocal);
+
+  useEffect(() => {
+    getBlogPosts().then(setBlogPostsData);
+  }, []);
 
   // Extract unique tags from all posts
   const allTags = useMemo(() => {
@@ -15,7 +21,7 @@ const Blog = () => {
       post.tags.forEach((tag) => tagSet.add(tag)),
     );
     return ["All", ...Array.from(tagSet).sort()];
-  }, []);
+  }, [blogPostsData]);
 
   // Filter and sort posts (newest first for display)
   const filteredPosts = useMemo(() => {
@@ -31,7 +37,7 @@ const Blog = () => {
         return matchesTag && matchesSearch;
       })
       .sort((a, b) => new Date(b.date) - new Date(a.date));
-  }, [activeTag, searchQuery]);
+  }, [activeTag, searchQuery, blogPostsData]);
 
   return (
     <motion.div
@@ -39,7 +45,7 @@ const Blog = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       className="container mx-auto px-6 py-10 md:py-20 min-h-screen rounded-[32px] md:rounded-[60px] glass-theme"
-      style={{ marginTop: "200px" }}
+      style={{ marginTop: "200px", backgroundColor: "rgba(15, 15, 16, 0.7)", opacity: 1 }}
     >
       {/* Hero Header */}
       <div className="text-center mb-16">
