@@ -14,7 +14,9 @@ const BackgroundWallpaper = ({ imageUrl }) => {
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
-          filter: `${themeColor.washType !== 'none' ? 'grayscale(100%)' : ''} brightness(0.6) contrast(1.1)`,
+          filter: themeColor.washType === 'none' 
+            ? 'none' 
+            : `${themeColor.washType !== 'none' ? 'grayscale(100%)' : ''} brightness(0.6) contrast(1.1)`,
         }}
 
 
@@ -33,7 +35,8 @@ const BackgroundWallpaper = ({ imageUrl }) => {
 
       {/* Subtle darkening for content legibility - adjusted based on wash type */}
       <div className={`absolute inset-0 transition-opacity duration-1000 ${
-          themeColor.washType === 'white' ? 'bg-black/20' : 'bg-black/40'
+          themeColor.washType === 'white' ? 'bg-black/20' : 
+          themeColor.washType === 'none' ? 'bg-transparent' : 'bg-black/40'
         }`} 
       />
 

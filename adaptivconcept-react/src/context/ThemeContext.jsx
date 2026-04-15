@@ -24,9 +24,34 @@ const colors = [
 
 
 export const ThemeProvider = ({ children }) => {
-    const [currentFontIndex, setCurrentFontIndex] = useState(0);
-    const [isFontLocked, setIsFontLocked] = useState(false);
-    const [themeColor, setThemeColor] = useState(colors[0]);
+    const [currentFontIndex, setCurrentFontIndex] = useState(() => {
+        const saved = localStorage.getItem('adaptiv_font_index');
+        return saved !== null ? parseInt(saved, 10) : 0;
+    });
+    
+    const [isFontLocked, setIsFontLocked] = useState(() => {
+        const saved = localStorage.getItem('adaptiv_font_locked');
+        return saved !== null ? saved === 'true' : false;
+    });
+
+    const [themeColor, setThemeColor] = useState(() => {
+        const savedValue = localStorage.getItem('adaptiv_theme_color');
+        if (savedValue) {
+            return colors.find(c => c.value === savedValue) || colors[0];
+        }
+        return colors[0];
+    });
+
+    // Persist font state
+    useEffect(() => {
+        localStorage.setItem('adaptiv_font_locked', isFontLocked);
+        localStorage.setItem('adaptiv_font_index', currentFontIndex);
+    }, [isFontLocked, currentFontIndex]);
+
+    // Persist theme choice
+    useEffect(() => {
+        localStorage.setItem('adaptiv_theme_color', themeColor.value);
+    }, [themeColor]);
 
     useEffect(() => {
         const root = document.documentElement;
@@ -46,6 +71,18 @@ export const ThemeProvider = ({ children }) => {
         
         // High intensity version for UI elements
         root.style.setProperty('--theme-color-glow', `rgba(${rgb}, 0.4)`);
+
+        // Glass System Dynamic Variables
+        if (themeColor.washType === 'none') {
+            root.style.setProperty('--glass-bg', 'rgba(15, 15, 16, 0.4)');
+            root.style.setProperty('--glass-blur', '64px');
+            root.style.setProperty('--glass-border', 'rgba(255, 255, 255, 0.1)');
+        } else {
+            // White Wash or other colored themes
+            root.style.setProperty('--glass-bg', 'rgba(255, 255, 255, 0.05)');
+            root.style.setProperty('--glass-blur', '40px');
+            root.style.setProperty('--glass-border', `rgba(${rgb}, 0.2)`);
+        }
         
     }, [themeColor]);
 

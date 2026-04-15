@@ -44,7 +44,7 @@ const Navbar = () => {
           <img
             src="media/Adaptiv Media Concept Logo.png"
             alt="Adaptivconcept FL Logo"
-            className="navbar-logo cursor-pointer hover:scale-110 transition-transform active:rotate-12"
+            className="navbar-logo cursor-pointer"
             onClick={(e) => {
               e.preventDefault();
               nextColor();

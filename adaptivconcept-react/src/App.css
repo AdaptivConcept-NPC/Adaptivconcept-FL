@@ -1,6 +1,5 @@
 @tailwind base;
 @tailwind components;
-@tailwind utilities;
 
 @keyframes fadeIn {
   0% { opacity: 0; transform: translateY(20px); }
@@ -19,21 +18,50 @@
   --theme-color: #ff6600;
   --theme-color-rgb: 255, 102, 0;
   --theme-color-glow: rgba(255, 102, 0, 0.4);
+
+  /* Centralized Glass System */
+  --glass-bg: rgba(15, 15, 16, 0.4);
+  --glass-blur: 40px;
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  --glass-border-width: 1px;
 }
 
+/* Base Glass Theme - for large sections and containers */
 .glass-theme {
-  background: rgba(var(--theme-color-rgb), 0.08);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(var(--theme-color-rgb), 0.15);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-  transition: all 0.5s ease;
+  background-color: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border-width: var(--glass-border-width);
+  border-style: solid;
+  border-color: var(--glass-border-border, var(--glass-border));
+  box-shadow: var(--glass-shadow);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Glass Card - specialized for interactive project/blog cards */
+.glass-card {
+  background-color: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: var(--glass-border-width) solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-card:hover {
+  background-color: rgba(var(--theme-color-rgb), 0.12);
+  border-color: rgba(var(--theme-color-rgb), 0.4);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 
+              0 0 20px rgba(var(--theme-color-rgb), 0.1);
 }
 
 .glass-theme-hover:hover {
-  background: rgba(var(--theme-color-rgb), 0.12);
+  background-color: rgba(var(--theme-color-rgb), 0.1);
   border-color: rgba(var(--theme-color-rgb), 0.3);
-  box-shadow: 0 8px 32px 0 rgba(var(--theme-color-rgb), 0.1);
 }
 
 
@@ -74,10 +102,6 @@ body {
   background-color: var(--bg-dark);
 }
 
-.navbar-logo {
-  height: 50px;
-  width: auto;
-}
 
 /* Typography Helpers - still useful for quick application */
 .font-comfortaa { font-family: 'Comfortaa', cursive; }
@@ -111,3 +135,4 @@ body {
 .border-adaptiv-white {
     border-color: #ffffff;
 }
+@tailwind utilities;
