@@ -52,7 +52,10 @@ const Navbar = () => {
             title="Click to cycle theme color"
           />
           <div className="flex items-center">
-            <span className="text-xl font-comfortaa font-bold text-white tracking-tight relative">
+            <span 
+              className="text-xl font-comfortaa font-bold tracking-tight relative"
+              style={{ color: 'var(--text-h)' }}
+            >
               AdaptivConcept
               <div
                 style={{
@@ -92,7 +95,8 @@ const Navbar = () => {
           <ul className="flex flex-col lg:flex-row items-center gap-8 m-0 p-0">
             <li>
               <Link
-                className={`flex items-center gap-2 text-sm font-medium transition-colors hover:text-white ${isActive("/") ? "text-white font-bold" : "text-gray-400"}`}
+                className={`flex items-center gap-2 text-sm font-medium transition-colors hover:text-white ${isActive("/") ? "font-bold" : ""}`}
+                style={{ color: isActive("/") ? 'var(--text-h)' : 'var(--text)' }}
                 to="/"
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -101,7 +105,8 @@ const Navbar = () => {
             </li>
             <li>
               <Link
-                className={`flex items-center gap-2 text-sm font-medium transition-colors hover:text-white ${isActive("/projects") ? "text-white font-bold" : "text-gray-400"}`}
+                className={`flex items-center gap-2 text-sm font-medium transition-colors hover:text-white ${isActive("/projects") ? "font-bold" : ""}`}
+                style={{ color: isActive("/projects") ? 'var(--text-h)' : 'var(--text)' }}
                 to="/projects"
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -111,7 +116,8 @@ const Navbar = () => {
             </li>
             <li>
               <Link
-                className={`flex items-center gap-2 text-sm font-medium transition-colors hover:text-white ${isActive("/blog") ? "text-white font-bold" : "text-gray-400"}`}
+                className={`flex items-center gap-2 text-sm font-medium transition-colors hover:text-white ${isActive("/blog") ? "font-bold" : ""}`}
+                style={{ color: isActive("/blog") ? 'var(--text-h)' : 'var(--text)' }}
                 to="/blog"
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -124,11 +130,15 @@ const Navbar = () => {
             <Link
               to="/resume"
               onClick={() => setIsMenuOpen(false)}
-              className="px-5 py-2.5 rounded-xl border-2 border-adaptiv-white text-white font-medium hover:bg-adaptiv-orange transition-all flex items-center gap-2"
+              className="px-5 py-2.5 rounded-xl border-2 font-medium hover:bg-adaptiv-orange transition-all flex items-center gap-2"
+              style={{ borderColor: 'var(--glass-border)', color: 'var(--text-h)' }}
             >
               <FileUser size={16} /> <p className="truncate">Résumé</p>
             </Link>
-            <button className="px-5 py-2.5 rounded-xl border-2 border-adaptiv-white text-white font-medium hover:bg-adaptiv-orange transition-all flex items-center gap-2">
+            <button 
+              className="px-5 py-2.5 rounded-xl border-2 font-medium hover:bg-adaptiv-orange transition-all flex items-center gap-2"
+              style={{ borderColor: 'var(--glass-border)', color: 'var(--text-h)' }}
+            >
               <Mail size={16} /> <p className="truncate">Request Detailed CV</p>
             </button>
             <motion.div

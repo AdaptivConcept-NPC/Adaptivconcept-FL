@@ -150,7 +150,10 @@ const Home = () => {
 
       {/* Section 1: Hero */}
       <ParallaxSection index={0} total={sectionsCount}>
-        <div className="max-w-5xl px-6 text-center glass-theme rounded-[32px] md:rounded-[60px] p-6 md:p-20 relative"  style={{backgroundColor: "rgba(15, 15, 16, 0.7)", opacity: 1}}>
+        <div 
+          className="max-w-5xl px-6 text-center glass-theme rounded-[32px] md:rounded-[60px] p-6 md:p-20 relative"  
+          style={{ backgroundColor: "var(--glass-bg)", opacity: 1 }}
+        >
           <motion.div
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -163,7 +166,10 @@ const Home = () => {
               ></span>
               Available for Strategic Collaboration
             </span>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-comfortaa font-bold mb-10 tracking-tight text-white leading-tight">
+            <h1 
+              className="text-4xl sm:text-5xl md:text-6xl font-comfortaa font-bold mb-10 tracking-tight leading-tight"
+              style={{ color: "var(--text-h)" }}
+            >
               Senior{" "}
               <span
                 className="italic transition-all duration-500 inline-block"
@@ -189,7 +195,7 @@ const Home = () => {
                 Digital Architect
               </span>
             </h1>
-            <p className="text-base sm:text-lg md:text-2xl font-poppins text-gray-400 mb-14 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg md:text-2xl font-poppins mb-14 max-w-3xl mx-auto leading-relaxed" style={{ color: "var(--text)" }}>
               Engineering high-performance intelligence pipelines and
               interactive 3D ecosystems. Converting complex legacy
               infrastructure into automated future-states.
@@ -219,15 +225,19 @@ const Home = () => {
       {/* Section 2: Strategy & Contact Form */}
       <ParallaxSection index={1} total={sectionsCount}>
         <div ref={contactRef} className="container mx-auto px-6">
-          <div className="glass-theme rounded-[32px] md:rounded-[60px] p-6 md:p-20 relative overflow-hidden group" style={{backgroundColor: "rgba(15, 15, 16, 0.7)", opacity: 1}}>
+          <div 
+            className="glass-theme rounded-[32px] md:rounded-[60px] p-6 md:p-20 relative overflow-hidden group" 
+            style={{ backgroundColor: "var(--glass-bg)", opacity: 1 }}
+          >
             {/* Subtle glow effect */}
             <div className="absolute -top-24 -right-24 w-[500px] h-[500px] bg-adaptiv-orange/5 blur-[120px] rounded-full group-hover:bg-adaptiv-orange/10 transition-colors duration-1000"></div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
               <div>
                 <h2
-                  className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-10 leading-tight transition-all duration-500"
+                  className="text-3xl sm:text-4xl md:text-6xl font-bold mb-10 leading-tight transition-all duration-500"
                   style={{
+                    color: "var(--text-h)",
                     fontFamily: activeFontFamily,
                     textShadow: "3px 3px 0px rgba(0,0,0,0.5)",
                     fontSize: `calc(3rem * ${activeFontScale})`,
@@ -304,7 +314,7 @@ const Home = () => {
                       }}
                     >
                       Initiate{" "}
-                      <span className="text-adaptiv-orange">Collaboration</span>
+                      <span style={{ color: themeColor.value }}>Collaboration</span>
                     </h3>
                     <p className="text-gray-400 text-sm font-poppins mb-10">
                       Ready to engineer the future? Drop a brief below.
@@ -411,7 +421,10 @@ const Home = () => {
 
       {/* Section 3: Github Projects Grid */}
       <ParallaxSection index={2} total={sectionsCount}>
-        <div className="container mx-auto px-6 rounded-[32px] md:rounded-[60px] p-6 md:p-20 relative glass-theme" style={{backgroundColor: "rgba(15, 15, 16, 0.7)", opacity: 1}}>
+        <div 
+          className="container mx-auto px-6 rounded-[32px] md:rounded-[60px] p-6 md:p-20 relative glass-theme" 
+          style={{ backgroundColor: "var(--glass-bg)", opacity: 1 }}
+        >
           <div className="flex flex-col md:flex-row justify-between items-end gap-10 mb-16">
             <div className="max-w-3xl">
               <h3 className="text-3xl sm:text-4xl md:text-6xl font-comfortaa font-bold text-white mb-6">

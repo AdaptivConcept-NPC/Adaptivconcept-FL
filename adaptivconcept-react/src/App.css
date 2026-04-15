@@ -68,8 +68,8 @@
 html, body {
   margin: 0;
   padding: 0;
-  background-color: var(--bg-dark);
-  color: #f8f9fa;
+  background-color: var(--bg);
+  color: var(--text);
   font-family: 'Poppins', sans-serif;
   overflow-x: hidden;
   height: 100%;
@@ -139,4 +139,9 @@ body {
 .border-adaptiv-white {
     border-color: #ffffff;
 }
+
+/* Theme Helpers */
+.text-theme { color: var(--text); }
+.text-theme-h { color: var(--text-h); }
+.bg-theme { background-color: var(--bg); }
 @tailwind utilities;

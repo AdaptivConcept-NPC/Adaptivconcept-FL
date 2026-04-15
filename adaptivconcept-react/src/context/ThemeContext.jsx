@@ -19,6 +19,8 @@ const colors = [
     { name: 'Neon Blue', value: '#00f2ff', class: 'text-adaptiv-blue', washType: 'white' },
     { name: 'Cyber Green', value: '#39ff14', class: 'text-adaptiv-green', washType: 'white' },
     { name: 'Vibrant Purple', value: '#bc13fe', class: 'text-adaptiv-purple', washType: 'white' },
+    { name: 'Polished Silver', value: '#D1D1D1', class: 'text-silver', washType: 'light' },
+    { name: 'Coal', value: '#111111', class: 'text-coal', washType: 'coal' },
 ];
 
 
@@ -73,15 +75,42 @@ export const ThemeProvider = ({ children }) => {
         root.style.setProperty('--theme-color-glow', `rgba(${rgb}, 0.4)`);
 
         // Glass System Dynamic Variables
-        if (themeColor.washType === 'none') {
+        if (themeColor.washType === 'light') {
+            // Polished Silver / Light mode
+            root.style.setProperty('--bg', '#f5f5f7');
+            root.style.setProperty('--text', '#1d1d1f');
+            root.style.setProperty('--text-h', '#000000');
+            root.style.setProperty('--glass-bg', 'rgba(255, 255, 255, 0.7)');
+            root.style.setProperty('--glass-blur', '32px');
+            root.style.setProperty('--glass-border', 'rgba(0, 0, 0, 0.08)');
+            root.style.setProperty('--glass-shadow', '0 8px 32px 0 rgba(0, 0, 0, 0.1)');
+        } else if (themeColor.washType === 'coal') {
+            // Coal / Deep Dark mode
+            root.style.setProperty('--bg', '#050505');
+            root.style.setProperty('--text', '#a1a1a6');
+            root.style.setProperty('--text-h', '#ffffff');
+            root.style.setProperty('--glass-bg', 'rgba(18, 18, 18, 0.8)');
+            root.style.setProperty('--glass-blur', '64px');
+            root.style.setProperty('--glass-border', 'rgba(255, 255, 255, 0.05)');
+            root.style.setProperty('--glass-shadow', '0 8px 32px 0 rgba(0, 0, 0, 0.5)');
+        } else if (themeColor.washType === 'none') {
+            // Default Adaptiv Orange / Dark
+            root.style.setProperty('--bg', '#0a0a0a');
+            root.style.setProperty('--text', '#f8f9fa');
+            root.style.setProperty('--text-h', '#ffffff');
             root.style.setProperty('--glass-bg', 'rgba(15, 15, 16, 0.4)');
             root.style.setProperty('--glass-blur', '64px');
             root.style.setProperty('--glass-border', 'rgba(255, 255, 255, 0.1)');
+            root.style.setProperty('--glass-shadow', '0 8px 32px 0 rgba(0, 0, 0, 0.37)');
         } else {
-            // White Wash or other colored themes
+            // Colored Wash Themes (Blue, Green, Purple)
+            root.style.setProperty('--bg', '#0a0a0a');
+            root.style.setProperty('--text', '#f8f9fa');
+            root.style.setProperty('--text-h', '#ffffff');
             root.style.setProperty('--glass-bg', 'rgba(255, 255, 255, 0.05)');
             root.style.setProperty('--glass-blur', '40px');
             root.style.setProperty('--glass-border', `rgba(${rgb}, 0.2)`);
+            root.style.setProperty('--glass-shadow', '0 8px 32px 0 rgba(0, 0, 0, 0.37)');
         }
         
     }, [themeColor]);
