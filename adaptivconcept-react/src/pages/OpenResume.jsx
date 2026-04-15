@@ -13,6 +13,7 @@ import {
   Rocket,
 } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
+import githubStats from "../data/github-stats.json";
 
 const OpenResume = () => {
   const { themeColor, activeFontFamily, activeFontScale } = useTheme();
@@ -33,14 +34,61 @@ const OpenResume = () => {
   };
 
   const skills = [
-    { name: "React (Front-end)", level: 100, icon: "/icons/icons8-react-shadow/icons8-react-96.png" },
-    { name: "Vanilla PHP (Back-end)", level: 100, icon: "/icons/icons8-php-shadow/icons8-php-96.png" },
-    { name: "Python Automation", level: 100, icon: "/icons/icons8-python-shadow/icons8-python-96.png" },
-    { name: "Power BI Analytics", level: 100, icon: "/icons/icons8-power-bi-2021-windows-11-color/icons8-power-bi-2021-96.png" },
-    { name: "MySQL / SQL Server", level: 90, icon: "/icons/icons8-mysql-shadow/icons8-mysql-96.png" },
-    { name: "Laravel Framework", level: 80, icon: "/icons/icons8-react-shadow/icons8-react-96.png" }, // Using react icon as placeholder if laravel missing
-    { name: "Microsoft Azure", level: 60, icon: "/icons/icons8-azure-windows-11-color/icons8-azure-96.png" },
+    { name: "React (Front-end)", id: "react", icon: "/icons/icons8-react-shadow/icons8-react-96.png" },
+    { name: "Vanilla PHP", id: "php", icon: "/icons/icons8-php-shadow/icons8-php-96.png" },
+    { name: "Python Automation", id: "python", icon: "/icons/icons8-python-shadow/icons8-python-96.png" },
+    { name: "Power BI Analytics", id: "power-bi", icon: "/icons/icons8-power-bi-2021-windows-11-color/icons8-power-bi-2021-96.png" },
+    { name: "MySQL / SQL Server", id: "sql", icon: "/icons/icons8-mysql-shadow/icons8-mysql-96.png" },
+    { name: "Laravel Framework", id: "laravel", icon: "/icons/icons8-react-shadow/icons8-react-96.png" },
+    { name: "Microsoft Azure", id: "azure", icon: "/icons/icons8-azure-windows-11-color/icons8-azure-96.png" },
   ];
+
+  // Component for the dynamic stacked bar
+  const StackedTechBar = () => {
+    const totalRepos = Object.values(githubStats.skills).reduce((acc, s) => acc + s.repoCount, 0);
+    if (totalRepos === 0) return null;
+
+    return (
+      <div className="space-y-3 mb-10">
+        <div className="flex justify-between items-end text-xs mb-2">
+          <span className="text-gray-400 font-bold tracking-widest uppercase">Ecosystem Distribution</span>
+          <div className="text-right">
+            <span className="text-white block font-bold">{githubStats.overview.total} Total Repos</span>
+            <span className="text-[10px] text-gray-500 uppercase">Snapshot: {new Date(githubStats.lastUpdated).toLocaleDateString()}</span>
+          </div>
+        </div>
+        <div className="h-4 w-full bg-white/5 rounded-full overflow-hidden flex shadow-inner">
+          {Object.entries(githubStats.skills).map(([id, info]) => {
+            const percentage = (info.repoCount / totalRepos) * 100;
+            if (percentage === 0) return null;
+            return (
+              <motion.div
+                key={id}
+                initial={{ width: 0 }}
+                animate={{ width: `${percentage}%` }}
+                transition={{ duration: 1, ease: "circOut" }}
+                className="h-full relative group"
+                style={{ backgroundColor: info.color }}
+              >
+                <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors" />
+              </motion.div>
+            );
+          })}
+        </div>
+        <div className="flex flex-wrap gap-x-4 gap-y-2 pt-2">
+          {Object.entries(githubStats.skills).map(([id, info]) => {
+            if (info.repoCount === 0) return null;
+            return (
+              <div key={id} className="flex items-center gap-1.5">
+                <div className="w-2 h-2 rounded-full" style={{ backgroundColor: info.color }} />
+                <span className="text-[10px] text-gray-400 font-medium">{info.name.split(' ')[0]}</span>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    );
+  };
 
   return (
     <motion.div
@@ -167,27 +215,44 @@ const OpenResume = () => {
             {/* Skills */}
             <motion.div variants={itemVariants} className="space-y-6">
               <h2 className="text-2xl font-bold text-white flex items-center gap-3">
-                <Code2 size={24} style={{ color: themeColor.value }} /> Core Expertise
+                <Code2 size={24} style={{ color: themeColor.value }} /> Inventory Stats
               </h2>
+              
+              <StackedTechBar />
+
               <div className="space-y-4">
-                {skills.map((skill) => (
-                  <div key={skill.name} className="space-y-2">
-                    <div className="flex justify-between items-center text-sm">
-                      <span className="text-gray-300 font-medium">{skill.name}</span>
-                      <span className="text-white font-bold opacity-60">{skill.level}%</span>
+                {skills.map((skill) => {
+                  const stat = githubStats.skills[skill.id] || { repoCount: 0, forkCount: 0 };
+                  const sourceCount = stat.repoCount - stat.forkCount;
+                  const total = githubStats.overview.total || 1;
+                  const percentage = (stat.repoCount / total) * 100;
+
+                  return (
+                    <div key={skill.name} className="space-y-2">
+                      <div className="flex justify-between items-end text-sm">
+                        <div className="flex flex-col">
+                          <span className="text-gray-300 font-bold">{skill.name}</span>
+                          <span className="text-[10px] text-gray-500 uppercase">
+                            {sourceCount} Source • {stat.forkCount} Forks
+                          </span>
+                        </div>
+                        <span className="text-white font-black text-lg" style={{ color: themeColor.value }}>
+                          {stat.repoCount}
+                        </span>
+                      </div>
+                      <div className="h-1.5 bg-white/5 rounded-full overflow-hidden">
+                        <motion.div 
+                          initial={{ width: 0 }}
+                          whileInView={{ width: `${Math.max(percentage, 5)}%` }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 1, ease: "easeOut" }}
+                          className="h-full rounded-full"
+                          style={{ backgroundColor: stat.color || themeColor.value }}
+                        />
+                      </div>
                     </div>
-                    <div className="h-2 bg-white/5 rounded-full overflow-hidden">
-                      <motion.div 
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, ease: "easeOut" }}
-                        className="h-full rounded-full"
-                        style={{ backgroundColor: themeColor.value }}
-                      />
-                    </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </motion.div>
 

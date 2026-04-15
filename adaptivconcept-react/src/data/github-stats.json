@@ -1,0 +1,17 @@
+{
+  "lastUpdated": "2026-04-15T18:00:00.000Z",
+  "overview": {
+    "total": 0,
+    "source": 0,
+    "forks": 0
+  },
+  "skills": {
+    "react": { "name": "React (Front-end)", "color": "#61DAFB", "repoCount": 0, "forkCount": 0, "repos": [] },
+    "php": { "name": "Vanilla PHP", "color": "#777BB4", "repoCount": 0, "forkCount": 0, "repos": [] },
+    "python": { "name": "Python Automation", "color": "#3776AB", "repoCount": 0, "forkCount": 0, "repos": [] },
+    "power-bi": { "name": "Power BI Analytics", "color": "#F2C811", "repoCount": 0, "forkCount": 0, "repos": [] },
+    "sql": { "name": "MySQL / SQL Server", "color": "#4479A1", "repoCount": 0, "forkCount": 0, "repos": [] },
+    "laravel": { "name": "Laravel Framework", "color": "#FF2D20", "repoCount": 0, "forkCount": 0, "repos": [] },
+    "azure": { "name": "Microsoft Azure", "color": "#0078D4", "repoCount": 0, "forkCount": 0, "repos": [] }
+  }
+}
