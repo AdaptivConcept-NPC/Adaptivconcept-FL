@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import {
@@ -9,7 +9,8 @@ import {
   ExternalLink,
 } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
-import projectsData from "../data/projects.json";
+import projectsDataLocal from "../data/projects.json";
+import { getProjects } from "../utils/dataStore";
 import FLFontCarousel from "../components/FLFontCarousel";
 import HighlightCarousel from "../components/HighlightCarousel";
 import MouseScrollIndicator from "../components/MouseScrollIndicator";
@@ -66,9 +67,55 @@ const Home = () => {
     useTheme();
   const navigate = useNavigate();
   const contactRef = useRef(null);
+  const [projectsData, setProjectsData] = useState(projectsDataLocal);
+
+  useEffect(() => {
+    getProjects().then(setProjectsData);
+  }, []);
 
   const scrollToContact = () => {
     contactRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  // Form State
+  const [formState, setFormState] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [status, setStatus] = useState("idle"); // idle, submitting, success, error
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormState((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const encode = (data) => {
+    return Object.keys(data)
+      .map(
+        (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]),
+      )
+      .join("&");
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setStatus("submitting");
+
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({ "form-name": "contact", ...formState }),
+    })
+      .then(() => {
+        setStatus("success");
+        setFormState({ name: "", email: "", message: "" });
+        setTimeout(() => setStatus("idle"), 5000);
+      })
+      .catch((error) => {
+        console.error(error);
+        setStatus("error");
+      });
   };
 
   const heroProjects = projectsData.filter((p) => p.isHero);
@@ -103,7 +150,7 @@ const Home = () => {
 
       {/* Section 1: Hero */}
       <ParallaxSection index={0} total={sectionsCount}>
-        <div className="max-w-5xl px-6 text-center glass-theme rounded-[32px] md:rounded-[60px] p-6 md:p-20 relative">
+        <div className="max-w-5xl px-6 text-center glass-theme rounded-[32px] md:rounded-[60px] p-6 md:p-20 relative"  style={{backgroundColor: "rgba(15, 15, 16, 0.7)", opacity: 1}}>
           <motion.div
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -169,10 +216,10 @@ const Home = () => {
         </div>
       </ParallaxSection>
 
-      {/* Section 2: Strategy */}
+      {/* Section 2: Strategy & Contact Form */}
       <ParallaxSection index={1} total={sectionsCount}>
         <div ref={contactRef} className="container mx-auto px-6">
-          <div className="glass-theme rounded-[32px] md:rounded-[60px] p-6 md:p-20 relative overflow-hidden group">
+          <div className="glass-theme rounded-[32px] md:rounded-[60px] p-6 md:p-20 relative overflow-hidden group" style={{backgroundColor: "rgba(15, 15, 16, 0.7)", opacity: 1}}>
             {/* Subtle glow effect */}
             <div className="absolute -top-24 -right-24 w-[500px] h-[500px] bg-adaptiv-orange/5 blur-[120px] rounded-full group-hover:bg-adaptiv-orange/10 transition-colors duration-1000"></div>
 
@@ -242,7 +289,7 @@ const Home = () => {
                   initial={{ opacity: 0, x: 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  className="rounded-[32px] md:rounded-[60px] glass-theme p-6 md:p-14 relative group overflow-hidden"
+                  className="rounded-[32px] md:rounded-[60px] glass-theme p-6 md:p-14 relative group overflow-hidden "
                 >
                   <div className="absolute -bottom-24 -left-24 w-[300px] h-[300px] bg-adaptiv-orange/5 blur-[80px] rounded-full group-hover:bg-adaptiv-orange/10 transition-all duration-1000"></div>
 
@@ -264,15 +311,31 @@ const Home = () => {
                     </p>
 
                     <form
+                      name="contact"
+                      method="POST"
+                      data-netlify="true"
+                      data-netlify-honeypot="bot-field"
                       className="space-y-6"
-                      onSubmit={(e) => e.preventDefault()}
+                      onSubmit={handleSubmit}
                     >
+                      <input type="hidden" name="form-name" value="contact" />
+                      <p className="hidden">
+                        <label>
+                          Don't fill this out if you're human:{" "}
+                          <input name="bot-field" />
+                        </label>
+                      </p>
+
                       <div className="space-y-2">
                         <label className="text-[10px] font-bold text-white uppercase tracking-[0.2em] ml-2">
                           Identification
                         </label>
                         <input
                           type="text"
+                          name="name"
+                          value={formState.name}
+                          onChange={handleInputChange}
+                          required
                           placeholder="Professional Name"
                           className="w-full bg-white/5 border border-white/20 rounded-2xl px-6 py-4 text-white placeholder:text-white/40 focus:border-adaptiv-orange/50 focus:bg-white/[0.08] transition-all outline-none font-poppins"
                         />
@@ -284,6 +347,10 @@ const Home = () => {
                         </label>
                         <input
                           type="email"
+                          name="email"
+                          value={formState.email}
+                          onChange={handleInputChange}
+                          required
                           placeholder="email@organization.com"
                           className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/40 focus:border-adaptiv-orange/50 focus:bg-white/[0.08] transition-all outline-none font-poppins"
                         />
@@ -294,6 +361,10 @@ const Home = () => {
                           Mission Parameters
                         </label>
                         <textarea
+                          name="message"
+                          value={formState.message}
+                          onChange={handleInputChange}
+                          required
                           rows="4"
                           placeholder="Describe the architectural challenge..."
                           className="w-full bg-white/5 border border-white/20 rounded-2xl px-6 py-4 text-white placeholder:text-white/40 focus:border-adaptiv-orange/50 focus:bg-white/[0.08] transition-all outline-none font-poppins resize-none"
@@ -303,10 +374,32 @@ const Home = () => {
                       <motion.button
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
-                        className="w-full py-4 md:py-5 rounded-xl md:rounded-2xl bg-adaptiv-orange text-white font-bold text-lg hover:shadow-2xl hover:shadow-adaptiv-orange/30 transition-all flex items-center justify-center gap-3 mt-4"
+                        disabled={status === "submitting"}
+                        className={`w-full py-4 md:py-5 rounded-xl md:rounded-2xl bg-adaptiv-orange text-white font-bold text-lg hover:shadow-2xl hover:shadow-adaptiv-orange/30 transition-all flex items-center justify-center gap-3 mt-4 ${
+                          status === "submitting"
+                            ? "opacity-70 cursor-not-allowed"
+                            : ""
+                        }`}
                       >
-                        Deploy Brief <Rocket size={20} />
+                        {status === "idle" && (
+                          <>
+                            Deploy Brief <Rocket size={20} />
+                          </>
+                        )}
+                        {status === "submitting" && "Transmitting..."}
+                        {status === "success" && "Transmission Successful!"}
+                        {status === "error" && "Link Fault. Retrying..."}
                       </motion.button>
+
+                      {status === "success" && (
+                        <motion.p
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          className="text-adaptiv-orange text-center font-bold text-sm mt-4"
+                        >
+                          Protocol accepted. I'll get back to you shortly.
+                        </motion.p>
+                      )}
                     </form>
                   </div>
                 </motion.div>
@@ -316,9 +409,9 @@ const Home = () => {
         </div>
       </ParallaxSection>
 
-      {/* Section 3: Projects Grid */}
+      {/* Section 3: Github Projects Grid */}
       <ParallaxSection index={2} total={sectionsCount}>
-        <div className="container mx-auto px-6 rounded-[32px] md:rounded-[60px] p-6 md:p-20 relative glass-theme">
+        <div className="container mx-auto px-6 rounded-[32px] md:rounded-[60px] p-6 md:p-20 relative glass-theme" style={{backgroundColor: "rgba(15, 15, 16, 0.7)", opacity: 1}}>
           <div className="flex flex-col md:flex-row justify-between items-end gap-10 mb-16">
             <div className="max-w-3xl">
               <h3 className="text-3xl sm:text-4xl md:text-6xl font-comfortaa font-bold text-white mb-6">
@@ -351,18 +444,30 @@ const Home = () => {
             </button>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 pb-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {heroProjects.map((project) => (
               <motion.div
                 key={project.id}
                 whileHover={{ y: -15, scale: 1.02 }}
-                className="group glass-theme glass-theme-hover rounded-[24px] md:rounded-[40px] p-6 md:p-10 flex flex-col h-full transition-all duration-500 shadow-2xl"
+                className="group glass-card rounded-[24px] md:rounded-[40px] p-6 md:p-10 flex flex-col h-full transition-all duration-500 shadow-2xl"
               >
-                <div className="flex justify-between items-start mb-10">
-                  <span className="px-5 py-2 rounded-xl bg-adaptiv-orange/10 text-adaptiv-orange text-sm font-bold uppercase tracking-[0.2em]">
-                    {project.category}
-                  </span>
-                  <div className="flex gap-4">
+                <div className="flex flex-wrap flex-col md:flex-row justify-between items-start gap-4 mb-2">
+                  <div className="flex-1 flex flex-col gap-2 min-w-0">
+                    <span className="pe-5 py-2 rounded-xl bg-adaptiv-orange/10 text-adaptiv-orange text-[10px] font-bold uppercase tracking-[0.2em] whitespace-nowrap">
+                      {project.category}
+                    </span>
+                    <h4 className="text-2xl md:text-3xl font-comfortaa font-bold text-white mb-2 group-hover:text-adaptiv-orange transition-colors" 
+                    style={{fontSize:"150%"}}>
+                      {project.title}
+                    </h4>
+
+                    {project.subtitle && (
+                      <p className="text-xs md:text-sm font-medium text-gray-400 italic opacity-80 uppercase tracking-widest">
+                        {project.subtitle}
+                      </p>
+                    )}
+                  </div>
+                  <div className="flex flex-wrap gap-3 justify-end w-full md:w-auto flex-shrink-0">
                     <a
                       href={project.githubUrl}
                       target="_blank"
@@ -382,9 +487,6 @@ const Home = () => {
                   </div>
                 </div>
 
-                <h4 className="text-2xl md:text-3xl font-comfortaa font-bold text-white mb-6 group-hover:text-adaptiv-orange transition-colors">
-                  {project.title}
-                </h4>
 
                 <p className="text-gray-400 font-poppins line-clamp-3 mb-10 text-base md:text-lg flex-grow">
                   {project.description}
@@ -394,7 +496,7 @@ const Home = () => {
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-4 py-1.5 rounded-lg bg-white/5 border border-white/5 text-[10px] text-gray-500 font-bold uppercase tracking-widest"
+                      className="px-4 py-1.5 rounded-lg bg-adaptiv-orange/5 border border-adaptiv-orange/10 text-[10px] text-adaptiv-orange font-bold uppercase tracking-widest"
                     >
                       {tag}
                     </span>
