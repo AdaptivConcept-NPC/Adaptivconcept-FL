@@ -16,7 +16,10 @@ const BackgroundWallpaper = ({ imageUrl }) => {
           backgroundRepeat: 'no-repeat',
           filter: themeColor.washType === 'none' 
             ? 'none' 
-            : `${themeColor.washType !== 'none' ? 'grayscale(100%)' : ''} brightness(0.6) contrast(1.1)`,
+            : `${themeColor.washType !== 'none' ? 'grayscale(100%)' : ''} brightness(${
+                themeColor.washType === 'light' ? '0.9' : 
+                themeColor.washType === 'coal' ? '0.45' : '0.6'
+              }) contrast(1.1)`,
         }}
 
 
