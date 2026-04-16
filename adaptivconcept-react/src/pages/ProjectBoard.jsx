@@ -41,13 +41,13 @@ const ProjectBoard = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       className="container mx-auto px-6 py-10 md:py-20 min-h-screen rounded-[32px] md:rounded-[60px] glass-theme"
-      style={{ marginTop: "200px", backgroundColor: "rgba(15, 15, 16, 0.7)", opacity: 1}}
+      style={{ marginTop: "200px", backgroundColor: "var(--glass-bg)", opacity: 1}}
     >
       <div className="text-center mb-16">
-        <h1 className="text-3xl sm:text-4xl md:text-6xl font-comfortaa font-bold text-white mb-6">
+        <h1 className="text-3xl sm:text-4xl md:text-6xl font-comfortaa font-bold text-high mb-6">
           Project <span className="text-adaptiv-orange">Board</span>
         </h1>
-        <p className="text-lg md:text-xl text-gray-400 font-poppins max-w-2xl mx-auto">
+        <p className="text-lg md:text-xl text-low font-poppins max-w-2xl mx-auto">
           A segmented showcase of technical explorations, business solutions,
           and research.
         </p>
@@ -58,12 +58,12 @@ const ProjectBoard = () => {
         <div className="glass-theme rounded-[24px] md:rounded-[32px] p-3 md:p-4 flex flex-col lg:flex-row items-center gap-4 md:gap-6 shadow-2xl">
           <div className="w-full lg:flex-grow relative group">
             <Search
-              className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within:text-adaptiv-orange transition-colors"
+              className="absolute left-5 top-1/2 -translate-y-1/2 text-low group-focus-within:text-adaptiv-orange transition-colors"
               size={20}
             />
             <input
               type="text"
-              className="w-full bg-black/20 border border-white/5 text-white pl-14 pr-6 py-4 rounded-2xl focus:outline-none focus:border-adaptiv-orange/40 transition-all font-poppins placeholder:text-gray-600"
+              className="w-full bg-black/20 border border-theme text-high pl-14 pr-6 py-4 rounded-2xl focus:outline-none focus:border-adaptiv-orange/40 transition-all font-poppins placeholder:text-low/60"
               placeholder="Search by tech stack or name..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
@@ -77,7 +77,7 @@ const ProjectBoard = () => {
                 className={`px-5 py-2.5 rounded-xl text-sm font-bold transition-all ${
                   activeCategory === cat
                     ? "bg-adaptiv-orange text-white shadow-lg shadow-adaptiv-orange/20"
-                    : "glass-theme text-gray-400 hover:text-white transition-all"
+                    : "glass-theme text-low hover:text-high transition-all"
                 }`}
               >
                 {cat}
@@ -109,7 +109,7 @@ const ProjectBoard = () => {
                       )}
                       {project.category === "Fullstack" && <Cpu size={20} />}
                     </div>
-                    <span className="text-xs uppercase font-bold tracking-[0.2em] text-gray-500">
+                    <span className="text-xs uppercase font-bold tracking-[0.2em] text-low">
                       {project.category}
                     </span>
                   </div>
@@ -120,10 +120,10 @@ const ProjectBoard = () => {
                   )}
                 </div>
 
-                <h3 className="text-2xl font-comfortaa font-bold text-white mb-3 group-hover:text-adaptiv-orange transition-colors">
+                <h3 className="text-2xl font-comfortaa font-bold text-high mb-3 group-hover:text-adaptiv-orange transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-gray-400 text-sm leading-relaxed mb-8 flex-grow">
+                <p className="text-low text-sm leading-relaxed mb-8 flex-grow">
                   {project.description}
                 </p>
 
@@ -131,7 +131,7 @@ const ProjectBoard = () => {
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-3 py-1 rounded-lg bg-white/5 border border-white/5 text-[11px] text-gray-500 font-medium"
+                      className="px-3 py-1 rounded-lg bg-white/5 border border-theme text-[11px] text-low font-medium"
                     >
                       {tag}
                     </span>
@@ -140,7 +140,7 @@ const ProjectBoard = () => {
 
                 <Link
                   to={`/projects/${project.id}`}
-                  className="w-full py-3.5 rounded-xl border border-white/10 text-white font-bold flex items-center justify-center gap-2 group-hover:bg-adaptiv-orange group-hover:border-adaptiv-orange transition-all"
+                  className="w-full py-3.5 rounded-xl border border-theme text-high font-bold flex items-center justify-center gap-2 group-hover:bg-adaptiv-orange group-hover:border-adaptiv-orange transition-all"
                 >
                   Deep Dive <ChevronRight size={16} />
                 </Link>

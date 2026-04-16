@@ -159,7 +159,7 @@ const Home = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.8 }}
           >
-            <span className="inline-flex items-center gap-2 px-6 py-2 rounded-full glass-theme text-white text-sm font-vietnam mb-10">
+            <span className="inline-flex items-center gap-2 px-6 py-2 rounded-full glass-theme text-high text-sm font-vietnam mb-10">
               <span
                 className="w-2.5 h-2.5 rounded-full animate-pulse"
                 style={{ backgroundColor: themeColor.value }}
@@ -213,7 +213,7 @@ const Home = () => {
               </button>
               <button
                 onClick={() => navigate("/projects")}
-                className="px-6 py-4 md:px-10 md:py-5 rounded-xl md:rounded-2xl border-2 border-white/10 text-white text-base md:text-lg font-bold hover:bg-white/5 hover:border-white/20 transition-all backdrop-blur-sm"
+                className="px-6 py-4 md:px-10 md:py-5 rounded-xl md:rounded-2xl border-2 border-theme text-high text-base md:text-lg font-bold hover:bg-white/5 hover:border-white/20 transition-all backdrop-blur-sm"
               >
                 Project Catalog
               </button>
@@ -249,7 +249,7 @@ const Home = () => {
                     Transformation
                   </span>
                 </h2>
-                <p className="text-base md:text-lg text-gray-400 font-poppins mb-16 leading-relaxed max-w-xl">
+                <p className="text-base md:text-lg text-low font-poppins mb-16 leading-relaxed max-w-xl">
                   Leveraging deep expertise in public sector innovation and AI
                   research to help forward-thinking teams skip the prototype
                   phase and build production-ready systems.
@@ -281,10 +281,10 @@ const Home = () => {
                         {service.icon}
                       </div>
                       <div>
-                        <h6 className="text-2xl font-bold text-white mb-2 tracking-tight">
+                        <h6 className="text-2xl font-bold text-high mb-2 tracking-tight">
                           {service.title}
                         </h6>
-                        <p className="text-gray-400 font-poppins">
+                        <p className="text-low font-poppins">
                           {service.desc}
                         </p>
                       </div>
@@ -316,7 +316,7 @@ const Home = () => {
                       Initiate{" "}
                       <span style={{ color: themeColor.value }}>Collaboration</span>
                     </h3>
-                    <p className="text-gray-400 text-sm font-poppins mb-10">
+                    <p className="text-low text-sm font-poppins mb-10">
                       Ready to engineer the future? Drop a brief below.
                     </p>
 
@@ -337,7 +337,7 @@ const Home = () => {
                       </p>
 
                       <div className="space-y-2">
-                        <label className="text-[10px] font-bold text-white uppercase tracking-[0.2em] ml-2">
+                        <label className="text-[10px] font-bold text-high uppercase tracking-[0.2em] ml-2">
                           Identification
                         </label>
                         <input
@@ -347,12 +347,12 @@ const Home = () => {
                           onChange={handleInputChange}
                           required
                           placeholder="Professional Name"
-                          className="w-full bg-white/5 border border-white/20 rounded-2xl px-6 py-4 text-white placeholder:text-white/40 focus:border-adaptiv-orange/50 focus:bg-white/[0.08] transition-all outline-none font-poppins"
+                          className="w-full bg-white/5 border border-theme rounded-2xl px-6 py-4 text-high placeholder:text-high/40 focus:border-adaptiv-orange/50 focus:bg-white/[0.08] transition-all outline-none font-poppins"
                         />
                       </div>
 
                       <div className="space-y-2">
-                        <label className="text-[10px] font-bold text-white uppercase tracking-[0.2em] ml-2">
+                        <label className="text-[10px] font-bold text-high uppercase tracking-[0.2em] ml-2">
                           Communication Channel
                         </label>
                         <input
@@ -362,12 +362,12 @@ const Home = () => {
                           onChange={handleInputChange}
                           required
                           placeholder="email@organization.com"
-                          className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/40 focus:border-adaptiv-orange/50 focus:bg-white/[0.08] transition-all outline-none font-poppins"
+                          className="w-full bg-white/5 border border-theme rounded-2xl px-6 py-4 text-high placeholder:text-high/40 focus:border-adaptiv-orange/50 focus:bg-white/[0.08] transition-all outline-none font-poppins"
                         />
                       </div>
 
                       <div className="space-y-2">
-                        <label className="text-[10px] font-bold text-white uppercase tracking-[0.2em] ml-2">
+                        <label className="text-[10px] font-bold text-high uppercase tracking-[0.2em] ml-2">
                           Mission Parameters
                         </label>
                         <textarea
@@ -377,7 +377,7 @@ const Home = () => {
                           required
                           rows="4"
                           placeholder="Describe the architectural challenge..."
-                          className="w-full bg-white/5 border border-white/20 rounded-2xl px-6 py-4 text-white placeholder:text-white/40 focus:border-adaptiv-orange/50 focus:bg-white/[0.08] transition-all outline-none font-poppins resize-none"
+                          className="w-full bg-white/5 border border-theme rounded-2xl px-6 py-4 text-high placeholder:text-high/40 focus:border-adaptiv-orange/50 focus:bg-white/[0.08] transition-all outline-none font-poppins resize-none"
                         ></textarea>
                       </div>
 
@@ -427,7 +427,7 @@ const Home = () => {
         >
           <div className="flex flex-col md:flex-row justify-between items-end gap-10 mb-16">
             <div className="max-w-3xl">
-              <h3 className="text-3xl sm:text-4xl md:text-6xl font-comfortaa font-bold text-white mb-6">
+              <h3 className="text-3xl sm:text-4xl md:text-6xl font-comfortaa font-bold text-high mb-6">
                 <div
                   className="text-adaptiv-orange"
                   style={{
@@ -441,7 +441,7 @@ const Home = () => {
                 </div>{" "}
                 Masterpieces
               </h3>
-              <p className="text-lg md:text-2xl text-gray-400 font-comfortaa">
+              <p className="text-lg md:text-2xl text-low font-comfortaa">
                 Selected engineering feats and design systems.
               </p>
             </div>
@@ -469,13 +469,13 @@ const Home = () => {
                     <span className="pe-5 py-2 rounded-xl bg-adaptiv-orange/10 text-adaptiv-orange text-[10px] font-bold uppercase tracking-[0.2em] whitespace-nowrap">
                       {project.category}
                     </span>
-                    <h4 className="text-2xl md:text-3xl font-comfortaa font-bold text-white mb-2 group-hover:text-adaptiv-orange transition-colors" 
+                    <h4 className="text-2xl md:text-3xl font-comfortaa font-bold text-high mb-2 group-hover:text-adaptiv-orange transition-colors" 
                     style={{fontSize:"150%"}}>
                       {project.title}
                     </h4>
 
                     {project.subtitle && (
-                      <p className="text-xs md:text-sm font-medium text-gray-400 italic opacity-80 uppercase tracking-widest">
+                      <p className="text-xs md:text-sm font-medium text-low italic opacity-80 uppercase tracking-widest">
                         {project.subtitle}
                       </p>
                     )}
@@ -501,7 +501,7 @@ const Home = () => {
                 </div>
 
 
-                <p className="text-gray-400 font-poppins line-clamp-3 mb-10 text-base md:text-lg flex-grow">
+                <p className="text-low font-poppins line-clamp-3 mb-10 text-base md:text-lg flex-grow">
                   {project.description}
                 </p>
 
@@ -517,11 +517,11 @@ const Home = () => {
                 </div>
 
                 <button
-                  onClick={() => navigate(`/projects/${project.id}`)}
-                  className="w-full py-4 rounded-2xl border-2 border-white/10 text-white font-bold text-lg hover:bg-adaptiv-orange hover:border-adaptiv-orange transition-all duration-300 group-hover:shadow-lg group-hover:shadow-adaptiv-orange/20"
-                >
-                  Case Study Details
-                </button>
+                   onClick={() => navigate(`/projects/${project.id}`)}
+                   className="w-full py-4 rounded-2xl border-2 border-theme text-high font-bold text-lg hover:bg-adaptiv-orange hover:border-adaptiv-orange transition-all duration-300 group-hover:shadow-lg group-hover:shadow-adaptiv-orange/20"
+                 >
+                   Case Study Details
+                 </button>
               </motion.div>
             ))}
           </div>

@@ -51,10 +51,10 @@ const OpenResume = () => {
     return (
       <div className="space-y-3 mb-10">
         <div className="flex justify-between items-end text-xs mb-2">
-          <span className="text-gray-400 font-bold tracking-widest uppercase">Ecosystem Distribution</span>
+          <span className="text-low font-bold tracking-widest uppercase">Ecosystem Distribution</span>
           <div className="text-right">
-            <span className="text-white block font-bold">{githubStats.overview.total} Total Repos</span>
-            <span className="text-[10px] text-gray-500 uppercase">Snapshot: {new Date(githubStats.lastUpdated).toLocaleDateString()}</span>
+            <span className="text-high block font-bold">{githubStats.overview.total} Total Repos</span>
+            <span className="text-[10px] text-low opacity-60 uppercase">Snapshot: {new Date(githubStats.lastUpdated).toLocaleDateString()}</span>
           </div>
         </div>
         <div className="h-4 w-full bg-white/5 rounded-full overflow-hidden flex shadow-inner">
@@ -81,7 +81,7 @@ const OpenResume = () => {
             return (
               <div key={id} className="flex items-center gap-1.5">
                 <div className="w-2 h-2 rounded-full" style={{ backgroundColor: info.color }} />
-                <span className="text-[10px] text-gray-400 font-medium">{info.name.split(' ')[0]}</span>
+                <span className="text-[10px] text-low font-medium">{info.name.split(' ')[0]}</span>
               </div>
             );
           })}
@@ -96,7 +96,7 @@ const OpenResume = () => {
       animate="visible"
       variants={containerVariants}
       className="container mx-auto px-6 py-20 min-h-screen rounded-[32px] md:rounded-[60px] glass-theme"
-      style={{ backgroundColor: "rgba(15, 15, 16, 0.7)", marginTop: "120px" }}
+      style={{ backgroundColor: "var(--glass-bg)", marginTop: "120px" }}
     >
       <div className="max-w-5xl mx-auto space-y-16">
         
@@ -107,37 +107,37 @@ const OpenResume = () => {
             <img src="/media/my-profile-pic-linkedin.jpg" alt="LinkedIn Profile Picture - Thabang Mposula" className="w-48 h-48 rounded-full" />
           </div>
           <h1 
-            className="text-5xl md:text-7xl font-bold text-white tracking-tighter"
+            className="text-5xl md:text-7xl font-bold text-high tracking-tighter"
             style={{ fontFamily: activeFontFamily }}
           >
             Thabang <span style={{ color: themeColor.value }}>Mposula</span>
           </h1>
-          <p className="text-xl md:text-3xl text-gray-400 font-comfortaa">
+          <p className="text-xl md:text-3xl text-low font-comfortaa">
             Senior ICT Systems Developer & Digital Architect
           </p>
-          <div className="flex flex-wrap justify-center gap-4 text-gray-400 pt-4">
-            <a href="mailto:thabang.mposula@outlook.com" className="flex items-center gap-2 hover:text-white transition-colors">
+          <div className="flex flex-wrap justify-center gap-4 text-low pt-4">
+            <a href="mailto:thabang.mposula@outlook.com" className="flex items-center gap-2 hover:text-high transition-colors">
               <Mail size={18} /> thabang.mposula@outlook.com
             </a>
-            <a href="https://github.com/iarxii" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-white transition-colors">
+            <a href="https://github.com/iarxii" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-high transition-colors">
               <i className="bi bi-github text-lg"></i> github.com/iarxii
             </a>
-            <a href="https://www.linkedin.com/in/thabang-mposula-iarxii/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-white transition-colors">
+            <a href="https://www.linkedin.com/in/thabang-mposula-iarxii/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-high transition-colors">
               <i className="bi bi-linkedin text-lg"></i> LinkedIn Profile
             </a>
           </div>
         </motion.div>
 
         {/* Professional Objective */}
-        <motion.div variants={itemVariants} className="bg-white/[0.03] border border-white/10 rounded-[32px] p-8 md:p-12 relative overflow-hidden group">
+        <motion.div variants={itemVariants} className="glass-theme border border-theme rounded-[32px] p-8 md:p-12 relative overflow-hidden group">
           <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
             <Rocket size={120} style={{ color: themeColor.value }} />
           </div>
-          <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+          <h2 className="text-2xl font-bold text-high mb-6 flex items-center gap-3">
             <Rocket size={24} style={{ color: themeColor.value }} /> Professional Objective
           </h2>
-          <p className="text-lg md:text-xl text-gray-300 leading-relaxed font-poppins">
-            Dedicated and result-oriented developer seeking to enhance professional skills and capabilities within an innovative Information Technology organization. Committed to leveraging technical expertise in AI engineering, digital architecture, and data analysis to solve complex challenges and drive organizational growth.
+          <p className="text-lg md:text-xl text-mid leading-relaxed font-poppins">
+            Dedicated and result-oriented developer seeking to enhance professional skills and capabilities within an Information Technology organization. Committed to leveraging technical expertise in AI engineering, digital architecture, and data analysis to solve complex challenges and drive organizational growth.
           </p>
         </motion.div>
 
@@ -145,10 +145,10 @@ const OpenResume = () => {
           {/* Experience Section */}
           <div className="lg:col-span-2 space-y-8">
             <motion.div variants={itemVariants}>
-              <h2 className="text-3xl font-bold text-white mb-8 flex items-center gap-3">
+              <h2 className="text-3xl font-bold text-high mb-8 flex items-center gap-3">
                 <Briefcase size={28} style={{ color: themeColor.value }} /> Professional Journey
               </h2>
-              <div className="space-y-8 relative before:absolute before:left-[17px] before:top-2 before:bottom-2 before:w-0.5 before:bg-white/10">
+              <div className="space-y-8 relative before:absolute before:left-[17px] before:top-2 before:bottom-2 before:w-0.5 before:bg-theme before:opacity-10">
                 
                 {[
                   {
@@ -192,12 +192,12 @@ const OpenResume = () => {
                         style={{ backgroundColor: idx === 0 ? themeColor.value : "rgba(255,255,255,0.4)" }}
                       ></div>
                     </div>
-                    <div className="bg-white/[0.02] border border-white/5 p-6 rounded-2xl group-hover:bg-white/[0.05] transition-all">
-                      <h3 className="text-xl font-bold text-white">{exp.title}</h3>
+                    <div className="bg-white/[0.02] border border-theme p-6 rounded-2xl group-hover:bg-white/[0.05] transition-all">
+                      <h3 className="text-xl font-bold text-high">{exp.title}</h3>
                       <p className="text-sm font-semibold opacity-70 mb-4" style={{ color: themeColor.value }}>{exp.org} | {exp.period}</p>
                       <ul className="space-y-2">
                         {exp.points.map((p, i) => (
-                          <li key={i} className="text-gray-400 text-sm flex items-start gap-2">
+                          <li key={i} className="text-low text-sm flex items-start gap-2">
                             <ChevronRight size={14} className="mt-1 flex-shrink-0" style={{ color: themeColor.value }} />
                             {p}
                           </li>
@@ -214,7 +214,7 @@ const OpenResume = () => {
           <div className="space-y-12">
             {/* Skills */}
             <motion.div variants={itemVariants} className="space-y-6">
-              <h2 className="text-2xl font-bold text-white flex items-center gap-3">
+              <h2 className="text-2xl font-bold text-high flex items-center gap-3">
                 <Code2 size={24} style={{ color: themeColor.value }} /> Inventory Stats
               </h2>
               
@@ -231,12 +231,12 @@ const OpenResume = () => {
                     <div key={skill.name} className="space-y-2">
                       <div className="flex justify-between items-end text-sm">
                         <div className="flex flex-col">
-                          <span className="text-gray-300 font-bold">{skill.name}</span>
-                          <span className="text-[10px] text-gray-500 uppercase">
+                          <span className="text-mid font-bold">{skill.name}</span>
+                          <span className="text-[10px] text-low opacity-60 uppercase">
                             {sourceCount} Source • {stat.forkCount} Forks
                           </span>
                         </div>
-                        <span className="text-white font-black text-lg" style={{ color: themeColor.value }}>
+                        <span className="text-high font-black text-lg" style={{ color: themeColor.value }}>
                           {stat.repoCount}
                         </span>
                       </div>
@@ -258,7 +258,7 @@ const OpenResume = () => {
 
             {/* Achievements */}
             <motion.div variants={itemVariants} className="space-y-6 pt-6">
-              <h2 className="text-2xl font-bold text-white flex items-center gap-3">
+              <h2 className="text-2xl font-bold text-high flex items-center gap-3">
                 <Award size={24} style={{ color: themeColor.value }} /> Distinctions
               </h2>
               <div className="space-y-4">
@@ -266,9 +266,9 @@ const OpenResume = () => {
                   "Innovator of the Year (Premiers Gold Award)",
                   "MEC's Special Award (Khanyisa Awards)"
                 ].map((award, i) => (
-                  <div key={i} className="p-4 rounded-xl bg-white/[0.03] border border-white/5 flex items-center gap-4 group hover:bg-white/[0.08] transition-all">
+                  <div key={i} className="p-4 rounded-xl bg-blend-soft-light border border-theme flex items-center gap-4 group hover:bg-white/[0.08] transition-all">
                     <Award size={20} className="flex-shrink-0" style={{ color: themeColor.value }} />
-                    <span className="text-sm text-gray-400 leading-tight group-hover:text-white transition-colors">{award}</span>
+                    <span className="text-sm text-low leading-tight group-hover:text-high transition-colors">{award}</span>
                   </div>
                 ))}
               </div>
@@ -276,7 +276,7 @@ const OpenResume = () => {
 
             {/* Education */}
             <motion.div variants={itemVariants} className="space-y-6 pt-6">
-              <h2 className="text-2xl font-bold text-white flex items-center gap-3">
+              <h2 className="text-2xl font-bold text-high flex items-center gap-3">
                 <BookOpen size={24} style={{ color: themeColor.value }} /> Credentials
               </h2>
               <div className="space-y-4">
@@ -285,9 +285,9 @@ const OpenResume = () => {
                   { name: "NC(V) Information Technology", year: "2015" },
                   { name: "Matric / Grade 12", year: "2012" }
                 ].map((edu, i) => (
-                  <div key={i} className="pl-4 border-l-2 border-white/10 py-1">
-                    <p className="text-sm font-bold text-white">{edu.name}</p>
-                    <p className="text-[10px] font-bold uppercase tracking-wider opacity-40">{edu.year}</p>
+                  <div key={i} className="pl-4 border-l-2 border-theme opacity-30 py-1">
+                    <p className="text-sm font-bold text-high">{edu.name}</p>
+                    <p className="text-[10px] font-bold uppercase tracking-wider text-low">{edu.year}</p>
                   </div>
                 ))}
               </div>
@@ -300,7 +300,7 @@ const OpenResume = () => {
           variants={itemVariants}
           className="pt-10 flex flex-col items-center gap-6"
         >
-          <div className="h-px w-24 bg-white/10"></div>
+          <div className="h-px w-24 bg-theme opacity-10"></div>
           <button 
             className="group flex items-center gap-3 px-10 py-5 rounded-2xl bg-white text-black font-bold text-xl hover:scale-105 transition-all shadow-2xl"
             style={{ boxShadow: `0 15px 40px -10px ${themeColor.value}80` }}
@@ -308,7 +308,7 @@ const OpenResume = () => {
           >
             <Download size={24} /> Request full CV (PDF Version)
           </button>
-          <p className="text-gray-500 text-sm font-poppins">References available upon request</p>
+          <p className="text-low text-sm font-poppins">References available upon request</p>
         </motion.div>
 
       </div>

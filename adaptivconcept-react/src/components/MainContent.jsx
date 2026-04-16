@@ -50,7 +50,7 @@ const MainContent = () => {
                 </button>
               </div>
 
-              <hr className="text-white" />
+              <hr className="border-theme opacity-20" />
 
               <p className="be-vietnam-pro-font mt-4 fs-5">
                 We will be offering services on these three major platforms:

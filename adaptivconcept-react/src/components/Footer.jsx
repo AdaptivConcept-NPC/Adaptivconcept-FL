@@ -102,7 +102,7 @@ const Footer = () => {
   const defaultMessage = "Professional integrity in every line of code.";
 
   return (
-    <footer className="py-12 mt-20 relative z-10 bg-black/80 border-t border-white/5">
+    <footer className="py-12 mt-20 relative z-10 border-t border-theme" style={{ backgroundColor: 'var(--bg)', opacity: 0.9 }}>
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
           {/* Brand & LinkedIn Card */}
@@ -117,7 +117,7 @@ const Footer = () => {
                       className="h-20 group-hover:scale-110 transition-transform duration-300"
                       alt="adaptivconcept fl logo"
                     />
-                    <h5 className="text-lg md:text-xl font-comfortaa font-bold text-white tracking-tight relative">
+                    <h5 className="text-lg md:text-xl font-comfortaa font-bold text-high tracking-tight relative">
                       AdaptivConcept
                       <div
                         style={{
@@ -144,7 +144,8 @@ const Footer = () => {
                 <div className="mb-5">
                   <motion.div
                     whileHover={{ y: -5, scale: 1.01 }}
-                    className="group relative flex flex-col sm:flex-row items-center gap-6 p-4 md:p-6 rounded-2xl md:rounded-[24px] bg-white/[0.02] border border-white/5 backdrop-blur-3xl hover:border-[#0077b5]/50 transition-all duration-500 max-w-lg w-full overflow-hidden"
+                    className="group relative flex flex-col sm:flex-row items-center gap-6 p-4 md:p-6 rounded-2xl md:rounded-[24px] glass-theme border border-theme backdrop-blur-3xl hover:border-[#0077b5]/50 transition-all duration-500 max-w-lg w-full overflow-hidden"
+                    style={{ backgroundColor: 'var(--glass-bg)' }}
                   >
                     {/* LinkedIn-branded accent */}
                     <div className="absolute top-0 right-0 w-32 h-32 bg-[#0077b5]/10 blur-[60px] -mr-10 -mt-10 group-hover:bg-[#0077b5]/20 transition-all duration-700"></div>
@@ -194,7 +195,8 @@ const Footer = () => {
                 <div className="mb-5">
                   <motion.div
                     whileHover={{ y: -5, scale: 1.01 }}
-                    className="group relative flex flex-col sm:flex-row items-center gap-6 p-4 md:p-6 rounded-2xl md:rounded-[24px] bg-white/[0.02] border border-white/5 backdrop-blur-3xl hover:border-[#8b949e]/50 transition-all duration-500 max-w-lg w-full overflow-hidden mb-5"
+                    className="group relative flex flex-col sm:flex-row items-center gap-6 p-4 md:p-6 rounded-2xl md:rounded-[24px] glass-theme border border-theme backdrop-blur-3xl hover:border-[#8b949e]/50 transition-all duration-500 max-w-lg w-full overflow-hidden mb-5"
+                    style={{ backgroundColor: 'var(--glass-bg)' }}
                   >
                     {/* Github-branded accent */}
                     <div className="absolute top-0 right-0 w-32 h-32 bg-[#f0f6fc]/5 blur-[60px] -mr-10 -mt-10 group-hover:bg-[#58a6ff]/10 transition-all duration-700"></div>
@@ -241,7 +243,7 @@ const Footer = () => {
                 </div>
 
                 {/* Copyright */}
-                <p className="text-gray-400 text-sm leading-relaxed mt-8 mx-auto md:mx-0 font-poppins font-medium opacity-80 mb-5">
+                <p className="text-low text-sm leading-relaxed mt-8 mx-auto md:mx-0 font-poppins font-medium opacity-80 mb-5">
                   Engineering high-performance solutions for technical
                   excellence. <br />
                   <span className="text-xs opacity-60">
@@ -286,14 +288,14 @@ const Footer = () => {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-adaptiv-orange hover:text-white hover:border-adaptiv-orange hover:-translate-y-1 transition-all duration-300 shadow-xl"
+                    className="w-12 h-12 rounded-2xl bg-white/5 border border-theme flex items-center justify-center text-low hover:bg-adaptiv-orange hover:text-white hover:border-adaptiv-orange hover:-translate-y-1 transition-all duration-300 shadow-xl"
                     title={social.title}
                   >
                     {social.icon}
                   </a>
                 ))}
               </div>
-              <p className="text-white text-sm font-poppins italic max-w-[280px] border-r-2 border-adaptiv-orange pr-4 py-1 transition-all duration-500">
+              <p className="text-high text-sm font-poppins italic max-w-[280px] border-r-2 border-adaptiv-orange pr-4 py-1 transition-all duration-500">
                 "
                 {hoveredPersona
                   ? personaMessages[hoveredPersona]

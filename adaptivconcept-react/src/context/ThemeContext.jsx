@@ -80,6 +80,7 @@ export const ThemeProvider = ({ children }) => {
             root.style.setProperty('--bg', '#f5f5f7');
             root.style.setProperty('--text', '#1d1d1f');
             root.style.setProperty('--text-h', '#000000');
+            root.style.setProperty('--text-dim', '#86868b');
             root.style.setProperty('--glass-bg', 'rgba(255, 255, 255, 0.7)');
             root.style.setProperty('--glass-blur', '32px');
             root.style.setProperty('--glass-border', 'rgba(0, 0, 0, 0.08)');
@@ -89,6 +90,7 @@ export const ThemeProvider = ({ children }) => {
             root.style.setProperty('--bg', '#050505');
             root.style.setProperty('--text', '#a1a1a6');
             root.style.setProperty('--text-h', '#ffffff');
+            root.style.setProperty('--text-dim', '#6b6375');
             root.style.setProperty('--glass-bg', 'rgba(18, 18, 18, 0.8)');
             root.style.setProperty('--glass-blur', '64px');
             root.style.setProperty('--glass-border', 'rgba(255, 255, 255, 0.05)');
@@ -98,6 +100,7 @@ export const ThemeProvider = ({ children }) => {
             root.style.setProperty('--bg', '#0a0a0a');
             root.style.setProperty('--text', '#f8f9fa');
             root.style.setProperty('--text-h', '#ffffff');
+            root.style.setProperty('--text-dim', '#9ca3af');
             root.style.setProperty('--glass-bg', 'rgba(15, 15, 16, 0.4)');
             root.style.setProperty('--glass-blur', '64px');
             root.style.setProperty('--glass-border', 'rgba(255, 255, 255, 0.1)');
@@ -107,6 +110,7 @@ export const ThemeProvider = ({ children }) => {
             root.style.setProperty('--bg', '#0a0a0a');
             root.style.setProperty('--text', '#f8f9fa');
             root.style.setProperty('--text-h', '#ffffff');
+            root.style.setProperty('--text-dim', 'rgba(255, 255, 255, 0.6)');
             root.style.setProperty('--glass-bg', 'rgba(255, 255, 255, 0.05)');
             root.style.setProperty('--glass-blur', '40px');
             root.style.setProperty('--glass-border', `rgba(${rgb}, 0.2)`);

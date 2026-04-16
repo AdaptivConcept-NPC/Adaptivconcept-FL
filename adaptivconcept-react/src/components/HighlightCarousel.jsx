@@ -176,7 +176,7 @@ const HighlightCarousel = ({ className = "" }) => {
       {/* Navigation Buttons - Hidden on Mobile, Desktop Only */}
       <button
         onClick={handlePrev}
-        className="hidden lg:flex absolute left-8 top-1/2 -translate-y-1/2 z-50 p-4 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-white/50 hover:text-adaptiv-orange hover:bg-white/10 hover:border-adaptiv-orange/50 transition-all duration-300 group shadow-xl"
+        className="hidden lg:flex absolute left-8 top-1/2 -translate-y-1/2 z-50 p-4 rounded-full bg-white/5 backdrop-blur-md border border-theme text-low hover:text-adaptiv-orange hover:bg-white/10 hover:border-adaptiv-orange/50 transition-all duration-300 group shadow-xl"
         aria-label="Previous slide"
       >
         <ChevronLeft
@@ -187,7 +187,7 @@ const HighlightCarousel = ({ className = "" }) => {
 
       <button
         onClick={handleNext}
-        className="hidden lg:flex absolute right-8 top-1/2 -translate-y-1/2 z-50 p-4 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-white/50 hover:text-adaptiv-orange hover:bg-white/10 hover:border-adaptiv-orange/50 transition-all duration-300 group shadow-xl"
+        className="hidden lg:flex absolute right-8 top-1/2 -translate-y-1/2 z-50 p-4 rounded-full bg-white/5 backdrop-blur-md border border-theme text-low hover:text-adaptiv-orange hover:bg-white/10 hover:border-adaptiv-orange/50 transition-all duration-300 group shadow-xl"
         aria-label="Next slide"
       >
         <ChevronRight
@@ -262,8 +262,8 @@ const HighlightCarousel = ({ className = "" }) => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.5 }}
-              className="text-white text-base md:text-lg max-w-2xl font-light italic select-none"
-              style={{ textShadow: "1px 1px 0px rgba(0,0,0,0.9)" }}
+              className="text-high text-base md:text-lg max-w-2xl font-light italic select-none"
+              style={{ textShadow: "1px 1px 0px rgba(0,0,0,0.5)" }}
             >
               {current.subtitle}
             </motion.p>

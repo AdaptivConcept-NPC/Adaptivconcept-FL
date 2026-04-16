@@ -19,7 +19,8 @@ const BlogPost = ({ post, index = 0 }) => {
       transition={{ duration: 0.4, delay: index * 0.1 }}
     >
       <div
-        className="group relative bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 md:p-8 flex flex-col h-full transition-all hover:bg-white/[0.08] hover:border-white/20 overflow-hidden"
+        className="group relative glass-theme backdrop-blur-md border border-theme rounded-2xl p-6 md:p-8 flex flex-col h-full transition-all hover:bg-white/[0.08] hover:border-white/20 overflow-hidden"
+        style={{ backgroundColor: 'var(--glass-bg)' }}
         id={`blog-post-${post.id}`}
       >
         {/* Ambient glow */}
@@ -27,7 +28,7 @@ const BlogPost = ({ post, index = 0 }) => {
 
         {/* Date Badge */}
         <div className="flex items-center justify-between mb-5">
-          <div className="flex items-center gap-2 text-gray-500 text-xs font-medium uppercase tracking-widest">
+          <div className="flex items-center gap-2 text-low text-xs font-medium uppercase tracking-widest">
             <Calendar size={14} className="text-adaptiv-orange" />
             {formattedDate}
           </div>
@@ -44,12 +45,12 @@ const BlogPost = ({ post, index = 0 }) => {
         </div>
 
         {/* Title */}
-        <h3 className="text-xl md:text-2xl font-comfortaa font-bold text-white mb-4 group-hover:text-adaptiv-orange transition-colors leading-tight">
+        <h3 className="text-xl md:text-2xl font-comfortaa font-bold text-high mb-4 group-hover:text-adaptiv-orange transition-colors leading-tight">
           {post.title}
         </h3>
 
         {/* Excerpt */}
-        <p className="text-gray-400 text-sm leading-relaxed mb-6 flex-grow line-clamp-3">
+        <p className="text-low text-sm leading-relaxed mb-6 flex-grow line-clamp-3">
           {post.excerpt}
         </p>
 
@@ -58,7 +59,7 @@ const BlogPost = ({ post, index = 0 }) => {
           {post.tags.map((tag) => (
             <span
               key={tag}
-              className="inline-flex items-center gap-1 px-3 py-1 rounded-lg bg-white/5 border border-white/5 text-[11px] text-gray-500 font-medium"
+              className="inline-flex items-center gap-1 px-3 py-1 rounded-lg bg-white/5 border border-theme text-[11px] text-low font-medium"
             >
               <Tag size={10} />
               {tag}
@@ -70,7 +71,7 @@ const BlogPost = ({ post, index = 0 }) => {
         <div className="flex gap-3 mt-auto">
           <Link
             to={`/blog/${post.id}`}
-            className="flex-grow py-3 rounded-xl border border-white/10 text-white font-bold flex items-center justify-center gap-2 group-hover:bg-adaptiv-orange group-hover:border-adaptiv-orange transition-all text-sm"
+            className="flex-grow py-3 rounded-xl border border-theme text-high font-bold flex items-center justify-center gap-2 group-hover:bg-adaptiv-orange group-hover:border-adaptiv-orange transition-all text-sm"
           >
             <BookOpen size={16} />
             Read Article
@@ -82,7 +83,7 @@ const BlogPost = ({ post, index = 0 }) => {
               href={post.linkedinUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-3 rounded-xl border border-white/10 text-white/60 hover:text-white hover:border-white/30 transition-all flex items-center justify-center"
+              className="px-4 py-3 rounded-xl border border-theme text-low hover:text-high hover:border-white/30 transition-all flex items-center justify-center"
               title="View on LinkedIn"
             >
               <ExternalLink size={16} />

@@ -26,9 +26,9 @@ const Navbar = () => {
     <nav
       className="fixed top-0 left-0 w-full z-50 transition-all duration-500 border-b px-6 py-4"
       style={{ 
-        backgroundColor: `rgba(var(--theme-color-rgb), 0.1)`,
+        backgroundColor: `var(--glass-bg)`,
         backdropFilter: 'blur(16px)',
-        borderBottomColor: `rgba(var(--theme-color-rgb), 0.2)` 
+        borderBottomColor: `var(--glass-border)` 
       }}
     >
       <div className="container-fluid mx-auto flex items-center justify-between">
@@ -76,7 +76,7 @@ const Navbar = () => {
 
         {/* Mobile Toggle */}
         <button
-          className="lg:hidden text-white p-2"
+          className="lg:hidden text-high p-2"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -88,14 +88,14 @@ const Navbar = () => {
           ${isMenuOpen ? "flex" : "hidden"} 
           lg:flex flex-col lg:flex-row items-center absolute lg:static top-full left-0 w-full lg:w-auto 
           bg-black/95 lg:bg-transparent backdrop-blur-xl lg:backdrop-blur-none 
-          p-8 lg:p-0 gap-8 lg:gap-10 border-b lg:border-none border-white/10
+          p-8 lg:p-0 gap-8 lg:gap-10 border-b lg:border-none border-theme
           no-scrollbar overflow-x-auto
         `}
         >
           <ul className="flex flex-col lg:flex-row items-center gap-8 m-0 p-0">
             <li>
               <Link
-                className={`flex items-center gap-2 text-sm font-medium transition-colors hover:text-white ${isActive("/") ? "font-bold" : ""}`}
+                className={`flex items-center gap-2 text-sm font-medium transition-colors hover:text-high ${isActive("/") ? "font-bold" : ""}`}
                 style={{ color: isActive("/") ? 'var(--text-h)' : 'var(--text)' }}
                 to="/"
                 onClick={() => setIsMenuOpen(false)}
@@ -105,7 +105,7 @@ const Navbar = () => {
             </li>
             <li>
               <Link
-                className={`flex items-center gap-2 text-sm font-medium transition-colors hover:text-white ${isActive("/projects") ? "font-bold" : ""}`}
+                className={`flex items-center gap-2 text-sm font-medium transition-colors hover:text-high ${isActive("/projects") ? "font-bold" : ""}`}
                 style={{ color: isActive("/projects") ? 'var(--text-h)' : 'var(--text)' }}
                 to="/projects"
                 onClick={() => setIsMenuOpen(false)}
@@ -116,7 +116,7 @@ const Navbar = () => {
             </li>
             <li>
               <Link
-                className={`flex items-center gap-2 text-sm font-medium transition-colors hover:text-white ${isActive("/blog") ? "font-bold" : ""}`}
+                className={`flex items-center gap-2 text-sm font-medium transition-colors hover:text-high ${isActive("/blog") ? "font-bold" : ""}`}
                 style={{ color: isActive("/blog") ? 'var(--text-h)' : 'var(--text)' }}
                 to="/blog"
                 onClick={() => setIsMenuOpen(false)}

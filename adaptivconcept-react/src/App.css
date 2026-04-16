@@ -141,7 +141,9 @@ body {
 }
 
 /* Theme Helpers */
-.text-theme { color: var(--text); }
-.text-theme-h { color: var(--text-h); }
+.text-high { color: var(--text-h); }
+.text-mid { color: var(--text); }
+.text-low { color: var(--text-dim); }
 .bg-theme { background-color: var(--bg); }
+.border-theme { border-color: var(--glass-border); }
 @tailwind utilities;

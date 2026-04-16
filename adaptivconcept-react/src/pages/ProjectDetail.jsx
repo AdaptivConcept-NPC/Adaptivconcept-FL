@@ -20,7 +20,7 @@ const ProjectDetail = () => {
   if (!project) {
     return (
       <div className="container mx-auto px-6 py-20 text-center min-h-screen flex flex-col items-center justify-center">
-        <h2 className="text-2xl md:text-4xl font-comfortaa font-bold text-white mb-6">Project Not Found</h2>
+        <h2 className="text-2xl md:text-4xl font-comfortaa font-bold text-high mb-6">Project Not Found</h2>
         <Link to="/projects" className="px-8 py-3 bg-adaptiv-orange text-white rounded-xl font-bold hover:bg-white hover:text-adaptiv-orange transition-all">
           Back to Board
         </Link>
@@ -39,7 +39,7 @@ const ProjectDetail = () => {
       {/* Back Button */}
       <button 
         onClick={() => navigate(-1)} 
-        className="group flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-12 font-medium"
+        className="group flex items-center gap-2 text-low hover:text-high transition-colors mb-12 font-medium"
       >
         <ChevronLeft size={20} className="group-hover:-translate-x-1 transition-transform" /> 
         Back to Projects
@@ -57,14 +57,14 @@ const ProjectDetail = () => {
                        project.category === 'Automation' ? 'terminal' : 'layers'}
                     </span>
                  </div>
-                 <h2 className="text-xl md:text-3xl font-comfortaa font-bold text-white/50">{project.title}</h2>
+                 <h2 className="text-xl md:text-3xl font-comfortaa font-bold text-high opacity-50">{project.title}</h2>
               </div>
             </div>
             
             <div className="absolute bottom-0 left-0 w-full p-6 md:p-8 bg-gradient-to-t from-black/80 to-transparent">
                <div className="flex flex-wrap gap-3">
                  {project.tags.map(tag => (
-                   <span key={tag} className="px-4 py-1.5 rounded-lg bg-white/10 border border-white/10 text-white/60 text-xs font-bold uppercase tracking-widest">
+                   <span key={tag} className="px-4 py-1.5 rounded-lg bg-white/10 border border-theme text-high text-xs font-bold uppercase tracking-widest opacity-60">
                      {tag}
                    </span>
                  ))}
@@ -82,11 +82,11 @@ const ProjectDetail = () => {
             <span className="inline-block px-4 py-1.5 rounded-full bg-adaptiv-orange/10 text-adaptiv-orange text-xs font-black tracking-widest mb-6">
               {project.category.toUpperCase()}
             </span>
-            <h1 className="text-2xl sm:text-3xl md:text-5xl font-comfortaa font-bold text-white mb-8 leading-tight">
+            <h1 className="text-2xl sm:text-3xl md:text-5xl font-comfortaa font-bold text-high mb-8 leading-tight">
               {project.title}
             </h1>
             
-            <p className="text-base md:text-lg text-gray-400 font-poppins mb-10 leading-relaxed">
+            <p className="text-base md:text-lg text-low font-poppins mb-10 leading-relaxed">
               {project.description}
             </p>
 
@@ -102,12 +102,12 @@ const ProjectDetail = () => {
                 </a>
                 <a 
                   href="#" 
-                  className="px-6 py-3.5 rounded-xl bg-white/5 border border-white/10 text-white font-bold flex items-center justify-center gap-3 hover:bg-white/10 transition-all"
+                  className="px-6 py-3.5 rounded-xl bg-white/5 border border-theme text-high font-bold flex items-center justify-center gap-3 hover:bg-white/10 transition-all"
                 >
                   <Globe size={20} /> Project Link
                 </a>
               </div>
-              <button className="w-full py-3.5 rounded-xl border border-white/5 bg-white/5 text-gray-400 font-bold hover:bg-white/10 hover:text-white transition-all">
+              <button className="w-full py-3.5 rounded-xl border border-theme bg-white/5 text-low font-bold hover:bg-white/10 hover:text-high transition-all">
                 Request Full Documentation
               </button>
             </div>
@@ -121,24 +121,24 @@ const ProjectDetail = () => {
               <div className="w-12 h-12 rounded-2xl bg-adaptiv-orange/10 flex items-center justify-center text-adaptiv-orange">
                 <Info size={28} />
               </div>
-              <h3 className="text-xl md:text-3xl font-comfortaa font-bold text-white">Project Deep Dive</h3>
+              <h3 className="text-xl md:text-3xl font-comfortaa font-bold text-high">Project Deep Dive</h3>
             </div>
             
-            <div className="w-full h-px bg-white/5 mb-12"></div>
+            <div className="w-full h-px bg-theme opacity-5 mb-12"></div>
             
-            <div className="max-w-4xl text-gray-400 leading-[2] text-base md:text-lg font-poppins">
+            <div className="max-w-4xl text-low leading-[2] text-base md:text-lg font-poppins">
               <p className="mb-10 first-letter:text-6xl md:first-letter:text-5xl first-letter:font-bold first-letter:font-grindy first-letter:italic first-letter:text-adaptiv-orange first-letter:mr-3 first-letter:float-left first-letter:[text-shadow:3px_3px_0px_rgba(0,0,0,0.8)]">
                 {project.detailedStory}
               </p>
               
-              <p className="mb-10 text-white/70">
+              <p className="mb-10 text-mid opacity-70">
                 This project focuses on the intersection of user experience and technical efficiency. By leveraging modern frameworks 
                 and performance-first architecture, we achieve seamless interactivity without compromising on the robustness 
                 required for professional applications.
               </p>
 
               <div className="glass-theme border-l-4 !border-theme-accent p-6 md:p-8 rounded-r-2xl md:rounded-r-3xl mb-12">
-                <h5 className="text-white text-xl font-bold mb-6">Impact & Key Outcomes</h5>
+                <h5 className="text-high text-xl font-bold mb-6">Impact & Key Outcomes</h5>
                 <ul className="space-y-4 list-none p-0 m-0">
                   {[
                     "Optimized rendering pipeline for heterogeneous hardware environments.",
@@ -147,7 +147,7 @@ const ProjectDetail = () => {
                   ].map((item, i) => (
                     <li key={i} className="flex gap-4 items-start">
                       <div className="mt-2 w-1.5 h-1.5 rounded-full bg-adaptiv-orange flex-shrink-0"></div>
-                      <span className="text-gray-300">{item}</span>
+                      <span className="text-mid">{item}</span>
                     </li>
                   ))}
                 </ul>
