@@ -19,7 +19,6 @@ const fonts = [
     { id: 14, fontname: 'Gunmetal', scale: 1.5 },
     { id: 15, fontname: 'PixelFJ8pt1', scale: 1.5 },
     { id: 16, fontname: 'SeniorService', scale: 1.5 },
-    { id: 17, fontname: 'WhimzeeArt', scale: 1.5 },
 ];
 
 const colors = [
