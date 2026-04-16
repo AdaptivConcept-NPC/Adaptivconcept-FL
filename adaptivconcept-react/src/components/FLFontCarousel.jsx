@@ -31,8 +31,8 @@ const FLFontCarousel = ({ size = "text-8xl", className = "", useFullText = false
                     style={{ 
                         fontFamily: currentFont.fontname,
                         fontSize: `${currentFont.scale}em`,
-                        color: themeColor.value,
-                        textShadow: '3px 3px 0px rgba(0,0,0,0.8)'
+                        color: 'var(--heading-color)',
+                        textShadow: 'var(--heading-shadow)'
                     }}
                 >
                     {text}

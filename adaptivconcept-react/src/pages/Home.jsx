@@ -175,7 +175,8 @@ const Home = () => {
                 className="italic transition-all duration-500 inline-block"
                 style={{
                   fontFamily: activeFontFamily,
-                  color: themeColor.value,
+                  color: "var(--heading-color)",
+                  textShadow: "var(--heading-shadow)",
                   fontSize: `${activeFontScale}em`,
                   lineHeight: 1,
                 }}
@@ -187,7 +188,8 @@ const Home = () => {
                 className="italic transition-all duration-500 inline-block"
                 style={{
                   fontFamily: activeFontFamily,
-                  color: themeColor.value,
+                  color: "var(--heading-color)",
+                  textShadow: "var(--heading-shadow)",
                   fontSize: `${activeFontScale}em`,
                   lineHeight: 1,
                 }}
@@ -239,13 +241,13 @@ const Home = () => {
                   style={{
                     color: "var(--text-h)",
                     fontFamily: activeFontFamily,
-                    textShadow: "3px 3px 0px rgba(0,0,0,0.5)",
+                    textShadow: "var(--heading-shadow)",
                     fontSize: `calc(3rem * ${activeFontScale})`,
                     lineHeight: 1,
                   }}
                 >
                   Design for <br />
-                  <span style={{ color: themeColor.value }}>
+                  <span style={{ color: "var(--heading-color)", textShadow: "var(--heading-shadow)" }}>
                     Transformation
                   </span>
                 </h2>
@@ -308,13 +310,13 @@ const Home = () => {
                       className="text-2xl md:text-3xl font-comfortaa font-bold text-white mb-2"
                       style={{
                         fontFamily: activeFontFamily,
-                        textShadow: "3px 3px 0px rgba(0,0,0,0.5)",
+                        textShadow: "var(--heading-shadow)",
                         fontSize: `calc(2rem * ${activeFontScale})`,
                         lineHeight: 1,
                       }}
                     >
                       Initiate{" "}
-                      <span style={{ color: themeColor.value }}>Collaboration</span>
+                      <span style={{ color: "var(--heading-color)", textShadow: "var(--heading-shadow)" }}>Collaboration</span>
                     </h3>
                     <p className="text-low text-sm font-poppins mb-10">
                       Ready to engineer the future? Drop a brief below.
@@ -432,7 +434,7 @@ const Home = () => {
                   className="text-adaptiv-orange"
                   style={{
                     fontFamily: activeFontFamily,
-                    textShadow: "3px 3px 0px rgba(0,0,0,0.5)",
+                    textShadow: "var(--heading-shadow)",
                     fontSize: `calc(3rem * ${activeFontScale})`,
                     lineHeight: 1,
                   }}

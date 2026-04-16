@@ -55,8 +55,7 @@
   background-color: rgba(var(--theme-color-rgb), 0.12);
   border-color: rgba(var(--theme-color-rgb), 0.4);
   transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 
-              0 0 20px rgba(var(--theme-color-rgb), 0.1);
+  box-shadow: var(--glass-shadow), 0 0 20px rgba(var(--theme-color-rgb), 0.4);
 }
 
 .glass-theme-hover:hover {
@@ -133,7 +132,8 @@ body {
     font-family: 'GrindyBrush', sans-serif;
     font-style: italic !important;
     font-weight: bold !important;
-    text-shadow: 3px 3px 0px rgba(0,0,0,0.8);
+    color: var(--heading-color);
+    text-shadow: var(--heading-shadow);
 }
 
 .border-adaptiv-white {

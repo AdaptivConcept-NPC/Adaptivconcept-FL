@@ -248,7 +248,7 @@ const HighlightCarousel = ({ className = "" }) => {
             <h3
               className="text-2xl sm:text-4xl md:text-6xl font-bold tracking-tight uppercase select-none mt-4 transition-all duration-500"
               style={{
-                textShadow: "3px 3px 0px rgba(0,0,0,0.8)",
+                textShadow: "var(--heading-shadow)",
                 WebkitTextStroke: "0.5px black",
                 color: themeColor.value,
                 fontFamily: activeFontFamily,
