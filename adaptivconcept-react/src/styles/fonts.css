@@ -111,3 +111,51 @@
     src: url('../../public/fonts/the-jacatra/THE_JACATRA.otf') format('opentype');
     font-display: swap;
 }
+
+@font-face {
+    font-family: 'CoralPixels';
+    src: url('../../public/fonts/coral-pixels/CoralPixels-Regular.ttf') format('truetype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Eddie';
+    src: url('../../public/fonts/eddie/eddie.ttf') format('truetype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Fanzine';
+    src: url('../../public/fonts/fanzine/fanzine.ttf') format('truetype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'FetteUNZFraktur';
+    src: url('../../public/fonts/fette-unz-fraktur/FetteUNZFraktur.ttf') format('truetype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gunmetal';
+    src: url('../../public/fonts/gunmetal/gunmetl.ttf') format('truetype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'PixelFJ8pt1';
+    src: url('../../public/fonts/pixelfj8pt1/pixelFJ8pt1__.TTF') format('truetype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SeniorService';
+    src: url('../../public/fonts/senior-service/Senior Service.otf') format('opentype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'WhimzeeArt';
+    src: url('../../public/fonts/whimzee/whimzee.ttf');
+    font-display: swap;
+}

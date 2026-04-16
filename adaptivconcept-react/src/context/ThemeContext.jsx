@@ -12,6 +12,14 @@ const fonts = [
     // { id: 7, fontname: 'SudegnakOrange', scale: 2.2 },
     { id: 8, fontname: 'SuperBalloon', scale: 1.2 },
     { id: 9, fontname: 'Jacatra', scale: 1.3 },
+    { id: 10, fontname: 'CoralPixels', scale: 1.5 },
+    { id: 11, fontname: 'Eddie', scale: 1.5 },
+    { id: 12, fontname: 'Fanzine', scale: 1.5 },
+    { id: 13, fontname: 'FetteUNZFraktur', scale: 1.5 },
+    { id: 14, fontname: 'Gunmetal', scale: 1.5 },
+    { id: 15, fontname: 'PixelFJ8pt1', scale: 1.5 },
+    { id: 16, fontname: 'SeniorService', scale: 1.5 },
+    { id: 17, fontname: 'WhimzeeArt', scale: 1.5 },
 ];
 
 const colors = [
@@ -81,8 +89,9 @@ export const ThemeProvider = ({ children }) => {
             root.style.setProperty('--text', '#1d1d1f');
             root.style.setProperty('--text-h', '#000000');
             root.style.setProperty('--text-dim', '#86868b');
-            root.style.setProperty('--heading-color', 'var(--theme-color)');
+            root.style.setProperty('--heading-color', '#111111');
             root.style.setProperty('--heading-shadow', '2px 2px 0px rgba(0, 0, 0, 0.15)');
+            root.style.setProperty('--heading-stroke', '0px transparent');
             root.style.setProperty('--glass-bg', 'rgba(255, 255, 255, 0.7)');
             root.style.setProperty('--glass-blur', '32px');
             root.style.setProperty('--glass-border', 'rgba(0, 0, 0, 0.08)');
@@ -95,6 +104,7 @@ export const ThemeProvider = ({ children }) => {
             root.style.setProperty('--text-dim', '#6b6375');
             root.style.setProperty('--heading-color', '#ffffff');
             root.style.setProperty('--heading-shadow', '2px 2px 0px rgba(0, 0, 0, 1)');
+            root.style.setProperty('--heading-stroke', '1px rgba(0,0,0,1)');
             root.style.setProperty('--glass-bg', 'rgba(18, 18, 18, 0.8)');
             root.style.setProperty('--glass-blur', '64px');
             root.style.setProperty('--glass-border', 'rgba(255, 255, 255, 0.05)');
@@ -107,6 +117,7 @@ export const ThemeProvider = ({ children }) => {
             root.style.setProperty('--text-dim', '#9ca3af');
             root.style.setProperty('--heading-color', 'var(--theme-color)');
             root.style.setProperty('--heading-shadow', '2px 2px 0px rgba(0, 0, 0, 0.8)');
+            root.style.setProperty('--heading-stroke', '0.5px black');
             root.style.setProperty('--glass-bg', 'rgba(15, 15, 16, 0.4)');
             root.style.setProperty('--glass-blur', '64px');
             root.style.setProperty('--glass-border', 'rgba(255, 255, 255, 0.1)');
@@ -119,6 +130,7 @@ export const ThemeProvider = ({ children }) => {
             root.style.setProperty('--text-dim', 'rgba(255, 255, 255, 0.6)');
             root.style.setProperty('--heading-color', 'var(--theme-color)');
             root.style.setProperty('--heading-shadow', '2px 2px 0px rgba(0, 0, 0, 0.8)');
+            root.style.setProperty('--heading-stroke', '0.5px black');
             root.style.setProperty('--glass-bg', 'rgba(255, 255, 255, 0.05)');
             root.style.setProperty('--glass-blur', '40px');
             root.style.setProperty('--glass-border', `rgba(${rgb}, 0.2)`);

@@ -87,10 +87,16 @@ const Navbar = () => {
           className={`
           ${isMenuOpen ? "flex" : "hidden"} 
           lg:flex flex-col lg:flex-row items-center absolute lg:static top-full left-0 w-full lg:w-auto 
-          bg-black/95 lg:bg-transparent backdrop-blur-xl lg:backdrop-blur-none 
+          transition-colors duration-500
+          lg:bg-transparent backdrop-blur-xl lg:backdrop-blur-none 
           p-8 lg:p-0 gap-8 lg:gap-10 border-b lg:border-none border-theme
           no-scrollbar overflow-x-auto
         `}
+        style={{
+          backgroundColor: isMenuOpen && window.innerWidth < 1024 
+            ? (themeColor.washType === 'light' ? 'rgba(245, 245, 247, 1)' : 'rgba(10, 10, 10, 0.98)') 
+            : 'transparent'
+        }}
         >
           <ul className="flex flex-col lg:flex-row items-center gap-8 m-0 p-0">
             <li>
@@ -169,7 +175,7 @@ const Navbar = () => {
                   gap: 10,
                   alignItems: "center",
                   backgroundColor: themeColor.value,
-                  color: "#fff",
+                  color: themeColor.washType === 'light' ? '#111111' : "#fff",
                   fontSize: "1.1rem",
                   "--cta-color": themeColor.value,
                   position: "relative"

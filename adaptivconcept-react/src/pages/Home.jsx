@@ -307,7 +307,7 @@ const Home = () => {
 
                   <div className="relative z-10">
                     <h3
-                      className="text-2xl md:text-3xl font-comfortaa font-bold text-white mb-2"
+                      className="text-2xl md:text-3xl font-comfortaa font-bold text-high mb-2"
                       style={{
                         fontFamily: activeFontFamily,
                         textShadow: "var(--heading-shadow)",

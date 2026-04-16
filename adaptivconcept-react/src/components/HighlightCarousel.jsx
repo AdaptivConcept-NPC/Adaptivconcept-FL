@@ -22,7 +22,7 @@ const highlights = [
   {
     title: "Backend Authority",
     subtitle:
-      "Architecting robust systems with Vanilla PHP, Laravel, Node.js, C# and Python for secure, high-traffic governmental applications. #PHP #Laravel #csharp #Node",
+      "Architecting robust systems with Vanilla PHP, Laravel, Node.js, C# and Python for secure, high-traffic business & community applications. #PHP #Laravel #csharp #Node",
     techStack: ["php", "mysql", "docker", "redis", "linux", "azure", "csharp"], // add csharp icon
   },
   {
@@ -35,7 +35,7 @@ const highlights = [
     title: "Process Automation",
     subtitle:
       "Mastering Microsoft Fabric, Power Automate and Power Apps to streamline enterprise-level business operations. #PowerPlatform",
-    techStack: ["powerautomate", "powerapps", "m365", "terminal", "api"], // add terminal and api
+    techStack: ["powerautomate", "powerapps", "m365", "terminal", "api"], 
   },
   {
     title: "Database Scalability",
@@ -48,14 +48,14 @@ const highlights = [
       "redis",
       "firebase",
       "supabase",
-    ], // add firebase and supabase <- I have added the folders
+    ],
   },
   {
     title: "Award-Winning Innovation",
     subtitle:
       "Gold Award Innovator recognized for pioneering digital patient experience solutions at a national level.",
-    techStack: ["ai", "chatgpt", "claude", "ollama"], // add Ollama [projects\adaptivconcept-npc\Adaptivconcept-FL\adaptivconcept-react\public\icons\ollama\ollama-color.svg]
-  },
+    techStack: ["ai", "chatgpt", "claude", "ollama"], 
+    },
   {
     title: "Cloud & Shared-Hosting Ecosystems",
     subtitle:
@@ -249,8 +249,8 @@ const HighlightCarousel = ({ className = "" }) => {
               className="text-2xl sm:text-4xl md:text-6xl font-bold tracking-tight uppercase select-none mt-4 transition-all duration-500"
               style={{
                 textShadow: "var(--heading-shadow)",
-                WebkitTextStroke: "0.5px black",
-                color: themeColor.value,
+                WebkitTextStroke: "var(--heading-stroke)",
+                color: "var(--heading-color)",
                 fontFamily: activeFontFamily,
                 fontSize: `calc(4rem * ${activeFontScale})`,
                 lineHeight: "0.8",
