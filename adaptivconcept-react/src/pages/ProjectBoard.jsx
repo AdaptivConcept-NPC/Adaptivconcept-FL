@@ -107,6 +107,101 @@ const ProjectBoard = () => {
         </div>
       </div>
 
+      {/* Dev Labs Section */}
+      <div className="max-w-7xl mx-auto mb-20">
+        <div className="flex items-center justify-between mb-8 px-2">
+          <div>
+            <h2 className="text-3xl font-comfortaa font-bold text-high flex items-center gap-3">
+              <Terminal className="text-adaptiv-orange" /> Dev <span className="text-adaptiv-orange">Labs</span>
+            </h2>
+            <p className="text-low text-sm mt-2">Interactive environments and experimental portals.</p>
+          </div>
+          <Link to="/tech-wall" className="text-xs font-bold text-adaptiv-orange hover:underline tracking-widest uppercase flex items-center gap-2">
+            View Stack <ChevronRight size={14} />
+          </Link>
+        </div>
+
+        <div className="relative group/labs">
+          <motion.div 
+            className="flex gap-6 overflow-x-auto pb-8 snap-x no-scrollbar cursor-grab active:cursor-grabbing"
+            drag="x"
+            dragConstraints={{ right: 0, left: -400 }} // Simple constraint, can be calculated dynamically
+          >
+            {/* PySwissShef Lab Card */}
+            <motion.div 
+              whileHover={{ y: -5 }}
+              className="min-w-[300px] md:min-w-[400px] snap-start"
+            >
+              <div className="glass-theme rounded-[32px] p-8 h-full border border-white/5 relative overflow-hidden group">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-adaptiv-orange/10 blur-3xl rounded-full -mr-10 -mt-10" />
+                
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="p-3 rounded-2xl bg-adaptiv-orange/20 text-adaptiv-orange">
+                      <Rocket size={24} />
+                    </div>
+                    <span className="px-3 py-1 rounded-full bg-green-500/20 text-green-400 text-[10px] font-black tracking-tighter uppercase border border-green-500/30">
+                      Active Lab
+                    </span>
+                  </div>
+
+                  <h3 className="text-2xl font-bold text-high mb-2">PySwissShef Lab</h3>
+                  <p className="text-low text-sm leading-relaxed mb-6">
+                    Interactive Python & Shell catalogue hosted on StackBlitz. Test automation recipes instantly.
+                  </p>
+
+                  <div className="flex items-center gap-2 mb-8">
+                     <span className="px-2 py-0.5 rounded text-[10px] bg-white/5 text-low border border-white/5">Python</span>
+                     <span className="px-2 py-0.5 rounded text-[10px] bg-white/5 text-low border border-white/5">Shell</span>
+                     <span className="px-2 py-0.5 rounded text-[10px] bg-white/5 text-low border border-white/5">WASM</span>
+                  </div>
+
+                  <Link 
+                    to="/labs/pyswissshef"
+                    className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-adaptiv-orange text-white font-bold hover:bg-adaptiv-orange/90 transition-all shadow-lg shadow-adaptiv-orange/20"
+                  >
+                    Enter Lab <ChevronRight size={18} />
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Placeholder Lab 1 */}
+            <div className="min-w-[300px] md:min-w-[400px] snap-start opacity-50 grayscale hover:grayscale-0 transition-all">
+              <div className="glass-theme rounded-[32px] p-8 h-full border border-white/5 flex flex-col justify-between">
+                <div>
+                   <div className="flex items-center justify-between mb-6">
+                    <div className="p-3 rounded-2xl bg-purple-500/20 text-purple-400">
+                      <Cpu size={24} />
+                    </div>
+                    <span className="px-3 py-1 rounded-full bg-white/10 text-low text-[10px] font-black tracking-tighter uppercase border border-white/10">
+                      Upcoming
+                    </span>
+                  </div>
+                  <h3 className="text-2xl font-bold text-high mb-2">AI Analytics Lab</h3>
+                  <p className="text-low text-sm leading-relaxed mb-6">
+                    Large-scale data processing and AI model refinement workbench.
+                  </p>
+                </div>
+                <button disabled className="w-full py-3 rounded-xl border border-white/10 text-low font-bold cursor-not-allowed">
+                  Under Construction
+                </button>
+              </div>
+            </div>
+
+            {/* Placeholder Lab 2 */}
+            <div className="min-w-[300px] md:min-w-[400px] snap-start opacity-30">
+              <div className="glass-theme rounded-[32px] p-8 h-full border border-white/5 flex flex-col justify-between italic">
+                <div className="text-center py-10">
+                   <p className="text-low text-sm">More Labs Coming Soon...</p>
+                </div>
+              </div>
+            </div>
+
+          </motion.div>
+        </div>
+      </div>
+
       {/* Projects Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <AnimatePresence mode="popLayout">

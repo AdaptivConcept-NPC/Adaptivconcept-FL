@@ -21,6 +21,7 @@ import BlogDetail from './pages/BlogDetail';
 import TechWall from './pages/TechWall';
 import OpenResume from './pages/OpenResume';
 import Admin from './pages/Admin';
+import LabDetail from './pages/LabDetail';
 
 function App() {
   const useVideoBackground = false; // Toggle this to switch between video and static wallpaper
@@ -58,6 +59,7 @@ function App() {
               <Route path="/tech-wall" element={<TechWall />} />
               <Route path="/resume" element={<OpenResume />} />
               <Route path="/admin" element={<Admin />} />
+              <Route path="/labs/:id" element={<LabDetail />} />
             </Routes>
           </AnimatePresence>
         </main>

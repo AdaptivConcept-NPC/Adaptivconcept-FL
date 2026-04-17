@@ -84,16 +84,16 @@
     "detailedStory": "A mock application using Three.js to indicate temperature, pain, and strain on 3D body models for physical therapy assessments."
   },
   {
-    "id": "pyswisschef",
-    "title": "PySwissChef",
-    "subtitle": "Django Automation Catalogue",
-    "description": "Django-powered automation showcase platform. A \"Python Swiss Knife\" for unifying scripting workflows into a reusable catalogue.",
+    "id": "pyswissshef",
+    "title": "PySwissShef",
+    "subtitle": "Python & Shell Automation Catalogue",
+    "description": "A \"Python & Shell Swiss Knife\" for automation. Unifying cross-platform scripting workflows into a reusable, web-ready catalogue.",
     "category": "Automation",
-    "tags": ["Python", "Django", "Automation", "VPS"],
+    "tags": ["Python", "Bash", "Shell", "Automation", "StackBlitz"],
     "isHero": false,
-    "githubUrl": "https://github.com/iarxii/PySwissChef",
-    "liveUrl": "#",
-    "detailedStory": "Elegantly presents and executes Python scripts via an admin portal with real-time output display and guest access for public interaction."
+    "githubUrl": "https://github.com/iarxii/PySwissShef",
+    "liveUrl": "/labs/pyswissshef",
+    "detailedStory": "Formerly PySwissChef, this project was rebranded to emphasize its dual-power nature in Python and Shell scripting. It serves as a centralized hub for managing automation recipes that can be executed in sandboxed labs."
   },
   {
     "id": "db-to-html",
