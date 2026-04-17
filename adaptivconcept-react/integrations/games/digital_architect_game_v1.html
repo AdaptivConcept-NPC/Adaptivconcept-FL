@@ -1,0 +1,375 @@
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Courier New', monospace; }
+  #game-root {
+    background: #0a0e1a;
+    color: #e0e8ff;
+    min-height: 600px;
+    padding: 1.5rem;
+    border-radius: 12px;
+    font-family: 'Courier New', monospace;
+  }
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ff6b1a44;
+    padding-bottom: 0.75rem;
+    margin-bottom: 1.25rem;
+  }
+  .title { color: #ff6b1a; font-size: 13px; letter-spacing: 2px; font-weight: bold; }
+  .badge {
+    font-size: 11px; padding: 3px 10px;
+    border: 1px solid #ff6b1a88;
+    color: #ff6b1a; border-radius: 4px;
+    letter-spacing: 1px;
+  }
+  .layout {
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    gap: 1.25rem;
+  }
+  .preview-panel {
+    background: #0d1424;
+    border: 1px solid #1e2d4a;
+    border-radius: 8px;
+    padding: 1rem;
+  }
+  .panel-label {
+    font-size: 10px; color: #ff6b1a; letter-spacing: 2px;
+    margin-bottom: 0.75rem;
+  }
+  .preview-area {
+    background: #070b14;
+    border: 1px solid #1a2540;
+    border-radius: 6px;
+    height: 220px;
+    position: relative;
+    overflow: hidden;
+  }
+  .target-area {
+    background: #070b14;
+    border: 1px solid #1a2540;
+    border-radius: 6px;
+    height: 220px;
+    position: relative;
+    overflow: hidden;
+    margin-top: 0.75rem;
+  }
+  .area-tag {
+    font-size: 10px; color: #3a5a8a; letter-spacing: 1px;
+    position: absolute; top: 6px; left: 8px;
+  }
+  .controls-panel {
+    background: #0d1424;
+    border: 1px solid #1e2d4a;
+    border-radius: 8px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .control-group { display: flex; flex-direction: column; gap: 5px; }
+  .ctrl-label { font-size: 10px; color: #ff6b1a; letter-spacing: 1px; }
+  .ctrl-row { display: flex; align-items: center; gap: 8px; }
+  select, input[type=number] {
+    background: #0a0e1a;
+    border: 1px solid #1e2d4a;
+    color: #e0e8ff;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    padding: 5px 8px;
+    border-radius: 4px;
+    flex: 1;
+  }
+  select:focus, input[type=number]:focus {
+    outline: none; border-color: #ff6b1a88;
+  }
+  .check-btn {
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    border: 1px solid #ff6b1a;
+    color: #ff6b1a;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    letter-spacing: 2px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: auto;
+    transition: background 0.15s;
+  }
+  .check-btn:hover { background: #ff6b1a1a; }
+  .status-bar {
+    margin-top: 1rem;
+    font-size: 11px;
+    color: #3a5a8a;
+    letter-spacing: 1px;
+    border-top: 1px solid #1e2d4a;
+    padding-top: 0.75rem;
+    min-height: 36px;
+  }
+  .status-ok { color: #1db86e; }
+  .status-err { color: #e24b4a; }
+  .status-hint { color: #ff6b1a; }
+  .node {
+    position: absolute;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+  }
+  .node-a { background: #1a3a6a; border: 1px solid #378add; color: #85b7eb; width: 80px; height: 48px; }
+  .node-b { background: #1a3a1a; border: 1px solid #639922; color: #97c459; width: 80px; height: 48px; }
+  .node-c { background: #3a1a1a; border: 1px solid #993c1d; color: #f0997b; width: 80px; height: 48px; }
+  .pulse { animation: pulse 1.5s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.5} }
+  .level-info {
+    font-size: 10px; color: #3a5a8a; letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+  }
+  .progress-dots { display: flex; gap: 6px; margin-bottom: 1rem; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: #1e2d4a; }
+  .dot.done { background: #ff6b1a; }
+  .dot.current { background: #ff6b1a88; border: 1px solid #ff6b1a; }
+</style>
+
+<div id="game-root">
+  <h2 class="sr-only">Digital Architect — CSS layout puzzle game</h2>
+  <div class="header">
+    <span class="title">// DIGITAL ARCHITECT</span>
+    <span class="badge" id="level-badge">LEVEL 01</span>
+  </div>
+
+  <div class="progress-dots" id="dots">
+    <div class="dot current"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+  </div>
+
+  <div class="level-info" id="mission-text">MISSION: Reorder the data nodes — stack them vertically, centered.</div>
+
+  <div class="layout">
+    <div>
+      <div class="preview-panel">
+        <div class="panel-label">// LIVE PREVIEW</div>
+        <div class="preview-area" id="live-preview">
+          <span class="area-tag">OUTPUT</span>
+          <div id="flex-container" style="width:100%;height:100%;display:flex;padding:8px;">
+            <div class="node node-a">NODE_A</div>
+            <div class="node node-b">NODE_B</div>
+            <div class="node node-c">NODE_C</div>
+          </div>
+        </div>
+        <div class="target-area" id="target-area">
+          <span class="area-tag">TARGET</span>
+          <div id="target-container" style="width:100%;height:100%;display:flex;"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="controls-panel">
+      <div class="panel-label">// CONTROL PANEL</div>
+      <div id="controls-mount"></div>
+      <button class="check-btn" onclick="checkSolution()">[ VERIFY SOLUTION ]</button>
+    </div>
+  </div>
+
+  <div class="status-bar" id="status-bar">&gt; AWAITING INPUT...</div>
+</div>
+
+<script>
+const levels = [
+  {
+    id: 1,
+    mission: "MISSION: Stack the nodes vertically, centered on both axes.",
+    controls: [
+      { label: "flex-direction", prop: "flexDirection", type: "select", options: ["row","column","row-reverse","column-reverse"], default: "row" },
+      { label: "align-items", prop: "alignItems", type: "select", options: ["flex-start","flex-end","center","stretch"], default: "flex-start" },
+      { label: "justify-content", prop: "justifyContent", type: "select", options: ["flex-start","flex-end","center","space-between","space-around"], default: "flex-start" }
+    ],
+    target: { flexDirection:"column", alignItems:"center", justifyContent:"center" },
+    hint: "HINT: Try column direction with centered alignment."
+  },
+  {
+    id: 2,
+    mission: "MISSION: Spread nodes horizontally with equal space between them.",
+    controls: [
+      { label: "flex-direction", prop: "flexDirection", type: "select", options: ["row","column","row-reverse","column-reverse"], default: "row" },
+      { label: "justify-content", prop: "justifyContent", type: "select", options: ["flex-start","flex-end","center","space-between","space-around","space-evenly"], default: "flex-start" },
+      { label: "align-items", prop: "alignItems", type: "select", options: ["flex-start","flex-end","center","stretch"], default: "flex-start" }
+    ],
+    target: { flexDirection:"row", justifyContent:"space-between", alignItems:"center" },
+    hint: "HINT: Keep row direction, but distribute nodes across the full width."
+  },
+  {
+    id: 3,
+    mission: "MISSION: Reverse the node order and push them to the bottom-right.",
+    controls: [
+      { label: "flex-direction", prop: "flexDirection", type: "select", options: ["row","column","row-reverse","column-reverse"], default: "row" },
+      { label: "justify-content", prop: "justifyContent", type: "select", options: ["flex-start","flex-end","center","space-between","space-around"], default: "flex-start" },
+      { label: "align-items", prop: "alignItems", type: "select", options: ["flex-start","flex-end","center","stretch"], default: "flex-start" }
+    ],
+    target: { flexDirection:"row-reverse", justifyContent:"flex-end", alignItems:"flex-end" },
+    hint: "HINT: Reverse the row direction and push content to the end on both axes."
+  },
+  {
+    id: 4,
+    mission: "MISSION: Wrap nodes into a grid — two per row, centered vertically.",
+    controls: [
+      { label: "flex-wrap", prop: "flexWrap", type: "select", options: ["nowrap","wrap","wrap-reverse"], default: "nowrap" },
+      { label: "align-items", prop: "alignItems", type: "select", options: ["flex-start","flex-end","center","stretch"], default: "flex-start" },
+      { label: "justify-content", prop: "justifyContent", type: "select", options: ["flex-start","flex-end","center","space-between"], default: "flex-start" },
+      { label: "node width (px)", prop: "_nodeWidth", type: "number", min: 40, max: 160, default: 80 }
+    ],
+    target: { flexWrap:"wrap", alignItems:"center", justifyContent:"flex-start", _nodeWidth:"140" },
+    hint: "HINT: Enable wrapping and widen the nodes so they split across two rows."
+  }
+];
+
+let current = 0;
+let state = {};
+let attempts = 0;
+
+function getLevel() { return levels[current]; }
+
+function buildControls() {
+  const lv = getLevel();
+  const mount = document.getElementById("controls-mount");
+  mount.innerHTML = "";
+  state = {};
+  lv.controls.forEach(ctrl => {
+    state[ctrl.prop] = ctrl.default;
+    const group = document.createElement("div");
+    group.className = "control-group";
+    const label = document.createElement("div");
+    label.className = "ctrl-label";
+    label.textContent = ctrl.label;
+    group.appendChild(label);
+    const row = document.createElement("div");
+    row.className = "ctrl-row";
+    if(ctrl.type === "select") {
+      const sel = document.createElement("select");
+      ctrl.options.forEach(o => {
+        const opt = document.createElement("option");
+        opt.value = o; opt.textContent = o;
+        if(o === ctrl.default) opt.selected = true;
+        sel.appendChild(opt);
+      });
+      sel.onchange = e => { state[ctrl.prop] = e.target.value; applyPreview(); };
+      row.appendChild(sel);
+    } else if(ctrl.type === "number") {
+      const inp = document.createElement("input");
+      inp.type = "number"; inp.min = ctrl.min; inp.max = ctrl.max; inp.value = ctrl.default;
+      inp.oninput = e => { state[ctrl.prop] = e.target.value; applyPreview(); };
+      row.appendChild(inp);
+    }
+    group.appendChild(row);
+    mount.appendChild(group);
+  });
+  applyPreview();
+  buildTarget();
+}
+
+function applyPreview() {
+  const fc = document.getElementById("flex-container");
+  const lv = getLevel();
+  lv.controls.forEach(ctrl => {
+    if(ctrl.prop === "_nodeWidth") {
+      fc.querySelectorAll(".node").forEach(n => { n.style.width = state[ctrl.prop]+"px"; });
+    } else {
+      fc.style[ctrl.prop] = state[ctrl.prop];
+    }
+  });
+}
+
+function buildTarget() {
+  const lv = getLevel();
+  const tc = document.getElementById("target-container");
+  tc.style.cssText = "width:100%;height:100%;display:flex;";
+  const t = lv.target;
+  Object.entries(t).forEach(([k,v]) => {
+    if(k === "_nodeWidth") {
+      tc.querySelectorAll(".node").forEach(n => n.style.width = v+"px");
+    } else {
+      tc.style[k] = v;
+    }
+  });
+  tc.innerHTML = "";
+  ["NODE_A","NODE_B","NODE_C"].forEach((name, i) => {
+    const n = document.createElement("div");
+    n.className = "node " + ["node-a","node-b","node-c"][i];
+    n.textContent = name;
+    if(t._nodeWidth) n.style.width = t._nodeWidth+"px";
+    tc.appendChild(n);
+  });
+  Object.entries(t).forEach(([k,v]) => {
+    if(k !== "_nodeWidth") tc.style[k] = v;
+  });
+}
+
+function checkSolution() {
+  const lv = getLevel();
+  const t = lv.target;
+  let allCorrect = true;
+  let wrongs = [];
+  lv.controls.forEach(ctrl => {
+    const expected = t[ctrl.prop];
+    if(expected !== undefined && String(state[ctrl.prop]) !== String(expected)) {
+      allCorrect = false;
+      wrongs.push(ctrl.label);
+    }
+  });
+  attempts++;
+  const bar = document.getElementById("status-bar");
+  if(allCorrect) {
+    bar.className = "status-bar status-ok";
+    bar.textContent = "> SYSTEM STABILIZED. NODE ALIGNMENT CONFIRMED.";
+    setTimeout(() => nextLevel(), 1400);
+  } else {
+    if(attempts >= 3) {
+      bar.className = "status-bar status-hint";
+      bar.textContent = "> " + lv.hint;
+    } else {
+      bar.className = "status-bar status-err";
+      bar.textContent = "> CALIBRATION FAILED. CHECK: " + wrongs.join(", ").toUpperCase();
+    }
+  }
+}
+
+function nextLevel() {
+  if(current < levels.length - 1) {
+    current++;
+    attempts = 0;
+    updateDots();
+    document.getElementById("level-badge").textContent = "LEVEL 0"+(current+1);
+    document.getElementById("mission-text").textContent = getLevel().mission;
+    document.getElementById("flex-container").style.cssText = "width:100%;height:100%;display:flex;padding:8px;";
+    document.getElementById("flex-container").querySelectorAll(".node").forEach(n => n.style.width = "80px");
+    document.getElementById("status-bar").className = "status-bar";
+    document.getElementById("status-bar").textContent = "> AWAITING INPUT...";
+    buildControls();
+  } else {
+    document.getElementById("status-bar").className = "status-bar status-ok";
+    document.getElementById("status-bar").textContent = "> ALL SYSTEMS NOMINAL. ARCHITECTURE COMPLETE.";
+    document.getElementById("level-badge").textContent = "COMPLETE";
+  }
+}
+
+function updateDots() {
+  const dots = document.querySelectorAll(".dot");
+  dots.forEach((d, i) => {
+    d.className = "dot";
+    if(i < current) d.classList.add("done");
+    else if(i === current) d.classList.add("current");
+  });
+}
+
+buildControls();
+</script>
