@@ -39,8 +39,8 @@ const BackgroundWallpaper = ({ imageUrl }) => {
       {/* Subtle darkening for content legibility - adjusted based on wash type */}
       <div className={`absolute inset-0 transition-opacity duration-1000 ${
           themeColor.washType === 'light' ? 'bg-white/10' : 
-          themeColor.washType === 'white' ? 'bg-black/20' : 
-          themeColor.washType === 'coal' ? 'bg-black/20' :
+          themeColor.washType === 'white' ? 'bg-black/10' : 
+          themeColor.washType === 'coal' ? 'bg-transparent' :
           themeColor.washType === 'none' ? 'bg-transparent' : 'bg-black/40'
         }`} 
       />

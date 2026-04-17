@@ -9,16 +9,31 @@ const fonts = [
     { id: 4, fontname: 'GrindyBrush', scale: 1.0 },
     { id: 5, fontname: 'IslandSplash', scale: 1.3 },
     { id: 6, fontname: 'SudegnakRed', scale: 2.2 },
-    // { id: 7, fontname: 'SudegnakOrange', scale: 2.2 },
     { id: 8, fontname: 'SuperBalloon', scale: 1.2 },
     { id: 9, fontname: 'Jacatra', scale: 1.3 },
     { id: 10, fontname: 'CoralPixels', scale: 1.5 },
     { id: 11, fontname: 'Eddie', scale: 1.5 },
-    { id: 12, fontname: 'Fanzine', scale: 1.5 },
-    { id: 13, fontname: 'FetteUNZFraktur', scale: 1.5 },
-    { id: 14, fontname: 'Gunmetal', scale: 1.5 },
+    { id: 12, fontname: 'Fanzine', scale: 1.3 },
+    { id: 13, fontname: 'FetteUNZFraktur', scale: 1.4 },
+    { id: 14, fontname: 'Gunmetal', scale: 1.2 },
     { id: 15, fontname: 'PixelFJ8pt1', scale: 1.5 },
     { id: 16, fontname: 'SeniorService', scale: 1.5 },
+    { id: 17, fontname: 'Catgirl', scale: 1.6 },
+    { id: 18, fontname: 'WhimzeeArt', scale: 1.5 },
+];
+
+const overkillFonts = [
+    { id: 101, fontname: 'Bitwise', scale: 1.4 },
+    { id: 102, fontname: 'CivilManuscript', scale: 1.5 },
+    { id: 103, fontname: 'DigitalTs', scale: 1.6 },
+    { id: 104, fontname: 'Draco', scale: 1.5 },
+    { id: 105, fontname: 'Ethnocentric', scale: 1.2 },
+    { id: 106, fontname: 'Nabla', scale: 1.4 },
+    { id: 107, fontname: 'Quickless', scale: 1.5 },
+    { id: 108, fontname: 'SavedByZero', scale: 1.3 },
+    { id: 109, fontname: 'SparklesTrippies', scale: 1.5 },
+    { id: 110, fontname: 'Tafelwerk', scale: 1.5 },
+    { id: 111, fontname: 'ZeroVelocity', scale: 1.4 },
 ];
 
 const colors = [
@@ -51,11 +66,39 @@ export const ThemeProvider = ({ children }) => {
         return colors[0];
     });
 
+    const [isOverkillEnabled, setIsOverkillEnabled] = useState(() => {
+        const saved = localStorage.getItem('adaptiv_overkill_enabled');
+        return saved !== null ? saved === 'true' : false;
+    });
+
+    // Combined font queue
+    const activeFonts = isOverkillEnabled ? [...fonts, ...overkillFonts] : fonts;
+
     // Persist font state
     useEffect(() => {
         localStorage.setItem('adaptiv_font_locked', isFontLocked);
         localStorage.setItem('adaptiv_font_index', currentFontIndex);
     }, [isFontLocked, currentFontIndex]);
+
+    // Persist overkill state
+    useEffect(() => {
+        localStorage.setItem('adaptiv_overkill_enabled', isOverkillEnabled);
+        
+        // Dynamic loading of overkill fonts CSS
+        if (isOverkillEnabled) {
+            const linkId = 'overkill-fonts-css';
+            if (!document.getElementById(linkId)) {
+                const link = document.createElement('link');
+                link.id = linkId;
+                link.rel = 'stylesheet';
+                link.href = '/src/styles/overkill-fonts.css';
+                document.head.appendChild(link);
+            }
+        } else {
+            const link = document.getElementById('overkill-fonts-css');
+            if (link) link.remove();
+        }
+    }, [isOverkillEnabled]);
 
     // Persist theme choice
     useEffect(() => {
@@ -142,11 +185,11 @@ export const ThemeProvider = ({ children }) => {
         if (isFontLocked) return;
 
         const timer = setInterval(() => {
-            setCurrentFontIndex((prev) => (prev + 1) % fonts.length);
+            setCurrentFontIndex((prev) => (prev + 1) % activeFonts.length);
         }, 5500);
 
         return () => clearInterval(timer);
-    }, [isFontLocked]);
+    }, [isFontLocked, activeFonts]);
 
     const toggleFontLock = () => setIsFontLocked(!isFontLocked);
     
@@ -162,18 +205,20 @@ export const ThemeProvider = ({ children }) => {
         });
     };
 
-    const activeFontFamily = isFontLocked ? fonts[currentFontIndex].fontname : 'GrindyBrush';
-    const activeFontScale = isFontLocked ? fonts[currentFontIndex].scale : fonts.find(f => f.id === 4).scale;
+    const activeFontFamily = isFontLocked ? activeFonts[currentFontIndex].fontname : 'GrindyBrush';
+    const activeFontScale = isFontLocked ? activeFonts[currentFontIndex].scale : activeFonts.find(f => f.id === 4).scale;
 
     return (
         <ThemeContext.Provider value={{
-            fonts,
-            currentFont: fonts[currentFontIndex],
+            fonts: activeFonts,
+            currentFont: activeFonts[currentFontIndex],
             currentFontIndex,
             isFontLocked,
             setIsFontLocked,
             toggleFontLock,
             setFontIndex,
+            isOverkillEnabled,
+            setIsOverkillEnabled,
             colors,
             themeColor,
             nextColor,

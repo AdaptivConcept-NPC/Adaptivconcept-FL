@@ -1,0 +1,67 @@
+/* Overkill Fonts Collection - Performance Heavy */
+
+@font-face {
+    font-family: 'Bitwise';
+    src: url('../../public/fonts/extras-fonts-overkill/bitwise/BITWISE.TTF') format('truetype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'CivilManuscript';
+    src: url('../../public/fonts/extras-fonts-overkill/civil-manuscript/CivilManuscript.ttf') format('truetype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'DigitalTs';
+    src: url('../../public/fonts/extras-fonts-overkill/digitalts/DigitalTs.ttf') format('truetype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Draco';
+    src: url('../../public/fonts/extras-fonts-overkill/draco/Draco.otf') format('opentype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ethnocentric';
+    src: url('../../public/fonts/extras-fonts-overkill/ethnocentric/ethnocentric\ rg.otf') format('opentype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nabla';
+    src: url('../../public/fonts/extras-fonts-overkill/nabla/Nabla-Regular.ttf') format('truetype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Quickless';
+    src: url('../../public/fonts/extras-fonts-overkill/quickless/Quickless.otf') format('opentype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SavedByZero';
+    src: url('../../public/fonts/extras-fonts-overkill/saved-by-zero/Saved\ by\ Zero\ Rg.otf') format('opentype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SparklesTrippies';
+    src: url('../../public/fonts/extras-fonts-overkill/sparkles-and-trippies/SparklesAndTrippies-Regular\ 2.otf') format('opentype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Tafelwerk';
+    src: url('../../public/fonts/extras-fonts-overkill/tafelwerkot/TafelwerkOT.ttf') format('truetype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ZeroVelocity';
+    src: url('../../public/fonts/extras-fonts-overkill/zero-velocity-brk/zerovelo.ttf') format('truetype');
+    font-display: swap;
+}

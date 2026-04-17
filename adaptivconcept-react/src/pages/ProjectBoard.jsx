@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, Rocket, Terminal, Cpu, ChevronRight } from "lucide-react";
+import { Search, Rocket, Terminal, Cpu, ChevronRight, Sparkles, Zap } from "lucide-react";
+import { useTheme } from "../context/ThemeContext";
 import { Link } from "react-router-dom";
 import projectsDataLocal from "../data/projects.json";
 import { getProjects } from "../utils/dataStore";
@@ -9,6 +10,7 @@ const ProjectBoard = () => {
   const [activeCategory, setActiveCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [projectsData, setProjectsData] = useState(projectsDataLocal);
+  const { isOverkillEnabled, setIsOverkillEnabled } = useTheme();
 
   useEffect(() => {
     getProjects().then(setProjectsData);
@@ -83,6 +85,24 @@ const ProjectBoard = () => {
                 {cat}
               </button>
             ))}
+          </div>
+          
+          {/* Overkill Toggle */}
+          <div className="flex items-center gap-3 pl-4 border-l border-theme/20 h-10 ml-auto">
+            <button
+                onClick={() => setIsOverkillEnabled(!isOverkillEnabled)}
+                className={`p-2.5 rounded-xl flex items-center gap-2 transition-all ${
+                    isOverkillEnabled 
+                    ? "bg-purple-500/20 text-purple-400 border border-purple-500/30" 
+                    : "glass-theme text-low hover:text-high"
+                }`}
+                title={isOverkillEnabled ? "Experimental Fonts Active (Heavy)" : "Load Experimental Fonts (17MB+)"}
+            >
+                {isOverkillEnabled ? <Sparkles size={18} /> : <Zap size={18} />}
+                <span className="text-xs font-bold hidden sm:inline">
+                    {isOverkillEnabled ? "Experimental Active" : "Load XP Fonts"}
+                </span>
+            </button>
           </div>
         </div>
       </div>
