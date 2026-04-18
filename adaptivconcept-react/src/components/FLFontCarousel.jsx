@@ -7,6 +7,9 @@ const FLFontCarousel = ({ size = "text-8xl", className = "", useFullText = false
     const { currentFont, isFontLocked, toggleFontLock, themeColor } = useTheme();
 
     const text = useFullText ? "Freelancing" : "FL";
+    
+    // Safety check: ensure currentFont exists before accessing properties
+    if (!currentFont) return null;
 
     return (
         <div 
@@ -19,7 +22,7 @@ const FLFontCarousel = ({ size = "text-8xl", className = "", useFullText = false
         >
             <AnimatePresence mode="wait">
                 <motion.div
-                    key={`${currentFont.fontname}-${text}`}
+                    key={`${currentFont?.fontname || 'default'}-${text}`}
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 1.2 }}
@@ -29,8 +32,8 @@ const FLFontCarousel = ({ size = "text-8xl", className = "", useFullText = false
                     }}
                     className="font-bold select-none whitespace-nowrap relative"
                     style={{ 
-                        fontFamily: currentFont.fontname,
-                        fontSize: `${currentFont.scale}em`,
+                        fontFamily: currentFont?.fontname,
+                        fontSize: `${currentFont?.scale || 1}em`,
                         color: 'var(--heading-color)',
                         textShadow: 'var(--heading-shadow)'
                     }}

@@ -97,8 +97,13 @@ export const ThemeProvider = ({ children }) => {
         } else {
             const link = document.getElementById('overkill-fonts-css');
             if (link) link.remove();
+            
+            // Safety: Reset index if it exceeds the bounds of the standard fonts list
+            if (currentFontIndex >= fonts.length) {
+                setCurrentFontIndex(0);
+            }
         }
-    }, [isOverkillEnabled]);
+    }, [isOverkillEnabled, currentFontIndex]);
 
     // Persist theme choice
     useEffect(() => {
@@ -211,7 +216,7 @@ export const ThemeProvider = ({ children }) => {
     return (
         <ThemeContext.Provider value={{
             fonts: activeFonts,
-            currentFont: activeFonts[currentFontIndex],
+            currentFont: activeFonts[currentFontIndex] || activeFonts[0],
             currentFontIndex,
             isFontLocked,
             setIsFontLocked,
