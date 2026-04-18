@@ -21,6 +21,7 @@ const labsData = {
       "Sandboxed safety"
     ],
     stackblitzUrl: "https://stackblitz.com/github/iarxii/PySwissShef",
+    replitUrl: "https://py-portfolio-lab--thabangmposula.replit.app",
     accentColor: "#f97316" // adaptiv-orange
   }
 };
@@ -77,14 +78,47 @@ const LabDetail = () => {
               {lab.description}
             </p>
 
-            <a 
-              href={lab.stackblitzUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-adaptiv-orange text-white font-bold text-lg hover:scale-105 active:scale-95 transition-all shadow-xl shadow-adaptiv-orange/30"
-            >
-              Launch Lab Console <ExternalLink size={20} />
-            </a>
+            <div className="flex flex-wrap gap-4">
+              <a 
+                href={lab.stackblitzUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-4 px-6 py-4 rounded-[28px] bg-adaptiv-orange text-white font-bold text-lg hover:scale-105 active:scale-95 transition-all shadow-xl shadow-adaptiv-orange/30 group"
+              >
+                <div className="bg-white p-2 rounded-2xl shadow-sm flex items-center justify-center group-hover:rotate-6 transition-transform">
+                  <img src="/media/brand-icons/StackBlitz.svg" alt="StackBlitz Icon" className="w-8 h-8 object-contain" />
+                </div>
+                <span>Tasting Room (StackBlitz)</span>
+              </a>
+
+              {lab.replitUrl && (
+                <a 
+                  href={lab.replitUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-4 px-6 py-4 rounded-[28px] bg-white/5 border border-white/10 text-white font-bold text-lg hover:bg-white/10 transition-all group"
+                >
+                  <div className="bg-white p-2 rounded-2xl shadow-sm flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <img src="/media/brand-icons/Replit.svg" alt="Replit Icon" className="w-8 h-8 object-contain" />
+                  </div>
+                  <span>High-Heat Kitchen (Replit)</span>
+                </a>
+              )}
+
+              {/* also add a disabled button that will be used in the future for Github Codespaces, Use "Coming Soon" as the text */}
+              <button 
+                disabled
+                className="inline-flex items-center gap-4 px-6 py-4 rounded-[28px] bg-white/5 border border-white/10 text-white font-bold cursor-not-allowed transition-all"
+              >
+                <div className="bg-white/20 p-2 rounded-2xl shadow-sm flex items-center justify-center grayscale">
+                  <img src="/media/brand-icons/githubcodespaces-original.svg" alt="Codespaces Icon" className="w-8 h-8 object-contain opacity-40" />
+                </div>
+                <div className="flex flex-col items-start leading-none gap-1">
+                  <span className="text-lg opacity-40">Github Codespaces</span>
+                  <span className="text-[10px] uppercase tracking-tighter font-black opacity-30">Coming Soon</span>
+                </div>
+              </button>
+            </div>
           </div>
         </div>
 
@@ -99,7 +133,7 @@ const LabDetail = () => {
               {lab.prerequisites.map((p, i) => (
                 <div key={i} className="flex items-center justify-between p-4 rounded-2xl bg-black/20 border border-white/5">
                   <span className="text-high font-medium">{p.item}</span>
-                  <span className="text-xs font-bold px-3 py-1 rounded-full bg-white/5 text-low">{p.status}</span>
+                  <span className="text-xs font-bold px-3 py-1 rounded-full bg-white/5 text-high">{p.status}</span>
                 </div>
               ))}
             </div>
@@ -112,7 +146,7 @@ const LabDetail = () => {
             </h3>
             <ul className="space-y-4">
               {lab.features.map((f, i) => (
-                <li key={i} className="flex items-center gap-3 text-low">
+                <li key={i} className="flex items-center gap-3 text-high">
                    <div className="w-1.5 h-1.5 rounded-full bg-adaptiv-orange" />
                    {f}
                 </li>
@@ -128,16 +162,16 @@ const LabDetail = () => {
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="flex flex-col gap-3">
-                <span className="text-adaptiv-orange font-black text-2xl opacity-20 italic font-comfortaa">01.</span>
-                <p className="text-sm text-low">Click the <b>"Launch Lab Console"</b> button to open the WebContainer environment.</p>
+                <span className="text-adaptiv-orange font-black text-2xl opacity-60 italic font-comfortaa">01.</span>
+                <p className="text-sm text-high leading-relaxed">Click the <b>"Launch Lab Console"</b> button to open the WebContainer environment.</p>
               </div>
               <div className="flex flex-col gap-3">
-                <span className="text-adaptiv-orange font-black text-2xl opacity-20 italic font-comfortaa">02.</span>
-                <p className="text-sm text-low">Wait for the Python environment to boot automatically (Powered by StackBlitz).</p>
+                <span className="text-adaptiv-orange font-black text-2xl opacity-60 italic font-comfortaa">02.</span>
+                <p className="text-sm text-high leading-relaxed">Wait for the Python environment to boot automatically (Powered by StackBlitz).</p>
               </div>
               <div className="flex flex-col gap-3">
-                <span className="text-adaptiv-orange font-black text-2xl opacity-20 italic font-comfortaa">03.</span>
-                <p className="text-sm text-low">Follow the instructions in the terminal to browse and run your first recipe.</p>
+                <span className="text-adaptiv-orange font-black text-2xl opacity-60 italic font-comfortaa">03.</span>
+                <p className="text-sm text-high leading-relaxed">Follow the instructions in the terminal to browse and run your first recipe.</p>
               </div>
             </div>
         </div>
