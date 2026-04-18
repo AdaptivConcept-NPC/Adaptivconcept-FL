@@ -29,7 +29,8 @@ const BackgroundWallpaper = ({ imageUrl }) => {
       <div 
         className={`absolute inset-0 transition-opacity duration-1000 ${
           themeColor.washType === 'white' || themeColor.washType === 'light' ? 'mix-blend-screen opacity-40' : 
-          themeColor.washType === 'dark' || themeColor.washType === 'coal' ? 'mix-blend-multiply opacity-25' : 'opacity-0'
+          themeColor.washType === 'coal' || themeColor.washType === 'none' ? 'opacity-0' : 
+          themeColor.washType === 'dark' ? 'mix-blend-multiply opacity-25' : 'opacity-0'
         }`}
         style={{
           backgroundColor: themeColor.value,
@@ -40,8 +41,7 @@ const BackgroundWallpaper = ({ imageUrl }) => {
       <div className={`absolute inset-0 transition-opacity duration-1000 ${
           themeColor.washType === 'light' ? 'bg-white/10' : 
           themeColor.washType === 'white' ? 'bg-black/10' : 
-          themeColor.washType === 'coal' ? 'bg-transparent' :
-          themeColor.washType === 'none' ? 'bg-transparent' : 'bg-black/40'
+          themeColor.washType === 'coal' || themeColor.washType === 'none' ? 'bg-transparent opacity-0' : 'bg-black/40'
         }`} 
       />
 

@@ -3,37 +3,33 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 const ThemeContext = createContext();
 
 const fonts = [
-    { id: 1, fontname: 'StormGust', scale: 1.5 },
-    { id: 2, fontname: 'BigPartyBlue', scale: 1.6 },
-    { id: 3, fontname: 'GraffitiStream', scale: 1.4 },
-    { id: 4, fontname: 'GrindyBrush', scale: 1.0 },
-    { id: 5, fontname: 'IslandSplash', scale: 1.3 },
-    { id: 6, fontname: 'SudegnakRed', scale: 2.2 },
-    { id: 8, fontname: 'SuperBalloon', scale: 1.2 },
-    { id: 9, fontname: 'Jacatra', scale: 1.3 },
-    { id: 10, fontname: 'CoralPixels', scale: 1.5 },
-    { id: 11, fontname: 'Eddie', scale: 1.5 },
-    { id: 12, fontname: 'Fanzine', scale: 1.3 },
-    { id: 13, fontname: 'FetteUNZFraktur', scale: 1.4 },
-    { id: 14, fontname: 'Gunmetal', scale: 1.2 },
-    { id: 15, fontname: 'PixelFJ8pt1', scale: 1.5 },
-    { id: 16, fontname: 'SeniorService', scale: 1.5 },
-    { id: 17, fontname: 'Catgirl', scale: 1.6 },
-    { id: 18, fontname: 'WhimzeeArt', scale: 1.5 },
+    { id: 1, fontname: 'StormGust', scale: 1.4 }, // good
+    { id: 2, fontname: 'BigPartyBlue', scale: 1.8 }, // good
+    { id: 3, fontname: 'GraffitiStream', scale: 1.4 }, // good
+    { id: 4, fontname: 'GrindyBrush', scale: 1.0 }, // good
+    { id: 5, fontname: 'IslandSplash', scale: 1.3 }, // good
+    { id: 6, fontname: 'SudegnakRed', scale: 2.2 }, // good
+    { id: 8, fontname: 'SuperBalloon', scale: 1.2 }, // good
+    { id: 9, fontname: 'Jacatra', scale: 1.3 }, // good
+    { id: 10, fontname: 'CoralPixels', scale: 1.5 }, // good
+    { id: 11, fontname: 'Eddie', scale: 1.5 }, // good
+    { id: 12, fontname: 'Fanzine', scale: 1.3 }, // good
+    { id: 13, fontname: 'FetteUNZFraktur', scale: 1.4 }, // good
+    { id: 14, fontname: 'Gunmetal', scale: 1.4 }, // good
+    { id: 15, fontname: 'PixelFJ8pt1', scale: 0.8 }, // good
+    { id: 16, fontname: 'SeniorService', scale: 0.6 }, // good
+    { id: 17, fontname: 'Catgirl', scale: 0.8 }, // good
+    { id: 18, fontname: 'WhimzeeArt', scale: 0.9 }, // flag: showing as a serif font! lets leave it in though
 ];
 
 const overkillFonts = [
-    { id: 101, fontname: 'Bitwise', scale: 1.4 },
-    { id: 102, fontname: 'CivilManuscript', scale: 1.5 },
-    { id: 103, fontname: 'DigitalTs', scale: 1.6 },
-    { id: 104, fontname: 'Draco', scale: 1.5 },
-    { id: 105, fontname: 'Ethnocentric', scale: 1.2 },
-    { id: 106, fontname: 'Nabla', scale: 1.4 },
-    { id: 107, fontname: 'Quickless', scale: 1.5 },
-    { id: 108, fontname: 'SavedByZero', scale: 1.3 },
-    { id: 109, fontname: 'SparklesTrippies', scale: 1.5 },
-    { id: 110, fontname: 'Tafelwerk', scale: 1.5 },
-    { id: 111, fontname: 'ZeroVelocity', scale: 1.4 },
+    { id: 101, fontname: 'Bitwise', scale: 1.1 }, // good
+    { id: 104, fontname: 'Draco', scale: 0.7 }, // good
+    { id: 107, fontname: 'Quickless', scale: 1.1 }, //good
+    { id: 108, fontname: 'SavedByZero', scale: 0.9 }, // good
+    { id: 109, fontname: 'SparklesTrippies', scale: 0.9 }, // good
+    { id: 110, fontname: 'Tafelwerk', scale: 1.5 }, // good
+    { id: 111, fontname: 'ZeroVelocity', scale: 0.8 }, // good
 ];
 
 const colors = [

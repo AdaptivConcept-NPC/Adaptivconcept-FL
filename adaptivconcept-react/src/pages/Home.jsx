@@ -65,6 +65,10 @@ const ParallaxSection = ({ children, index, total }) => {
 const Home = () => {
   const { themeColor, currentFont, activeFontFamily, activeFontScale } =
     useTheme();
+    
+  const isHighContrast = themeColor.washType === 'coal' || themeColor.washType === 'light';
+  const contrastColor = themeColor.washType === 'coal' ? 'white' : 'black';
+  const accentColor = isHighContrast ? contrastColor : themeColor.value;
   const navigate = useNavigate();
   const contactRef = useRef(null);
   const [projectsData, setProjectsData] = useState(projectsDataLocal);
@@ -278,7 +282,7 @@ const Home = () => {
                     <div key={i} className="flex gap-8 group/item">
                       <div
                         className="w-16 h-16 rounded-[22px] glass-theme flex items-center justify-center transition-all duration-500 shadow-inner group-hover/item:text-white"
-                        style={{ color: themeColor.value }}
+                        style={{ color: accentColor }}
                       >
                         {service.icon}
                       </div>
@@ -431,12 +435,13 @@ const Home = () => {
             <div className="max-w-3xl">
               <h3 className="text-3xl sm:text-4xl md:text-6xl font-comfortaa font-bold text-high mb-6">
                 <div
-                  className="text-adaptiv-orange"
+                  className={isHighContrast ? "" : "text-adaptiv-orange"}
                   style={{
                     fontFamily: activeFontFamily,
                     textShadow: "var(--heading-shadow)",
                     fontSize: `calc(3rem * ${activeFontScale})`,
                     lineHeight: 1,
+                    color: isHighContrast ? contrastColor : undefined
                   }}
                 >
                   Github
@@ -468,7 +473,13 @@ const Home = () => {
               >
                 <div className="flex flex-wrap flex-col md:flex-row justify-between items-start gap-4 mb-2">
                   <div className="flex-1 flex flex-col gap-2 min-w-0">
-                    <span className="pe-5 py-2 rounded-xl bg-adaptiv-orange/10 text-adaptiv-orange text-[10px] font-bold uppercase tracking-[0.2em] whitespace-nowrap">
+                    <span 
+                      className="px-4 py-2 rounded-xl text-[10px] font-bold uppercase tracking-[0.2em] whitespace-nowrap"
+                      style={{ 
+                        backgroundColor: isHighContrast ? `rgba(${contrastColor === 'white' ? '255,255,255' : '0,0,0'}, 0.1)` : 'rgba(var(--theme-color-rgb), 0.1)',
+                        color: accentColor
+                      }}
+                    >
                       {project.category}
                     </span>
                     <h4 className="text-2xl md:text-3xl font-comfortaa font-bold text-high mb-2 group-hover:text-adaptiv-orange transition-colors" 
@@ -511,7 +522,12 @@ const Home = () => {
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-4 py-1.5 rounded-lg bg-adaptiv-orange/5 border border-adaptiv-orange/10 text-[10px] text-adaptiv-orange font-bold uppercase tracking-widest"
+                      className="px-4 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-widest"
+                      style={{
+                        backgroundColor: isHighContrast ? `rgba(${contrastColor === 'white' ? '255,255,255' : '0,0,0'}, 0.05)` : 'rgba(var(--theme-color-rgb), 0.05)',
+                        border: `1px solid ${isHighContrast ? `rgba(${contrastColor === 'white' ? '255,255,255' : '0,0,0'}, 0.1)` : 'rgba(var(--theme-color-rgb), 0.1)'}`,
+                        color: accentColor
+                      }}
                     >
                       {tag}
                     </span>
