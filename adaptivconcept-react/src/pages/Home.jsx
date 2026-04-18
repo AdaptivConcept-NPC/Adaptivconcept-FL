@@ -454,7 +454,8 @@ const Home = () => {
             </div>
             <button
               onClick={() => navigate("/projects")}
-              className="group flex items-center gap-3 text-adaptiv-orange font-bold text-xl hover:text-white transition-colors duration-300"
+              className={`group flex items-center gap-3 font-bold text-xl transition-colors duration-300 ${isHighContrast ? '' : 'text-adaptiv-orange hover:text-white'}`}
+              style={{ color: isHighContrast ? accentColor : undefined }}
             >
               Explore Full Lab{" "}
               <ChevronRight
@@ -482,7 +483,7 @@ const Home = () => {
                     >
                       {project.category}
                     </span>
-                    <h4 className="text-2xl md:text-3xl font-comfortaa font-bold text-high mb-2 group-hover:text-adaptiv-orange transition-colors" 
+                    <h4 className={`text-2xl md:text-3xl font-comfortaa font-bold text-high mb-2 transition-colors ${isHighContrast ? (contrastColor === 'white' ? 'group-hover:text-white' : 'group-hover:text-black') : 'group-hover:text-adaptiv-orange'}`} 
                     style={{fontSize:"150%"}}>
                       {project.title}
                     </h4>
@@ -498,7 +499,7 @@ const Home = () => {
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-adaptiv-orange hover:border-adaptiv-orange hover:scale-110 transition-all duration-300"
+                      className={`w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:scale-110 transition-all duration-300 ${isHighContrast ? (contrastColor === 'white' ? 'hover:bg-white hover:border-white hover:text-black' : 'hover:bg-black hover:border-black hover:text-white') : 'hover:bg-adaptiv-orange hover:border-adaptiv-orange'}`}
                     >
                       <i className="bi bi-github text-xl"></i>
                     </a>
@@ -506,7 +507,7 @@ const Home = () => {
                       href={project.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-adaptiv-orange hover:border-adaptiv-orange hover:scale-110 transition-all duration-300"
+                      className={`w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:scale-110 transition-all duration-300 ${isHighContrast ? (contrastColor === 'white' ? 'hover:bg-white hover:border-white hover:text-black' : 'hover:bg-black hover:border-black hover:text-white') : 'hover:bg-adaptiv-orange hover:border-adaptiv-orange'}`}
                     >
                       <ExternalLink size={22} />
                     </a>
@@ -536,7 +537,7 @@ const Home = () => {
 
                 <button
                    onClick={() => navigate(`/projects/${project.id}`)}
-                   className="w-full py-4 rounded-2xl border-2 border-theme text-high font-bold text-lg hover:bg-adaptiv-orange hover:border-adaptiv-orange transition-all duration-300 group-hover:shadow-lg group-hover:shadow-adaptiv-orange/20"
+                   className={`w-full py-4 rounded-2xl border-2 border-theme text-high font-bold text-lg transition-all duration-300 ${isHighContrast ? (contrastColor === 'white' ? 'hover:bg-white hover:border-white hover:text-black' : 'hover:bg-black hover:border-black hover:text-white') : 'hover:bg-adaptiv-orange hover:border-adaptiv-orange group-hover:shadow-lg group-hover:shadow-adaptiv-orange/20'}`}
                  >
                    Case Study Details
                  </button>
