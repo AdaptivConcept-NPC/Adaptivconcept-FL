@@ -21,7 +21,7 @@ const ProjectDetail = () => {
     return (
       <div className="container mx-auto px-6 py-20 text-center min-h-screen flex flex-col items-center justify-center">
         <h2 className="text-2xl md:text-4xl font-comfortaa font-bold text-high mb-6">Project Not Found</h2>
-        <Link to="/projects" className="px-8 py-3 rounded-xl font-bold hover:bg-hover-bg hover:text-hover-text transition-all"
+        <Link to="/projects" className="px-8 py-3 rounded-xl font-bold btn-adaptive-hover transition-all"
           style={{ backgroundColor: 'var(--theme-color)', color: '#ffffff' }}
         >
           Back to Board
@@ -98,19 +98,19 @@ const ProjectDetail = () => {
                   href={project.githubUrl} 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="flex-grow py-3.5 rounded-xl text-white font-bold flex items-center justify-center gap-3 hover:bg-hover-bg hover:text-hover-text hover:border-hover-bg transition-all shadow-lg shadow-adaptiv-orange/10"
+                  className="flex-grow py-3.5 rounded-xl text-white font-bold flex items-center justify-center gap-3 btn-adaptive-hover transition-all shadow-lg shadow-adaptiv-orange/10"
                   style={{ backgroundColor: 'var(--theme-color)' }}
                 >
                   <i className="bi bi-github text-xl"></i> View Repository
                 </a>
                 <a 
                   href="#" 
-                  className="px-6 py-3.5 rounded-xl bg-white/5 border border-theme text-high font-bold flex items-center justify-center gap-3 hover:bg-hover-bg hover:text-hover-text hover:border-hover-bg transition-all"
+                  className="px-6 py-3.5 rounded-xl bg-white/5 border border-theme text-high font-bold flex items-center justify-center gap-3 btn-adaptive-hover transition-all"
                 >
                   <Globe size={20} /> Project Link
                 </a>
               </div>
-              <button className="w-full py-3.5 rounded-xl border border-theme bg-white/5 text-low font-bold hover:bg-hover-bg hover:text-hover-text hover:border-hover-bg transition-all">
+              <button className="w-full py-3.5 rounded-xl border border-theme bg-white/5 text-low font-bold btn-adaptive-hover transition-all">
                 Request Full Documentation
               </button>
             </div>

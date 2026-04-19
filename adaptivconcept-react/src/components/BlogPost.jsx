@@ -71,7 +71,7 @@ const BlogPost = ({ post, index = 0 }) => {
         <div className="flex gap-3 mt-auto">
           <Link
             to={`/blog/${post.id}`}
-            className="flex-grow py-3 rounded-xl border border-theme text-high font-bold flex items-center justify-center gap-2 hover:bg-hover-bg hover:text-hover-text hover:border-hover-bg transition-all text-sm"
+            className="flex-grow py-3 rounded-xl border border-theme text-high font-bold flex items-center justify-center gap-2 btn-adaptive-hover transition-all text-sm"
           >
             <BookOpen size={16} />
             Read Article
@@ -83,7 +83,7 @@ const BlogPost = ({ post, index = 0 }) => {
               href={post.linkedinUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-3 rounded-xl border border-theme text-low hover:bg-hover-bg hover:text-hover-text hover:border-hover-bg transition-all flex items-center justify-center"
+              className="px-4 py-3 rounded-xl border border-theme text-low btn-adaptive-hover transition-all flex items-center justify-center"
               title="View on LinkedIn"
             >
               <ExternalLink size={16} />

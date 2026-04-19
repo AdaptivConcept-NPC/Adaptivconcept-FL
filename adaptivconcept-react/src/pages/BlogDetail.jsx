@@ -169,7 +169,7 @@ const BlogDetail = () => {
         </h2>
         <Link
           to="/blog"
-          className="px-8 py-3 rounded-xl font-bold hover:bg-hover-bg hover:text-hover-text transition-all"
+          className="px-8 py-3 rounded-xl font-bold btn-adaptive-hover transition-all"
           style={{ backgroundColor: 'var(--theme-color)', color: '#ffffff' }}
         >
           Back to Blog
@@ -272,7 +272,7 @@ const BlogDetail = () => {
                     navigator.clipboard.writeText(window.location.href);
                   }
                 }}
-                className="w-full py-3.5 rounded-xl border border-white/10 bg-white/5 text-low font-bold hover:bg-hover-bg hover:text-hover-text hover:border-hover-bg transition-all flex items-center justify-center gap-3"
+                className="w-full py-3.5 rounded-xl border border-white/10 bg-white/5 text-low font-bold btn-adaptive-hover transition-all flex items-center justify-center gap-3"
               >
                 <Share2 size={18} />
                 Share Article

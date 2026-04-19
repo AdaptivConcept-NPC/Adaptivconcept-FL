@@ -136,13 +136,13 @@ const Navbar = () => {
             <Link
               to="/resume"
               onClick={() => setIsMenuOpen(false)}
-              className="px-5 py-2.5 rounded-xl border-2 font-medium hover:bg-hover-bg hover:text-hover-text transition-all flex items-center gap-2"
+              className="px-5 py-2.5 rounded-xl border-2 font-medium btn-adaptive-hover transition-all flex items-center gap-2"
               style={{ borderColor: 'var(--glass-border)', color: 'var(--text-h)' }}
             >
               <FileUser size={16} /> <p className="truncate">Résumé</p>
             </Link>
             <button 
-              className="px-5 py-2.5 rounded-xl border-2 font-medium hover:bg-hover-bg hover:text-hover-text transition-all flex items-center gap-2"
+              className="px-5 py-2.5 rounded-xl border-2 font-medium btn-adaptive-hover transition-all flex items-center gap-2"
               style={{ borderColor: 'var(--glass-border)', color: 'var(--text-h)' }}
             >
               <Mail size={16} /> <p className="truncate">Request Detailed CV</p>
@@ -168,7 +168,7 @@ const Navbar = () => {
             >
               <Link
                 to="/projects"
-                className="px-8 py-3.5 rounded-2xl font-black hover:bg-hover-bg hover:text-hover-text transition-all lg:ml-2 cta-shimmer speech-bubble-cta me-4"
+                className="px-8 py-3.5 rounded-2xl font-black btn-adaptive-hover transition-all lg:ml-2 cta-shimmer speech-bubble-cta me-4"
                 onClick={() => setIsMenuOpen(false)}
                 style={{
                   display: "flex",

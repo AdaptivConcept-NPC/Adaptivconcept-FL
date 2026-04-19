@@ -160,7 +160,7 @@ const ProjectBoard = () => {
 
                   <Link 
                     to="/labs/pyswissshef"
-                    className="flex items-center justify-center gap-2 w-full py-3 rounded-xl font-bold hover:bg-hover-bg hover:text-hover-text transition-all shadow-lg shadow-adaptiv-orange/20"
+                    className="flex items-center justify-center gap-2 w-full py-3 rounded-xl font-bold btn-adaptive-hover transition-all shadow-lg shadow-adaptiv-orange/20"
                     style={{ backgroundColor: 'var(--theme-color)', color: themeColor.washType === 'light' ? '#000000' : '#ffffff' }}
                   >
                     Enter Lab <ChevronRight size={18} />
@@ -258,7 +258,7 @@ const ProjectBoard = () => {
 
                 <Link
                   to={`/projects/${project.id}`}
-                  className="w-full py-3.5 rounded-xl border border-theme text-high font-bold flex items-center justify-center gap-2 hover:bg-hover-bg hover:text-hover-text hover:border-hover-bg transition-all"
+                  className="w-full py-3.5 rounded-xl border border-theme text-high font-bold flex items-center justify-center gap-2 btn-adaptive-hover transition-all"
                 >
                   Deep Dive <ChevronRight size={16} />
                 </Link>

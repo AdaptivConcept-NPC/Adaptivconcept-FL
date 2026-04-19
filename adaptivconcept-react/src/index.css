@@ -97,6 +97,11 @@ code {
   border-color: var(--btn-hover-bg) !important;
 }
 
+.btn-adaptive-hover:hover svg,
+.btn-adaptive-hover:hover i {
+  color: var(--btn-hover-text) !important;
+}
+
 .btn-adaptive-hover {
   transition: all 0.3s ease;
 }
