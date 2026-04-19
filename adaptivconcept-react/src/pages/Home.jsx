@@ -508,14 +508,16 @@ const Home = () => {
                     >
                       <i className="bi bi-github text-xl"></i>
                     </a>
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:scale-110 btn-adaptive-hover transition-all duration-300"
-                    >
-                      <ExternalLink size={22} />
-                    </a>
+                    {project.liveUrl !== "#" && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:scale-110 btn-adaptive-hover transition-all duration-300"
+                      >
+                        <ExternalLink size={22} />
+                      </a>
+                    )}
                   </div>
                 </div>
 
