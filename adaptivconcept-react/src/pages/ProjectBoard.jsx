@@ -10,7 +10,7 @@ const ProjectBoard = () => {
   const [activeCategory, setActiveCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [projectsData, setProjectsData] = useState(projectsDataLocal);
-  const { isOverkillEnabled, setIsOverkillEnabled } = useTheme();
+  const { themeColor, activeFontFamily, activeFontScale, isOverkillEnabled, setIsOverkillEnabled } = useTheme();
 
   useEffect(() => {
     getProjects().then(setProjectsData);
