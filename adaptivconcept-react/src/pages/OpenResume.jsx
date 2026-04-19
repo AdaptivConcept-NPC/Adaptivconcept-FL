@@ -108,7 +108,10 @@ const OpenResume = () => {
           </div>
           <h1 
             className="text-5xl md:text-7xl font-bold text-high tracking-tighter"
-            style={{ fontFamily: activeFontFamily }}
+            style={{ 
+              fontFamily: activeFontFamily,
+              WebkitTextStroke: themeColor.washType === 'coal' ? '1px #ffffff' : themeColor.washType === 'light' ? '1px #000000' : 'none'
+            }}
           >
             Thabang <span style={{ color: themeColor.value }}>Mposula</span>
           </h1>
