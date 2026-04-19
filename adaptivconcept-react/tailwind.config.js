@@ -11,6 +11,8 @@ export default {
         'adaptiv-orange-hover': 'var(--theme-color)',
         'theme-accent': 'var(--theme-color)',
         'dark-bg': '#0a0a0a',
+        'hover-bg': 'var(--btn-hover-bg)',
+        'hover-text': 'var(--btn-hover-text)',
       },
 
       fontFamily: {

@@ -116,7 +116,9 @@ const ProjectBoard = () => {
             </h2>
             <p className="text-low text-sm mt-2">Interactive environments and experimental portals.</p>
           </div>
-          <Link to="/tech-wall" className="text-xs font-bold text-adaptiv-orange hover:underline tracking-widest uppercase flex items-center gap-2">
+          <Link to="/tech-wall" className="text-xs font-bold hover:underline tracking-widest uppercase flex items-center gap-2"
+            style={{ color: 'var(--theme-color)' }}
+          >
             View Stack <ChevronRight size={14} />
           </Link>
         </div>
@@ -158,7 +160,8 @@ const ProjectBoard = () => {
 
                   <Link 
                     to="/labs/pyswissshef"
-                    className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-adaptiv-orange text-white font-bold hover:bg-adaptiv-orange/90 transition-all shadow-lg shadow-adaptiv-orange/20"
+                    className="flex items-center justify-center gap-2 w-full py-3 rounded-xl font-bold hover:bg-hover-bg hover:text-hover-text transition-all shadow-lg shadow-adaptiv-orange/20"
+                    style={{ backgroundColor: 'var(--theme-color)', color: themeColor.washType === 'light' ? '#000000' : '#ffffff' }}
                   >
                     Enter Lab <ChevronRight size={18} />
                   </Link>
@@ -235,7 +238,7 @@ const ProjectBoard = () => {
                   )}
                 </div>
 
-                <h3 className="text-2xl font-comfortaa font-bold text-high mb-3 group-hover:text-adaptiv-orange transition-colors">
+                <h3 className={`text-2xl font-comfortaa font-bold text-high mb-3 transition-colors ${themeColor.washType === 'coal' ? 'group-hover:text-white' : themeColor.washType === 'light' ? 'group-hover:text-black' : 'group-hover:text-adaptiv-orange'}`}>
                   {project.title}
                 </h3>
                 <p className="text-low text-sm leading-relaxed mb-8 flex-grow">
@@ -255,7 +258,7 @@ const ProjectBoard = () => {
 
                 <Link
                   to={`/projects/${project.id}`}
-                  className="w-full py-3.5 rounded-xl border border-theme text-high font-bold flex items-center justify-center gap-2 group-hover:bg-adaptiv-orange group-hover:border-adaptiv-orange transition-all"
+                  className="w-full py-3.5 rounded-xl border border-theme text-high font-bold flex items-center justify-center gap-2 hover:bg-hover-bg hover:text-hover-text hover:border-hover-bg transition-all"
                 >
                   Deep Dive <ChevronRight size={16} />
                 </Link>

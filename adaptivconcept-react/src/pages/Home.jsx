@@ -209,17 +209,18 @@ const Home = () => {
             <div className="flex flex-wrap justify-center gap-6">
               <button
                 onClick={scrollToContact}
-                className="px-6 py-4 md:px-10 md:py-5 rounded-xl md:rounded-2xl text-white text-base md:text-lg font-bold hover:scale-105 hover:shadow-2xl transition-all flex items-center gap-3"
+                className="px-6 py-4 md:px-10 md:py-5 rounded-xl md:rounded-2xl text-white text-base md:text-lg font-bold hover:scale-105 hover:shadow-2xl hover:bg-hover-bg hover:text-hover-text transition-all flex items-center gap-3"
                 style={{
                   backgroundColor: themeColor.value,
                   boxShadow: `0 10px 30px -10px ${themeColor.value}4d`,
+                  color: isHighContrast ? (themeColor.washType === 'light' ? '#000000' : '#ffffff') : '#ffffff'
                 }}
               >
                 Let's Talk <ChevronRight size={22} />
               </button>
               <button
                 onClick={() => navigate("/projects")}
-                className="px-6 py-4 md:px-10 md:py-5 rounded-xl md:rounded-2xl border-2 border-theme text-high text-base md:text-lg font-bold hover:bg-white/5 hover:border-white/20 transition-all backdrop-blur-sm"
+                className="px-6 py-4 md:px-10 md:py-5 rounded-xl md:rounded-2xl border-2 border-theme text-high text-base md:text-lg font-bold hover:bg-hover-bg hover:text-hover-text hover:border-hover-bg transition-all backdrop-blur-sm"
               >
                 Project Catalog
               </button>
@@ -281,7 +282,7 @@ const Home = () => {
                   ].map((service, i) => (
                     <div key={i} className="flex gap-8 group/item">
                       <div
-                        className="w-16 h-16 rounded-[22px] glass-theme flex items-center justify-center transition-all duration-500 shadow-inner group-hover/item:text-white"
+                        className="w-16 h-16 rounded-[22px] glass-theme flex items-center justify-center transition-all duration-500 shadow-inner hover:bg-hover-bg hover:text-hover-text"
                         style={{ color: accentColor }}
                       >
                         {service.icon}
@@ -391,11 +392,15 @@ const Home = () => {
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                         disabled={status === "submitting"}
-                        className={`w-full py-4 md:py-5 rounded-xl md:rounded-2xl bg-adaptiv-orange text-white font-bold text-lg hover:shadow-2xl hover:shadow-adaptiv-orange/30 transition-all flex items-center justify-center gap-3 mt-4 ${
+                        className={`w-full py-4 md:py-5 rounded-xl md:rounded-2xl font-bold text-lg hover:shadow-2xl hover:shadow-adaptiv-orange/30 hover:bg-hover-bg hover:text-hover-text transition-all flex items-center justify-center gap-3 mt-4 ${
                           status === "submitting"
                             ? "opacity-70 cursor-not-allowed"
                             : ""
                         }`}
+                        style={{ 
+                          backgroundColor: themeColor.value,
+                          color: isHighContrast ? (themeColor.washType === 'light' ? '#000000' : '#ffffff') : '#ffffff'
+                        }}
                       >
                         {status === "idle" && (
                           <>
@@ -454,8 +459,8 @@ const Home = () => {
             </div>
             <button
               onClick={() => navigate("/projects")}
-              className={`group flex items-center gap-3 font-bold text-xl transition-colors duration-300 ${isHighContrast ? '' : 'text-adaptiv-orange hover:text-white'}`}
-              style={{ color: isHighContrast ? accentColor : undefined }}
+              className="group flex items-center gap-3 font-bold text-xl transition-colors duration-300 hover:text-hover-bg"
+              style={{ color: accentColor }}
             >
               Explore Full Lab{" "}
               <ChevronRight
@@ -483,7 +488,7 @@ const Home = () => {
                     >
                       {project.category}
                     </span>
-                    <h4 className={`text-2xl md:text-3xl font-comfortaa font-bold text-high mb-2 transition-colors ${isHighContrast ? (contrastColor === 'white' ? 'group-hover:text-white' : 'group-hover:text-black') : 'group-hover:text-adaptiv-orange'}`} 
+                    <h4 className="text-2xl md:text-3xl font-comfortaa font-bold text-high mb-2 transition-colors hover:text-hover-bg" 
                     style={{fontSize:"150%"}}>
                       {project.title}
                     </h4>
@@ -499,7 +504,7 @@ const Home = () => {
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:scale-110 transition-all duration-300 ${isHighContrast ? (contrastColor === 'white' ? 'hover:bg-white hover:border-white hover:text-black' : 'hover:bg-black hover:border-black hover:text-white') : 'hover:bg-adaptiv-orange hover:border-adaptiv-orange'}`}
+                      className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:scale-110 hover:bg-hover-bg hover:text-hover-text hover:border-hover-bg transition-all duration-300"
                     >
                       <i className="bi bi-github text-xl"></i>
                     </a>
@@ -507,7 +512,7 @@ const Home = () => {
                       href={project.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:scale-110 transition-all duration-300 ${isHighContrast ? (contrastColor === 'white' ? 'hover:bg-white hover:border-white hover:text-black' : 'hover:bg-black hover:border-black hover:text-white') : 'hover:bg-adaptiv-orange hover:border-adaptiv-orange'}`}
+                      className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:scale-110 hover:bg-hover-bg hover:text-hover-text hover:border-hover-bg transition-all duration-300"
                     >
                       <ExternalLink size={22} />
                     </a>
@@ -537,7 +542,7 @@ const Home = () => {
 
                 <button
                    onClick={() => navigate(`/projects/${project.id}`)}
-                   className={`w-full py-4 rounded-2xl border-2 border-theme text-high font-bold text-lg transition-all duration-300 ${isHighContrast ? (contrastColor === 'white' ? 'hover:bg-white hover:border-white hover:text-black' : 'hover:bg-black hover:border-black hover:text-white') : 'hover:bg-adaptiv-orange hover:border-adaptiv-orange group-hover:shadow-lg group-hover:shadow-adaptiv-orange/20'}`}
+                   className="w-full py-4 rounded-2xl border-2 border-theme text-high font-bold text-lg hover:bg-hover-bg hover:text-hover-text hover:border-hover-bg hover:shadow-lg hover:shadow-adaptiv-orange/20 transition-all duration-300"
                  >
                    Case Study Details
                  </button>

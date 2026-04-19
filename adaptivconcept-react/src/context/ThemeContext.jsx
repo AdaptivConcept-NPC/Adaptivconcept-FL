@@ -139,6 +139,8 @@ export const ThemeProvider = ({ children }) => {
             root.style.setProperty('--glass-blur', '32px');
             root.style.setProperty('--glass-border', 'rgba(0, 0, 0, 0.08)');
             root.style.setProperty('--glass-shadow', '0 8px 32px 0 rgba(0, 0, 0, 0.1)');
+            root.style.setProperty('--btn-hover-bg', '#000000');
+            root.style.setProperty('--btn-hover-text', '#ffffff');
         } else if (themeColor.washType === 'coal') {
             // Coal / Deep Dark mode
             root.style.setProperty('--bg', '#050505');
@@ -152,6 +154,8 @@ export const ThemeProvider = ({ children }) => {
             root.style.setProperty('--glass-blur', '64px');
             root.style.setProperty('--glass-border', 'rgba(255, 255, 255, 0.05)');
             root.style.setProperty('--glass-shadow', '0 8px 32px 0 rgba(0, 0, 0, 0.5)');
+            root.style.setProperty('--btn-hover-bg', '#ffffff');
+            root.style.setProperty('--btn-hover-text', '#000000');
         } else if (themeColor.washType === 'none') {
             // Default Adaptiv Orange / Dark
             root.style.setProperty('--bg', '#0a0a0a');
@@ -165,6 +169,8 @@ export const ThemeProvider = ({ children }) => {
             root.style.setProperty('--glass-blur', '64px');
             root.style.setProperty('--glass-border', 'rgba(255, 255, 255, 0.1)');
             root.style.setProperty('--glass-shadow', '0 8px 32px 0 rgba(0, 0, 0, 0.37)');
+            root.style.setProperty('--btn-hover-bg', 'var(--theme-color)');
+            root.style.setProperty('--btn-hover-text', '#ffffff');
         } else {
             // Colored Wash Themes (Blue, Green, Purple)
             root.style.setProperty('--bg', '#0a0a0a');
@@ -178,6 +184,8 @@ export const ThemeProvider = ({ children }) => {
             root.style.setProperty('--glass-blur', '40px');
             root.style.setProperty('--glass-border', `rgba(${rgb}, 0.2)`);
             root.style.setProperty('--glass-shadow', '0 8px 32px 0 rgba(0, 0, 0, 0.37)');
+            root.style.setProperty('--btn-hover-bg', 'var(--theme-color)');
+            root.style.setProperty('--btn-hover-text', '#ffffff');
         }
         
     }, [themeColor]);

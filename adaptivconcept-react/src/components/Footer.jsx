@@ -288,7 +288,7 @@ const Footer = () => {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-12 h-12 rounded-2xl bg-white/5 border border-theme flex items-center justify-center text-low hover:bg-adaptiv-orange hover:text-white hover:border-adaptiv-orange hover:-translate-y-1 transition-all duration-300 shadow-xl"
+                    className="w-12 h-12 rounded-2xl bg-white/5 border border-theme flex items-center justify-center text-low hover:bg-hover-bg hover:text-hover-text hover:border-hover-bg hover:-translate-y-1 transition-all duration-300 shadow-xl"
                     title={social.title}
                   >
                     {social.icon}

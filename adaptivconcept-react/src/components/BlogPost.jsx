@@ -19,7 +19,7 @@ const BlogPost = ({ post, index = 0 }) => {
       transition={{ duration: 0.4, delay: index * 0.1 }}
     >
       <div
-        className="group relative glass-theme backdrop-blur-md border border-theme rounded-2xl p-6 md:p-8 flex flex-col h-full transition-all hover:bg-white/[0.08] hover:border-white/20 overflow-hidden"
+        className="group relative glass-theme backdrop-blur-md border border-theme rounded-2xl p-6 md:p-8 flex flex-col h-full transition-all hover:bg-hover-bg hover:text-hover-text hover:border-hover-bg overflow-hidden"
         style={{ backgroundColor: 'var(--glass-bg)' }}
         id={`blog-post-${post.id}`}
       >
@@ -45,7 +45,7 @@ const BlogPost = ({ post, index = 0 }) => {
         </div>
 
         {/* Title */}
-        <h3 className="text-xl md:text-2xl font-comfortaa font-bold text-high mb-4 group-hover:text-adaptiv-orange transition-colors leading-tight">
+        <h3 className="text-xl md:text-2xl font-comfortaa font-bold text-high mb-4 transition-colors leading-tight hover:text-hover-bg">
           {post.title}
         </h3>
 
@@ -71,7 +71,7 @@ const BlogPost = ({ post, index = 0 }) => {
         <div className="flex gap-3 mt-auto">
           <Link
             to={`/blog/${post.id}`}
-            className="flex-grow py-3 rounded-xl border border-theme text-high font-bold flex items-center justify-center gap-2 group-hover:bg-adaptiv-orange group-hover:border-adaptiv-orange transition-all text-sm"
+            className="flex-grow py-3 rounded-xl border border-theme text-high font-bold flex items-center justify-center gap-2 hover:bg-hover-bg hover:text-hover-text hover:border-hover-bg transition-all text-sm"
           >
             <BookOpen size={16} />
             Read Article
@@ -83,7 +83,7 @@ const BlogPost = ({ post, index = 0 }) => {
               href={post.linkedinUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-3 rounded-xl border border-theme text-low hover:text-high hover:border-white/30 transition-all flex items-center justify-center"
+              className="px-4 py-3 rounded-xl border border-theme text-low hover:bg-hover-bg hover:text-hover-text hover:border-hover-bg transition-all flex items-center justify-center"
               title="View on LinkedIn"
             >
               <ExternalLink size={16} />

@@ -89,3 +89,14 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+
+/* System-Wide Adaptive Button Hover */
+.btn-adaptive-hover:hover {
+  background-color: var(--btn-hover-bg) !important;
+  color: var(--btn-hover-text) !important;
+  border-color: var(--btn-hover-bg) !important;
+}
+
+.btn-adaptive-hover {
+  transition: all 0.3s ease;
+}

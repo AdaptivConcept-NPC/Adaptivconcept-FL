@@ -169,7 +169,8 @@ const BlogDetail = () => {
         </h2>
         <Link
           to="/blog"
-          className="px-8 py-3 bg-adaptiv-orange text-white rounded-xl font-bold hover:bg-white hover:text-adaptiv-orange transition-all"
+          className="px-8 py-3 rounded-xl font-bold hover:bg-hover-bg hover:text-hover-text transition-all"
+          style={{ backgroundColor: 'var(--theme-color)', color: '#ffffff' }}
         >
           Back to Blog
         </Link>
@@ -205,7 +206,9 @@ const BlogDetail = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
         {/* Article Header */}
         <div className="lg:col-span-4">
-          <div className="bg-[#0a0a0a]/90 border border-white/10 rounded-[24px] md:rounded-[40px] p-6 md:p-10 sticky top-28 group relative overflow-hidden">
+          <div className="border border-white/10 rounded-[24px] md:rounded-[40px] p-6 md:p-10 sticky top-28 group relative overflow-hidden"
+            style={{ backgroundColor: 'var(--glass-bg)' }}
+          >
             {/* Ambient glow */}
             <div className="absolute top-0 right-0 w-48 h-48 bg-adaptiv-orange/5 blur-[80px] rounded-full -mr-24 -mt-24 group-hover:bg-adaptiv-orange/10 transition-colors" />
 
@@ -269,7 +272,7 @@ const BlogDetail = () => {
                     navigator.clipboard.writeText(window.location.href);
                   }
                 }}
-                className="w-full py-3.5 rounded-xl border border-white/10 bg-white/5 text-gray-400 font-bold hover:bg-white/10 hover:text-white transition-all flex items-center justify-center gap-3"
+                className="w-full py-3.5 rounded-xl border border-white/10 bg-white/5 text-low font-bold hover:bg-hover-bg hover:text-hover-text hover:border-hover-bg transition-all flex items-center justify-center gap-3"
               >
                 <Share2 size={18} />
                 Share Article
@@ -280,7 +283,9 @@ const BlogDetail = () => {
 
         {/* Article Content */}
         <div className="lg:col-span-8">
-          <div className="bg-[#0a0a0a]/90 border border-white/10 rounded-[24px] md:rounded-[40px] p-6 md:p-16">
+          <div className="border border-white/10 rounded-[24px] md:rounded-[40px] p-6 md:p-16"
+            style={{ backgroundColor: 'var(--glass-bg)' }}
+          >
             <div className="flex items-center gap-4 mb-8">
               <div className="w-12 h-12 rounded-2xl bg-adaptiv-orange/10 flex items-center justify-center text-adaptiv-orange">
                 <BookOpen size={28} />
