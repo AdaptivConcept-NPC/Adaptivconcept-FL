@@ -32,20 +32,20 @@
     "tags": ["React", "Redux Saga", "Tailwind", "Pharmacy Simulation"],
     "isHero": true,
     "githubUrl": "https://github.com/iarxii/MediMixDash_Saga",
-    "liveUrl": "https://medimixdash.netlify.app",
+    "liveUrl": "https://medimixdashsaga.netlify.app",
     "detailedStory": "A deep dive into medical retail operations through gamification. This project simulates the multitasking challenges of a retail pharmacy, from prescription verification to inventory management, using a strictly typed Saga architecture for reliable state transitions."
   },
   {
     "id": "wave-shooter",
-    "title": "WaveShooter",
-    "subtitle": "Immersive 3D WebGL Combat",
-    "description": "Fast-paced top-down wave shooter built with React, Three.js, and Vite. Repel waves of mutagens and viruses as healthcare heroes.",
+    "title": "Healthcare Heroes",
+    "subtitle": "Hazard Wave Battle",
+    "description": "Fast-paced top-down wave shooter built with React, Three.js, and Vite. Repel waves of mutagens and viruses as healthcare heroes using unique abilities.",
     "category": "Game Dev",
-    "tags": ["React", "Three.js", "Vite", "WebGL"],
+    "tags": ["React", "Three.js", "Vite", "WebGL", "Healthcare"],
     "isHero": true,
     "githubUrl": "https://github.com/iarxii/WaveShooter",
-    "liveUrl": "https://wave-shooter.netlify.app",
-    "detailedStory": "Performance-optimized 3D game showcasing snapping controls and readable wave pressure. Features Bosses, Milestones, and persistence logic for high scores and play time."
+    "liveUrl": "http://healthcareheroes.netlify.app",
+    "detailedStory": "Performance-optimized 3D game showcasing snapping controls and readable wave pressure. Features Bosses, Milestones, and persistence logic for high scores. Rebranded as Healthcare Heroes to align with medical mission aesthetics."
   },
   {
     "id": "surgical-listing",
@@ -56,8 +56,20 @@
     "tags": ["Laravel", "React", "PostgreSQL", "HealthTech"],
     "isHero": true,
     "githubUrl": "https://github.com/iarxii/Surgical_Procedure_Listings_App",
-    "liveUrl": "https://surgical-procedure-listings-app.netlify.app",
+    "liveUrl": "https://icdsurgicalprocedurelisting.netlify.app",
     "detailedStory": "Real-world impact project that transformed manual paperwork into a streamlined digital workflow for surgical teams, reducing scheduling errors by 40%."
+  },
+  {
+    "id": "bubbli",
+    "title": "Bubbli",
+    "subtitle": "Premium Cleaning Solutions",
+    "description": "Modern e-commerce platform for curated cleaning solutions and detergents. Features a rewards system and integrated ordering.",
+    "category": "AdaptivConcept™",
+    "tags": ["React", "E-commerce", "Rewards", "WhatsApp Order"],
+    "isHero": false,
+    "githubUrl": "https://github.com/iarxii/bubbli",
+    "liveUrl": "https://bubbli.netlify.app/",
+    "detailedStory": "A frictionless shopping experience for high-quality cleaning products. Integrates a points-based loyalty program and direct-to-WhatsApp ordering for community-based commerce."
   },
   {
     "id": "onefit-app",
