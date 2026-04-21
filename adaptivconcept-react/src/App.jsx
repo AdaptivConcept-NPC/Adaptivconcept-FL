@@ -22,6 +22,8 @@ import TechWall from './pages/TechWall';
 import OpenResume from './pages/OpenResume';
 import Admin from './pages/Admin';
 import LabDetail from './pages/LabDetail';
+import GamingArcade from './pages/GamingArcade';
+import DigiArch from './pages/DigiArch';
 
 function App() {
   const useVideoBackground = false; // Toggle this to switch between video and static wallpaper
@@ -60,6 +62,8 @@ function App() {
               <Route path="/resume" element={<OpenResume />} />
               <Route path="/admin" element={<Admin />} />
               <Route path="/labs/:id" element={<LabDetail />} />
+              <Route path="/arcade" element={<GamingArcade />} />
+              <Route path="/arcade/digiarch" element={<DigiArch />} />
             </Routes>
           </AnimatePresence>
         </main>

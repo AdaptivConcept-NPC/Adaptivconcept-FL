@@ -21,14 +21,16 @@
 
   /* Centralized Glass System */
   --glass-bg: rgba(15, 15, 16, 0.4);
+  --glass-bg-hover: rgba(0, 0, 0, 0.8);
   --glass-blur: 40px;
+  --glass-blur-hover: 60px;
   --glass-border: rgba(255, 255, 255, 0.1);
   --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
   --glass-border-width: 1px;
 }
 
-/* Base Glass Theme - for large sections and containers */
-.glass-theme {
+/* Glass Theme - for large sections and containers */
+.glass-theme, .glass-panel {
   background-color: var(--glass-bg);
   backdrop-filter: blur(var(--glass-blur));
   -webkit-backdrop-filter: blur(var(--glass-blur));
@@ -37,6 +39,12 @@
   border-color: var(--glass-border-border, var(--glass-border));
   box-shadow: var(--glass-shadow);
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-theme:hover, .glass-panel:hover {
+  background-color: var(--glass-bg-hover);
+  backdrop-filter: blur(var(--glass-blur-hover));
+  -webkit-backdrop-filter: blur(var(--glass-blur-hover));
 }
 
 /* Glass Card - specialized for interactive project/blog cards */
@@ -52,14 +60,16 @@
 }
 
 .glass-card:hover {
-  background-color: rgba(var(--theme-color-rgb), 0.12);
+  background-color: var(--glass-bg-hover);
+  backdrop-filter: blur(var(--glass-blur-hover));
+  -webkit-backdrop-filter: blur(var(--glass-blur-hover));
   border-color: rgba(var(--theme-color-rgb), 0.4);
   transform: translateY(-8px);
   box-shadow: var(--glass-shadow), 0 0 20px rgba(var(--theme-color-rgb), 0.4);
 }
 
 .glass-theme-hover:hover {
-  background-color: rgba(var(--theme-color-rgb), 0.1);
+  background-color: var(--glass-bg-hover);
   border-color: rgba(var(--theme-color-rgb), 0.3);
 }
 

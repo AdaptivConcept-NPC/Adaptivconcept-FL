@@ -10,11 +10,13 @@ import {
   X,
   Handshake,
   Palette,
+  Gamepad2,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useTheme } from "../../context/ThemeContext";
 import FLFontCarousel from "../FLFontCarousel";
 import "./Navbar.css";
+import "../../pages/GamingArcade.css";
 
 const Navbar = () => {
   const { themeColor, nextColor } = useTheme();
@@ -128,6 +130,18 @@ const Navbar = () => {
                 onClick={() => setIsMenuOpen(false)}
               >
                 <Newspaper size={18} /> <p className="truncate">Blog</p>
+              </Link>
+            </li>
+            <li>
+              <Link
+                className={`flex items-center gap-2 text-sm font-medium transition-colors hover:text-high ${isActive("/arcade") ? "font-bold" : ""}`}
+                style={{ color: isActive("/arcade") ? 'var(--text-h)' : 'var(--text)' }}
+                to="/arcade"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <span className="navbar-arcade-icon">
+                  <Gamepad2 size={18} />
+                </span>
               </Link>
             </li>
           </ul>

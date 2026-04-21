@@ -55,58 +55,6 @@ const ProjectBoard = () => {
         </p>
       </div>
 
-      {/* Filters & Search */}
-      <div className="max-w-5xl mx-auto mb-20">
-        <div className="glass-theme rounded-[24px] md:rounded-[32px] p-3 md:p-4 flex flex-col lg:flex-row items-center gap-4 md:gap-6 shadow-2xl">
-          <div className="w-full lg:flex-grow relative group">
-            <Search
-              className="absolute left-5 top-1/2 -translate-y-1/2 text-low group-focus-within:text-adaptiv-orange transition-colors"
-              size={20}
-            />
-            <input
-              type="text"
-              className="w-full bg-black/20 border border-theme text-high pl-14 pr-6 py-4 rounded-2xl focus:outline-none focus:border-adaptiv-orange/40 transition-all font-poppins placeholder:text-low/60"
-              placeholder="Search by tech stack or name..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-          </div>
-          <div className="flex flex-wrap justify-center gap-2">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`px-5 py-2.5 rounded-xl text-sm font-bold transition-all ${
-                  activeCategory === cat
-                    ? "bg-adaptiv-orange text-white shadow-lg shadow-adaptiv-orange/20"
-                    : "glass-theme text-low hover:text-high transition-all"
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
-          
-          {/* Overkill Toggle */}
-          <div className="flex items-center gap-3 pl-4 border-l border-theme/20 h-10 ml-auto">
-            <button
-                onClick={() => setIsOverkillEnabled(!isOverkillEnabled)}
-                className={`p-2.5 rounded-xl flex items-center gap-2 transition-all ${
-                    isOverkillEnabled 
-                    ? "bg-purple-500/20 text-purple-400 border border-purple-500/30" 
-                    : "glass-theme text-low hover:text-high"
-                }`}
-                title={isOverkillEnabled ? "Experimental Fonts Active (Heavy)" : "Load Experimental Fonts (17MB+)"}
-            >
-                {isOverkillEnabled ? <Sparkles size={18} /> : <Zap size={18} />}
-                <span className="text-xs font-bold hidden sm:inline">
-                    {isOverkillEnabled ? "Experimental Active" : "Load XP Fonts"}
-                </span>
-            </button>
-          </div>
-        </div>
-      </div>
-
       {/* Dev Labs Section */}
       <div className="max-w-7xl mx-auto mb-20">
         <div className="flex items-center justify-between mb-8 px-2">
@@ -202,6 +150,59 @@ const ProjectBoard = () => {
             </div>
 
           </motion.div>
+        </div>
+      </div>
+
+      {/* Filters & Search */}
+      <div className="max-w-5xl mx-auto mb-20">
+        <div className="glass-theme rounded-[24px] md:rounded-[32px] p-3 md:p-4 flex flex-col lg:flex-row items-center gap-4 md:gap-6 shadow-2xl">
+          <div className="w-full lg:flex-grow relative group">
+            <Search
+              className="absolute left-5 top-1/2 -translate-y-1/2 text-low group-focus-within:text-adaptiv-orange transition-colors"
+              size={20}
+            />
+            <input
+              type="text"
+              className="w-full border border-theme text-high pl-14 pr-6 py-4 rounded-2xl focus:outline-none focus:border-adaptiv-orange/40 transition-all font-poppins placeholder:text-low/60"
+              placeholder="Search by tech stack or name..."
+              style={{ backgroundColor: 'var(--input-bg)' }}
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+          </div>
+          <div className="flex flex-wrap justify-center gap-2">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`px-5 py-2.5 rounded-xl text-sm font-bold transition-all ${
+                  activeCategory === cat
+                    ? "bg-adaptiv-orange text-white shadow-lg shadow-adaptiv-orange/20"
+                    : "glass-theme text-low hover:text-high transition-all"
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+          
+          {/* Overkill Toggle */}
+          <div className="flex items-center gap-3 pl-4 border-l border-theme/20 h-10 ml-auto">
+            <button
+                onClick={() => setIsOverkillEnabled(!isOverkillEnabled)}
+                className={`p-2.5 rounded-xl flex items-center gap-2 transition-all ${
+                    isOverkillEnabled 
+                    ? "bg-purple-500/20 text-purple-400 border border-purple-500/30" 
+                    : "glass-theme text-low hover:text-high"
+                }`}
+                title={isOverkillEnabled ? "Experimental Fonts Active (Heavy)" : "Load Experimental Fonts (17MB+)"}
+            >
+                {isOverkillEnabled ? <Sparkles size={18} /> : <Zap size={18} />}
+                <span className="text-xs font-bold hidden sm:inline">
+                    {isOverkillEnabled ? "Experimental Active" : "Load XP Fonts"}
+                </span>
+            </button>
+          </div>
         </div>
       </div>
 

@@ -1,0 +1,154 @@
+/* ═══════════════════════════════════════════════════════════
+   DIGITAL ARCHITECT — Game Styles
+   ═══════════════════════════════════════════════════════════ */
+
+/* Scanlines */
+.digiarch-scanlines {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+  mix-blend-mode: multiply;
+}
+
+/* Glitch Title */
+.digiarch-glitch {
+  position: relative;
+  display: inline-block;
+}
+
+.digiarch-glitch::before,
+.digiarch-glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+.digiarch-glitch:hover::before {
+  animation: glitch-shift-1 0.3s ease-out;
+  color: #39ff14;
+  opacity: 0.6;
+}
+.digiarch-glitch:hover::after {
+  animation: glitch-shift-2 0.3s ease-out;
+  color: #00f2ff;
+  opacity: 0.6;
+}
+
+/* Preview Container */
+.digiarch-preview-container {
+  width: 100%;
+  height: 300px;
+  position: relative;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+
+  /* Force dark inset so neon nodes always pop */
+  background-color: rgba(10, 10, 12, 0.85) !important;
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+@media (min-width: 768px) {
+  .digiarch-preview-container {
+    height: 360px;
+  }
+}
+
+/* Nodes */
+.digiarch-node {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  min-height: 48px;
+  border: 2px solid;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Comfortaa', monospace;
+  font-weight: 700;
+  font-size: 14px;
+  user-select: none;
+}
+
+.digiarch-node-target {
+  background: rgba(255,255,255,0.03) !important;
+  box-shadow: none !important;
+  border-style: dashed;
+}
+
+/* Control Buttons */
+.digiarch-control-btn {
+  border: 1px solid var(--glass-border);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.digiarch-control-btn.active {
+  border: 1px solid rgba(57, 255, 20, 0.5);
+}
+
+.digiarch-control-btn:hover {
+  border-color: rgba(var(--theme-color-rgb), 0.4);
+  transform: translateY(-1px);
+}
+
+/* Submit Button */
+.digiarch-submit-btn {
+  font-family: 'Comfortaa', cursive;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.digiarch-submit-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    rgba(255,255,255,0.2) 50%,
+    transparent 70%
+  );
+  transform: translateX(-100%);
+}
+
+.digiarch-submit-btn:hover::after {
+  animation: digiarch-shimmer 0.8s ease-out;
+}
+
+@keyframes digiarch-shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Win flash */
+@keyframes digiarch-win-flash {
+  0% { box-shadow: 0 0 0px rgba(57,255,20,0); }
+  50% { box-shadow: 0 0 60px rgba(57,255,20,0.4); }
+  100% { box-shadow: 0 0 20px rgba(57,255,20,0.15); }
+}
+
+/* Fail shake */
+@keyframes digiarch-shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-4px); }
+  40% { transform: translateX(4px); }
+  60% { transform: translateX(-2px); }
+  80% { transform: translateX(2px); }
+}

@@ -135,12 +135,15 @@ export const ThemeProvider = ({ children }) => {
             root.style.setProperty('--heading-color', '#111111');
             root.style.setProperty('--heading-shadow', '2px 2px 0px rgba(0, 0, 0, 0.15)');
             root.style.setProperty('--heading-stroke', '0px transparent');
-            root.style.setProperty('--glass-bg', 'rgba(255, 255, 255, 0.7)');
-            root.style.setProperty('--glass-blur', '32px');
-            root.style.setProperty('--glass-border', 'rgba(0, 0, 0, 0.08)');
-            root.style.setProperty('--glass-shadow', '0 8px 32px 0 rgba(0, 0, 0, 0.1)');
+            root.style.setProperty('--glass-bg', 'rgba(255, 255, 255, 0.6)');
+            root.style.setProperty('--glass-bg-hover', 'rgba(240, 240, 240, 0.9)');
+            root.style.setProperty('--glass-blur', '24px');
+            root.style.setProperty('--glass-blur-hover', '40px');
+            root.style.setProperty('--glass-border', 'rgba(0, 0, 0, 0.12)');
+            root.style.setProperty('--glass-shadow', '0 8px 32px 0 rgba(0, 0, 0, 0.08)');
             root.style.setProperty('--btn-hover-bg', '#000000');
             root.style.setProperty('--btn-hover-text', '#ffffff');
+            root.style.setProperty('--input-bg', 'rgba(0, 0, 0, 0.03)');
         } else if (themeColor.washType === 'coal') {
             // Coal / Deep Dark mode
             root.style.setProperty('--bg', '#050505');
@@ -150,12 +153,15 @@ export const ThemeProvider = ({ children }) => {
             root.style.setProperty('--heading-color', '#ffffff');
             root.style.setProperty('--heading-shadow', '2px 2px 0px rgba(0, 0, 0, 1)');
             root.style.setProperty('--heading-stroke', '1px rgba(0,0,0,1)');
-            root.style.setProperty('--glass-bg', 'rgba(18, 18, 18, 0.8)');
-            root.style.setProperty('--glass-blur', '64px');
-            root.style.setProperty('--glass-border', 'rgba(255, 255, 255, 0.05)');
-            root.style.setProperty('--glass-shadow', '0 8px 32px 0 rgba(0, 0, 0, 0.5)');
+            root.style.setProperty('--glass-bg', 'rgba(18, 18, 18, 0.7)');
+            root.style.setProperty('--glass-bg-hover', 'rgba(0, 0, 0, 0.95)');
+            root.style.setProperty('--glass-blur', '40px');
+            root.style.setProperty('--glass-blur-hover', '80px');
+            root.style.setProperty('--glass-border', 'rgba(255, 255, 255, 0.08)');
+            root.style.setProperty('--glass-shadow', '0 8px 32px 0 rgba(0, 0, 0, 0.6)');
             root.style.setProperty('--btn-hover-bg', '#ffffff');
             root.style.setProperty('--btn-hover-text', '#000000');
+            root.style.setProperty('--input-bg', 'rgba(255, 255, 255, 0.03)');
         } else if (themeColor.washType === 'none') {
             // Default Adaptiv Orange / Dark
             root.style.setProperty('--bg', '#0a0a0a');
@@ -166,11 +172,14 @@ export const ThemeProvider = ({ children }) => {
             root.style.setProperty('--heading-shadow', '2px 2px 0px rgba(0, 0, 0, 0.8)');
             root.style.setProperty('--heading-stroke', '0.5px black');
             root.style.setProperty('--glass-bg', 'rgba(15, 15, 16, 0.4)');
+            root.style.setProperty('--glass-bg-hover', 'rgba(0, 0, 0, 0.8)');
             root.style.setProperty('--glass-blur', '64px');
+            root.style.setProperty('--glass-blur-hover', '80px');
             root.style.setProperty('--glass-border', 'rgba(255, 255, 255, 0.1)');
             root.style.setProperty('--glass-shadow', '0 8px 32px 0 rgba(0, 0, 0, 0.37)');
             root.style.setProperty('--btn-hover-bg', 'var(--theme-color)');
             root.style.setProperty('--btn-hover-text', '#ffffff');
+            root.style.setProperty('--input-bg', 'rgba(255, 255, 255, 0.05)');
         } else {
             // Colored Wash Themes (Blue, Green, Purple)
             root.style.setProperty('--bg', '#0a0a0a');
@@ -181,11 +190,14 @@ export const ThemeProvider = ({ children }) => {
             root.style.setProperty('--heading-shadow', '2px 2px 0px rgba(0, 0, 0, 0.8)');
             root.style.setProperty('--heading-stroke', '0.5px black');
             root.style.setProperty('--glass-bg', 'rgba(255, 255, 255, 0.05)');
+            root.style.setProperty('--glass-bg-hover', 'rgba(0, 0, 0, 0.6)');
             root.style.setProperty('--glass-blur', '40px');
+            root.style.setProperty('--glass-blur-hover', '60px');
             root.style.setProperty('--glass-border', `rgba(${rgb}, 0.2)`);
             root.style.setProperty('--glass-shadow', '0 8px 32px 0 rgba(0, 0, 0, 0.37)');
             root.style.setProperty('--btn-hover-bg', 'var(--theme-color)');
             root.style.setProperty('--btn-hover-text', '#ffffff');
+            root.style.setProperty('--input-bg', 'rgba(255, 255, 255, 0.05)');
         }
         
     }, [themeColor]);

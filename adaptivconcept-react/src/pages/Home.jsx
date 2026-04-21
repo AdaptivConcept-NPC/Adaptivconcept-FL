@@ -156,7 +156,7 @@ const Home = () => {
       <ParallaxSection index={0} total={sectionsCount}>
         <div 
           className="max-w-5xl px-6 text-center glass-theme rounded-[32px] md:rounded-[60px] p-6 md:p-20 relative"  
-          style={{ backgroundColor: "var(--glass-bg)", opacity: 1 }}
+          style={{ opacity: 1 }}
         >
           <motion.div
             initial={{ y: 30, opacity: 0 }}
@@ -234,7 +234,7 @@ const Home = () => {
         <div ref={contactRef} className="container mx-auto px-6">
           <div 
             className="glass-theme rounded-[32px] md:rounded-[60px] p-6 md:p-20 relative overflow-hidden group" 
-            style={{ backgroundColor: "var(--glass-bg)", opacity: 1 }}
+            style={{ opacity: 1 }}
           >
             {/* Subtle glow effect */}
             <div className="absolute -top-24 -right-24 w-[500px] h-[500px] bg-adaptiv-orange/5 blur-[120px] rounded-full group-hover:bg-adaptiv-orange/10 transition-colors duration-1000"></div>
@@ -354,7 +354,8 @@ const Home = () => {
                           onChange={handleInputChange}
                           required
                           placeholder="Professional Name"
-                          className="w-full bg-white/5 border border-theme rounded-2xl px-6 py-4 text-high placeholder:text-high/40 focus:border-adaptiv-orange/50 focus:bg-white/[0.08] transition-all outline-none font-poppins"
+                          className="w-full border border-theme rounded-2xl px-6 py-4 text-high placeholder:text-high/40 focus:border-adaptiv-orange/50 transition-all outline-none font-poppins"
+                          style={{ backgroundColor: 'var(--input-bg)' }}
                         />
                       </div>
 
@@ -369,7 +370,8 @@ const Home = () => {
                           onChange={handleInputChange}
                           required
                           placeholder="email@organization.com"
-                          className="w-full bg-white/5 border border-theme rounded-2xl px-6 py-4 text-high placeholder:text-high/40 focus:border-adaptiv-orange/50 focus:bg-white/[0.08] transition-all outline-none font-poppins"
+                          className="w-full border border-theme rounded-2xl px-6 py-4 text-high placeholder:text-high/40 focus:border-adaptiv-orange/50 transition-all outline-none font-poppins"
+                          style={{ backgroundColor: 'var(--input-bg)' }}
                         />
                       </div>
 
@@ -384,7 +386,8 @@ const Home = () => {
                           required
                           rows="4"
                           placeholder="Describe the architectural challenge..."
-                          className="w-full bg-white/5 border border-theme rounded-2xl px-6 py-4 text-high placeholder:text-high/40 focus:border-adaptiv-orange/50 focus:bg-white/[0.08] transition-all outline-none font-poppins resize-none"
+                          className="w-full border border-theme rounded-2xl px-6 py-4 text-high placeholder:text-high/40 focus:border-adaptiv-orange/50 transition-all outline-none font-poppins resize-none"
+                          style={{ backgroundColor: 'var(--input-bg)' }}
                         ></textarea>
                       </div>
 
@@ -434,7 +437,7 @@ const Home = () => {
       <ParallaxSection index={2} total={sectionsCount}>
         <div 
           className="container mx-auto px-6 rounded-[32px] md:rounded-[60px] p-6 md:p-20 relative glass-theme" 
-          style={{ backgroundColor: "var(--glass-bg)", opacity: 1 }}
+          style={{ opacity: 1 }}
         >
           <div className="flex flex-col md:flex-row justify-between items-end gap-10 mb-16">
             <div className="max-w-3xl">
