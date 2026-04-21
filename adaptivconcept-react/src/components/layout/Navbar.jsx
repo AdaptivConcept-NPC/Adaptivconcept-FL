@@ -141,12 +141,12 @@ const Navbar = () => {
             >
               <FileUser size={16} /> <p className="truncate">Résumé</p>
             </Link>
-            <button 
+            {/* <button 
               className="px-5 py-2.5 rounded-xl border-2 font-medium btn-adaptive-hover transition-all flex items-center gap-2"
               style={{ borderColor: 'var(--glass-border)', color: 'var(--text-h)' }}
             >
               <Mail size={16} /> <p className="truncate">Request Detailed CV</p>
-            </button>
+            </button> */}
             <motion.div
               animate={{ 
                 scale: [1, 1.05, 1],
