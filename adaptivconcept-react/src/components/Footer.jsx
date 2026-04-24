@@ -102,7 +102,10 @@ const Footer = () => {
   const defaultMessage = "Professional integrity in every line of code.";
 
   return (
-    <footer className="py-12 mt-20 relative z-10 border-t border-theme" style={{ backgroundColor: 'var(--bg)', opacity: 0.9 }}>
+    <footer
+      className="py-12 mt-20 relative z-10 border-t border-theme"
+      style={{ backgroundColor: "var(--bg)", opacity: 0.9 }}
+    >
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
           {/* Brand & LinkedIn Card */}
@@ -145,7 +148,7 @@ const Footer = () => {
                   <motion.div
                     whileHover={{ y: -5, scale: 1.01 }}
                     className="group relative flex flex-col sm:flex-row items-center gap-6 p-4 md:p-6 rounded-2xl md:rounded-[24px] glass-theme border border-theme backdrop-blur-3xl hover:border-[#0077b5]/50 transition-all duration-500 max-w-lg w-full overflow-hidden"
-                    style={{ backgroundColor: 'var(--glass-bg)' }}
+                    style={{ backgroundColor: "var(--glass-bg)" }}
                   >
                     {/* LinkedIn-branded accent */}
                     <div className="absolute top-0 right-0 w-32 h-32 bg-[#0077b5]/10 blur-[60px] -mr-10 -mt-10 group-hover:bg-[#0077b5]/20 transition-all duration-700"></div>
@@ -161,7 +164,7 @@ const Footer = () => {
                           Thabang Mposula
                         </h6>
                         <p className="text-[#0077b5] text-[10px] font-black uppercase tracking-[0.2em] mb-4">
-                          Founder & Senior AI Engineer
+                          Founder & Senior Agentic AI Engineer
                         </p>
                       </div>
 
@@ -196,7 +199,7 @@ const Footer = () => {
                   <motion.div
                     whileHover={{ y: -5, scale: 1.01 }}
                     className="group relative flex flex-col sm:flex-row items-center gap-6 p-4 md:p-6 rounded-2xl md:rounded-[24px] glass-theme border border-theme backdrop-blur-3xl hover:border-[#8b949e]/50 transition-all duration-500 max-w-lg w-full overflow-hidden mb-5"
-                    style={{ backgroundColor: 'var(--glass-bg)' }}
+                    style={{ backgroundColor: "var(--glass-bg)" }}
                   >
                     {/* Github-branded accent */}
                     <div className="absolute top-0 right-0 w-32 h-32 bg-[#f0f6fc]/5 blur-[60px] -mr-10 -mt-10 group-hover:bg-[#58a6ff]/10 transition-all duration-700"></div>

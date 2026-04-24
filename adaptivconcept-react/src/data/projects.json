@@ -15,7 +15,7 @@
     "id": "ai-codex",
     "title": "AICodex",
     "subtitle": "AdaptivIntelligenceCodex",
-    "description": "Comprehensive knowledge base and code generation pipeline for Senior AI Engineers. Features an AI-powered Health and Oversight Data Analysis engine.",
+    "description": "Comprehensive knowledge base and code generation pipeline for Senior Agentic AI Engineers. Features an AI-powered Health and Oversight Data Analysis engine.",
     "category": "Automation",
     "tags": ["Node.js", "GPT-4", "Gemini", "RAG", "HealthTech"],
     "isHero": true,

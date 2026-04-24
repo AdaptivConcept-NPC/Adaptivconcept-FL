@@ -65,9 +65,10 @@ const ParallaxSection = ({ children, index, total }) => {
 const Home = () => {
   const { themeColor, currentFont, activeFontFamily, activeFontScale } =
     useTheme();
-    
-  const isHighContrast = themeColor.washType === 'coal' || themeColor.washType === 'light';
-  const contrastColor = themeColor.washType === 'coal' ? 'white' : 'black';
+
+  const isHighContrast =
+    themeColor.washType === "coal" || themeColor.washType === "light";
+  const contrastColor = themeColor.washType === "coal" ? "white" : "black";
   const accentColor = isHighContrast ? contrastColor : themeColor.value;
   const navigate = useNavigate();
   const contactRef = useRef(null);
@@ -154,8 +155,8 @@ const Home = () => {
 
       {/* Section 1: Hero */}
       <ParallaxSection index={0} total={sectionsCount}>
-        <div 
-          className="max-w-5xl px-6 text-center glass-theme rounded-[32px] md:rounded-[60px] p-6 md:p-20 relative"  
+        <div
+          className="max-w-5xl px-6 text-center glass-theme rounded-[32px] md:rounded-[60px] p-6 md:p-20 relative"
           style={{ opacity: 1 }}
         >
           <motion.div
@@ -170,7 +171,7 @@ const Home = () => {
               ></span>
               Available for Strategic Collaboration
             </span>
-            <h1 
+            <h1
               className="text-4xl sm:text-5xl md:text-6xl font-comfortaa font-bold mb-10 tracking-tight leading-tight"
               style={{ color: "var(--text-h)" }}
             >
@@ -185,7 +186,7 @@ const Home = () => {
                   lineHeight: 1,
                 }}
               >
-                AI Engineer
+                Agentic AI Engineer
               </span>{" "}
               & <br />
               <span
@@ -201,7 +202,10 @@ const Home = () => {
                 Digital Architect
               </span>
             </h1>
-            <p className="text-base sm:text-lg md:text-2xl font-poppins mb-14 max-w-3xl mx-auto leading-relaxed" style={{ color: "var(--text)" }}>
+            <p
+              className="text-base sm:text-lg md:text-2xl font-poppins mb-14 max-w-3xl mx-auto leading-relaxed"
+              style={{ color: "var(--text)" }}
+            >
               Engineering high-performance intelligence pipelines and
               interactive 3D ecosystems. Converting complex legacy
               infrastructure into automated future-states.
@@ -213,7 +217,11 @@ const Home = () => {
                 style={{
                   backgroundColor: themeColor.value,
                   boxShadow: `0 10px 30px -10px ${themeColor.value}4d`,
-                  color: isHighContrast ? (themeColor.washType === 'light' ? '#000000' : '#ffffff') : '#ffffff'
+                  color: isHighContrast
+                    ? themeColor.washType === "light"
+                      ? "#000000"
+                      : "#ffffff"
+                    : "#ffffff",
                 }}
               >
                 Let's Talk <ChevronRight size={22} />
@@ -232,8 +240,8 @@ const Home = () => {
       {/* Section 2: Strategy & Contact Form */}
       <ParallaxSection index={1} total={sectionsCount}>
         <div ref={contactRef} className="container mx-auto px-6">
-          <div 
-            className="glass-theme rounded-[32px] md:rounded-[60px] p-6 md:p-20 relative overflow-hidden group" 
+          <div
+            className="glass-theme rounded-[32px] md:rounded-[60px] p-6 md:p-20 relative overflow-hidden group"
             style={{ opacity: 1 }}
           >
             {/* Subtle glow effect */}
@@ -252,7 +260,12 @@ const Home = () => {
                   }}
                 >
                   Design for <br />
-                  <span style={{ color: "var(--heading-color)", textShadow: "var(--heading-shadow)" }}>
+                  <span
+                    style={{
+                      color: "var(--heading-color)",
+                      textShadow: "var(--heading-shadow)",
+                    }}
+                  >
                     Transformation
                   </span>
                 </h2>
@@ -291,9 +304,7 @@ const Home = () => {
                         <h6 className="text-2xl font-bold text-high mb-2 tracking-tight">
                           {service.title}
                         </h6>
-                        <p className="text-low font-poppins">
-                          {service.desc}
-                        </p>
+                        <p className="text-low font-poppins">{service.desc}</p>
                       </div>
                     </div>
                   ))}
@@ -321,7 +332,14 @@ const Home = () => {
                       }}
                     >
                       Initiate{" "}
-                      <span style={{ color: "var(--heading-color)", textShadow: "var(--heading-shadow)" }}>Collaboration</span>
+                      <span
+                        style={{
+                          color: "var(--heading-color)",
+                          textShadow: "var(--heading-shadow)",
+                        }}
+                      >
+                        Collaboration
+                      </span>
                     </h3>
                     <p className="text-low text-sm font-poppins mb-10">
                       Ready to engineer the future? Drop a brief below.
@@ -355,7 +373,7 @@ const Home = () => {
                           required
                           placeholder="Professional Name"
                           className="w-full border border-theme rounded-2xl px-6 py-4 text-high placeholder:text-high/40 focus:border-adaptiv-orange/50 transition-all outline-none font-poppins"
-                          style={{ backgroundColor: 'var(--input-bg)' }}
+                          style={{ backgroundColor: "var(--input-bg)" }}
                         />
                       </div>
 
@@ -371,7 +389,7 @@ const Home = () => {
                           required
                           placeholder="email@organization.com"
                           className="w-full border border-theme rounded-2xl px-6 py-4 text-high placeholder:text-high/40 focus:border-adaptiv-orange/50 transition-all outline-none font-poppins"
-                          style={{ backgroundColor: 'var(--input-bg)' }}
+                          style={{ backgroundColor: "var(--input-bg)" }}
                         />
                       </div>
 
@@ -387,7 +405,7 @@ const Home = () => {
                           rows="4"
                           placeholder="Describe the architectural challenge..."
                           className="w-full border border-theme rounded-2xl px-6 py-4 text-high placeholder:text-high/40 focus:border-adaptiv-orange/50 transition-all outline-none font-poppins resize-none"
-                          style={{ backgroundColor: 'var(--input-bg)' }}
+                          style={{ backgroundColor: "var(--input-bg)" }}
                         ></textarea>
                       </div>
 
@@ -400,9 +418,13 @@ const Home = () => {
                             ? "opacity-70 cursor-not-allowed"
                             : ""
                         }`}
-                        style={{ 
+                        style={{
                           backgroundColor: themeColor.value,
-                          color: isHighContrast ? (themeColor.washType === 'light' ? '#000000' : '#ffffff') : '#ffffff'
+                          color: isHighContrast
+                            ? themeColor.washType === "light"
+                              ? "#000000"
+                              : "#ffffff"
+                            : "#ffffff",
                         }}
                       >
                         {status === "idle" && (
@@ -435,8 +457,8 @@ const Home = () => {
 
       {/* Section 3: Github Projects Grid */}
       <ParallaxSection index={2} total={sectionsCount}>
-        <div 
-          className="container mx-auto px-6 rounded-[32px] md:rounded-[60px] p-6 md:p-20 relative glass-theme" 
+        <div
+          className="container mx-auto px-6 rounded-[32px] md:rounded-[60px] p-6 md:p-20 relative glass-theme"
           style={{ opacity: 1 }}
         >
           <div className="flex flex-col md:flex-row justify-between items-end gap-10 mb-16">
@@ -449,7 +471,7 @@ const Home = () => {
                     textShadow: "var(--heading-shadow)",
                     fontSize: `calc(3rem * ${activeFontScale})`,
                     lineHeight: 1,
-                    color: isHighContrast ? contrastColor : undefined
+                    color: isHighContrast ? contrastColor : undefined,
                   }}
                 >
                   Github
@@ -482,17 +504,21 @@ const Home = () => {
               >
                 <div className="flex flex-wrap flex-col md:flex-row justify-between items-start gap-4 mb-2">
                   <div className="flex-1 flex flex-col gap-2 min-w-0">
-                    <span 
+                    <span
                       className="px-4 py-2 rounded-xl text-[10px] font-bold uppercase tracking-[0.2em] whitespace-nowrap"
-                      style={{ 
-                        backgroundColor: isHighContrast ? `rgba(${contrastColor === 'white' ? '255,255,255' : '0,0,0'}, 0.1)` : 'rgba(var(--theme-color-rgb), 0.1)',
-                        color: accentColor
+                      style={{
+                        backgroundColor: isHighContrast
+                          ? `rgba(${contrastColor === "white" ? "255,255,255" : "0,0,0"}, 0.1)`
+                          : "rgba(var(--theme-color-rgb), 0.1)",
+                        color: accentColor,
                       }}
                     >
                       {project.category}
                     </span>
-                    <h4 className="text-2xl md:text-3xl font-comfortaa font-bold text-high mb-2 transition-colors hover:text-hover-bg" 
-                    style={{fontSize:"150%"}}>
+                    <h4
+                      className="text-2xl md:text-3xl font-comfortaa font-bold text-high mb-2 transition-colors hover:text-hover-bg"
+                      style={{ fontSize: "150%" }}
+                    >
                       {project.title}
                     </h4>
 
@@ -524,7 +550,6 @@ const Home = () => {
                   </div>
                 </div>
 
-
                 <p className="text-low font-poppins line-clamp-3 mb-10 text-base md:text-lg flex-grow">
                   {project.description}
                 </p>
@@ -535,9 +560,11 @@ const Home = () => {
                       key={tag}
                       className="px-4 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-widest"
                       style={{
-                        backgroundColor: isHighContrast ? `rgba(${contrastColor === 'white' ? '255,255,255' : '0,0,0'}, 0.05)` : 'rgba(var(--theme-color-rgb), 0.05)',
-                        border: `1px solid ${isHighContrast ? `rgba(${contrastColor === 'white' ? '255,255,255' : '0,0,0'}, 0.1)` : 'rgba(var(--theme-color-rgb), 0.1)'}`,
-                        color: accentColor
+                        backgroundColor: isHighContrast
+                          ? `rgba(${contrastColor === "white" ? "255,255,255" : "0,0,0"}, 0.05)`
+                          : "rgba(var(--theme-color-rgb), 0.05)",
+                        border: `1px solid ${isHighContrast ? `rgba(${contrastColor === "white" ? "255,255,255" : "0,0,0"}, 0.1)` : "rgba(var(--theme-color-rgb), 0.1)"}`,
+                        color: accentColor,
                       }}
                     >
                       {tag}
@@ -546,11 +573,11 @@ const Home = () => {
                 </div>
 
                 <button
-                   onClick={() => navigate(`/projects/${project.id}`)}
-                   className="w-full py-4 rounded-2xl border-2 border-theme text-high font-bold text-lg btn-adaptive-hover hover:shadow-lg hover:shadow-adaptiv-orange/20 transition-all duration-300"
-                 >
-                   Case Study Details
-                 </button>
+                  onClick={() => navigate(`/projects/${project.id}`)}
+                  className="w-full py-4 rounded-2xl border-2 border-theme text-high font-bold text-lg btn-adaptive-hover hover:shadow-lg hover:shadow-adaptiv-orange/20 transition-all duration-300"
+                >
+                  Case Study Details
+                </button>
               </motion.div>
             ))}
           </div>
