@@ -27,10 +27,10 @@ const Navbar = () => {
   return (
     <nav
       className="fixed top-0 left-0 w-full z-50 transition-all duration-500 border-b px-6 py-4"
-      style={{ 
+      style={{
         backgroundColor: `var(--glass-bg)`,
-        backdropFilter: 'blur(16px)',
-        borderBottomColor: `var(--glass-border)` 
+        backdropFilter: "blur(16px)",
+        borderBottomColor: `var(--glass-border)`,
       }}
     >
       <div className="container-fluid mx-auto flex items-center justify-between">
@@ -54,9 +54,9 @@ const Navbar = () => {
             title="Click to cycle theme color"
           />
           <div className="flex items-center">
-            <span 
+            <span
               className="text-xl font-comfortaa font-bold tracking-tight relative"
-              style={{ color: 'var(--text-h)' }}
+              style={{ color: "var(--text-h)" }}
             >
               AdaptivConcept
               <div
@@ -94,27 +94,39 @@ const Navbar = () => {
           p-8 lg:p-0 gap-8 lg:gap-10 border-b lg:border-none border-theme
           no-scrollbar overflow-x-auto
         `}
-        style={{
-          backgroundColor: isMenuOpen && window.innerWidth < 1024 
-            ? (themeColor.washType === 'light' ? 'rgba(245, 245, 247, 1)' : 'rgba(10, 10, 10, 0.98)') 
-            : 'transparent'
-        }}
+          style={{
+            backgroundColor:
+              isMenuOpen && window.innerWidth < 1024
+                ? themeColor.washType === "light"
+                  ? "rgba(245, 245, 247, 1)"
+                  : "rgba(10, 10, 10, 0.98)"
+                : "transparent",
+          }}
         >
           <ul className="flex flex-col lg:flex-row items-center gap-8 m-0 p-0">
             <li>
+              {/* home */}
               <Link
                 className={`flex items-center gap-2 text-sm font-medium transition-colors hover:text-high ${isActive("/") ? "font-bold" : ""}`}
-                style={{ color: isActive("/") ? 'var(--text-h)' : 'var(--text)' }}
+                style={{
+                  color: isActive("/") ? "var(--text-h)" : "var(--text)",
+                }}
                 to="/"
                 onClick={() => setIsMenuOpen(false)}
               >
                 <Home size={18} /> <p className="truncate">Home</p>
               </Link>
             </li>
+            <span className="my-auto">|</span>
+            {/* projects */}
             <li>
               <Link
                 className={`flex items-center gap-2 text-sm font-medium transition-colors hover:text-high ${isActive("/projects") ? "font-bold" : ""}`}
-                style={{ color: isActive("/projects") ? 'var(--text-h)' : 'var(--text)' }}
+                style={{
+                  color: isActive("/projects")
+                    ? "var(--text-h)"
+                    : "var(--text)",
+                }}
                 to="/projects"
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -122,64 +134,75 @@ const Navbar = () => {
                 <p className="truncate">Project Board</p>
               </Link>
             </li>
+            <span className="my-auto">|</span>
+            {/* blog */}
             <li>
               <Link
                 className={`flex items-center gap-2 text-sm font-medium transition-colors hover:text-high ${isActive("/blog") ? "font-bold" : ""}`}
-                style={{ color: isActive("/blog") ? 'var(--text-h)' : 'var(--text)' }}
+                style={{
+                  color: isActive("/blog") ? "var(--text-h)" : "var(--text)",
+                }}
                 to="/blog"
                 onClick={() => setIsMenuOpen(false)}
               >
                 <Newspaper size={18} /> <p className="truncate">Blog</p>
               </Link>
             </li>
+            <span className="my-auto">|</span>
+            {/* arcade */}
             <li>
               <Link
-                className={`flex items-center gap-2 text-sm font-medium transition-colors hover:text-high ${isActive("/arcade") ? "font-bold" : ""}`}
-                style={{ color: isActive("/arcade") ? 'var(--text-h)' : 'var(--text)' }}
+                className={`flex items-center gap-2 text-sm font-medium transition-all hover:text-high px-3 py-1.5 rounded-xl border border-transparent hover:border-glass-border hover:bg-white/5 ${isActive("/arcade") ? "font-bold text-high bg-white/10 border-glass-border shadow-lg shadow-adaptiv-orange/10" : ""}`}
+                style={{
+                  color: isActive("/arcade") ? "var(--text-h)" : "var(--text)",
+                }}
                 to="/arcade"
                 onClick={() => setIsMenuOpen(false)}
               >
-                <span className="navbar-arcade-icon">
+                <span className="p-1.5 rounded-lg bg-adaptiv-orange/20 text-adaptiv-orange flex items-center justify-center">
                   <Gamepad2 size={18} />
                 </span>
+                <p className="truncate">Dev Arcade</p>
               </Link>
             </li>
           </ul>
 
+          <span className="my-auto">|</span>
+
           <div className="flex flex-col lg:flex-row items-center gap-3">
+            {/* resume button */}
             <Link
               to="/resume"
               onClick={() => setIsMenuOpen(false)}
               className="px-5 py-2.5 rounded-xl border-2 font-medium btn-adaptive-hover transition-all flex items-center gap-2"
-              style={{ borderColor: 'var(--glass-border)', color: 'var(--text-h)' }}
+              style={{
+                borderColor: "var(--glass-border)",
+                color: "var(--text-h)",
+              }}
             >
               <FileUser size={16} /> <p className="truncate">Résumé</p>
             </Link>
-            {/* <button 
-              className="px-5 py-2.5 rounded-xl border-2 font-medium btn-adaptive-hover transition-all flex items-center gap-2"
-              style={{ borderColor: 'var(--glass-border)', color: 'var(--text-h)' }}
-            >
-              <Mail size={16} /> <p className="truncate">Request Detailed CV</p>
-            </button> */}
+
             <motion.div
-              animate={{ 
+              animate={{
                 scale: [1, 1.05, 1],
                 filter: [
                   `drop-shadow(0 0 0px ${themeColor.value}00)`,
                   `drop-shadow(0 0 12px ${themeColor.value}66)`,
-                  `drop-shadow(0 0 0px ${themeColor.value}00)`
-                ]
+                  `drop-shadow(0 0 0px ${themeColor.value}00)`,
+                ],
               }}
-              transition={{ 
-                duration: 3, 
-                repeat: Infinity, 
-                ease: "easeInOut" 
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut",
               }}
               style={{
                 display: "flex",
-                position: "relative"
+                position: "relative",
               }}
             >
+              {/* projects button */}
               <Link
                 to="/projects"
                 className="px-8 py-3.5 rounded-2xl font-black btn-adaptive-hover transition-all lg:ml-2 cta-shimmer speech-bubble-cta me-4"
@@ -189,15 +212,15 @@ const Navbar = () => {
                   gap: 10,
                   alignItems: "center",
                   backgroundColor: themeColor.value,
-                  color: themeColor.washType === 'light' ? '#111111' : "#fff",
+                  color: themeColor.washType === "light" ? "#111111" : "#fff",
                   fontSize: "1.1rem",
                   "--cta-color": themeColor.value,
-                  position: "relative"
+                  position: "relative",
                 }}
               >
                 {/* Shimmer Layer inside for overflow containment */}
                 <div className="shimmer-layer"></div>
-                
+
                 <p className="truncate relative z-10">Hire Me</p>
                 <Handshake size={28} className="relative z-10" />
               </Link>

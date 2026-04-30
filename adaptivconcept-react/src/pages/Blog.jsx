@@ -54,10 +54,10 @@ const Blog = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
         >
-          <h1 className="text-3xl sm:text-4xl md:text-6xl font-comfortaa font-bold text-white mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-comfortaa font-bold text-high mb-6">
             <span className="text-adaptiv-orange">Blog</span> & Insights
           </h1>
-          <p className="text-lg md:text-xl text-gray-400 font-poppins max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-low font-poppins max-w-2xl mx-auto">
             Technical deep dives, career updates, and insights from the
             Adaptivconcept FL ecosystem.
           </p>

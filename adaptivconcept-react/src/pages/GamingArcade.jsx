@@ -17,6 +17,7 @@ import {
   Wand2,
 } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
+import ArcadeAnim from "../components/ArcadeAnim";
 import "./GamingArcade.css";
 
 const games = [
@@ -127,16 +128,10 @@ const GamingArcade = () => {
       : games.filter((g) => g.category === activeCategory);
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+    <ArcadeAnim
       className="arcade-page container mx-auto px-6 py-10 md:py-20 min-h-screen rounded-[32px] md:rounded-[60px] glass-theme"
       style={{ marginTop: "200px" }}
     >
-      {/* Scanline Overlay */}
-      <div className="arcade-scanlines" />
-
       {/* Hero */}
       <div className="text-center mb-16 relative z-10">
         <motion.div
@@ -327,7 +322,7 @@ const GamingArcade = () => {
           <span style={{ color: "var(--theme-color)" }}>Stay tuned.</span>
         </p>
       </motion.div>
-    </motion.div>
+    </ArcadeAnim>
   );
 };
 

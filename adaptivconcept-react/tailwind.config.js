@@ -7,8 +7,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        'adaptiv-orange': 'var(--theme-color)',
-        'adaptiv-orange-hover': 'var(--theme-color)',
+        'adaptiv-orange': 'var(--heading-color)',
+        'adaptiv-orange-hover': 'var(--heading-color)',
         'theme-accent': 'var(--theme-color)',
         'dark-bg': '#0a0a0a',
         'hover-bg': 'var(--btn-hover-bg)',

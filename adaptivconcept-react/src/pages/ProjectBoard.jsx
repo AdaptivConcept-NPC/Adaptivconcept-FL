@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, Rocket, Terminal, Cpu, ChevronRight, Sparkles, Zap } from "lucide-react";
+import BrandIcon from "../components/BrandIcon";
 import { useTheme } from "../context/ThemeContext";
 import { Link } from "react-router-dom";
 import projectsDataLocal from "../data/projects.json";
@@ -66,7 +67,7 @@ const ProjectBoard = () => {
             <p className="text-low text-sm mt-2">Interactive environments and experimental portals.</p>
           </div>
           <Link to="/tech-wall" className="text-xs font-bold hover:underline tracking-widest uppercase flex items-center gap-2"
-            style={{ color: 'var(--theme-color)' }}
+            style={{ color: 'var(--heading-color)' }}
           >
             View Stack <ChevronRight size={14} />
           </Link>
@@ -102,9 +103,9 @@ const ProjectBoard = () => {
                   </p>
 
                   <div className="flex items-center gap-2 mb-8">
-                     <span className="px-2 py-0.5 rounded text-[10px] bg-white/5 text-low border border-white/5">Python</span>
-                     <span className="px-2 py-0.5 rounded text-[10px] bg-white/5 text-low border border-white/5">Shell</span>
-                     <span className="px-2 py-0.5 rounded text-[10px] bg-white/5 text-low border border-white/5">WASM</span>
+                     <BrandIcon name="python" size={16} />
+                     <BrandIcon name="javascript" size={16} />
+                     <BrandIcon name="vite" size={16} />
                   </div>
 
                   <Link 
@@ -142,9 +143,9 @@ const ProjectBoard = () => {
                   </p>
 
                   <div className="flex items-center gap-2 mb-8">
-                     <span className="px-2 py-0.5 rounded text-[10px] bg-white/5 text-low border border-white/5">React</span>
-                     <span className="px-2 py-0.5 rounded text-[10px] bg-white/5 text-low border border-white/5">LangGraph</span>
-                     <span className="px-2 py-0.5 rounded text-[10px] bg-white/5 text-low border border-white/5">Groq</span>
+                     <BrandIcon name="react" size={16} />
+                     <BrandIcon name="langgraph" size={16} />
+                     <BrandIcon name="groq" size={16} />
                   </div>
 
                   <a 
