@@ -45,7 +45,7 @@ const Blog = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       className="container mx-auto px-6 py-10 md:py-20 min-h-screen rounded-[32px] md:rounded-[60px] glass-theme"
-      style={{ marginTop: "200px", backgroundColor: "rgba(15, 15, 16, 0.7)", opacity: 1 }}
+      style={{ marginTop: "200px", opacity: 1 }}
     >
       {/* Hero Header */}
       <div className="text-center mb-16">

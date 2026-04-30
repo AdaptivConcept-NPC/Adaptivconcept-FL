@@ -138,7 +138,7 @@ const OpenResume = () => {
       animate="visible"
       variants={containerVariants}
       className="container mx-auto px-6 py-20 min-h-screen rounded-[32px] md:rounded-[60px] glass-theme"
-      style={{ backgroundColor: "var(--glass-bg)", marginTop: "120px" }}
+      style={{ marginTop: "120px" }}
     >
       <div className="max-w-5xl mx-auto space-y-16">
         {/* Header Section */}

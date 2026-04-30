@@ -148,7 +148,6 @@ const Footer = () => {
                   <motion.div
                     whileHover={{ y: -5, scale: 1.01 }}
                     className="group relative flex flex-col sm:flex-row items-center gap-6 p-4 md:p-6 rounded-2xl md:rounded-[24px] glass-theme border border-theme backdrop-blur-3xl hover:border-[#0077b5]/50 transition-all duration-500 max-w-lg w-full overflow-hidden"
-                    style={{ backgroundColor: "var(--glass-bg)" }}
                   >
                     {/* LinkedIn-branded accent */}
                     <div className="absolute top-0 right-0 w-32 h-32 bg-[#0077b5]/10 blur-[60px] -mr-10 -mt-10 group-hover:bg-[#0077b5]/20 transition-all duration-700"></div>
@@ -199,7 +198,6 @@ const Footer = () => {
                   <motion.div
                     whileHover={{ y: -5, scale: 1.01 }}
                     className="group relative flex flex-col sm:flex-row items-center gap-6 p-4 md:p-6 rounded-2xl md:rounded-[24px] glass-theme border border-theme backdrop-blur-3xl hover:border-[#8b949e]/50 transition-all duration-500 max-w-lg w-full overflow-hidden mb-5"
-                    style={{ backgroundColor: "var(--glass-bg)" }}
                   >
                     {/* Github-branded accent */}
                     <div className="absolute top-0 right-0 w-32 h-32 bg-[#f0f6fc]/5 blur-[60px] -mr-10 -mt-10 group-hover:bg-[#58a6ff]/10 transition-all duration-700"></div>

@@ -16,10 +16,8 @@ const TechWall = () => {
       style={{ marginTop: "200px" }}
     >
       <div className="max-w-7xl mx-auto">
-        {/* Header Area — Glassmorphic Card */}
         <div 
-          className="relative mb-16 backdrop-blur-md border border-theme rounded-[32px] md:rounded-[48px] p-8 md:p-14 overflow-hidden"
-          style={{ backgroundColor: 'var(--glass-bg)' }}
+          className="relative mb-16 backdrop-blur-md border border-theme rounded-[32px] md:rounded-[48px] p-8 md:p-14 overflow-hidden glass-theme"
         >
           {/* Ambient glow */}
           <div
@@ -79,8 +77,7 @@ const TechWall = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.1 }}
-                    className="group relative backdrop-blur-3xl border border-theme rounded-[32px] p-8 hover:bg-white/[0.05] hover:border-white/20 transition-all duration-500"
-                    style={{ backgroundColor: 'var(--glass-bg)' }}
+                    className="group relative backdrop-blur-3xl border border-theme rounded-[32px] p-8 hover:bg-white/[0.05] hover:border-white/20 transition-all duration-500 glass-theme"
                   >
                     <div className="flex items-center gap-6 mb-8">
                       <div className="w-16 h-16 rounded-2xl bg-white /5 border border-white/5 flex items-center justify-center p-3 group-hover:scale-110 transition-transform duration-500">

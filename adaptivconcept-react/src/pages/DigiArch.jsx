@@ -278,7 +278,7 @@ const DigiArch = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         className="digiarch-page container mx-auto px-6 py-10 md:py-20 min-h-screen rounded-[32px] md:rounded-[60px] glass-theme"
-        style={{ marginTop: "200px", backgroundColor: "var(--glass-bg)" }}
+        style={{ marginTop: "200px" }}
       >
         <div className="digiarch-scanlines" />
         <div className="text-center relative z-10 py-20">
@@ -341,7 +341,7 @@ const DigiArch = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       className="digiarch-page container mx-auto px-6 py-10 md:py-20 min-h-screen rounded-[32px] md:rounded-[60px] glass-theme"
-      style={{ marginTop: "200px", backgroundColor: "var(--glass-bg)" }}
+      style={{ marginTop: "200px" }}
     >
       {/* Scanlines */}
       <div className="digiarch-scanlines" />

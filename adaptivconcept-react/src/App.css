@@ -20,8 +20,8 @@
   --theme-color-glow: rgba(255, 102, 0, 0.4);
 
   /* Centralized Glass System */
-  --glass-bg: rgba(15, 15, 16, 0.4);
-  --glass-bg-hover: rgba(0, 0, 0, 0.8);
+  --glass-bg: rgba(15, 15, 16, 0.6);
+  --glass-bg-hover: rgba(0, 0, 0, 0.85);
   --glass-blur: 40px;
   --glass-blur-hover: 60px;
   --glass-border: rgba(255, 255, 255, 0.1);
@@ -41,10 +41,11 @@
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.glass-theme:hover, .glass-panel:hover {
+.glass-theme:hover, .glass-panel:hover, .glass-theme-hover:hover {
   background-color: var(--glass-bg-hover);
   backdrop-filter: blur(var(--glass-blur-hover));
   -webkit-backdrop-filter: blur(var(--glass-blur-hover));
+  border-color: rgba(var(--theme-color-rgb), 0.3);
 }
 
 /* Glass Card - specialized for interactive project/blog cards */
@@ -69,8 +70,8 @@
 }
 
 .glass-theme-hover:hover {
-  background-color: var(--glass-bg-hover);
-  border-color: rgba(var(--theme-color-rgb), 0.3);
+  transform: translateY(-4px);
+  box-shadow: var(--glass-shadow), 0 12px 40px rgba(0, 0, 0, 0.4);
 }
 
 

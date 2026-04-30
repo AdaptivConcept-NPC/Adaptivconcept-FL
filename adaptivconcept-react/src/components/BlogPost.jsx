@@ -20,7 +20,6 @@ const BlogPost = ({ post, index = 0 }) => {
     >
       <div
         className="group relative glass-theme backdrop-blur-md border border-theme rounded-2xl p-6 md:p-8 flex flex-col h-full transition-all hover:bg-hover-bg hover:text-hover-text hover:border-hover-bg overflow-hidden"
-        style={{ backgroundColor: 'var(--glass-bg)' }}
         id={`blog-post-${post.id}`}
       >
         {/* Ambient glow */}

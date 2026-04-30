@@ -132,7 +132,7 @@ const GamingArcade = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       className="arcade-page container mx-auto px-6 py-10 md:py-20 min-h-screen rounded-[32px] md:rounded-[60px] glass-theme"
-      style={{ marginTop: "200px", backgroundColor: "var(--glass-bg)" }}
+      style={{ marginTop: "200px" }}
     >
       {/* Scanline Overlay */}
       <div className="arcade-scanlines" />
