@@ -4,6 +4,7 @@ import { Search, Rocket, Terminal, Cpu, ChevronRight, Sparkles, Zap } from "luci
 import { useTheme } from "../context/ThemeContext";
 import { Link } from "react-router-dom";
 import projectsDataLocal from "../data/projects.json";
+import routeMap from "../data/route_map.json";
 import { getProjects } from "../utils/dataStore";
 
 const ProjectBoard = () => {
@@ -117,28 +118,47 @@ const ProjectBoard = () => {
               </div>
             </motion.div>
 
-            {/* Placeholder Lab 1 */}
-            <div className="min-w-[300px] md:min-w-[400px] snap-start opacity-50 grayscale hover:grayscale-0 transition-all">
-              <div className="glass-theme rounded-[32px] p-8 h-full border border-white/5 flex flex-col justify-between">
-                <div>
-                   <div className="flex items-center justify-between mb-6">
+            {/* AICodex Lab Card */}
+            <motion.div 
+              whileHover={{ y: -5 }}
+              className="min-w-[300px] md:min-w-[400px] snap-start"
+            >
+              <div className="glass-theme rounded-[32px] p-8 h-full border border-white/5 relative overflow-hidden group">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 blur-3xl rounded-full -mr-10 -mt-10" />
+                
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between mb-6">
                     <div className="p-3 rounded-2xl bg-purple-500/20 text-purple-400">
                       <Cpu size={24} />
                     </div>
-                    <span className="px-3 py-1 rounded-full bg-white/10 text-low text-[10px] font-black tracking-tighter uppercase border border-white/10">
-                      Upcoming
+                    <span className="px-3 py-1 rounded-full bg-adaptiv-orange/20 text-adaptiv-orange text-[10px] font-black tracking-tighter uppercase border border-adaptiv-orange/30">
+                      Agentic Lab
                     </span>
                   </div>
-                  <h3 className="text-2xl font-bold text-high mb-2">AI Analytics Lab</h3>
+
+                  <h3 className="text-2xl font-bold text-high mb-2">AICodex Lab</h3>
                   <p className="text-low text-sm leading-relaxed mb-6">
-                    Large-scale data processing and AI model refinement workbench.
+                    Advanced agentic orchestration and real-time reasoning portal. Connected to LPU-speed inference.
                   </p>
+
+                  <div className="flex items-center gap-2 mb-8">
+                     <span className="px-2 py-0.5 rounded text-[10px] bg-white/5 text-low border border-white/5">React</span>
+                     <span className="px-2 py-0.5 rounded text-[10px] bg-white/5 text-low border border-white/5">LangGraph</span>
+                     <span className="px-2 py-0.5 rounded text-[10px] bg-white/5 text-low border border-white/5">Groq</span>
+                  </div>
+
+                  <a 
+                    href={routeMap.frontend_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-2 w-full py-3 rounded-xl font-bold btn-adaptive-hover transition-all shadow-lg shadow-purple-500/20"
+                    style={{ backgroundColor: 'var(--theme-color)', color: themeColor.washType === 'light' ? '#000000' : '#ffffff' }}
+                  >
+                    Enter Lab <ChevronRight size={18} />
+                  </a>
                 </div>
-                <button disabled className="w-full py-3 rounded-xl border border-white/10 text-low font-bold cursor-not-allowed">
-                  Under Construction
-                </button>
               </div>
-            </div>
+            </motion.div>
 
             {/* Placeholder Lab 2 */}
             <div className="min-w-[300px] md:min-w-[400px] snap-start opacity-30">
