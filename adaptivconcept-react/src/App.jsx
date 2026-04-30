@@ -8,6 +8,7 @@ import BackgroundVideo from './components/BackgroundVideo';
 import BackgroundWallpaper from './components/BackgroundWallpaper';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 
 // context
 import { ThemeProvider } from './context/ThemeContext';
@@ -31,7 +32,8 @@ function App() {
   return (
     <ThemeProvider>
       <Router>
-      <div className="App noselect h-screen overflow-y-scroll">
+        <ScrollToTop />
+        <div className="App noselect h-screen overflow-y-scroll">
         {/* Assets & Dependencies */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
