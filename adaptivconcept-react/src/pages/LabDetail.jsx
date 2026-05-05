@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ChevronLeft, Rocket, Terminal, Cpu, CheckCircle2, AlertCircle, ExternalLink } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
+import routeMap from "../data/route_map.json";
 
 const labsData = {
   "pyswissshef": {
@@ -22,7 +23,27 @@ const labsData = {
     ],
     stackblitzUrl: "https://stackblitz.com/github/iarxii/PySwissShef",
     replitUrl: "https://py-portfolio-lab--thabangmposula.replit.app",
-    accentColor: "#f97316" // adaptiv-orange
+    accentColor: "#f97316", // adaptiv-orange
+    icon: Terminal
+  },
+  "aicodex": {
+    title: "AICodex Lab",
+    subtitle: "Agentic Orchestration & Reasoning",
+    description: "Advanced agentic orchestration and real-time reasoning portal. Connected to LPU-speed inference for near-instant response cycles.",
+    prerequisites: [
+      { item: "React / Vite", status: "Modern Browser" },
+      { item: "Agentic Access", status: "Token Required" },
+      { item: "High-Speed Inference", status: "Groq Connected" }
+    ],
+    features: [
+      "Real-time reasoning visualization",
+      "Agentic tool orchestration",
+      "LPU-speed Groq inference",
+      "Persistent session context"
+    ],
+    portalUrl: routeMap.frontend_url,
+    accentColor: "#a855f7", // purple-500
+    icon: Cpu
   }
 };
 
@@ -57,14 +78,15 @@ const LabDetail = () => {
 
         {/* Hero Section */}
         <div className="glass-theme rounded-[40px] p-8 md:p-12 mb-12 relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-adaptiv-orange/10 blur-[100px] rounded-full -mr-20 -mt-20" />
+          <div className="absolute top-0 right-0 w-64 h-64 blur-[100px] rounded-full -mr-20 -mt-20" 
+               style={{ backgroundColor: `${lab.accentColor}1A` }} />
           
           <div className="relative z-10">
             <div className="flex items-center gap-4 mb-6">
-               <div className="p-3 rounded-2xl bg-adaptiv-orange/20 text-adaptiv-orange">
-                 <Terminal size={32} />
+               <div className="p-3 rounded-2xl" style={{ backgroundColor: `${lab.accentColor}33`, color: lab.accentColor }}>
+                 {lab.icon && <lab.icon size={32} />}
                </div>
-               <span className="text-xs font-black tracking-widest uppercase text-adaptiv-orange">Experimental Lab</span>
+               <span className="text-xs font-black tracking-widest uppercase" style={{ color: lab.accentColor }}>Experimental Lab</span>
             </div>
             
             <h1 className="text-4xl md:text-6xl font-comfortaa font-bold text-high mb-4">
@@ -79,17 +101,35 @@ const LabDetail = () => {
             </p>
 
             <div className="flex flex-wrap gap-4">
-              <a 
-                href={lab.stackblitzUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-4 px-6 py-4 rounded-[28px] bg-adaptiv-orange text-white font-bold text-lg hover:scale-105 active:scale-95 transition-all shadow-xl shadow-adaptiv-orange/30 group"
-              >
-                <div className="bg-white p-2 rounded-2xl shadow-sm flex items-center justify-center group-hover:rotate-6 transition-transform">
-                  <img src="/media/brand-icons/StackBlitz.svg" alt="StackBlitz Icon" className="w-8 h-8 object-contain" />
-                </div>
-                <span>Tasting Room (StackBlitz)</span>
-              </a>
+              {lab.stackblitzUrl && (
+                <a 
+                  href={lab.stackblitzUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-4 px-6 py-4 rounded-[28px] text-white font-bold text-lg hover:scale-105 active:scale-95 transition-all shadow-xl group"
+                  style={{ backgroundColor: lab.accentColor, boxShadow: `0 20px 25px -5px ${lab.accentColor}4D` }}
+                >
+                  <div className="bg-white p-2 rounded-2xl shadow-sm flex items-center justify-center group-hover:rotate-6 transition-transform">
+                    <img src="/media/brand-icons/StackBlitz.svg" alt="StackBlitz Icon" className="w-8 h-8 object-contain" />
+                  </div>
+                  <span>Tasting Room (StackBlitz)</span>
+                </a>
+              )}
+
+              {lab.portalUrl && (
+                <a 
+                  href={lab.portalUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-4 px-6 py-4 rounded-[28px] text-white font-bold text-lg hover:scale-105 active:scale-95 transition-all shadow-xl group"
+                  style={{ backgroundColor: lab.accentColor, boxShadow: `0 20px 25px -5px ${lab.accentColor}4D` }}
+                >
+                  <div className="bg-white p-2 rounded-2xl shadow-sm flex items-center justify-center group-hover:rotate-6 transition-transform">
+                     {lab.icon && <lab.icon size={32} style={{ color: lab.accentColor }} />}
+                  </div>
+                  <span>Launch Agentic Portal</span>
+                </a>
+              )}
 
               {lab.replitUrl && (
                 <a 
@@ -127,7 +167,7 @@ const LabDetail = () => {
           {/* Prerequisites */}
           <div className="glass-theme rounded-[32px] p-8 border border-white/5">
             <h3 className="text-2xl font-bold text-high mb-6 flex items-center gap-3">
-              <AlertCircle className="text-adaptiv-orange" /> Prerequisites
+              <AlertCircle style={{ color: lab.accentColor }} /> Prerequisites
             </h3>
             <div className="space-y-4">
               {lab.prerequisites.map((p, i) => (
@@ -162,15 +202,15 @@ const LabDetail = () => {
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="flex flex-col gap-3">
-                <span className="text-adaptiv-orange font-black text-2xl opacity-60 italic font-comfortaa">01.</span>
+                <span className="font-black text-2xl opacity-60 italic font-comfortaa" style={{ color: lab.accentColor }}>01.</span>
                 <p className="text-sm text-high leading-relaxed">Click the <b>"Launch Lab Console"</b> button to open the WebContainer environment.</p>
               </div>
               <div className="flex flex-col gap-3">
-                <span className="text-adaptiv-orange font-black text-2xl opacity-60 italic font-comfortaa">02.</span>
+                <span className="font-black text-2xl opacity-60 italic font-comfortaa" style={{ color: lab.accentColor }}>02.</span>
                 <p className="text-sm text-high leading-relaxed">Wait for the Python environment to boot automatically (Powered by StackBlitz).</p>
               </div>
               <div className="flex flex-col gap-3">
-                <span className="text-adaptiv-orange font-black text-2xl opacity-60 italic font-comfortaa">03.</span>
+                <span className="font-black text-2xl opacity-60 italic font-comfortaa" style={{ color: lab.accentColor }}>03.</span>
                 <p className="text-sm text-high leading-relaxed">Follow the instructions in the terminal to browse and run your first recipe.</p>
               </div>
             </div>

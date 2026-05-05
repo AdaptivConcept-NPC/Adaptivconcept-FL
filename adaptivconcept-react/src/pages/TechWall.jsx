@@ -16,9 +16,7 @@ const TechWall = () => {
       style={{ marginTop: "200px" }}
     >
       <div className="max-w-7xl mx-auto">
-        <div 
-          className="relative mb-16 backdrop-blur-md border border-theme rounded-[32px] md:rounded-[48px] p-8 md:p-14 overflow-hidden glass-theme"
-        >
+        <div className="relative mb-16 backdrop-blur-md border border-theme rounded-[32px] md:rounded-[48px] p-8 md:p-14 overflow-hidden glass-theme">
           {/* Ambient glow */}
           <div
             className="absolute -top-20 -left-20 w-[300px] h-[300px] rounded-full blur-[120px] opacity-15 pointer-events-none"
@@ -43,11 +41,23 @@ const TechWall = () => {
                   fontFamily: activeFontFamily,
                   textShadow: "3px 3px 0px rgba(0,0,0,0.5)",
                   fontSize: `calc(3rem * ${activeFontScale})`,
-                  lineHeight: "0.8",
+                  lineHeight: "1.1",
                 }}
               >
                 Wall of <br />
-                <span style={{ color: themeColor.value }}>Stacked-Tech🔥</span>
+                <span
+                  style={{
+                    color: themeColor.value,
+                    WebkitTextStroke:
+                      themeColor.washType === "coal"
+                        ? "0.8px #ffffff"
+                        : themeColor.washType === "light"
+                          ? "0.8px #000000"
+                          : "none",
+                  }}
+                >
+                  Stacked-Tech🔥
+                </span>
               </h1>
               <p className="text-xl text-low font-poppins max-w-2xl leading-relaxed">
                 My unique takes and strategic successes with the technologies
@@ -61,11 +71,13 @@ const TechWall = () => {
         <div className="space-y-24">
           {Object.entries(techApproachData).map(([category, data], catIdx) => (
             <div key={category} className="space-y-10">
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-6 mb-12">
                 <div className="h-px flex-grow bg-white/10"></div>
-                <h2 className="text-sm font-bold uppercase tracking-[0.3em] text-low opacity-40 whitespace-nowrap">
-                  {category}
-                </h2>
+                <div className="px-8 py-2.5 rounded-full bg-white/95 backdrop-blur-md shadow-2xl border border-white/20 transform -rotate-1">
+                  <h2 className="text-[10px] md:text-xs font-black uppercase tracking-[0.4em] text-black">
+                    {category}
+                  </h2>
+                </div>
                 <div className="h-px flex-grow bg-white/10"></div>
               </div>
 
@@ -122,17 +134,28 @@ const TechWall = () => {
           <h2
             className="text-3xl md:text-5xl font-bold text-high mb-6"
             style={{
-              textShadow: "3px 3px 0px rgba(0,0,0,0.5)",
+              textShadow: "3px 3px 0px " + themeColor.value,
               fontSize: `calc(2rem * ${activeFontScale})`,
             }}
           >
             Ready to{" "}
             <span
               className="text-adaptiv-orange"
+              // style={{
+              //   color: themeColor.value,
+              //   fontFamily: activeFontFamily,
+              //   lineHeight: "0.8",
+              // }}
               style={{
                 color: themeColor.value,
                 fontFamily: activeFontFamily,
                 lineHeight: "0.8",
+                WebkitTextStroke:
+                  themeColor.washType === "coal"
+                    ? "0.4px #ffffff"
+                    : themeColor.washType === "light"
+                      ? "0.8px #000000"
+                      : "none",
               }}
             >
               Build?
@@ -144,7 +167,20 @@ const TechWall = () => {
           </p>
           <button
             className="px-10 py-5 rounded-2xl text-white font-bold text-lg hover:scale-105 transition-all shadow-xl"
-            style={{ backgroundColor: themeColor.value }}
+            style={{
+              backgroundColor:
+                themeColor.washType === "coal"
+                  ? "#ffffff"
+                  : themeColor.washType === "light"
+                    ? "#000000"
+                    : themeColor.value,
+              color:
+                themeColor.washType === "coal"
+                  ? "#000000"
+                  : themeColor.washType === "light"
+                    ? "#ffffff"
+                    : "#ffffff",
+            }}
             onClick={() => navigate("/projects")}
           >
             Initiate Project

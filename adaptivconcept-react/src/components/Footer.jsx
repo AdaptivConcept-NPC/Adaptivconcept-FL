@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ChevronRight, ExternalLink } from "lucide-react";
+import { ChevronRight, ExternalLink, RotateCcw } from "lucide-react";
 import { motion } from "framer-motion";
 import FLFontCarousel from "./FLFontCarousel";
 
@@ -8,18 +8,18 @@ const ProfilePersonas = ({ onPersonaHover }) => {
     {
       id: 1,
       src: "/media/my-profile-pic-microsoft-original.png",
-      label: "Professional",
+      label: "Professional Systems Developer",
     },
     {
       id: 2,
       src: "/media/my-profile-pic-microsoft-vector.png",
-      label: "Corporate Vector",
+      label: "A Corporate Vector",
     },
-    { id: 3, src: "/media/my-profile-pic-github.jpg", label: "Developer" },
+    { id: 3, src: "/media/my-profile-pic-github.jpg", label: "Seasoned Developer" },
     {
       id: 4,
       src: "/media/my-profile-pic-github-vector.png",
-      label: "Tech Vector",
+      label: "A Tech Vector",
     },
   ];
 
@@ -50,7 +50,7 @@ const ProfilePersonas = ({ onPersonaHover }) => {
           }}
           variants={{
             hover: {
-              rotateZ: (index - 3) * 15,
+              rotateZ: (index - 3) * 8,
               x: (index - 3) * 130,
               y: index * -5 - 30,
               scale: 0.9,
@@ -62,7 +62,7 @@ const ProfilePersonas = ({ onPersonaHover }) => {
             y: index * -5 - 60,
             zIndex: 100,
             boxShadow: "0 50px 100px -20px rgba(0, 0, 0, 1)",
-            rotateZ: (index - 3) * 20,
+            rotateZ: (index - 3) * 10,
             transition: { type: "spring", stiffness: 450, damping: 15 },
           }}
           onHoverStart={() => onPersonaHover(persona.id)}
@@ -91,6 +91,11 @@ const ProfilePersonas = ({ onPersonaHover }) => {
 
 const Footer = () => {
   const [hoveredPersona, setHoveredPersona] = useState(null);
+  const [personaKey, setPersonaKey] = useState(0);
+
+  const handleResetPersonas = () => {
+    setPersonaKey((prev) => prev + 1);
+  };
 
   const personaMessages = {
     1: "Enterprise-grade engineering with Microsoft-standard precision and reliable architectural patterns.",
@@ -104,7 +109,7 @@ const Footer = () => {
   return (
     <footer
       className="py-12 mt-20 relative z-10 border-t border-theme"
-      style={{ backgroundColor: "var(--bg)", opacity: 0.9 }}
+      style={{ backgroundColor: "var(--bg-transp)" }}
     >
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
@@ -258,10 +263,26 @@ const Footer = () => {
 
           {/* Secondary Socials & Action */}
           <div className="flex flex-col items-center md:items-end gap-10">
-            <ProfilePersonas onPersonaHover={setHoveredPersona} />
+            <div className="flex flex-col items-center md:items-end w-full">
+              <button
+                onClick={handleResetPersonas}
+                className="group/reset flex items-center gap-2 text-[9px] font-black uppercase tracking-[0.25em] text-low hover:text-adaptiv-orange transition-all mb-4 px-3 py-1.5 rounded-full border border-theme hover:border-adaptiv-orange bg-white/[0.03]"
+              >
+                <RotateCcw
+                  size={10}
+                  className="group-hover/reset:rotate-[-120deg] transition-transform duration-500"
+                />
+                Reset Stack
+              </button>
+              <ProfilePersonas
+                key={personaKey}
+                onPersonaHover={setHoveredPersona}
+              />
+            </div>
 
             <div className="flex flex-col items-center md:items-end gap-6 text-center md:text-right">
               <div className="flex gap-4">
+                {/* my socials / contacts */}
                 {[
                   {
                     icon: <i className="bi bi-github text-xl"></i>,

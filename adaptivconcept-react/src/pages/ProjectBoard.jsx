@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, Rocket, Terminal, Cpu, ChevronRight, Sparkles, Zap } from "lucide-react";
+import {
+  Search,
+  Rocket,
+  Terminal,
+  Cpu,
+  ChevronRight,
+  Sparkles,
+  Zap,
+} from "lucide-react";
 import BrandIcon from "../components/BrandIcon";
 import { useTheme } from "../context/ThemeContext";
 import { Link } from "react-router-dom";
@@ -12,7 +20,13 @@ const ProjectBoard = () => {
   const [activeCategory, setActiveCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [projectsData, setProjectsData] = useState(projectsDataLocal);
-  const { themeColor, activeFontFamily, activeFontScale, isOverkillEnabled, setIsOverkillEnabled } = useTheme();
+  const {
+    themeColor,
+    activeFontFamily,
+    activeFontScale,
+    isOverkillEnabled,
+    setIsOverkillEnabled,
+  } = useTheme();
 
   useEffect(() => {
     getProjects().then(setProjectsData);
@@ -45,11 +59,22 @@ const ProjectBoard = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       className="container mx-auto px-6 py-10 md:py-20 min-h-screen rounded-[32px] md:rounded-[60px] glass-theme"
-      style={{ marginTop: "200px", opacity: 1}}
+      style={{ marginTop: "200px", opacity: 1 }}
     >
       <div className="text-center mb-16">
         <h1 className="text-3xl sm:text-4xl md:text-6xl font-comfortaa font-bold text-high mb-6">
-          Project <span className="text-adaptiv-orange">Board</span>
+          Project{" "}
+          <span
+            className="text-adaptiv-orange"
+            style={{
+              fontFamily: activeFontFamily,
+              textShadow: "3px 3px 0px rgba(0,0,0,0.5)",
+              // fontSize: `calc(3rem * ${activeFontScale})`,
+              lineHeight: "1.1",
+            }}
+          >
+            Board
+          </span>
         </h1>
         <p className="text-lg md:text-xl text-low font-poppins max-w-2xl mx-auto">
           A segmented showcase of technical explorations, business solutions,
@@ -62,31 +87,32 @@ const ProjectBoard = () => {
         <div className="flex items-center justify-between mb-8 px-2">
           <div>
             <h2 className="text-3xl font-comfortaa font-bold text-high flex items-center gap-3">
-              <Terminal className="text-adaptiv-orange" /> Dev <span className="text-adaptiv-orange">Labs</span>
+              <Terminal className="text-adaptiv-orange" /> Dev{" "}
+              <span className="text-adaptiv-orange">Labs</span>
             </h2>
-            <p className="text-low text-sm mt-2">Interactive environments and experimental portals.</p>
+            <p className="text-low text-sm mt-2">
+              Interactive environments and experimental portals.
+            </p>
           </div>
-          <Link to="/tech-wall" className="text-xs font-bold hover:underline tracking-widest uppercase flex items-center gap-2"
-            style={{ color: 'var(--heading-color)' }}
+          <Link
+            to="/tech-wall"
+            className="text-xs font-bold hover:underline tracking-widest uppercase flex items-center gap-2"
+            style={{ color: "var(--heading-color)" }}
           >
             View Stack <ChevronRight size={14} />
           </Link>
         </div>
 
         <div className="relative group/labs">
-          <motion.div 
-            className="flex gap-6 overflow-x-auto pb-8 snap-x no-scrollbar cursor-grab active:cursor-grabbing"
-            drag="x"
-            dragConstraints={{ right: 0, left: -400 }} // Simple constraint, can be calculated dynamically
-          >
+          <motion.div className="flex gap-6 overflow-x-auto pb-8 snap-x no-scrollbar cursor-grab active:cursor-grabbing">
             {/* PySwissShef Lab Card */}
-            <motion.div 
+            <motion.div
               whileHover={{ y: -5 }}
               className="min-w-[300px] md:min-w-[400px] snap-start"
             >
               <div className="glass-theme rounded-[32px] p-8 h-full border border-white/5 relative overflow-hidden group">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-adaptiv-orange/10 blur-3xl rounded-full -mr-10 -mt-10" />
-                
+
                 <div className="relative z-10">
                   <div className="flex items-center justify-between mb-6">
                     <div className="p-3 rounded-2xl bg-adaptiv-orange/20 text-adaptiv-orange">
@@ -97,21 +123,33 @@ const ProjectBoard = () => {
                     </span>
                   </div>
 
-                  <h3 className="text-2xl font-bold text-high mb-2">PySwissShef Lab</h3>
+                  <h3 className="text-2xl font-bold text-high mb-2">
+                    PySwissShef Lab
+                  </h3>
                   <p className="text-low text-sm leading-relaxed mb-6">
-                    Interactive Python & Shell catalogue hosted on StackBlitz. Test automation recipes instantly.
+                    Interactive Python & Shell catalogue hosted on StackBlitz.
+                    Test automation recipes instantly.
                   </p>
 
-                  <div className="flex items-center gap-2 mb-8">
-                     <BrandIcon name="python" size={16} />
-                     <BrandIcon name="javascript" size={16} />
-                     <BrandIcon name="vite" size={16} />
+                  <div className="flex flex-wrap items-center gap-3 mb-8">
+                    <BrandIcon name="python" size={18} />
+                    <BrandIcon name="javascript" size={18} />
+                    <BrandIcon name="vite" size={18} />
+                    <BrandIcon name="fastapi" size={18} />
+                    <BrandIcon name="django" size={18} />
+                    <BrandIcon name="stackblitz" size={18} />
+                    <BrandIcon name="replit" size={18} />
+                    <BrandIcon name="github" size={18} />
                   </div>
 
-                  <Link 
+                  <Link
                     to="/labs/pyswissshef"
                     className="flex items-center justify-center gap-2 w-full py-3 rounded-xl font-bold btn-adaptive-hover transition-all shadow-lg shadow-adaptiv-orange/20"
-                    style={{ backgroundColor: 'var(--theme-color)', color: themeColor.washType === 'light' ? '#000000' : '#ffffff' }}
+                    style={{
+                      backgroundColor: "var(--theme-color)",
+                      color:
+                        themeColor.washType === "light" ? "#000000" : "#ffffff",
+                    }}
                   >
                     Enter Lab <ChevronRight size={18} />
                   </Link>
@@ -120,13 +158,13 @@ const ProjectBoard = () => {
             </motion.div>
 
             {/* AICodex Lab Card */}
-            <motion.div 
+            <motion.div
               whileHover={{ y: -5 }}
               className="min-w-[300px] md:min-w-[400px] snap-start"
             >
               <div className="glass-theme rounded-[32px] p-8 h-full border border-white/5 relative overflow-hidden group">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 blur-3xl rounded-full -mr-10 -mt-10" />
-                
+
                 <div className="relative z-10">
                   <div className="flex items-center justify-between mb-6">
                     <div className="p-3 rounded-2xl bg-purple-500/20 text-purple-400">
@@ -137,26 +175,38 @@ const ProjectBoard = () => {
                     </span>
                   </div>
 
-                  <h3 className="text-2xl font-bold text-high mb-2">AICodex Lab</h3>
+                  <h3 className="text-2xl font-bold text-high mb-2">
+                    AICodex Lab
+                  </h3>
                   <p className="text-low text-sm leading-relaxed mb-6">
-                    Advanced agentic orchestration and real-time reasoning portal. Connected to LPU-speed inference.
+                    Advanced agentic orchestration and real-time reasoning
+                    portal. Connected to LPU-speed inference.
                   </p>
 
-                  <div className="flex items-center gap-2 mb-8">
-                     <BrandIcon name="react" size={16} />
-                     <BrandIcon name="langgraph" size={16} />
-                     <BrandIcon name="groq" size={16} />
+                  <div className="flex flex-wrap items-center gap-3 mb-8">
+                    <BrandIcon name="react" size={18} />
+                    <BrandIcon name="groq" size={18} />
+                    <BrandIcon name="langgraph" size={18} />
+                    <BrandIcon name="gemini" size={18} />
+                    <BrandIcon name="openrouter" size={18} />
+                    <BrandIcon name="ollama" size={18} />
+                    <BrandIcon name="fastapi" size={18} />
+                    <BrandIcon name="typescript" size={18} />
+                    <BrandIcon name="apiapp" size={18} />
+                    <BrandIcon name="github" size={18} />
                   </div>
 
-                  <a 
-                    href={routeMap.frontend_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <Link
+                    to="/labs/aicodex"
                     className="flex items-center justify-center gap-2 w-full py-3 rounded-xl font-bold btn-adaptive-hover transition-all shadow-lg shadow-purple-500/20"
-                    style={{ backgroundColor: 'var(--theme-color)', color: themeColor.washType === 'light' ? '#000000' : '#ffffff' }}
+                    style={{
+                      backgroundColor: "var(--theme-color)",
+                      color:
+                        themeColor.washType === "light" ? "#000000" : "#ffffff",
+                    }}
                   >
                     Enter Lab <ChevronRight size={18} />
-                  </a>
+                  </Link>
                 </div>
               </div>
             </motion.div>
@@ -165,11 +215,10 @@ const ProjectBoard = () => {
             <div className="min-w-[300px] md:min-w-[400px] snap-start opacity-30">
               <div className="glass-theme rounded-[32px] p-8 h-full border border-white/5 flex flex-col justify-between italic">
                 <div className="text-center py-10">
-                   <p className="text-low text-sm">More Labs Coming Soon...</p>
+                  <p className="text-low text-sm">More Labs Coming Soon...</p>
                 </div>
               </div>
             </div>
-
           </motion.div>
         </div>
       </div>
@@ -186,7 +235,7 @@ const ProjectBoard = () => {
               type="text"
               className="w-full border border-theme text-high pl-14 pr-6 py-4 rounded-2xl focus:outline-none focus:border-adaptiv-orange/40 transition-all font-poppins placeholder:text-low/60"
               placeholder="Search by tech stack or name..."
-              style={{ backgroundColor: 'var(--input-bg)' }}
+              style={{ backgroundColor: "var(--input-bg)" }}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
@@ -206,22 +255,26 @@ const ProjectBoard = () => {
               </button>
             ))}
           </div>
-          
+
           {/* Overkill Toggle */}
           <div className="flex items-center gap-3 pl-4 border-l border-theme/20 h-10 ml-auto">
             <button
-                onClick={() => setIsOverkillEnabled(!isOverkillEnabled)}
-                className={`p-2.5 rounded-xl flex items-center gap-2 transition-all ${
-                    isOverkillEnabled 
-                    ? "bg-purple-500/20 text-purple-400 border border-purple-500/30" 
-                    : "glass-theme text-low hover:text-high"
-                }`}
-                title={isOverkillEnabled ? "Experimental Fonts Active (Heavy)" : "Load Experimental Fonts (17MB+)"}
+              onClick={() => setIsOverkillEnabled(!isOverkillEnabled)}
+              className={`p-2.5 rounded-xl flex items-center gap-2 transition-all ${
+                isOverkillEnabled
+                  ? "bg-purple-500/20 text-purple-400 border border-purple-500/30"
+                  : "glass-theme text-low hover:text-high"
+              }`}
+              title={
+                isOverkillEnabled
+                  ? "Experimental Fonts Active (Heavy)"
+                  : "Load Experimental Fonts (17MB+)"
+              }
             >
-                {isOverkillEnabled ? <Sparkles size={18} /> : <Zap size={18} />}
-                <span className="text-xs font-bold hidden sm:inline">
-                    {isOverkillEnabled ? "Experimental Active" : "Load XP Fonts"}
-                </span>
+              {isOverkillEnabled ? <Sparkles size={18} /> : <Zap size={18} />}
+              <span className="text-xs font-bold hidden sm:inline">
+                {isOverkillEnabled ? "Experimental Active" : "Load XP Fonts"}
+              </span>
             </button>
           </div>
         </div>
@@ -260,7 +313,9 @@ const ProjectBoard = () => {
                   )}
                 </div>
 
-                <h3 className={`text-2xl font-comfortaa font-bold text-high mb-3 transition-colors ${themeColor.washType === 'coal' ? 'group-hover:text-white' : themeColor.washType === 'light' ? 'group-hover:text-black' : 'group-hover:text-adaptiv-orange'}`}>
+                <h3
+                  className={`text-2xl font-comfortaa font-bold text-high mb-3 transition-colors ${themeColor.washType === "coal" ? "group-hover:text-white" : themeColor.washType === "light" ? "group-hover:text-black" : "group-hover:text-adaptiv-orange"}`}
+                >
                   {project.title}
                 </h3>
                 <p className="text-low text-sm leading-relaxed mb-8 flex-grow">

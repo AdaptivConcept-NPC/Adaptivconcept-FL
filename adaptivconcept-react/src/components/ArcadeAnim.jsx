@@ -473,6 +473,7 @@ const ArcadeAnim = ({
   useP5 = true,
   density = 1,
   colorBoost = 1,
+  style = {},
   children,
 }) => {
   const containerRef = useRef(null);
@@ -548,7 +549,7 @@ const ArcadeAnim = ({
   }, [useP5, density, colorBoost, reducedMotion]);
 
   return (
-    <div ref={containerRef} className={`arcade-anim ${className}`}>
+    <div ref={containerRef} className={`arcade-anim ${className}`} style={style}>
       <canvas ref={canvasRef} className="arcade-anim__canvas" aria-hidden="true" />
       <div className="arcade-wrapper-content">{children}</div>
       
@@ -562,17 +563,19 @@ const ArcadeAnim = ({
           backdrop-filter: blur(10px) saturate(140%);
           -webkit-backdrop-filter: blur(10px) saturate(140%);
         }
-        .arcade-anim__canvas {
-          position: absolute;
-          inset: 0;
-          width: 100%;
-          height: 100%;
+        /* Target all canvases (native and p5) to stay in background */
+        .arcade-anim canvas {
+          position: absolute !important;
+          inset: 0 !important;
+          width: 100% !important;
+          height: 100% !important;
+          pointer-events: none !important;
+          z-index: 0 !important;
           opacity: 0.92;
         }
         .arcade-wrapper-content {
           position: relative;
           z-index: 2;
-          padding: 24px;
           color: rgba(255,255,255,0.92);
         }
         .arcade-anim::before {

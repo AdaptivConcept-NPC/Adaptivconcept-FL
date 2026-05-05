@@ -2,6 +2,7 @@
   --text: #f8f9fa;
   --text-h: #ffffff;
   --bg: #0a0a0a;
+  --bg-transp: rgba(10, 10, 10, 0.8);
   --border: #e5e4e7;
   --code-bg: #f4f3ec;
   --accent: #aa3bff;

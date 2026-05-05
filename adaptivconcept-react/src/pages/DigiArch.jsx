@@ -152,7 +152,14 @@ const LEVELS = [
   },
 ];
 
-const NODE_COLORS = ["#39ff14", "#00f2ff", "#ff6600", "#bc13fe", "#ff3366", "#ffcc00"];
+const NODE_COLORS = [
+  "#39ff14",
+  "#00f2ff",
+  "#fd3b12",
+  "#bc13fe",
+  "#ff3366",
+  "#ffcc00",
+];
 
 /* ═══════════════════════════════════════════════════════════
    COMPONENT
@@ -287,14 +294,20 @@ const DigiArch = () => {
             animate={{ scale: 1 }}
             transition={{ type: "spring", stiffness: 200 }}
           >
-            <Trophy size={80} style={{ color: "#ffcc00", margin: "0 auto 24px" }} />
+            <Trophy
+              size={80}
+              style={{ color: "#ffcc00", margin: "0 auto 24px" }}
+            />
           </motion.div>
           <h1 className="text-4xl md:text-6xl font-comfortaa font-bold text-high mb-4">
             System <span className="text-adaptiv-orange">Stabilized</span>
           </h1>
           <p className="text-xl text-low mb-8">
             All architectures aligned. You earned{" "}
-            <span style={{ color: "#ffcc00", fontWeight: 700 }}>{totalStars}</span> / {LEVELS.length * 3} stars.
+            <span style={{ color: "#ffcc00", fontWeight: 700 }}>
+              {totalStars}
+            </span>{" "}
+            / {LEVELS.length * 3} stars.
           </p>
           <div className="flex justify-center gap-3 mb-12">
             {stars.map((s, i) => (
@@ -314,7 +327,10 @@ const DigiArch = () => {
             <button
               onClick={resetGame}
               className="px-8 py-3 rounded-xl font-bold btn-adaptive-hover transition-all border"
-              style={{ borderColor: "var(--glass-border)", color: "var(--text-h)" }}
+              style={{
+                borderColor: "var(--glass-border)",
+                color: "var(--text-h)",
+              }}
             >
               <RotateCcw size={16} className="inline mr-2" />
               Play Again
@@ -365,18 +381,17 @@ const DigiArch = () => {
                 i === currentLevel
                   ? "scale-125"
                   : i < currentLevel
-                  ? ""
-                  : "opacity-30"
+                    ? ""
+                    : "opacity-30"
               }`}
               style={{
                 backgroundColor:
                   i === currentLevel
                     ? "#39ff14"
                     : i < currentLevel
-                    ? "var(--theme-color)"
-                    : "var(--glass-border)",
-                boxShadow:
-                  i === currentLevel ? "0 0 10px #39ff14" : "none",
+                      ? "var(--theme-color)"
+                      : "var(--glass-border)",
+                boxShadow: i === currentLevel ? "0 0 10px #39ff14" : "none",
               }}
             />
           ))}
@@ -412,16 +427,18 @@ const DigiArch = () => {
           <div
             className="digiarch-preview-container glass-theme rounded-2xl overflow-hidden"
             style={{
-              border: result === "win"
-                ? "2px solid #39ff14"
-                : result === "fail"
-                ? "2px solid #ff3366"
-                : "1px solid var(--glass-border)",
-              boxShadow: result === "win"
-                ? "0 0 30px rgba(57,255,20,0.3)"
-                : result === "fail"
-                ? "0 0 30px rgba(255,51,102,0.3)"
-                : "none",
+              border:
+                result === "win"
+                  ? "2px solid #39ff14"
+                  : result === "fail"
+                    ? "2px solid #ff3366"
+                    : "1px solid var(--glass-border)",
+              boxShadow:
+                result === "win"
+                  ? "0 0 30px rgba(57,255,20,0.3)"
+                  : result === "fail"
+                    ? "0 0 30px rgba(255,51,102,0.3)"
+                    : "none",
             }}
           >
             <div style={liveStyle}>
@@ -548,13 +565,14 @@ const DigiArch = () => {
             disabled={result === "win"}
             className="digiarch-submit-btn flex-1 py-4 rounded-xl font-bold flex items-center justify-center gap-2 transition-all"
             style={{
-              backgroundColor: result === "win" ? "#39ff14" : "var(--theme-color)",
+              backgroundColor:
+                result === "win" ? "#39ff14" : "var(--theme-color)",
               color:
                 result === "win"
                   ? "#000"
                   : themeColor.washType === "light"
-                  ? "#000"
-                  : "#fff",
+                    ? "#000"
+                    : "#fff",
             }}
           >
             {result === "win" ? (

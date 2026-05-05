@@ -76,7 +76,7 @@ const games = [
     categoryIcon: Lightbulb,
     tags: ["Patterns", "Sequences", "IQ"],
     status: "coming-soon",
-    color: "#ff6600",
+    color: "#fd3b12",
     route: null,
   },
   // === FOR ARTISTS ===
@@ -119,7 +119,13 @@ const categories = [
 ];
 
 const GamingArcade = () => {
-  const { themeColor } = useTheme();
+  const {
+    themeColor,
+    activeFontFamily,
+    activeFontScale,
+    isOverkillEnabled,
+    setIsOverkillEnabled,
+  } = useTheme();
   const [activeCategory, setActiveCategory] = React.useState("All");
 
   const filteredGames =
@@ -149,7 +155,7 @@ const GamingArcade = () => {
             className="text-xs font-bold tracking-[0.2em] uppercase"
             style={{ color: "var(--theme-color)" }}
           >
-            Arcade Zone
+            Dev Arcade
           </span>
         </motion.div>
 
@@ -157,7 +163,17 @@ const GamingArcade = () => {
           <span className="arcade-glitch-text" data-text="Game">
             Game
           </span>{" "}
-          <span className="text-adaptiv-orange">Arcade</span>
+          <span
+            className="text-adaptiv-orange"
+            style={{
+              fontFamily: activeFontFamily,
+              textShadow: "3px 3px 0px rgba(0,0,0,0.5)",
+              // fontSize: `calc(3rem * ${activeFontScale})`,
+              lineHeight: "1.1",
+            }}
+          >
+            Arcade
+          </span>
         </h1>
         <p className="text-lg md:text-xl text-low font-poppins max-w-2xl mx-auto">
           Browser-based games for{" "}
@@ -250,8 +266,8 @@ const GamingArcade = () => {
                     themeColor.washType === "coal"
                       ? "group-hover:text-white"
                       : themeColor.washType === "light"
-                      ? "group-hover:text-black"
-                      : "group-hover:text-adaptiv-orange"
+                        ? "group-hover:text-black"
+                        : "group-hover:text-adaptiv-orange"
                   }`}
                 >
                   {game.title}

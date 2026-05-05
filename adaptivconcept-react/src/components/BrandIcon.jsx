@@ -1,54 +1,30 @@
 import React from 'react';
-import * as Icons from '@lobehub/icons';
+import { getIconConfig } from '../config/iconRegistry';
 
 /**
- * Standardized Brand Icon component using @lobehub/icons
+ * Standardized Brand Icon component that maps brands to their respective icon packages.
+ * Uses a registry-first approach to ensure consistency and easy tracking of icon sources.
+ * 
  * @param {string} name - The name of the brand (e.g., 'OpenAI', 'React', 'Python')
  * @param {number} size - Icon size in pixels
- * @param {string} type - 'color', 'mono', or 'avatar' (defaults to 'color')
+ * @param {string} className - Optional CSS classes
  */
-const BrandIcon = ({ name, size = 24, type = 'color', className = '' }) => {
-  // Normalize the name to match LobeHub exports
-  const iconName = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
-  
-  // Handle common aliases or variations
-  const nameMap = {
-    'openai': 'OpenAI',
-    'google': 'Google',
-    'gemini': 'Gemini',
-    'anthropic': 'Anthropic',
-    'meta': 'Meta',
-    'mistral': 'Mistral',
-    'ollama': 'Ollama',
-    'react': 'React',
-    'nodejs': 'Nodejs',
-    'python': 'Python',
-    'javascript': 'Javascript',
-    'typescript': 'Typescript',
-    'postgresql': 'Postgresql',
-    'mysql': 'Mysql',
-    'firebase': 'Firebase',
-    'threejs': 'Threejs',
-    'vite': 'Vite',
-    'tailwind': 'Tailwind',
-    'github': 'Github',
-    'vercel': 'Vercel',
-    'langgraph': 'LangChain', // Fallback or closest match
-    'groq': 'Groq',
-  };
+const BrandIcon = ({ name, size = 24, className = '' }) => {
+  const iconConfig = getIconConfig(name);
 
-  const targetName = nameMap[name.toLowerCase()] || iconName;
-  
-  // Try to find the specific component variation
-  const Component = Icons[targetName];
-
-  if (!Component) {
-    console.warn(`BrandIcon: Icon "${targetName}" not found in @lobehub/icons`);
+  if (!iconConfig) {
+    console.warn(`BrandIcon: Icon "${name}" not found in any registered providers.`);
     return null;
   }
 
+  const { component: Component, provider } = iconConfig;
+
   return (
-    <div className={`inline-flex items-center justify-center ${className}`} style={{ width: size, height: size }}>
+    <div 
+      className={`inline-flex items-center justify-center transition-all hover:scale-110 ${className}`} 
+      style={{ width: size, height: size }}
+      title={`${name} (${provider})`}
+    >
        <Component size={size} />
     </div>
   );

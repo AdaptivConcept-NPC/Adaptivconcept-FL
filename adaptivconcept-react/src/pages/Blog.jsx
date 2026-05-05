@@ -4,11 +4,19 @@ import { Search, PenLine, Filter } from "lucide-react";
 import blogPostsDataLocal from "../data/blog-posts.json";
 import { getBlogPosts } from "../utils/dataStore";
 import BlogPost from "../components/BlogPost";
+import { useTheme } from "../context/ThemeContext";
 
 const Blog = () => {
   const [activeTag, setActiveTag] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [blogPostsData, setBlogPostsData] = useState(blogPostsDataLocal);
+  const {
+    themeColor,
+    activeFontFamily,
+    activeFontScale,
+    isOverkillEnabled,
+    setIsOverkillEnabled,
+  } = useTheme();
 
   useEffect(() => {
     getBlogPosts().then(setBlogPostsData);
@@ -55,7 +63,18 @@ const Blog = () => {
           transition={{ delay: 0.1 }}
         >
           <h1 className="text-3xl sm:text-4xl md:text-6xl font-comfortaa font-bold text-high mb-6">
-            <span className="text-adaptiv-orange">Blog</span> & Insights
+            <span
+              className="text-adaptiv-orange"
+              style={{
+                fontFamily: activeFontFamily,
+                textShadow: "3px 3px 0px rgba(0,0,0,0.5)",
+                // fontSize: `calc(3rem * ${activeFontScale})`,
+                lineHeight: "1.1",
+              }}
+            >
+              Blog
+            </span>{" "}
+            & Insights
           </h1>
           <p className="text-lg md:text-xl text-low font-poppins max-w-2xl mx-auto">
             Technical deep dives, career updates, and insights from the
