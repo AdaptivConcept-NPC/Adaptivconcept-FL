@@ -280,7 +280,7 @@ function createNativeRenderer({ canvas, container, density = 1, colorBoost = 1 }
   return { start, stop, resize };
 }
 
-function createP5Sketch({ container, density = 1, colorBoost = 1 }) {
+function createP5Sketch({ container, density = 1, colorBoost = 1, isMobile = false }) {
   return function (p) {
     let stars = [];
     let particles = [];
@@ -318,6 +318,7 @@ function createP5Sketch({ container, density = 1, colorBoost = 1 }) {
       c.parent(container);
       p.noStroke();
       p.colorMode(p.HSL, 360, 100, 100, 1);
+      if (isMobile) p.frameRate(30);
       rebuild();
     };
 
@@ -468,6 +469,19 @@ function createP5Sketch({ container, density = 1, colorBoost = 1 }) {
   };
 }
 
+const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const check = () => {
+      setIsMobile(window.innerWidth < 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
+    };
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+  return isMobile;
+};
+
 const ArcadeAnim = ({
   className = "",
   useP5 = true,
@@ -481,6 +495,10 @@ const ArcadeAnim = ({
   const p5InstanceRef = useRef(null);
   const nativeRef = useRef(null);
   const reducedMotion = usePrefersReducedMotion();
+  const isMobile = useIsMobile();
+
+  // Adjust density for mobile performance automatically
+  const effectiveDensity = isMobile ? density * 0.35 : density;
 
   useEffect(() => {
     const container = containerRef.current;
@@ -490,7 +508,12 @@ const ArcadeAnim = ({
     let stopped = false;
 
     const startNative = () => {
-      const native = createNativeRenderer({ canvas, container, density, colorBoost });
+      const native = createNativeRenderer({ 
+        canvas, 
+        container, 
+        density: effectiveDensity, 
+        colorBoost 
+      });
       nativeRef.current = native;
       native.start();
       const onResize = () => native.resize();
@@ -507,7 +530,12 @@ const ArcadeAnim = ({
         const mod = await import("p5");
         if (stopped) return () => {};
         const P5 = mod.default ?? mod;
-        const sketch = createP5Sketch({ container, density, colorBoost });
+        const sketch = createP5Sketch({ 
+          container, 
+          density: effectiveDensity, 
+          colorBoost,
+          isMobile // Pass mobile flag for internal optimizations
+        });
         canvas.style.display = "none";
         p5InstanceRef.current = new P5(sketch);
         return () => {
@@ -525,7 +553,12 @@ const ArcadeAnim = ({
     let cleanup = () => {};
 
     if (reducedMotion) {
-      const native = createNativeRenderer({ canvas, container, density, colorBoost });
+      const native = createNativeRenderer({ 
+        canvas, 
+        container, 
+        density: effectiveDensity * 0.5, 
+        colorBoost 
+      });
       nativeRef.current = native;
       native.resize();
       const ctx = canvas.getContext("2d");
@@ -539,14 +572,16 @@ const ArcadeAnim = ({
     }
 
     (async () => {
-      cleanup = (useP5 ? await startP5() : startNative()) || (() => {});
+      // Force P5 on mobile as requested for its "optimized" fallback nature
+      const forceP5 = isMobile || useP5;
+      cleanup = (forceP5 ? await startP5() : startNative()) || (() => {});
     })();
 
     return () => {
       stopped = true;
       cleanup?.();
     };
-  }, [useP5, density, colorBoost, reducedMotion]);
+  }, [useP5, effectiveDensity, colorBoost, reducedMotion, isMobile]);
 
   return (
     <div ref={containerRef} className={`arcade-anim ${className}`} style={style}>

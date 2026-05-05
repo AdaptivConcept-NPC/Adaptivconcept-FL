@@ -173,6 +173,10 @@ const HighlightCarousel = ({ className = "" }) => {
       onTouchStart={() => setIsPaused(true)}
       onTouchEnd={() => setIsPaused(false)}
     >
+      {/* TODO: Create a omponent that displays an intro video preview, the media player should kick in only after the 
+      user has clicked on it (so we optimize page loading). I feel that there is still empty space since this component 
+      is justified to tghe bottom-end in the @Home.jsx page */}
+
       {/* Navigation Buttons - Hidden on Mobile, Desktop Only */}
       <button
         onClick={handlePrev}
@@ -249,11 +253,15 @@ const HighlightCarousel = ({ className = "" }) => {
               className="text-2xl sm:text-4xl md:text-6xl font-bold tracking-tight uppercase select-none mt-4 transition-all duration-500"
               style={{
                 textShadow: "var(--heading-shadow)",
-                WebkitTextStroke: "var(--heading-stroke)",
+                WebkitTextStroke: themeColor.washType === "coal"
+                    ? "0.1px #ffffff"
+                    : themeColor.washType === "light"
+                      ? "0.1px #000000"
+                      : "0.15px #000000",
                 color: "var(--heading-color)",
                 fontFamily: activeFontFamily,
                 fontSize: `calc(4rem * ${activeFontScale})`,
-                lineHeight: "0.8",
+                lineHeight: "0.9",
               }}
             >
               {current.title}
