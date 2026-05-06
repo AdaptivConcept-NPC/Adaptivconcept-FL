@@ -173,9 +173,6 @@ const HighlightCarousel = ({ className = "" }) => {
       onTouchStart={() => setIsPaused(true)}
       onTouchEnd={() => setIsPaused(false)}
     >
-      {/* TODO: Create a omponent that displays an intro video preview, the media player should kick in only after the 
-      user has clicked on it (so we optimize page loading). I feel that there is still empty space since this component 
-      is justified to tghe bottom-end in the @Home.jsx page */}
 
       {/* Navigation Buttons - Hidden on Mobile, Desktop Only */}
       <button
@@ -270,8 +267,8 @@ const HighlightCarousel = ({ className = "" }) => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.5 }}
-              className="text-high text-base md:text-lg max-w-2xl font-light italic select-none"
-              style={{ textShadow: "1px 1px 0px rgba(0,0,0,0.5)" }}
+              className="text-high text-sm sm:text-base md:text-lg max-w-3xl font-medium italic select-none px-6 py-3 rounded-2xl bg-black/10 backdrop-blur-[2px] border border-white/5"
+              style={{ textShadow: "1px 1px 2px rgba(0,0,0,0.8)" }}
             >
               {current.subtitle}
             </motion.p>
@@ -279,17 +276,18 @@ const HighlightCarousel = ({ className = "" }) => {
         </AnimatePresence>
       </div>
 
-      {/* Subtle indicator */}
-      <div className="flex gap-2 mt-8">
+      {/* Subtle indicator - Adjusted for spacing */}
+      <div className="flex gap-3 mt-12 mb-4">
         {highlights.map((_, i) => (
           <button
             key={i}
             onClick={() => setIndex(i)}
-            className={`h-1 rounded-full transition-all duration-500 ${
-              i === index ? "w-8" : "bg-gray-800 w-4"
+            className={`h-1.5 rounded-full transition-all duration-500 ${
+              i === index ? "w-10" : "bg-gray-800/50 w-5"
             }`}
             style={{
               backgroundColor: i === index ? themeColor.value : undefined,
+              boxShadow: i === index ? `0 0 10px ${themeColor.value}80` : "none",
             }}
             aria-label={`Go to slide ${i + 1}`}
           />

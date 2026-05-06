@@ -172,7 +172,7 @@ const GamingArcade = () => {
               lineHeight: "1.1",
             }}
           >
-            Arcade
+            Dev Arcade
           </span>
         </h1>
         <p className="text-lg md:text-xl text-low font-poppins max-w-2xl mx-auto">

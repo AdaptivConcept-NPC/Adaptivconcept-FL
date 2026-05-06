@@ -13,7 +13,8 @@ import projectsDataLocal from "../data/projects.json";
 import { getProjects } from "../utils/dataStore";
 import FLFontCarousel from "../components/FLFontCarousel";
 import HighlightCarousel from "../components/HighlightCarousel";
-import MouseScrollIndicator from "../components/MouseScrollIndicator";
+import VideoIntroPreview from "../components/VideoIntroPreview";
+import { ChevronDown } from "lucide-react";
 
 const ParallaxSection = ({ children, index, total }) => {
   const container = useRef(null);
@@ -72,6 +73,7 @@ const Home = () => {
   const accentColor = isHighContrast ? contrastColor : themeColor.value;
   const navigate = useNavigate();
   const contactRef = useRef(null);
+  const heroRef = useRef(null);
   const [projectsData, setProjectsData] = useState(projectsDataLocal);
 
   useEffect(() => {
@@ -80,6 +82,10 @@ const Home = () => {
 
   const scrollToContact = () => {
     contactRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const scrollToHero = () => {
+    heroRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   // Form State
@@ -139,22 +145,50 @@ const Home = () => {
         style={{ backgroundColor: `rgba(var(--theme-color-rgb), 0.05)` }}
       ></div>
 
-      {/* spacer */}
-      <div className="h-screen flex flex-col justify-end items-center p-8">
-        {/* I need this spacer to contain a centraly justified & aligned 
-        FLFontCarousel component that is very large, below it shouuld be
-        a scroll-down button that smooth-scolls to the Hero section. */}
-        {/* <FLFontCarousel size="text-12xl" className="mb-8" useFullText={false} /> */}
-
-        <div className="w-full max-w-4xl min-h-[200px] flex items-center justify-center my-16">
-          <HighlightCarousel />
+      {/* spacer / Intro Section */}
+      <div className="min-h-screen flex flex-col items-center justify-center p-8 md:p-20 relative overflow-hidden">
+        {/* Large Central Font Carousel */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full pointer-events-none opacity-10 select-none">
+          <FLFontCarousel 
+            size="text-[15vw]" 
+            className="font-black" 
+            useFullText={false} 
+            speed={40}
+          />
         </div>
 
-        <MouseScrollIndicator />
+        <div className="relative z-10 w-full flex flex-col items-center gap-12 md:gap-16 pt-10">
+          <VideoIntroPreview className="w-full max-w-5xl shadow-[0_40px_100px_-20px_rgba(0,0,0,0.8)]" />
+          
+          <div className="w-full max-w-4xl flex items-center justify-center pb-24">
+            <HighlightCarousel />
+          </div>
+        </div>
+
+        {/* Scroll Action */}
+        <motion.button
+          onClick={scrollToHero}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1, duration: 1 }}
+          className="absolute bottom-8 flex flex-col items-center gap-3 group cursor-pointer z-20"
+        >
+          <div className="w-9 h-14 rounded-full border-2 border-theme flex justify-center p-1.5 group-hover:border-adaptiv-orange transition-colors">
+            <motion.div
+              animate={{ y: [0, 16, 0] }}
+              transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+              className="w-1.5 h-1.5 rounded-full bg-adaptiv-orange shadow-[0_0_8px_#ff4d00]"
+            />
+          </div>
+          <span className="text-[10px] font-black uppercase tracking-[0.4em] text-low group-hover:text-adaptiv-orange transition-colors">
+            Enter Portfolio
+          </span>
+        </motion.button>
       </div>
 
       {/* Section 1: Hero */}
-      <ParallaxSection index={0} total={sectionsCount}>
+      <div ref={heroRef}>
+        <ParallaxSection index={0} total={sectionsCount}>
         <div
           className="max-w-5xl px-6 text-center glass-theme rounded-[32px] md:rounded-[60px] p-6 md:p-20 relative"
           style={{ opacity: 1 }}
@@ -235,7 +269,8 @@ const Home = () => {
             </div>
           </motion.div>
         </div>
-      </ParallaxSection>
+        </ParallaxSection>
+      </div>
 
       {/* Section 2: Strategy & Contact Form */}
       <ParallaxSection index={1} total={sectionsCount}>

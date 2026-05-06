@@ -9,6 +9,7 @@ import BackgroundWallpaper from './components/BackgroundWallpaper';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
+import GeometricBackground from './components/GeometricBackground';
 
 // context
 import { ThemeProvider } from './context/ThemeContext';
@@ -49,6 +50,8 @@ function App() {
         ) : (
           <BackgroundWallpaper imageUrl="/media/thabang_vector_wallpaper.png" />
         )}
+
+        <GeometricBackground />
         
         <Navbar />
 
