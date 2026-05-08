@@ -1,45 +1,59 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { useTheme } from "../../context/ThemeContext";
+import { Palette } from "lucide-react";
 
 const UISettingsButton = ({ style, className, onClick }) => {
   const { themeColor } = useTheme();
 
+  const accentColor = themeColor.washType === "light" ? "#000" : "#fff";
+
   return (
-    <button
+    <motion.button
       onClick={onClick}
-      className={`flex flex-col items-center justify-center transition-all duration-300 group ${className}`}
+      initial="initial"
+      whileHover="hover"
+      className={`flex flex-col items-center justify-start transition-colors duration-300 group ${className}`}
+      variants={{
+        initial: { height: 48 },
+        hover: { height: 140 },
+      }}
+      transition={{ type: "spring", stiffness: 300, damping: 20 }}
       style={{
         backgroundColor: themeColor.value,
-        color: themeColor.washType === "light" ? "#111" : "#fff",
-        borderRadius: "0 0 25% 25%",
-        borderLeft: `2px solid #fff`,
-        borderRight: `2px solid #fff`,
-        borderBottom: `2px solid #fff`,
+        color: accentColor,
+        borderRadius: "0 0 16px 16px",
+        borderLeft: `2px solid ${accentColor}`,
+        borderRight: `2px solid ${accentColor}`,
+        borderBottom: `2px solid ${accentColor}`,
         borderTop: "none",
-        padding: "6px 12px 10px 12px",
-        width: "48px",
-        height: "54px",
+        padding: "12px 6px",
+        width: "42px",
         boxShadow: `0 4px 12px ${themeColor.value}33`,
+        overflow: "hidden",
         ...style,
       }}
     >
-      <svg
-        width="3"
-        height="22"
-        viewBox="0 0 3 22"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="opacity-95 group-hover:scale-y-110 transition-transform"
+      <Palette
+        size={28}
+        className="flex-shrink-0 opacity-90 group-hover:scale-110 transition-transform"
+      />
+      <motion.span
+        variants={{
+          initial: { opacity: 0, y: -20 },
+          hover: { opacity: 1, y: 0 },
+        }}
+        transition={{ delay: 0.1 }}
+        style={{
+          fontSize: "9px",
+          writingMode: "vertical-rl",
+          textOrientation: "mixed",
+        }}
+        className="font-comfortaa uppercase font-black tracking-widest mt-4 whitespace-nowrap"
       >
-        <rect width="10" height="28" rx="1.5" fill="currentColor" />
-      </svg>
-      <span
-        style={{ fontSize: "6px" }}
-        className="uppercase font-black tracking-widest mt-1 opacity-70 group-hover:opacity-100 transition-opacity"
-      >
-        settings
-      </span>
-    </button>
+        UI Settings
+      </motion.span>
+    </motion.button>
   );
 };
 
