@@ -165,7 +165,22 @@ const Navbar = () => {
                 <p className="truncate">Dev Arcade</p>
               </Link>
             </li>
+            <span className="my-auto">|</span>
+            {/* contact */}
+            <li>
+              <Link
+                className={`flex items-center gap-2 text-sm font-medium transition-colors hover:text-high ${isActive("/contact") ? "font-bold" : ""}`}
+                style={{
+                  color: isActive("/contact") ? "var(--text-h)" : "var(--text)",
+                }}
+                to="/contact"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <Mail size={18} /> <p className="truncate">Contact</p>
+              </Link>
+            </li>
           </ul>
+
 
           <span className="my-auto">|</span>
 
@@ -204,7 +219,8 @@ const Navbar = () => {
             >
               {/* projects button */}
               <Link
-                to="/projects"
+                to="/contact"
+
                 className="px-8 py-3.5 rounded-2xl font-black btn-adaptive-hover transition-all lg:ml-2 cta-shimmer speech-bubble-cta me-4"
                 onClick={() => setIsMenuOpen(false)}
                 style={{

@@ -26,6 +26,8 @@ import Admin from './pages/Admin';
 import LabDetail from './pages/LabDetail';
 import GamingArcade from './pages/GamingArcade';
 import DigiArch from './pages/DigiArch';
+import Contact from './pages/Contact';
+
 
 function App() {
   const useVideoBackground = false; // Toggle this to switch between video and static wallpaper
@@ -69,6 +71,8 @@ function App() {
               <Route path="/labs/:id" element={<LabDetail />} />
               <Route path="/arcade" element={<GamingArcade />} />
               <Route path="/arcade/digiarch" element={<DigiArch />} />
+              <Route path="/contact" element={<Contact />} />
+
             </Routes>
           </AnimatePresence>
         </main>
