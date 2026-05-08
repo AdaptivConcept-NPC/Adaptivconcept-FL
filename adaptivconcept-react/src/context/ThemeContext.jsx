@@ -90,6 +90,13 @@ export const ThemeProvider = ({ children }) => {
     return saved !== null ? saved === "true" : false;
   });
 
+  const [isInstantReadabilityEnabled, setIsInstantReadabilityEnabled] = useState(
+    () => {
+      const saved = localStorage.getItem("adaptiv_instant_readability");
+      return saved !== null ? saved === "true" : false;
+    },
+  );
+
   // Combined font queue
   const activeFonts = isOverkillEnabled ? [...fonts, ...overkillFonts] : fonts;
 
@@ -128,6 +135,19 @@ export const ThemeProvider = ({ children }) => {
   useEffect(() => {
     localStorage.setItem("adaptiv_theme_color", themeColor.value);
   }, [themeColor]);
+
+  // Persist and apply accessibility settings
+  useEffect(() => {
+    localStorage.setItem(
+      "adaptiv_instant_readability",
+      isInstantReadabilityEnabled,
+    );
+    if (isInstantReadabilityEnabled) {
+      document.body.classList.add("accessibility-instant-readability");
+    } else {
+      document.body.classList.remove("accessibility-instant-readability");
+    }
+  }, [isInstantReadabilityEnabled]);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -304,6 +324,8 @@ export const ThemeProvider = ({ children }) => {
         themeColor,
         nextColor,
         setThemeColor,
+        isInstantReadabilityEnabled,
+        setIsInstantReadabilityEnabled,
         activeFontFamily,
         activeFontScale,
       }}

@@ -11,10 +11,13 @@ import {
   Handshake,
   Palette,
   Gamepad2,
+  Minus,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useTheme } from "../../context/ThemeContext";
 import FLFontCarousel from "../FLFontCarousel";
+import UISettingsButton from "./UISettingsButton";
+import SettingsModal from "./SettingsModal";
 import "./Navbar.css";
 import "../../pages/GamingArcade.css";
 
@@ -22,11 +25,13 @@ const Navbar = () => {
   const { themeColor, nextColor } = useTheme();
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const isActive = (path) => location.pathname === path;
 
   return (
-    <nav
-      className="fixed top-0 left-0 w-full z-50 transition-all duration-500 border-b px-6 py-4"
+    <>
+      <nav
+        className="fixed top-0 left-0 w-full z-50 transition-all duration-500 border-b px-6 py-4"
       style={{
         backgroundColor: `var(--glass-bg)`,
         backdropFilter: "blur(16px)",
@@ -114,10 +119,23 @@ const Navbar = () => {
                 to="/"
                 onClick={() => setIsMenuOpen(false)}
               >
-                <Home size={18} /> <p className="truncate">Home</p>
+                {isMenuOpen ? (
+                  <div className="flex items-center gap-4 w-full">
+                    <Home size={24} />
+                    <span className="text-lg font-semibold">Home</span>
+                  </div>
+                ) : (
+                  <>
+                    <Home size={18} /> <p className="truncate">Home</p>
+                  </>
+                )}
               </Link>
             </li>
-            <span className="my-auto">|</span>
+            {isMenuOpen ? (
+              <div className="w-1/3 mx-auto h-px bg-white my-2" />
+            ) : (
+              <span className="my-auto opacity-30">|</span>
+            )}
             {/* projects */}
             <li>
               <Link
@@ -130,11 +148,24 @@ const Navbar = () => {
                 to="/projects"
                 onClick={() => setIsMenuOpen(false)}
               >
-                <FolderKanban size={18} />{" "}
-                <p className="truncate">Project Board</p>
+                {isMenuOpen ? (
+                  <div className="flex items-center gap-4 w-full">
+                    <FolderKanban size={24} />
+                    <span className="text-lg font-semibold">Project Board</span>
+                  </div>
+                ) : (
+                  <>
+                    <FolderKanban size={18} />{" "}
+                    <p className="truncate">Project Board</p>
+                  </>
+                )}
               </Link>
             </li>
-            <span className="my-auto">|</span>
+            {isMenuOpen ? (
+              <div className="w-1/3 mx-auto h-px bg-white my-2" />
+            ) : (
+              <span className="my-auto opacity-30">|</span>
+            )}
             {/* blog */}
             <li>
               <Link
@@ -145,10 +176,23 @@ const Navbar = () => {
                 to="/blog"
                 onClick={() => setIsMenuOpen(false)}
               >
-                <Newspaper size={18} /> <p className="truncate">Blog</p>
+                {isMenuOpen ? (
+                  <div className="flex items-center gap-4 w-full">
+                    <Newspaper size={24} />
+                    <span className="text-lg font-semibold">Blog</span>
+                  </div>
+                ) : (
+                  <>
+                    <Newspaper size={18} /> <p className="truncate">Blog</p>
+                  </>
+                )}
               </Link>
             </li>
-            <span className="my-auto">|</span>
+            {isMenuOpen ? (
+              <div className="w-1/3 mx-auto h-px bg-white my-2" />
+            ) : (
+              <span className="my-auto opacity-30">|</span>
+            )}
             {/* arcade */}
             <li>
               <Link
@@ -159,13 +203,28 @@ const Navbar = () => {
                 to="/arcade"
                 onClick={() => setIsMenuOpen(false)}
               >
-                <span className="p-1.5 rounded-lg bg-adaptiv-orange/20 text-adaptiv-orange flex items-center justify-center">
-                  <Gamepad2 size={18} />
-                </span>
-                <p className="truncate">Dev Arcade</p>
+                {isMenuOpen ? (
+                  <div className="flex items-center gap-4 w-full">
+                    <span className="p-2 rounded-xl bg-adaptiv-orange/20 text-adaptiv-orange flex items-center justify-center">
+                      <Gamepad2 size={24} />
+                    </span>
+                    <span className="text-lg font-semibold">Dev Arcade</span>
+                  </div>
+                ) : (
+                  <>
+                    <span className="p-1.5 rounded-lg bg-adaptiv-orange/20 text-adaptiv-orange flex items-center justify-center">
+                      <Gamepad2 size={18} />
+                    </span>
+                    <p className="truncate">Dev Arcade</p>
+                  </>
+                )}
               </Link>
             </li>
-            <span className="my-auto">|</span>
+            {isMenuOpen ? (
+              <div className="w-1/3 mx-auto h-px bg-white my-2" />
+            ) : (
+              <span className="my-auto opacity-30">|</span>
+            )}
             {/* contact */}
             <li>
               <Link
@@ -176,13 +235,25 @@ const Navbar = () => {
                 to="/contact"
                 onClick={() => setIsMenuOpen(false)}
               >
-                <Mail size={18} /> <p className="truncate">Contact</p>
+                {isMenuOpen ? (
+                  <div className="flex items-center gap-4 w-full">
+                    <Mail size={24} />
+                    <span className="text-lg font-semibold">Contact</span>
+                  </div>
+                ) : (
+                  <>
+                    <Mail size={18} /> <p className="truncate">Contact</p>
+                  </>
+                )}
               </Link>
             </li>
           </ul>
 
-
-          <span className="my-auto">|</span>
+          {isMenuOpen ? (
+            <div className="w-1/3 mx-auto h-px bg-white my-4" />
+          ) : (
+            <span className="my-auto opacity-30">|</span>
+          )}
 
           <div className="flex flex-col lg:flex-row items-center gap-3">
             {/* resume button */}
@@ -195,7 +266,16 @@ const Navbar = () => {
                 color: "var(--text-h)",
               }}
             >
-              <FileUser size={16} /> <p className="truncate">Résumé</p>
+              {isMenuOpen ? (
+                <div className="flex items-center gap-4 w-full px-2">
+                  <FileUser size={24} />
+                  <span className="text-lg font-semibold">Résumé</span>
+                </div>
+              ) : (
+                <>
+                  <FileUser size={16} /> <p className="truncate">Résumé</p>
+                </>
+              )}
             </Link>
 
             <motion.div
@@ -237,14 +317,35 @@ const Navbar = () => {
                 {/* Shimmer Layer inside for overflow containment */}
                 <div className="shimmer-layer"></div>
 
-                <p className="truncate relative z-10">Hire Me</p>
-                <Handshake size={28} className="relative z-10" />
+                {isMenuOpen ? (
+                  <div className="flex items-center gap-4">
+                    <span className="text-xl font-black">Hire Me</span>
+                    <Handshake size={32} className="relative z-10" />
+                  </div>
+                ) : (
+                  <>
+                    <p className="truncate relative z-10">Hire Me</p>
+                    <Handshake size={28} className="relative z-10" />
+                  </>
+                )}
               </Link>
             </motion.div>
           </div>
         </div>
       </div>
+
+      {/* Hanging UI Settings Button */}
+      <UISettingsButton
+        onClick={() => setIsSettingsOpen(true)}
+        className="absolute top-full right-8 shadow-lg shadow-black/20"
+      />
     </nav>
+
+    <SettingsModal 
+      isOpen={isSettingsOpen} 
+      onClose={() => setIsSettingsOpen(false)} 
+    />
+    </>
   );
 };
 

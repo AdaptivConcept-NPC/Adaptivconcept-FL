@@ -41,7 +41,10 @@
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.glass-theme:hover, .glass-panel:hover, .glass-theme-hover:hover {
+.glass-theme:hover, .glass-panel:hover, .glass-theme-hover:hover,
+.accessibility-instant-readability .glass-theme,
+.accessibility-instant-readability .glass-panel,
+.accessibility-instant-readability .glass-card {
   background-color: var(--glass-bg-hover);
   backdrop-filter: blur(var(--glass-blur-hover));
   -webkit-backdrop-filter: blur(var(--glass-blur-hover));

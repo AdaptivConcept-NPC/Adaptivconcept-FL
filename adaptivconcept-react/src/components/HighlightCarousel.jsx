@@ -145,11 +145,28 @@ const HighlightCarousel = ({ className = "" }) => {
 
   // Variants for the wave hover animation
   const containerVariants = {
+    initial: {},
+    animate: {
+      transition: {
+        staggerChildren: 0.12,
+        delayChildren: 0.4,
+      },
+    },
     hover: { transition: { staggerChildren: 0.1 } },
   };
 
   const iconVariants = {
-    initial: { y: 0 },
+    initial: { opacity: 0, x: -40, scale: 0.5 },
+    animate: {
+      opacity: 1,
+      x: 0,
+      scale: 1,
+      transition: {
+        type: "spring",
+        stiffness: 180,
+        damping: 15,
+      },
+    },
     hover: {
       y: [0, -10, 0],
       transition: {
@@ -174,6 +191,7 @@ const HighlightCarousel = ({ className = "" }) => {
       onTouchEnd={() => setIsPaused(false)}
     >
 
+      
       {/* Navigation Buttons - Hidden on Mobile, Desktop Only */}
       <button
         onClick={handlePrev}
@@ -219,6 +237,8 @@ const HighlightCarousel = ({ className = "" }) => {
             >
               <motion.div
                 variants={containerVariants}
+                initial="initial"
+                animate="animate"
                 whileHover="hover"
                 className="hidden md:flex items-center h-12 p-4"
               >
