@@ -48,7 +48,7 @@
   background-color: var(--glass-bg-hover);
   backdrop-filter: blur(var(--glass-blur-hover));
   -webkit-backdrop-filter: blur(var(--glass-blur-hover));
-  border-color: rgba(var(--theme-color-rgb), 0.3);
+  border-color: var(--glass-border-hover, rgba(var(--theme-color-rgb), 0.3));
 }
 
 /* Glass Card - specialized for interactive project/blog cards */
@@ -67,7 +67,7 @@
   background-color: var(--glass-bg-hover);
   backdrop-filter: blur(var(--glass-blur-hover));
   -webkit-backdrop-filter: blur(var(--glass-blur-hover));
-  border-color: rgba(var(--theme-color-rgb), 0.4);
+  border-color: var(--glass-border-hover, rgba(var(--theme-color-rgb), 0.4));
   transform: translateY(-8px);
   box-shadow: var(--glass-shadow), 0 0 20px rgba(var(--theme-color-rgb), 0.4);
 }

@@ -186,6 +186,7 @@ export const ThemeProvider = ({ children }) => {
       root.style.setProperty("--glass-blur", "24px");
       root.style.setProperty("--glass-blur-hover", "40px");
       root.style.setProperty("--glass-border", "#000000");
+      root.style.setProperty("--glass-border-hover", "#000000");
       root.style.setProperty("--glass-border-width", "2px");
       root.style.setProperty("--glass-shadow", "6px 6px 0px #111111");
       root.style.setProperty("--glass-glow", "0 0 12px rgba(0, 0, 0, 0.08)");
@@ -209,10 +210,11 @@ export const ThemeProvider = ({ children }) => {
       root.style.setProperty("--glass-blur", "40px");
       root.style.setProperty("--glass-blur-hover", "80px");
       root.style.setProperty("--glass-border", "#ffffff");
+      root.style.setProperty("--glass-border-hover", "#ffffff");
       root.style.setProperty("--glass-border-width", "2px");
       root.style.setProperty(
         "--glass-shadow",
-        "8px 8px 0px var(--theme-color)",
+        "8px 8px 0px #e5e5e7",
       );
       root.style.setProperty(
         "--glass-glow",
@@ -238,6 +240,7 @@ export const ThemeProvider = ({ children }) => {
       root.style.setProperty("--glass-blur", "64px");
       root.style.setProperty("--glass-blur-hover", "80px");
       root.style.setProperty("--glass-border", "rgba(255, 255, 255, 0.2)");
+      root.style.setProperty("--glass-border-hover", `rgba(${rgb}, 0.3)`);
       root.style.setProperty("--glass-border-width", "1px");
       root.style.setProperty(
         "--glass-shadow",
@@ -264,6 +267,7 @@ export const ThemeProvider = ({ children }) => {
       root.style.setProperty("--glass-blur", "40px");
       root.style.setProperty("--glass-blur-hover", "60px");
       root.style.setProperty("--glass-border", `rgba(${rgb}, 0.3)`);
+      root.style.setProperty("--glass-border-hover", `rgba(${rgb}, 0.3)`);
       root.style.setProperty("--glass-border-width", "1px");
       root.style.setProperty(
         "--glass-shadow",

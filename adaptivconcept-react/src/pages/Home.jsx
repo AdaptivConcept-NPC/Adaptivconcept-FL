@@ -149,17 +149,17 @@ const Home = () => {
       <div className="min-h-screen flex flex-col items-center justify-center p-8 md:p-20 relative overflow-hidden">
         {/* Large Central Font Carousel */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full pointer-events-none opacity-10 select-none">
-          <FLFontCarousel 
-            size="text-[15vw]" 
-            className="font-black" 
-            useFullText={false} 
+          <FLFontCarousel
+            size="text-[15vw]"
+            className="font-black"
+            useFullText={false}
             speed={40}
           />
         </div>
 
         <div className="relative z-10 w-full flex flex-col items-center gap-12 md:gap-16 pt-10">
           <VideoIntroPreview className="w-full max-w-5xl shadow-[0_40px_100px_-20px_rgba(0,0,0,0.8)]" />
-          
+
           <div className="w-full max-w-4xl flex items-center justify-center pb-24">
             <HighlightCarousel />
           </div>
@@ -189,92 +189,94 @@ const Home = () => {
       {/* Section 1: Hero */}
       <div ref={heroRef}>
         <ParallaxSection index={0} total={sectionsCount}>
-        <div
-          className="max-w-5xl px-6 text-center glass-theme rounded-[32px] md:rounded-[60px] p-6 md:p-20 relative"
-          style={{ opacity: 1 }}
-        >
-          <motion.div
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-          >
-            <span className="inline-flex items-center gap-2 px-6 py-2 rounded-full glass-theme text-high text-sm font-vietnam mb-10">
-              <span
-                className="w-2.5 h-2.5 rounded-full animate-pulse"
-                style={{ backgroundColor: themeColor.value }}
-              ></span>
-              Available for Strategic Collaboration
-            </span>
-            <h1
-              className="text-4xl sm:text-5xl md:text-6xl font-comfortaa font-bold mb-10 tracking-tight leading-tight"
-              style={{ color: "var(--text-h)" }}
+          <div className="py-10">
+            <div
+              className="max-w-5xl px-6 text-center glass-theme rounded-[32px] md:rounded-[60px] p-6 md:p-20 relative"
+              style={{ opacity: 1 }}
             >
-              Senior{" "}
-              <span
-                className="italic transition-all duration-500 inline-block"
-                style={{
-                  fontFamily: activeFontFamily,
-                  color: "var(--heading-color)",
-                  textShadow: "var(--heading-shadow)",
-                  fontSize: `${activeFontScale}em`,
-                  lineHeight: 1,
-                }}
+              <motion.div
+                initial={{ y: 30, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.2, duration: 0.8 }}
               >
-                Agentic AI Engineer
-              </span>{" "}
-              & <br />
-              <span
-                className="italic transition-all duration-500 inline-block"
-                style={{
-                  fontFamily: activeFontFamily,
-                  color: "var(--heading-color)",
-                  textShadow: "var(--heading-shadow)",
-                  fontSize: `${activeFontScale}em`,
-                  lineHeight: 1,
-                }}
-              >
-                Digital Architect
-              </span>
-            </h1>
-            <p
-              className="text-base sm:text-lg md:text-2xl font-poppins mb-14 max-w-3xl mx-auto leading-relaxed"
-              style={{ color: "var(--text)" }}
-            >
-              Engineering high-performance intelligence pipelines and
-              interactive 3D ecosystems. Converting complex legacy
-              infrastructure into automated future-states.
-            </p>
-            <div className="flex flex-wrap justify-center gap-6">
-              <button
-                onClick={scrollToContact}
-                className="px-6 py-4 md:px-10 md:py-5 rounded-xl md:rounded-2xl text-white text-base md:text-lg font-bold hover:scale-105 hover:shadow-2xl btn-adaptive-hover transition-all flex items-center gap-3"
-                style={{
-                  backgroundColor: themeColor.value,
-                  boxShadow: `0 10px 30px -10px ${themeColor.value}4d`,
-                  color: isHighContrast
-                    ? themeColor.washType === "light"
-                      ? "#000000"
-                      : "#ffffff"
-                    : "#ffffff",
-                }}
-              >
-                Let's Talk <ChevronRight size={22} />
-              </button>
-              <button
-                onClick={() => navigate("/projects")}
-                className="px-6 py-4 md:px-10 md:py-5 rounded-xl md:rounded-2xl border-2 border-theme text-high text-base md:text-lg font-bold btn-adaptive-hover transition-all backdrop-blur-sm"
-              >
-                Project Catalog
-              </button>
+                <span className="inline-flex items-center gap-2 px-6 py-2 rounded-full glass-theme text-high text-sm font-vietnam mb-10">
+                  <span
+                    className="w-2.5 h-2.5 rounded-full animate-pulse"
+                    style={{ backgroundColor: themeColor.value }}
+                  ></span>
+                  Available for Strategic Collaboration
+                </span>
+                <h1
+                  className="text-4xl sm:text-5xl md:text-6xl font-comfortaa font-bold mb-10 tracking-tight leading-tight"
+                  style={{ color: "var(--text-h)" }}
+                >
+                  Senior{" "}
+                  <span
+                    className="italic transition-all duration-500 inline-block"
+                    style={{
+                      fontFamily: activeFontFamily,
+                      color: "var(--heading-color)",
+                      textShadow: "var(--heading-shadow)",
+                      fontSize: `${activeFontScale}em`,
+                      lineHeight: 1,
+                    }}
+                  >
+                    Agentic AI Engineer
+                  </span>{" "}
+                  & <br />
+                  <span
+                    className="italic transition-all duration-500 inline-block"
+                    style={{
+                      fontFamily: activeFontFamily,
+                      color: "var(--heading-color)",
+                      textShadow: "var(--heading-shadow)",
+                      fontSize: `${activeFontScale}em`,
+                      lineHeight: 1,
+                    }}
+                  >
+                    Digital Architect
+                  </span>
+                </h1>
+                <p
+                  className="text-base sm:text-lg md:text-2xl font-poppins mb-14 max-w-3xl mx-auto leading-relaxed"
+                  style={{ color: "var(--text)" }}
+                >
+                  Engineering high-performance intelligence pipelines and
+                  interactive 3D ecosystems. Converting complex legacy
+                  infrastructure into automated future-states.
+                </p>
+                <div className="flex flex-wrap justify-center gap-6">
+                  <button
+                    onClick={scrollToContact}
+                    className="px-6 py-4 md:px-10 md:py-5 rounded-xl md:rounded-2xl text-white text-base md:text-lg font-bold hover:scale-105 hover:shadow-2xl btn-adaptive-hover transition-all flex items-center gap-3"
+                    style={{
+                      backgroundColor: themeColor.value,
+                      boxShadow: `0 10px 30px -10px ${themeColor.value}4d`,
+                      color: isHighContrast
+                        ? themeColor.washType === "light"
+                          ? "#000000"
+                          : "#ffffff"
+                        : "#ffffff",
+                    }}
+                  >
+                    Let's Talk <ChevronRight size={22} />
+                  </button>
+                  <button
+                    onClick={() => navigate("/projects")}
+                    className="px-6 py-4 md:px-10 md:py-5 rounded-xl md:rounded-2xl border-2 border-theme text-high text-base md:text-lg font-bold btn-adaptive-hover transition-all backdrop-blur-sm"
+                  >
+                    Project Catalog
+                  </button>
+                </div>
+              </motion.div>
             </div>
-          </motion.div>
-        </div>
+          </div>
         </ParallaxSection>
       </div>
 
       {/* Section 2: Strategy & Contact Form */}
       <ParallaxSection index={1} total={sectionsCount}>
-        <div ref={contactRef} className="container mx-auto px-6">
+        <div ref={contactRef} className="container mx-auto px-6 py-10">
           <div
             className="glass-theme rounded-[32px] md:rounded-[60px] p-6 md:p-20 relative overflow-hidden group"
             style={{ opacity: 1 }}
@@ -492,129 +494,131 @@ const Home = () => {
 
       {/* Section 3: Github Projects Grid */}
       <ParallaxSection index={2} total={sectionsCount}>
-        <div
-          className="container mx-auto px-6 rounded-[32px] md:rounded-[60px] p-6 md:p-20 relative glass-theme"
-          style={{ opacity: 1 }}
-        >
-          <div className="flex flex-col md:flex-row justify-between items-end gap-10 mb-16">
-            <div className="max-w-3xl">
-              <h3 className="text-3xl sm:text-4xl md:text-6xl font-comfortaa font-bold text-high mb-6">
-                <div
-                  className={isHighContrast ? "" : "text-adaptiv-orange"}
-                  style={{
-                    fontFamily: activeFontFamily,
-                    textShadow: "var(--heading-shadow)",
-                    fontSize: `calc(3rem * ${activeFontScale})`,
-                    lineHeight: 1,
-                    color: isHighContrast ? contrastColor : undefined,
-                  }}
-                >
-                  Github
-                </div>{" "}
-                Masterpieces
-              </h3>
-              <p className="text-lg md:text-2xl text-low font-comfortaa">
-                Selected engineering feats and design systems.
-              </p>
-            </div>
-            <button
-              onClick={() => navigate("/projects")}
-              className="group flex items-center gap-3 font-bold text-xl transition-colors duration-300 hover:text-hover-bg"
-              style={{ color: accentColor }}
-            >
-              Explore Full Lab{" "}
-              <ChevronRight
-                size={24}
-                className="group-hover:translate-x-2 transition-transform duration-300"
-              />
-            </button>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-10">
-            {heroProjects.map((project) => (
-              <motion.div
-                key={project.id}
-                whileHover={{ y: -15, scale: 1.02 }}
-                className="group glass-card rounded-[24px] md:rounded-[40px] p-6 md:p-10 flex flex-col h-full transition-all duration-500 shadow-2xl"
+        <div className="py-10">
+          <div
+            className="container mx-auto px-6 rounded-[32px] md:rounded-[60px] p-6 md:p-20 relative glass-theme"
+            style={{ opacity: 1 }}
+          >
+            <div className="flex flex-col md:flex-row justify-between items-end gap-10 mb-16">
+              <div className="max-w-3xl">
+                <h3 className="text-3xl sm:text-4xl md:text-6xl font-comfortaa font-bold text-high mb-6">
+                  <div
+                    className={isHighContrast ? "" : "text-adaptiv-orange"}
+                    style={{
+                      fontFamily: activeFontFamily,
+                      textShadow: "var(--heading-shadow)",
+                      fontSize: `calc(3rem * ${activeFontScale})`,
+                      lineHeight: 1,
+                      color: isHighContrast ? contrastColor : undefined,
+                    }}
+                  >
+                    Github
+                  </div>{" "}
+                  Masterpieces
+                </h3>
+                <p className="text-lg md:text-2xl text-low font-comfortaa">
+                  Selected engineering feats and design systems.
+                </p>
+              </div>
+              <button
+                onClick={() => navigate("/projects")}
+                className="group flex items-center gap-3 font-bold text-xl transition-colors duration-300 hover:text-hover-bg"
+                style={{ color: accentColor }}
               >
-                <div className="flex flex-wrap flex-col md:flex-row justify-between items-start gap-4 mb-2">
-                  <div className="flex-1 flex flex-col gap-2 min-w-0">
-                    <span
-                      className="px-4 py-2 rounded-xl text-[10px] font-bold uppercase tracking-[0.2em] whitespace-nowrap"
-                      style={{
-                        backgroundColor: isHighContrast
-                          ? `rgba(${contrastColor === "white" ? "255,255,255" : "0,0,0"}, 0.1)`
-                          : "rgba(var(--theme-color-rgb), 0.1)",
-                        color: accentColor,
-                      }}
-                    >
-                      {project.category}
-                    </span>
-                    <h4
-                      className="text-2xl md:text-3xl font-comfortaa font-bold text-high mb-2 transition-colors hover:text-hover-bg"
-                      style={{ fontSize: "150%" }}
-                    >
-                      {project.title}
-                    </h4>
+                Explore Full Lab{" "}
+                <ChevronRight
+                  size={24}
+                  className="group-hover:translate-x-2 transition-transform duration-300"
+                />
+              </button>
+            </div>
 
-                    {project.subtitle && (
-                      <p className="text-xs md:text-sm font-medium text-low italic opacity-80 uppercase tracking-widest">
-                        {project.subtitle}
-                      </p>
-                    )}
-                  </div>
-                  <div className="flex flex-wrap gap-3 justify-end w-full md:w-auto flex-shrink-0">
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:scale-110 btn-adaptive-hover transition-all duration-300"
-                    >
-                      <i className="bi bi-github text-xl"></i>
-                    </a>
-                    {project.liveUrl !== "#" && (
+            <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-10">
+              {heroProjects.map((project) => (
+                <motion.div
+                  key={project.id}
+                  whileHover={{ y: -15, scale: 1.02 }}
+                  className="group glass-card rounded-[24px] md:rounded-[40px] p-6 md:p-10 flex flex-col h-full transition-all duration-500 shadow-2xl"
+                >
+                  <div className="flex flex-wrap flex-col md:flex-row justify-between items-start gap-4 mb-2">
+                    <div className="flex-1 flex flex-col gap-2 min-w-0">
+                      <span
+                        className="px-4 py-2 rounded-xl text-[10px] font-bold uppercase tracking-[0.2em] whitespace-nowrap"
+                        style={{
+                          backgroundColor: isHighContrast
+                            ? `rgba(${contrastColor === "white" ? "255,255,255" : "0,0,0"}, 0.1)`
+                            : "rgba(var(--theme-color-rgb), 0.1)",
+                          color: accentColor,
+                        }}
+                      >
+                        {project.category}
+                      </span>
+                      <h4
+                        className="text-2xl md:text-3xl font-comfortaa font-bold text-high mb-2 transition-colors hover:text-hover-bg"
+                        style={{ fontSize: "150%" }}
+                      >
+                        {project.title}
+                      </h4>
+
+                      {project.subtitle && (
+                        <p className="text-xs md:text-sm font-medium text-low italic opacity-80 uppercase tracking-widest">
+                          {project.subtitle}
+                        </p>
+                      )}
+                    </div>
+                    <div className="flex flex-wrap gap-3 justify-end w-full md:w-auto flex-shrink-0">
                       <a
-                        href={project.liveUrl}
+                        href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:scale-110 btn-adaptive-hover transition-all duration-300"
                       >
-                        <ExternalLink size={22} />
+                        <i className="bi bi-github text-xl"></i>
                       </a>
-                    )}
+                      {project.liveUrl !== "#" && (
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:scale-110 btn-adaptive-hover transition-all duration-300"
+                        >
+                          <ExternalLink size={22} />
+                        </a>
+                      )}
+                    </div>
                   </div>
-                </div>
 
-                <p className="text-low font-poppins line-clamp-3 mb-10 text-base md:text-lg flex-grow">
-                  {project.description}
-                </p>
+                  <p className="text-low font-poppins line-clamp-3 mb-10 text-base md:text-lg flex-grow">
+                    {project.description}
+                  </p>
 
-                <div className="flex flex-wrap gap-2 mb-10">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-4 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-widest"
-                      style={{
-                        backgroundColor: isHighContrast
-                          ? `rgba(${contrastColor === "white" ? "255,255,255" : "0,0,0"}, 0.05)`
-                          : "rgba(var(--theme-color-rgb), 0.05)",
-                        border: `1px solid ${isHighContrast ? `rgba(${contrastColor === "white" ? "255,255,255" : "0,0,0"}, 0.1)` : "rgba(var(--theme-color-rgb), 0.1)"}`,
-                        color: accentColor,
-                      }}
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
+                  <div className="flex flex-wrap gap-2 mb-10">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="px-4 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-widest"
+                        style={{
+                          backgroundColor: isHighContrast
+                            ? `rgba(${contrastColor === "white" ? "255,255,255" : "0,0,0"}, 0.05)`
+                            : "rgba(var(--theme-color-rgb), 0.05)",
+                          border: `1px solid ${isHighContrast ? `rgba(${contrastColor === "white" ? "255,255,255" : "0,0,0"}, 0.1)` : "rgba(var(--theme-color-rgb), 0.1)"}`,
+                          color: accentColor,
+                        }}
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
 
-                <button
-                  onClick={() => navigate(`/projects/${project.id}`)}
-                  className="w-full py-4 rounded-2xl border-2 border-theme text-high font-bold text-lg btn-adaptive-hover hover:shadow-lg hover:shadow-adaptiv-orange/20 transition-all duration-300"
-                >
-                  Case Study Details
-                </button>
-              </motion.div>
-            ))}
+                  <button
+                    onClick={() => navigate(`/projects/${project.id}`)}
+                    className="w-full py-4 rounded-2xl border-2 border-theme text-high font-bold text-lg btn-adaptive-hover hover:shadow-lg hover:shadow-adaptiv-orange/20 transition-all duration-300"
+                  >
+                    Case Study Details
+                  </button>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </ParallaxSection>

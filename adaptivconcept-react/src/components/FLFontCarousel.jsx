@@ -8,6 +8,7 @@ const FLFontCarousel = ({
   className = "",
   useFullText = false,
   isStacked = false,
+  color = null,
 }) => {
   const { currentFont, isFontLocked, toggleFontLock, themeColor } = useTheme();
 
@@ -43,7 +44,7 @@ const FLFontCarousel = ({
           style={{
             fontFamily: currentFont?.fontname,
             fontSize: `${currentFont?.scale || 1}em`,
-            color: "var(--heading-color)",
+            color: color || "var(--heading-color)",
             textShadow: "var(--heading-shadow)",
           }}
         >

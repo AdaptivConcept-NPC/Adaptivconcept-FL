@@ -125,7 +125,7 @@ const Footer = () => {
                       className="h-20 group-hover:scale-110 transition-transform duration-300"
                       alt="adaptivconcept fl logo"
                     />
-                    <h5 className="text-lg md:text-xl font-comfortaa font-bold text-high tracking-tight relative">
+                    <h5 className="text-lg md:text-xl font-comfortaa font-bold text-white tracking-tight relative">
                       AdaptivConcept
                       <div
                         style={{
@@ -144,6 +144,7 @@ const Footer = () => {
                       size="text-xl md:text-2xl"
                       useFullText={true}
                       className="ml-2 w-auto min-h-0"
+                      color="#fff"
                     />
                   </div>
                 </div>
@@ -249,10 +250,10 @@ const Footer = () => {
                 </div>
 
                 {/* Copyright */}
-                <p className="text-low text-sm leading-relaxed mt-8 mx-auto md:mx-0 font-poppins font-medium opacity-80 mb-5">
+                <p className="text-white/60 text-sm leading-relaxed mt-8 mx-auto md:mx-0 font-poppins font-medium mb-5">
                   Engineering high-performance solutions for technical
                   excellence. <br />
-                  <span className="text-xs opacity-60">
+                  <span className="text-xs text-white/40">
                     © {new Date().getFullYear()} AdaptivConcept™ FL. All Rights
                     Reserved.
                   </span>
@@ -266,7 +267,7 @@ const Footer = () => {
             <div className="flex flex-col items-center md:items-end w-full">
               <button
                 onClick={handleResetPersonas}
-                className="group/reset flex items-center gap-2 text-[9px] font-black uppercase tracking-[0.25em] text-low hover:text-adaptiv-orange transition-all mb-4 px-3 py-1.5 rounded-full border border-theme hover:border-adaptiv-orange bg-white/[0.03]"
+                className="group/reset flex items-center gap-2 text-[9px] font-black uppercase tracking-[0.25em] text-white/60 hover:text-adaptiv-orange transition-all mb-4 px-3 py-1.5 rounded-full border border-theme hover:border-adaptiv-orange bg-white/[0.03]"
               >
                 <RotateCcw
                   size={10}
@@ -310,14 +311,14 @@ const Footer = () => {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-12 h-12 rounded-2xl bg-white/5 border border-theme flex items-center justify-center text-low hover:bg-hover-bg hover:text-hover-text hover:border-hover-bg hover:-translate-y-1 transition-all duration-300 shadow-xl"
+                    className="w-12 h-12 rounded-2xl bg-white/5 border border-theme flex items-center justify-center text-white/80 hover:bg-hover-bg hover:text-hover-text hover:border-hover-bg hover:-translate-y-1 transition-all duration-300 shadow-xl"
                     title={social.title}
                   >
                     {social.icon}
                   </a>
                 ))}
               </div>
-              <p className="text-high text-sm font-poppins italic max-w-[280px] border-r-2 border-adaptiv-orange pr-4 py-1 transition-all duration-500">
+              <p className="text-white text-sm font-poppins italic max-w-[280px] border-r-2 border-adaptiv-orange pr-4 py-1 transition-all duration-500">
                 "
                 {hoveredPersona
                   ? personaMessages[hoveredPersona]
