@@ -10,6 +10,7 @@ import Navbar from './components/layout/Navbar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import GeometricBackground from './components/GeometricBackground';
+import GlobalFAB from './components/layout/GlobalFAB';
 
 // context
 import { ThemeProvider } from './context/ThemeContext';
@@ -78,6 +79,7 @@ function App() {
         </main>
 
         <Footer />
+        <GlobalFAB />
       </div>
     </Router>
     </ThemeProvider>

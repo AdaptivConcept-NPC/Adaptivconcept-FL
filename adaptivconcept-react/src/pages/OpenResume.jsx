@@ -443,23 +443,6 @@ const OpenResume = () => {
         </motion.div>
       </div>
 
-      {/* Floating Action Button for Contact */}
-      <motion.button
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        className="fixed bottom-10 right-10 w-16 h-16 rounded-full shadow-2xl flex items-center justify-center text-white z-50 overflow-hidden"
-        style={{ backgroundColor: themeColor.value }}
-        onClick={() => {
-          const contactSection = document.getElementById("contact");
-          if (contactSection)
-            contactSection.scrollIntoView({ behavior: "smooth" });
-          else window.location.href = "/#contact";
-        }}
-      >
-        <Mail size={28} />
-      </motion.button>
     </motion.div>
   );
 };

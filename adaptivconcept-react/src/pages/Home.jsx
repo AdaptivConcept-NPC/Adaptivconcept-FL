@@ -332,13 +332,13 @@ const Home = () => {
                   ].map((service, i) => (
                     <div key={i} className="flex gap-8 group/item">
                       <div
-                        className="w-16 h-16 rounded-[22px] glass-theme flex items-center justify-center transition-all duration-500 shadow-inner btn-adaptive-hover"
+                        className="w-16 h-16 rounded-[22px] glass-theme glass-theme-hover flex items-center justify-center transition-all duration-500 shadow-inner"
                         style={{ color: accentColor }}
                       >
                         {service.icon}
                       </div>
                       <div>
-                        <h6 className="text-2xl font-bold text-high mb-2 tracking-tight">
+                        <h6 className="text-2xl font-bold text-high mb-2 tracking-tight group-hover/item:text-adaptiv-orange transition-colors">
                           {service.title}
                         </h6>
                         <p className="text-low font-poppins">{service.desc}</p>
@@ -537,85 +537,98 @@ const Home = () => {
               {heroProjects.map((project) => (
                 <motion.div
                   key={project.id}
-                  whileHover={{ y: -15, scale: 1.02 }}
-                  className="group glass-card rounded-[24px] md:rounded-[40px] p-6 md:p-10 flex flex-col h-full transition-all duration-500 shadow-2xl"
+                  whileHover={{ y: -5 }}
+                  className="group glass-theme glass-theme-hover rounded-2xl p-6 md:p-8 flex flex-col h-full transition-all relative overflow-hidden"
                 >
-                  <div className="flex flex-wrap flex-col md:flex-row justify-between items-start gap-4 mb-2">
-                    <div className="flex-1 flex flex-col gap-2 min-w-0">
-                      <span
-                        className="px-4 py-2 rounded-xl text-[10px] font-bold uppercase tracking-[0.2em] whitespace-nowrap"
-                        style={{
-                          backgroundColor: isHighContrast
-                            ? `rgba(${contrastColor === "white" ? "255,255,255" : "0,0,0"}, 0.1)`
-                            : "rgba(var(--theme-color-rgb), 0.1)",
-                          color: accentColor,
-                        }}
-                      >
-                        {project.category}
-                      </span>
-                      <h4
-                        className="text-2xl md:text-3xl font-comfortaa font-bold text-high mb-2 transition-colors hover:text-hover-bg"
-                        style={{ fontSize: "150%" }}
-                      >
-                        {project.title}
-                      </h4>
+                  {/* Ambient glow */}
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-adaptiv-orange/5 blur-[60px] rounded-full -mr-10 -mt-10 group-hover:bg-adaptiv-orange/10 transition-colors" />
 
-                      {project.subtitle && (
-                        <p className="text-xs md:text-sm font-medium text-low italic opacity-80 uppercase tracking-widest">
-                          {project.subtitle}
-                        </p>
-                      )}
-                    </div>
-                    <div className="flex flex-wrap gap-3 justify-end w-full md:w-auto flex-shrink-0">
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:scale-110 btn-adaptive-hover transition-all duration-300"
-                      >
-                        <i className="bi bi-github text-xl"></i>
-                      </a>
-                      {project.liveUrl !== "#" && (
+                  <div className="relative z-10 flex flex-col h-full">
+                    {/* Header Row */}
+                    <div className="mb-6 flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <div className="text-adaptiv-orange">
+                          {project.category === "Game Dev" && <Rocket size={20} />}
+                          {project.category === "Automation" && (
+                            <Terminal size={20} />
+                          )}
+                          {project.category === "Fullstack" && <Cpu size={20} />}
+                        </div>
+                        <span className="text-xs uppercase font-bold tracking-[0.2em] text-low">
+                          {project.category}
+                        </span>
+                      </div>
+                      <div className="flex gap-2">
                         <a
-                          href={project.liveUrl}
+                          href={project.githubUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:scale-110 btn-adaptive-hover transition-all duration-300"
+                          className="text-low hover:text-adaptiv-orange transition-colors"
+                          title="View Source"
                         >
-                          <ExternalLink size={22} />
+                          <i className="bi bi-github text-lg"></i>
                         </a>
-                      )}
+                        {project.liveUrl !== "#" && (
+                          <a
+                            href={project.liveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-low hover:text-adaptiv-orange transition-colors"
+                            title="Live Demo"
+                          >
+                            <ExternalLink size={18} />
+                          </a>
+                        )}
+                      </div>
                     </div>
+
+                    {/* Title */}
+                    <h4 className={`text-2xl font-comfortaa font-bold text-high mb-3 transition-colors ${
+                      themeColor.washType === "coal" 
+                        ? "group-hover:text-white" 
+                        : themeColor.washType === "light" 
+                          ? "group-hover:text-black" 
+                          : "group-hover:text-adaptiv-orange"
+                    }`}>
+                      {project.title}
+                    </h4>
+
+                    {project.subtitle && (
+                      <p className="text-[10px] font-bold text-adaptiv-orange uppercase tracking-[0.2em] mb-4 opacity-80">
+                        {project.subtitle}
+                      </p>
+                    )}
+
+                    {/* Description */}
+                    <p className="text-low text-sm leading-relaxed mb-8 flex-grow line-clamp-3">
+                      {project.description}
+                    </p>
+
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-2 mb-8">
+                      {project.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="px-3 py-1 rounded-lg bg-white/5 border border-theme text-[11px] text-low font-medium"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Button */}
+                    <button
+                      onClick={() => navigate(`/projects/${project.id}`)}
+                      className="w-full py-3.5 rounded-xl border border-theme text-high font-bold flex items-center justify-center gap-2 btn-adaptive-hover transition-all"
+                      style={{
+                        backgroundColor: "var(--theme-color)",
+                        color: "contrast-color(var(--theme-color))",
+                        borderColor: "transparent",
+                      }}
+                    >
+                      Case Study <ChevronRight size={16} />
+                    </button>
                   </div>
-
-                  <p className="text-low font-poppins line-clamp-3 mb-10 text-base md:text-lg flex-grow">
-                    {project.description}
-                  </p>
-
-                  <div className="flex flex-wrap gap-2 mb-10">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-4 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-widest"
-                        style={{
-                          backgroundColor: isHighContrast
-                            ? `rgba(${contrastColor === "white" ? "255,255,255" : "0,0,0"}, 0.05)`
-                            : "rgba(var(--theme-color-rgb), 0.05)",
-                          border: `1px solid ${isHighContrast ? `rgba(${contrastColor === "white" ? "255,255,255" : "0,0,0"}, 0.1)` : "rgba(var(--theme-color-rgb), 0.1)"}`,
-                          color: accentColor,
-                        }}
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  <button
-                    onClick={() => navigate(`/projects/${project.id}`)}
-                    className="w-full py-4 rounded-2xl border-2 border-theme text-high font-bold text-lg btn-adaptive-hover hover:shadow-lg hover:shadow-adaptiv-orange/20 transition-all duration-300"
-                  >
-                    Case Study Details
-                  </button>
                 </motion.div>
               ))}
             </div>

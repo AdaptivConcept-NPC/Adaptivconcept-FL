@@ -8,6 +8,12 @@ import {
   ChevronRight,
   Sparkles,
   Zap,
+  Calendar,
+  Hash,
+  Link2,
+  Send,
+  FileText,
+  PlusCircle,
 } from "lucide-react";
 import BrandIcon from "../components/BrandIcon";
 import { useTheme } from "../context/ThemeContext";
@@ -20,6 +26,7 @@ const ProjectBoard = () => {
   const [activeCategory, setActiveCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [projectsData, setProjectsData] = useState(projectsDataLocal);
+  const [isFormOpen, setIsFormOpen] = useState(false);
   const {
     themeColor,
     activeFontFamily,
@@ -52,6 +59,59 @@ const ProjectBoard = () => {
       );
     return matchesCategory && matchesSearch;
   });
+
+  const labCards = [
+    {
+      id: "pyswissshef",
+      title: "PySwissShef Lab",
+      description:
+        "Interactive Python & Shell catalogue hosted on StackBlitz. Test automation recipes instantly.",
+      icon: <Rocket size={24} />,
+      status: "Scripting Lab",
+      statusColor: "adaptiv-orange",
+      glowColor: "bg-adaptiv-orange/10",
+      hoverGradient: "linear-gradient(135deg, rgba(255, 145, 0, 0.15) 0%, transparent 60%)",
+      themeColor: "adaptiv-orange",
+      path: "/labs/pyswissshef",
+      shadowColor: "shadow-adaptiv-orange/20",
+      brands: [
+        "python",
+        "javascript",
+        "vite",
+        "fastapi",
+        "django",
+        "stackblitz",
+        "replit",
+        "github",
+      ],
+    },
+    {
+      id: "aicodex",
+      title: "AICodex Lab",
+      description:
+        "Advanced agentic orchestration and real-time reasoning portal. Connected to LPU-speed inference.",
+      icon: <Cpu size={24} />,
+      status: "Agentic Lab",
+      statusColor: "purple",
+      glowColor: "bg-purple-500/10",
+      hoverGradient: "linear-gradient(135deg, rgba(168, 85, 247, 0.15) 0%, transparent 60%)",
+      themeColor: "purple-500",
+      path: "/labs/aicodex",
+      shadowColor: "shadow-purple-500/20",
+      brands: [
+        "react",
+        "groq",
+        "langgraph",
+        "gemini",
+        "openrouter",
+        "ollama",
+        "fastapi",
+        "typescript",
+        "apiapp",
+        "github",
+      ],
+    },
+  ];
 
   return (
     <motion.div
@@ -104,121 +164,177 @@ const ProjectBoard = () => {
         </div>
 
         <div className="relative group/labs">
-          <motion.div className="flex gap-6 overflow-x-auto pb-8 snap-x no-scrollbar cursor-grab active:cursor-grabbing">
-            {/* PySwissShef Lab Card */}
+          <motion.div className="flex gap-6 overflow-x-auto px-8 pt-4 pb-8 snap-x no-scrollbar cursor-grab active:cursor-grabbing">
+            {labCards.map((lab) => (
+              <motion.div
+                key={lab.id}
+                whileHover={{ y: -8 }}
+                className="min-w-[300px] md:min-w-[400px] snap-start"
+              >
+                <div className="glass-theme rounded-[32px] p-8 h-full border border-white/5 relative overflow-hidden group transition-all duration-500 hover:border-adaptiv-orange/30 flex flex-col">
+                  {/* Hover Gradient Overlay */}
+                  <div 
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                    style={{ background: lab.hoverGradient }}
+                  />
+                  
+                  <div
+                    className={`absolute top-0 right-0 w-32 h-32 ${lab.glowColor} blur-3xl rounded-full -mr-10 -mt-10`}
+                  />
+
+                  <div className="relative z-10 flex flex-col h-full">
+                    <div className="flex items-center justify-between mb-6">
+                      <div 
+                        className="p-3 rounded-2xl flex items-center justify-center transition-transform duration-500 group-hover:scale-110 shadow-lg"
+                        style={{ 
+                          backgroundColor: lab.themeColor === "adaptiv-orange" ? "rgba(255, 145, 0, 0.2)" : "rgba(168, 85, 247, 0.2)",
+                          color: lab.themeColor === "adaptiv-orange" ? "var(--adaptiv-orange)" : "#a855f7" 
+                        }}
+                      >
+                        {lab.icon}
+                      </div>
+                      <span
+                        className={`px-3 py-1 rounded-full text-[10px] font-black tracking-tighter uppercase border transition-all duration-300`}
+                        style={{
+                          backgroundColor: lab.statusColor === "green" ? "rgba(34, 197, 94, 0.2)" : "rgba(247, 177, 85, 0.2)",
+                          color: lab.statusColor === "green" ? "#4ade80" : "#f7b155",
+                          borderColor: lab.statusColor === "green" ? "rgba(34, 197, 94, 0.3)" : "rgba(168, 85, 247, 0.3)"
+                        }}
+                      >
+                        {lab.status}
+                      </span>
+                    </div>
+
+                    <h3 className="text-2xl font-bold text-high mb-2">
+                      {lab.title}
+                    </h3>
+                    <p className="text-low text-sm leading-relaxed mb-6">
+                      {lab.description}
+                    </p>
+
+                    <div className="flex flex-wrap items-center gap-3 mb-8">
+                      {lab.brands.map((brand) => (
+                        <BrandIcon key={brand} name={brand} size={18} />
+                      ))}
+                    </div>
+
+                    <Link
+                      to={lab.path}
+                      className={`flex items-center justify-center gap-2 w-full py-3 mt-auto rounded-xl font-bold btn-adaptive-hover transition-all shadow-lg ${lab.shadowColor}`}
+                      style={{
+                        backgroundColor: "var(--theme-color)",
+                        color: "contrast-color(var(--theme-color))",
+                      }}
+                    >
+                      Enter Lab <ChevronRight size={18} />
+                    </Link>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+
+            {/* Collaborate Lab Card */}
             <motion.div
-              whileHover={{ y: -5 }}
+              whileHover={{ y: -8 }}
               className="min-w-[300px] md:min-w-[400px] snap-start"
             >
-              <div className="glass-theme rounded-[32px] p-8 h-full border border-white/5 relative overflow-hidden group">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-adaptiv-orange/10 blur-3xl rounded-full -mr-10 -mt-10" />
+              <div className="glass-theme rounded-[32px] p-8 h-full border border-white/5 relative overflow-hidden group transition-all duration-500 hover:border-adaptiv-orange/30 flex flex-col">
+                <div 
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                  style={{ background: "linear-gradient(135deg, rgba(255, 145, 0, 0.1) 0%, transparent 60%)" }}
+                />
+                <div className="absolute top-0 right-0 w-32 h-32 bg-adaptiv-orange/5 blur-3xl rounded-full -mr-10 -mt-10" />
 
-                <div className="relative z-10">
+                <div className="relative z-10 flex flex-col h-full">
                   <div className="flex items-center justify-between mb-6">
-                    <div className="p-3 rounded-2xl bg-adaptiv-orange/20 text-adaptiv-orange">
-                      <Rocket size={24} />
+                    <div className="p-3 rounded-2xl bg-adaptiv-orange/20 text-adaptiv-orange shadow-inner">
+                      <PlusCircle size={24} />
                     </div>
-                    <span className="px-3 py-1 rounded-full bg-green-500/20 text-green-400 text-[10px] font-black tracking-tighter uppercase border border-green-500/30">
-                      Active Lab
+                    <span className="px-3 py-1 rounded-full bg-white/5 text-low text-[10px] font-black tracking-tighter uppercase border border-white/10">
+                      Open Mission
                     </span>
                   </div>
 
                   <h3 className="text-2xl font-bold text-high mb-2">
-                    PySwissShef Lab
+                    Collaborate
                   </h3>
                   <p className="text-low text-sm leading-relaxed mb-6">
-                    Interactive Python & Shell catalogue hosted on StackBlitz.
-                    Test automation recipes instantly.
+                    Have an architectural challenge or a high-octane idea? Let's
+                    engineer it.
                   </p>
 
-                  <div className="flex flex-wrap items-center gap-3 mb-8">
-                    <BrandIcon name="python" size={18} />
-                    <BrandIcon name="javascript" size={18} />
-                    <BrandIcon name="vite" size={18} />
-                    <BrandIcon name="fastapi" size={18} />
-                    <BrandIcon name="django" size={18} />
-                    <BrandIcon name="stackblitz" size={18} />
-                    <BrandIcon name="replit" size={18} />
-                    <BrandIcon name="github" size={18} />
-                  </div>
+                  <AnimatePresence>
+                    {!isFormOpen && (
+                      <motion.button
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.95 }}
+                        onClick={() => setIsFormOpen(true)}
+                        className="flex items-center justify-center gap-2 w-full py-4 rounded-xl border border-white/10 text-low font-bold hover:text-high hover:border-adaptiv-orange/30 transition-all group/btn mb-4"
+                      >
+                        Define Project <ChevronRight size={18} className="group-hover/btn:translate-x-1 transition-transform" />
+                      </motion.button>
+                    )}
+                  </AnimatePresence>
 
-                  <Link
-                    to="/labs/pyswissshef"
-                    className="flex items-center justify-center gap-2 w-full py-3 rounded-xl font-bold btn-adaptive-hover transition-all shadow-lg shadow-adaptiv-orange/20"
-                    style={{
-                      backgroundColor: "var(--theme-color)",
-                      color:
-                        themeColor.washType === "light" ? "#000000" : "#ffffff",
-                    }}
-                  >
-                    Enter Lab <ChevronRight size={18} />
-                  </Link>
+                  <AnimatePresence>
+                    {isFormOpen && (
+                      <motion.div 
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="overflow-hidden flex flex-col flex-grow"
+                      >
+                        {/* Scrollable Form Container */}
+                        <div className="flex-grow overflow-y-auto max-h-[180px] no-scrollbar pr-2 mb-6 space-y-4">
+                          <div className="relative">
+                            <FileText className="absolute left-3 top-3 text-low/50" size={16} />
+                            <textarea
+                              placeholder="Core Concept / Idea..."
+                              className="w-full bg-white/5 border border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-sm text-high focus:border-adaptiv-orange/40 outline-none transition-all resize-none font-poppins"
+                              rows="2"
+                            />
+                          </div>
+                          <div className="relative">
+                            <Link2 className="absolute left-3 top-1/2 -translate-y-1/2 text-low/50" size={16} />
+                            <input
+                              type="url"
+                              placeholder="Reference Links..."
+                              className="w-full bg-white/5 border border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-sm text-high focus:border-adaptiv-orange/40 outline-none transition-all font-poppins"
+                            />
+                          </div>
+                          <div className="relative">
+                            <Hash className="absolute left-3 top-1/2 -translate-y-1/2 text-low/50" size={16} />
+                            <input
+                              type="text"
+                              placeholder="Stack Tags (e.g. React, LLM)"
+                              className="w-full bg-white/5 border border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-sm text-high focus:border-adaptiv-orange/40 outline-none transition-all font-poppins"
+                            />
+                          </div>
+                          <div className="relative">
+                            <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 text-low/50" size={16} />
+                            <input
+                              type="date"
+                              className="w-full bg-white/5 border border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-sm text-high focus:border-adaptiv-orange/40 outline-none transition-all font-poppins"
+                            />
+                          </div>
+                        </div>
+
+                        <button
+                          className="flex items-center justify-center gap-2 w-full py-3 mt-auto rounded-xl font-bold btn-adaptive-hover transition-all shadow-lg shadow-adaptiv-orange/20"
+                          style={{
+                            backgroundColor: "var(--theme-color)",
+                            color: "contrast-color(var(--theme-color))",
+                          }}
+                        >
+                          Deploy Request <Send size={18} />
+                        </button>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               </div>
             </motion.div>
-
-            {/* AICodex Lab Card */}
-            <motion.div
-              whileHover={{ y: -5 }}
-              className="min-w-[300px] md:min-w-[400px] snap-start"
-            >
-              <div className="glass-theme rounded-[32px] p-8 h-full border border-white/5 relative overflow-hidden group">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 blur-3xl rounded-full -mr-10 -mt-10" />
-
-                <div className="relative z-10">
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="p-3 rounded-2xl bg-purple-500/20 text-purple-400">
-                      <Cpu size={24} />
-                    </div>
-                    <span className="px-3 py-1 rounded-full bg-adaptiv-orange/20 text-adaptiv-orange text-[10px] font-black tracking-tighter uppercase border border-adaptiv-orange/30">
-                      Agentic Lab
-                    </span>
-                  </div>
-
-                  <h3 className="text-2xl font-bold text-high mb-2">
-                    AICodex Lab
-                  </h3>
-                  <p className="text-low text-sm leading-relaxed mb-6">
-                    Advanced agentic orchestration and real-time reasoning
-                    portal. Connected to LPU-speed inference.
-                  </p>
-
-                  <div className="flex flex-wrap items-center gap-3 mb-8">
-                    <BrandIcon name="react" size={18} />
-                    <BrandIcon name="groq" size={18} />
-                    <BrandIcon name="langgraph" size={18} />
-                    <BrandIcon name="gemini" size={18} />
-                    <BrandIcon name="openrouter" size={18} />
-                    <BrandIcon name="ollama" size={18} />
-                    <BrandIcon name="fastapi" size={18} />
-                    <BrandIcon name="typescript" size={18} />
-                    <BrandIcon name="apiapp" size={18} />
-                    <BrandIcon name="github" size={18} />
-                  </div>
-
-                  <Link
-                    to="/labs/aicodex"
-                    className="flex items-center justify-center gap-2 w-full py-3 rounded-xl font-bold btn-adaptive-hover transition-all shadow-lg shadow-purple-500/20"
-                    style={{
-                      backgroundColor: "var(--theme-color)",
-                      color:
-                        themeColor.washType === "light" ? "#000000" : "#ffffff",
-                    }}
-                  >
-                    Enter Lab <ChevronRight size={18} />
-                  </Link>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Placeholder Lab 2 */}
-            <div className="min-w-[300px] md:min-w-[400px] snap-start opacity-30">
-              <div className="glass-theme rounded-[32px] p-8 h-full border border-white/5 flex flex-col justify-between italic">
-                <div className="text-center py-10">
-                  <p className="text-low text-sm">More Labs Coming Soon...</p>
-                </div>
-              </div>
-            </div>
           </motion.div>
         </div>
       </div>
@@ -247,9 +363,17 @@ const ProjectBoard = () => {
                 onClick={() => setActiveCategory(cat)}
                 className={`px-5 py-2.5 rounded-xl text-sm font-bold transition-all ${
                   activeCategory === cat
-                    ? "bg-adaptiv-orange text-white shadow-lg shadow-adaptiv-orange/20"
+                    ? "shadow-lg shadow-adaptiv-orange/20"
                     : "glass-theme text-low hover:text-high transition-all"
                 }`}
+                style={
+                  activeCategory === cat
+                    ? {
+                        backgroundColor: "var(--theme-color)",
+                        color: "contrast-color(var(--theme-color))",
+                      }
+                    : {}
+                }
               >
                 {cat}
               </button>
@@ -336,6 +460,11 @@ const ProjectBoard = () => {
                 <Link
                   to={`/projects/${project.id}`}
                   className="w-full py-3.5 rounded-xl border border-theme text-high font-bold flex items-center justify-center gap-2 btn-adaptive-hover transition-all"
+                  style={{
+                    backgroundColor: "var(--theme-color)",
+                    color: "contrast-color(var(--theme-color))",
+                    borderColor: "transparent",
+                  }}
                 >
                   Deep Dive <ChevronRight size={16} />
                 </Link>
