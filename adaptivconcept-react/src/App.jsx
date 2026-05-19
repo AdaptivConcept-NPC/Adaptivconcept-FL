@@ -29,6 +29,7 @@ import LabDetail from './pages/LabDetail';
 import GamingArcade from './pages/GamingArcade';
 import DigiArch from './pages/DigiArch';
 import LogicGrid from './pages/LogicGrid';
+import ChromaSync from './pages/ChromaSync';
 import Contact from './pages/Contact';
 
 
@@ -76,6 +77,7 @@ function App() {
                 <Route path="/arcade" element={<GamingArcade />} />
                 <Route path="/arcade/digiarch" element={<DigiArch />} />
                 <Route path="/arcade/logicgrid" element={<LogicGrid />} />
+                <Route path="/arcade/chromasync" element={<ChromaSync />} />
                 <Route path="/contact" element={<Contact />} />
 
               </Routes>

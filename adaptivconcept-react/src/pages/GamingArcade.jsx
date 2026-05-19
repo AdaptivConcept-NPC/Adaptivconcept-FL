@@ -60,9 +60,9 @@ const games = [
     category: "Artists",
     categoryIcon: Wand2,
     tags: ["Color", "Design", "Timing"],
-    status: "coming-soon",
+    status: "playable",
     color: "#bc13fe",
-    route: null,
+    route: "/arcade/chromasync",
   },
   // === FOR THINKERS ===
   {

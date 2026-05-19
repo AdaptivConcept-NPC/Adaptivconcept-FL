@@ -1,0 +1,106 @@
+/* ═══════════════════════════════════════════════════════════
+   CHROMASYNC STYLE SHEET
+   ═══════════════════════════════════════════════════════════ */
+.chromasync-page {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px 0 rgba(188, 19, 254, 0.15);
+}
+
+.chromasync-scanlines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%,
+    rgba(0, 0, 0, 0.2) 50%
+  ), linear-gradient(
+    90deg,
+    rgba(188, 19, 254, 0.05),
+    rgba(0, 242, 255, 0.02),
+    rgba(188, 19, 254, 0.05)
+  );
+  background-size: 100% 4px, 6px 100%;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Swatch Preview Cards */
+.color-swatch-box {
+  position: relative;
+  transition: all 0.30s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.color-swatch-box::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+}
+
+/* Glitch Heading text styling */
+.chromasync-glitch {
+  position: relative;
+  display: inline-block;
+}
+.chromasync-glitch::before,
+.chromasync-glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+}
+.chromasync-glitch::before {
+  left: 2px;
+  text-shadow: -1px 0 #bc13fe;
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+.chromasync-glitch::after {
+  left: -2px;
+  text-shadow: -1px 0 #00f2ff;
+  clip: rect(85px, 450px, 140px, 0);
+  animation: glitch-anim2 5s infinite linear alternate-reverse;
+}
+
+/* Dynamic range input styling override for modern sliders */
+input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid #000000;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+  transition: transform 0.1s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid #000000;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+  transition: transform 0.1s ease;
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+  transform: scale(1.2);
+}
