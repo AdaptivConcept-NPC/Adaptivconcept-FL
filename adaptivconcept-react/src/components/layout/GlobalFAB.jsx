@@ -99,17 +99,18 @@ const GlobalFAB = ({ show = true, customActions = [] }) => {
         {/* Subtle Attention Puller (Ring Pulse) */}
         {!isOpen && (
             <motion.div
+              initial={{ scale: 1, opacity: 0 }}
               animate={{
-                scale: [1, 1.4, 1.8],
-                opacity: [0.6, 0.3, 0],
+                scale: [1, 2.2],
+                opacity: [0, 0.5, 0],
               }}
               transition={{
-                duration: 2.5,
+                duration: 3,
                 repeat: Infinity,
                 ease: "easeOut",
               }}
               className="absolute inset-0 rounded-full"
-              style={{ backgroundColor: themeColor.value }}
+              style={{ backgroundColor: themeColor.value, opacity: 0 }}
             />
         )}
 

@@ -163,7 +163,7 @@ const ProjectBoard = () => {
           </Link>
         </div>
 
-        <div className="relative group/labs">
+        <div className="relative group/labs px-2">
           <motion.div className="flex gap-6 overflow-x-auto px-8 pt-4 pb-8 snap-x no-scrollbar cursor-grab active:cursor-grabbing">
             {labCards.map((lab) => (
               <motion.div
@@ -431,7 +431,7 @@ const ProjectBoard = () => {
                     </span>
                   </div>
                   {project.isHero && (
-                    <span className="px-3 py-1 rounded-full bg-adaptiv-orange text-[10px] font-black tracking-tighter text-white">
+                    <span className={`px-3 py-1 rounded-full bg-adaptiv-orange text-[10px] font-black tracking-tighter ${themeColor.washType === "coal" ? "text-black" : "text-white"}`}>
                       FEATURED
                     </span>
                   )}

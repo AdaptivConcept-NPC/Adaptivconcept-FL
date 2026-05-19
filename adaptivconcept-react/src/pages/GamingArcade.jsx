@@ -150,17 +150,17 @@ const GamingArcade = () => {
             border: "1px solid rgba(var(--theme-color-rgb), 0.3)",
           }}
         >
-          <Gamepad2 size={18} style={{ color: "var(--theme-color)" }} />
+          <Gamepad2 size={18} style={{ color: themeColor.washType === "coal" ? "#ffffff" : "var(--theme-color)" }} />
           <span
             className="text-xs font-bold tracking-[0.2em] uppercase"
-            style={{ color: "var(--theme-color)" }}
+            style={{ color: themeColor.washType === "coal" ? "#ffffff" : "var(--theme-color)" }}
           >
             Dev Arcade
           </span>
         </motion.div>
 
         <h1 className="text-3xl sm:text-4xl md:text-6xl font-comfortaa font-bold text-high mb-4">
-          <span className="arcade-glitch-text" data-text="Game">
+          <span className="arcade-glitch-text-continue" data-text="Game">
             Game
           </span>{" "}
           <span
@@ -203,7 +203,7 @@ const GamingArcade = () => {
               onClick={() => setActiveCategory(cat.name)}
               className={`arcade-filter-btn px-5 py-2.5 rounded-xl text-sm font-bold transition-all flex items-center gap-2 ${
                 isActive
-                  ? "bg-adaptiv-orange text-white shadow-lg shadow-adaptiv-orange/20"
+                  ? `bg-adaptiv-orange ${themeColor.washType === "coal" ? "text-black" : "text-white"} shadow-lg shadow-adaptiv-orange/20`
                   : "glass-theme text-low hover:text-high"
               }`}
             >

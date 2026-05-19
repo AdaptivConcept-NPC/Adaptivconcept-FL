@@ -21,7 +21,7 @@ const labsData = {
       "Instant code sharing",
       "Sandboxed safety"
     ],
-    stackblitzUrl: "https://stackblitz.com/github/iarxii/PySwissShef",
+    stackblitzUrl: "https://stackblitz.com/~/github/iarxii/PySwissShef",
     replitUrl: "https://py-portfolio-lab--thabangmposula.replit.app",
     accentColor: "#f97316", // adaptiv-orange
     icon: Terminal

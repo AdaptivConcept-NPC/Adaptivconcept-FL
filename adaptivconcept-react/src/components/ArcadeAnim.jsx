@@ -469,17 +469,28 @@ function createP5Sketch({ container, density = 1, colorBoost = 1, isMobile = fal
   };
 }
 
-const useIsMobile = () => {
-  const [isMobile, setIsMobile] = useState(false);
+/**
+ * Detects the device type based on screen width and user agent.
+ */
+const detectDevice = () => {
+  if (typeof window === "undefined") return { isMobile: false, isTablet: false };
+  const width = window.innerWidth;
+  const ua = navigator.userAgent;
+  const isMobile = width < 768 || /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua);
+  const isTablet = (width >= 768 && width <= 1024) || /iPad/i.test(ua);
+  return { isMobile, isTablet };
+};
+
+const useDeviceDetection = () => {
+  const [device, setDevice] = useState(() => detectDevice());
+  
   useEffect(() => {
-    const check = () => {
-      setIsMobile(window.innerWidth < 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
-    };
-    check();
-    window.addEventListener("resize", check);
-    return () => window.removeEventListener("resize", check);
+    const handleResize = () => setDevice(detectDevice());
+    window.addEventListener("resize", handleResize, { passive: true });
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
-  return isMobile;
+  
+  return device;
 };
 
 const ArcadeAnim = ({
@@ -495,7 +506,8 @@ const ArcadeAnim = ({
   const p5InstanceRef = useRef(null);
   const nativeRef = useRef(null);
   const reducedMotion = usePrefersReducedMotion();
-  const isMobile = useIsMobile();
+  const { isMobile, isTablet } = useDeviceDetection();
+  const shouldDisableAnim = isMobile || isTablet;
 
   // Adjust density for mobile performance automatically
   const effectiveDensity = isMobile ? density * 0.35 : density;
@@ -572,8 +584,12 @@ const ArcadeAnim = ({
     }
 
     (async () => {
-      // Force P5 on mobile as requested for its "optimized" fallback nature
-      const forceP5 = isMobile || useP5;
+      if (shouldDisableAnim) {
+        // Handle mobile/tablet case: Disable heavy P5/Canvas animations for performance
+        // The CSS gradients in the style tag will still provide a nice backdrop.
+        return;
+      }
+      const forceP5 = useP5;
       cleanup = (forceP5 ? await startP5() : startNative()) || (() => {});
     })();
 
@@ -581,7 +597,7 @@ const ArcadeAnim = ({
       stopped = true;
       cleanup?.();
     };
-  }, [useP5, effectiveDensity, colorBoost, reducedMotion, isMobile]);
+  }, [useP5, effectiveDensity, colorBoost, reducedMotion, isMobile, shouldDisableAnim]);
 
   return (
     <div ref={containerRef} className={`arcade-anim ${className}`} style={style}>

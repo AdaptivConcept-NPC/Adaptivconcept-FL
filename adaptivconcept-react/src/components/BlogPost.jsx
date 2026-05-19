@@ -2,8 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Calendar, Tag, ExternalLink, ChevronRight, BookOpen } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
 
 const BlogPost = ({ post, index = 0 }) => {
+  const { themeColor } = useTheme();
   const formattedDate = new Date(post.date + 'T00:00:00').toLocaleDateString('en-ZA', {
     year: 'numeric',
     month: 'long',
