@@ -46,9 +46,9 @@ const games = [
     category: "Thinkers",
     categoryIcon: Lightbulb,
     tags: ["Logic", "Deduction", "Grid"],
-    status: "coming-soon",
+    status: "playable",
     color: "#00f2ff",
-    route: null,
+    route: "/arcade/logicgrid",
   },
   {
     id: "chromasync",
