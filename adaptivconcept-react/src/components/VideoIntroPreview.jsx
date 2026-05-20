@@ -30,8 +30,8 @@ const VideoIntroPreview = ({
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
             
-            {/* Overlay Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
+            {/* Overlay Gradient (stronger, bottom transparent) */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
 
             {/* Play Button */}
             <div className="absolute inset-0 flex items-center justify-center">

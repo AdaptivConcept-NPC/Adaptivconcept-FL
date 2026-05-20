@@ -106,3 +106,35 @@ code {
 .btn-adaptive-hover {
   transition: all 0.3s ease;
 }
+
+/* Responsive heading scale utility
+   - Use by adding `responsive-heading-scale` to a heading element
+   - Provide the actual scale via the `--heading-scale` CSS variable (e.g. inline style)
+   - Respects different base sizes at common breakpoints
+*/
+.responsive-heading-scale {
+  --heading-scale: 1;
+  font-size: calc(4rem * var(--heading-scale));
+  line-height: 0.9;
+}
+
+@media (max-width: 640px) {
+  .responsive-heading-scale {
+    /* Mobile: slightly larger for more punch */
+    font-size: calc(2.6rem * var(--heading-scale));
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .responsive-heading-scale {
+    /* Tablet: a bit more punch */
+    font-size: calc(3rem * var(--heading-scale));
+  }
+}
+
+@media (min-width: 1025px) {
+  .responsive-heading-scale {
+    /* Desktop: preserve original 4rem * scale */
+    font-size: calc(4rem * var(--heading-scale));
+  }
+}

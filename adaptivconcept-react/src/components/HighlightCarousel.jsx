@@ -267,7 +267,7 @@ const HighlightCarousel = ({ className = "" }) => {
             </div>
 
             <h3
-              className="text-2xl sm:text-4xl md:text-6xl font-bold tracking-tight uppercase select-none mt-4 transition-all duration-500"
+              className={`text-2xl sm:text-4xl md:text-6xl font-bold tracking-tight uppercase select-none mt-4 transition-all duration-500 responsive-heading-scale`}
               style={{
                 textShadow: "var(--heading-shadow)",
                 WebkitTextStroke: themeColor.washType === "coal"
@@ -277,7 +277,8 @@ const HighlightCarousel = ({ className = "" }) => {
                       : "0.15px #000000",
                 color: "var(--heading-color)",
                 fontFamily: activeFontFamily,
-                fontSize: `calc(4rem * ${activeFontScale})`,
+                // Provide the active font scale to the CSS utility via a CSS variable
+                ["--heading-scale"]: activeFontScale,
                 lineHeight: "0.9",
               }}
             >

@@ -26,13 +26,14 @@ import TechWall from './pages/TechWall';
 import OpenResume from './pages/OpenResume';
 import Admin from './pages/Admin';
 import LabDetail from './pages/LabDetail';
-import GamingArcade from './pages/GamingArcade';
-import DigiArch from './pages/DigiArch';
-import LogicGrid from './pages/LogicGrid';
-import ChromaSync from './pages/ChromaSync';
-import PatternForge from './pages/PatternForge';
-import NodeFlow from './pages/NodeFlow';
 import Contact from './pages/Contact';
+import GamingArcade from './pages/GamingArcade';
+// Individual Games
+import DigiArch from './pages/games/DigiArch';
+import LogicGrid from './pages/games/LogicGrid';
+import ChromaSync from './pages/games/ChromaSync';
+import PatternForge from './pages/games/PatternForge';
+import NodeFlow from './pages/games/NodeFlow';
 
 
 function App() {

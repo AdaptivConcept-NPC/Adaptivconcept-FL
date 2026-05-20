@@ -148,17 +148,17 @@ const Home = () => {
       {/* spacer / Intro Section */}
       <div className="min-h-screen flex flex-col items-center justify-center p-8 md:p-20 relative overflow-hidden">
         {/* Large Central Font Carousel */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full pointer-events-none opacity-10 select-none">
+        {/* <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full pointer-events-none opacity-10 select-none">
           <FLFontCarousel
             size="text-[15vw]"
             className="font-black"
             useFullText={false}
             speed={40}
           />
-        </div>
+        </div> */}
 
-        <div className="relative z-10 w-full flex flex-col items-center gap-12 md:gap-16 pt-10">
-          <VideoIntroPreview className="w-full max-w-5xl shadow-[0_40px_100px_-20px_rgba(0,0,0,0.8)]" />
+        <div className="relative z-10 w-full flex flex-col items-center gap-12 md:gap-16 md:pt-10">
+          <VideoIntroPreview className="w-full max-w-5xl shadow-[0_40px_100px_-20px_rgba(0,0,0,0.8)] mt-10 md:mt-20" />
 
           <div className="w-full max-w-4xl flex items-center justify-center pb-24">
             <HighlightCarousel />

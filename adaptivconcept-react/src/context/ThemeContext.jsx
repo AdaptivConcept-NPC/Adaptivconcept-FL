@@ -168,6 +168,35 @@ export const ThemeProvider = ({ children }) => {
     // High intensity version for UI elements
     root.style.setProperty("--theme-color-glow", `rgba(${rgb}, 0.4)`);
 
+    // Ensure we can apply high-contrast overrides for specific themes (Coal)
+    // Toggle a class on the root so components using utility classes like
+    // `text-white` / `fill-white` can be overridden when needed.
+    root.classList.toggle("coal-theme", themeColor.washType === "coal");
+
+    // Create a small stylesheet that forces icons/text that use the
+    // `text-white`/`fill-white` utilities to render as black in Coal mode.
+    // This is a safe, focused override to fix contrast where components
+    // still rely on utility classes instead of theme vars.
+    const styleId = "theme-contrast-overrides";
+    let styleEl = document.getElementById(styleId);
+    if (!styleEl) {
+      styleEl = document.createElement("style");
+      styleEl.id = styleId;
+      styleEl.innerHTML = `
+        /* Theme contrast overrides injected by ThemeProvider */
+        /* Only force SVG/icon elements to black so headings using
+           utility classes like .text-white remain white under Coal. */
+        .coal-theme svg.fill-white,
+        .coal-theme svg.text-white {
+          color: #000 !important;
+          fill: #000 !important;
+          stroke: #000 !important;
+        }
+        .coal-theme .fill-white { fill: #000 !important; }
+      `;
+      document.head.appendChild(styleEl);
+    }
+
     // Glass System Dynamic Variables
     if (themeColor.washType === "light") {
       // Polished Silver / Light mode

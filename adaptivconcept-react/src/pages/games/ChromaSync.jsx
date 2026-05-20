@@ -1,22 +1,22 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, X, Zap, ChevronRight, RefreshCw, Sliders } from "lucide-react";
-import { useTheme } from "../context/ThemeContext";
-import { useArcade } from "../context/ArcadeContext";
+import { useTheme } from "../../context/ThemeContext";
+import { useArcade } from "../../context/ArcadeContext";
 
 // Local Subcomponents
-import ChromaSyncHeader from "../components/games/chromasync/ChromaSyncHeader";
-import ColorSlider from "../components/games/chromasync/ColorSlider";
-import HarmonyGuide from "../components/games/chromasync/HarmonyGuide";
+import ChromaSyncHeader from "../../components/games/chromasync/ChromaSyncHeader";
+import ColorSlider from "../../components/games/chromasync/ColorSlider";
+import HarmonyGuide from "../../components/games/chromasync/HarmonyGuide";
 
 // Reusable Shared components from digiarch
-import PowerUpHUD from "../components/games/digiarch/PowerUpHUD";
-import CompletionScreen from "../components/games/digiarch/CompletionScreen";
-import AuthOverlay from "../components/games/digiarch/AuthOverlay";
-import SettingsOverlay from "../components/games/digiarch/SettingsOverlay";
+import PowerUpHUD from "../../components/games/digiarch/PowerUpHUD";
+import CompletionScreen from "../../components/games/digiarch/CompletionScreen";
+import AuthOverlay from "../../components/games/digiarch/AuthOverlay";
+import SettingsOverlay from "../../components/games/digiarch/SettingsOverlay";
 
 // Config & CSS
-import { LEVELS } from "../components/games/chromasync/levels";
+import { LEVELS } from "../../components/games/chromasync/levels";
 import "./ChromaSync.css";
 
 const ChromaSync = () => {

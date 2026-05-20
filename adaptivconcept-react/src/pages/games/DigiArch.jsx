@@ -1,20 +1,20 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, X, Zap, ChevronRight } from "lucide-react";
-import { useTheme } from "../context/ThemeContext";
-import { useArcade } from "../context/ArcadeContext";
+import { useTheme } from "../../context/ThemeContext";
+import { useArcade } from "../../context/ArcadeContext";
 
 // Subcomponents
-import DigiArchHeader from "../components/games/digiarch/DigiArchHeader";
-import DigiArchStage from "../components/games/digiarch/DigiArchStage";
-import ControlPanel from "../components/games/digiarch/ControlPanel";
-import PowerUpHUD from "../components/games/digiarch/PowerUpHUD";
-import CompletionScreen from "../components/games/digiarch/CompletionScreen";
-import AuthOverlay from "../components/games/digiarch/AuthOverlay";
-import SettingsOverlay from "../components/games/digiarch/SettingsOverlay";
+import DigiArchHeader from "../../components/games/digiarch/DigiArchHeader";
+import DigiArchStage from "../../components/games/digiarch/DigiArchStage";
+import ControlPanel from "../../components/games/digiarch/ControlPanel";
+import PowerUpHUD from "../../components/games/digiarch/PowerUpHUD";
+import CompletionScreen from "../../components/games/digiarch/CompletionScreen";
+import AuthOverlay from "../../components/games/digiarch/AuthOverlay";
+import SettingsOverlay from "../../components/games/digiarch/SettingsOverlay";
 
 // Config & Data
-import { LEVELS } from "../components/games/digiarch/levels";
+import { LEVELS } from "../../components/games/digiarch/levels";
 import "./DigiArch.css";
 
 const DigiArch = () => {

@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, X, Zap, ChevronRight, RefreshCw, Cpu, Layers } from "lucide-react";
-import { useTheme } from "../context/ThemeContext";
-import { useArcade } from "../context/ArcadeContext";
+import { useTheme } from "../../context/ThemeContext";
+import { useArcade } from "../../context/ArcadeContext";
 
 // Local Subcomponents
-import PatternForgeHeader from "../components/games/patternforge/PatternForgeHeader";
-import { LEVELS } from "../components/games/patternforge/levels";
+import PatternForgeHeader from "../../components/games/patternforge/PatternForgeHeader";
+import { LEVELS } from "../../components/games/patternforge/levels";
 import "./PatternForge.css";
 
 // Reusable Shared components
-import PowerUpHUD from "../components/games/digiarch/PowerUpHUD";
-import CompletionScreen from "../components/games/digiarch/CompletionScreen";
-import AuthOverlay from "../components/games/digiarch/AuthOverlay";
-import SettingsOverlay from "../components/games/digiarch/SettingsOverlay";
+import PowerUpHUD from "../../components/games/digiarch/PowerUpHUD";
+import CompletionScreen from "../../components/games/digiarch/CompletionScreen";
+import AuthOverlay from "../../components/games/digiarch/AuthOverlay";
+import SettingsOverlay from "../../components/games/digiarch/SettingsOverlay";
 
 const PatternForge = () => {
   const { themeColor } = useTheme();
