@@ -43,7 +43,8 @@ const Navbar = () => {
           <Link
             className="flex items-center gap-2 group"
             to="/"
-            onClick={() => setIsMenuOpen(false)}
+            onClick={() => setIsMenuOpen(false)} 
+            style={{ scale: "0.7", transition: "transform 0.3s ease", marginLeft: "-40px" }}
           >
             {/* <span className="material-icons-round text-adaptiv-orange group-hover:scale-110 transition-transform">
             auto_awesome
