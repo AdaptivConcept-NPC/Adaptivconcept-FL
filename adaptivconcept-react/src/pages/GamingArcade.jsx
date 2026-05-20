@@ -75,9 +75,9 @@ const games = [
     category: "Thinkers",
     categoryIcon: Lightbulb,
     tags: ["Patterns", "Sequences", "IQ"],
-    status: "coming-soon",
+    status: "playable",
     color: "#fd3b12",
-    route: null,
+    route: "/arcade/patternforge",
   },
   // === FOR ARTISTS ===
   {
