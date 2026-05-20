@@ -3,13 +3,15 @@ import { X, Key, Cpu, Eye, EyeOff, Save } from "lucide-react";
 import { useArcade } from "../../../context/ArcadeContext";
 
 const PROVIDERS = [
-  { id: "gemini", name: "Google Gemini", defaultModel: "gemini-1.5-flash" },
-  { id: "groq", name: "Groq Cloud", defaultModel: "llama-3.1-70b-versatile" },
+  { id: "gemini", name: "Gemini", defaultModel: "gemini-1.5-flash" },
+  { id: "ollama_cloud", name: "Ollama", defaultModel: "llama3" },
+  { id: "groq", name: "Groq", defaultModel: "llama-3.1-70b-versatile" },
   { id: "openrouter", name: "OpenRouter", defaultModel: "meta-llama/llama-3.1-8b-instruct:free" },
 ];
 
 const MODELS_BY_PROVIDER = {
   gemini: ["gemini-1.5-flash", "gemini-1.5-pro", "gemini-2.0-flash"],
+  ollama_cloud: ["llama3", "llama-3.1-8b", "mistral", "phi3", "gemma2"],
   groq: ["llama-3.1-70b-versatile", "llama3-8b-8192", "mixtral-8x7b-32768", "gemma2-9b-it"],
   openrouter: [
     "meta-llama/llama-3.1-8b-instruct:free",
@@ -73,7 +75,7 @@ const SettingsOverlay = ({ isOpen, onClose }) => {
             <label className="text-xs font-mono text-low uppercase tracking-wider block mb-2">
               LLM Provider
             </label>
-            <div className="grid grid-cols-3 gap-2">
+            <div className="grid grid-cols-4 gap-2">
               {PROVIDERS.map((prov) => {
                 const isSel = selectedProvider === prov.id;
                 return (
@@ -86,7 +88,7 @@ const SettingsOverlay = ({ isOpen, onClose }) => {
                         : "border-white/10 bg-white/5 text-low hover:text-high hover:border-white/20"
                     }`}
                   >
-                    {prov.name.split(" ")[1] || prov.name}
+                    {prov.name}
                   </button>
                 );
               })}

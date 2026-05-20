@@ -31,6 +31,7 @@ import DigiArch from './pages/DigiArch';
 import LogicGrid from './pages/LogicGrid';
 import ChromaSync from './pages/ChromaSync';
 import PatternForge from './pages/PatternForge';
+import NodeFlow from './pages/NodeFlow';
 import Contact from './pages/Contact';
 
 
@@ -80,6 +81,7 @@ function App() {
                 <Route path="/arcade/logicgrid" element={<LogicGrid />} />
                 <Route path="/arcade/chromasync" element={<ChromaSync />} />
                 <Route path="/arcade/patternforge" element={<PatternForge />} />
+                <Route path="/arcade/nodeflow" element={<NodeFlow />} />
                 <Route path="/contact" element={<Contact />} />
 
               </Routes>

@@ -1,0 +1,104 @@
+/* ═══════════════════════════════════════════════════════════
+   NODEFLOW STYLE SHEET
+   ═══════════════════════════════════════════════════════════ */
+.nodeflow-page {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px 0 rgba(0, 255, 136, 0.15);
+}
+
+.nodeflow-scanlines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%,
+    rgba(0, 0, 0, 0.2) 50%
+  ), linear-gradient(
+    90deg,
+    rgba(0, 255, 136, 0.03),
+    rgba(0, 242, 255, 0.01),
+    rgba(0, 255, 136, 0.03)
+  );
+  background-size: 100% 4px, 6px 100%;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* Edge selection line glows */
+.nodeflow-edge {
+  transition: stroke 0.3s ease, stroke-width 0.3s ease;
+}
+
+.nodeflow-edge-active {
+  stroke: #00ff88 !important;
+  filter: drop-shadow(0 0 4px #00ff88);
+  animation: pulse-width 1.5s infinite alternate;
+}
+
+@keyframes pulse-width {
+  from { stroke-width: 3.5px; }
+  to { stroke-width: 5px; filter: drop-shadow(0 0 6px #00ff88); }
+}
+
+/* Moving flow particles */
+.nodeflow-particle {
+  stroke-dasharray: 8, 20;
+  animation: flow-run 1s linear infinite;
+}
+
+@keyframes flow-run {
+  to {
+    stroke-dashoffset: -28;
+  }
+}
+
+/* Node styles */
+.nodeflow-node-circle {
+  transition: fill 0.25s ease, stroke 0.25s ease, r 0.25s ease;
+}
+
+.nodeflow-node-circle:hover {
+  cursor: pointer;
+}
+
+/* Shaking node wrong paths */
+.node-shake {
+  animation: node-shake-kf 0.4s ease-in-out;
+}
+
+@keyframes node-shake-kf {
+  10%, 90% { transform: translate3d(-1px, 0, 0); }
+  20%, 80% { transform: translate3d(2px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-3px, 0, 0); }
+  40%, 60% { transform: translate3d(3px, 0, 0); }
+}
+
+/* Terminal output panel */
+.nodeflow-terminal {
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  padding: 12px;
+  border-radius: 12px;
+  max-height: 120px;
+  overflow-y: auto;
+}
+
+.nodeflow-terminal-line {
+  color: #a3a3a3;
+  margin-bottom: 2px;
+}
+
+.nodeflow-terminal-line.sys {
+  color: #00ff88;
+}
+
+.nodeflow-terminal-line.err {
+  color: #ff3366;
+}

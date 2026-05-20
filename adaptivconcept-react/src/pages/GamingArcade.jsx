@@ -105,9 +105,9 @@ const games = [
     category: "Problem-Solvers",
     categoryIcon: Puzzle,
     tags: ["Graphs", "Algorithms", "Pathfinding"],
-    status: "coming-soon",
+    status: "playable",
     color: "#00ff88",
-    route: null,
+    route: "/arcade/nodeflow",
   },
 ];
 
