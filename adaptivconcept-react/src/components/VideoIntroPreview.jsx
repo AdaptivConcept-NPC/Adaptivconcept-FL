@@ -45,18 +45,18 @@ const VideoIntroPreview = ({
                 <div className="absolute inset-0 rounded-full bg-adaptiv-orange/30 animate-ping" />
                 <div className="absolute inset-0 rounded-full bg-adaptiv-orange/20 animate-pulse delay-75" />
                 
-                <div className="relative w-20 h-20 bg-adaptiv-orange rounded-full flex items-center justify-center shadow-[0_0_40px_rgba(var(--theme-color-rgb),0.5)]">
-                  <Play size={32} className="text-white fill-white ml-1" />
+                <div className="relative w-12 h-12 md:w-20 md:h-20 bg-adaptiv-orange rounded-full flex items-center justify-center shadow-[0_0_40px_rgba(var(--theme-color-rgb),0.5)]">
+                  <Play className="w-5 h-5 md:w-8 md:h-8 text-white fill-white ml-0.5 md:ml-1" />
                 </div>
               </motion.div>
             </div>
 
             {/* Info Badge */}
-            <div className="absolute bottom-8 left-8 flex flex-col gap-1">
-              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-adaptiv-orange">
+            <div className="absolute bottom-4 left-4 md:bottom-8 md:left-8 flex flex-col gap-1">
+              <span className="text-[8px] md:text-[10px] font-black uppercase tracking-[0.3em] text-adaptiv-orange">
                 Intro Selection
               </span>
-              <h4 className="text-xl md:text-2xl font-comfortaa font-bold text-white">
+              <h4 className="text-sm md:text-2xl font-comfortaa font-bold text-white">
                 Engineering Future States
               </h4>
             </div>
