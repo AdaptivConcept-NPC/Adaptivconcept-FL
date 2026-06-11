@@ -58,7 +58,7 @@ function App() {
           {useVideoBackground ? (
             <BackgroundVideo />
           ) : (
-            <BackgroundWallpaper imageUrl="/media/thabang_vector_wallpaper.png" />
+            <BackgroundWallpaper />
           )}
 
           <GeometricBackground />

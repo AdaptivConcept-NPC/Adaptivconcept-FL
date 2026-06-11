@@ -135,6 +135,21 @@ body {
 *::-webkit-scrollbar-thumb:hover { background: var(--primary); }
 
 /* Custom Animations */
+@keyframes slow-pan-zoom {
+  0% {
+    transform: scale(1.02) translate(0px, 0px);
+  }
+  50% {
+    transform: scale(1.08) translate(-15px, 8px);
+  }
+  100% {
+    transform: scale(1.02) translate(0px, 0px);
+  }
+}
+
+.animate-slow-zoom {
+  animation: slow-pan-zoom 25s ease-in-out infinite;
+}
 
 /* Custom Helpers */
 .text-glow-orange {

@@ -3,8 +3,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Play, X } from "lucide-react";
 
 const VideoIntroPreview = ({ 
-  videoSrc = "/media/Software_Developer_Video_Generation.mp4",
-  posterSrc = "/media/thabang_vector_wallpaper.png",
+  videoSrc = "/media/sample_promo_vid_aigen.mp4",
+  posterSrc = "/media/thabang_vector_wallpaper_3.png",
   className = "" 
 }) => {
   const [isPlaying, setIsPlaying] = useState(false);

@@ -62,7 +62,7 @@ const Navbar = () => {
             <div className="flex items-center">
               <span
                 className="text-xl font-comfortaa font-bold tracking-tight relative"
-                style={{ color: "var(--text-h)" }}
+                style={{ color: "var(--text-h)", marginRight: "4px" }}
               >
                 AdaptivConcept
                 <div

@@ -158,7 +158,10 @@ const Home = () => {
         </div> */}
 
         <div className="relative z-10 w-full flex flex-col items-center gap-12 md:gap-16 md:pt-10">
-          <VideoIntroPreview className="w-full max-w-5xl shadow-[0_40px_100px_-20px_rgba(0,0,0,0.8)] mt-10 md:mt-20" />
+          <VideoIntroPreview 
+            videoSrc="/media/sample_promo_vid_aigen.mp4"
+            className="w-full max-w-5xl shadow-[0_40px_100px_-20px_rgba(0,0,0,0.8)] mt-10 md:mt-20" 
+          />
 
           <div className="w-full max-w-4xl flex items-center justify-center pb-24">
             <HighlightCarousel />
