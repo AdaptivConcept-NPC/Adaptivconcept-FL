@@ -22,6 +22,11 @@ const labsData = {
       "Instant code sharing",
       "Sandboxed safety"
     ],
+    gettingStarted: [
+      "Click the <b>\"Tasting Room\"</b> or <b>\"High-Heat Kitchen\"</b> button to boot the runtime environment.",
+      "Wait for the Python environment to boot automatically (Powered by StackBlitz or Replit).",
+      "Follow instructions in the terminal to browse, edit, and run your first recipe."
+    ],
     stackblitzUrl: "https://stackblitz.com/~/github/iarxii/PySwissShef",
     replitUrl: "https://py-portfolio-lab--thabangmposula.replit.app",
     accentColor: "#f97316", // adaptiv-orange
@@ -41,6 +46,11 @@ const labsData = {
       "Agentic tool orchestration",
       "OllamaOpt local execution",
       "Persistent session context"
+    ],
+    gettingStarted: [
+      "Click the <b>\"Launch Agentic Portal\"</b> button to open the live client interface.",
+      "Ensure your local LLM engine (Ollama/OllamaOpt) is active or set up custom API keys in the settings panel.",
+      "Interact with the agent interface and view real-time planning, graph visualization, and telemetry logs."
     ],
     portalUrl: routeMap.frontend_url,
     accentColor: "#a855f7", // purple-500
@@ -202,7 +212,6 @@ const LabDetail = () => {
             <h3 className="text-2xl font-bold text-high flex items-center gap-3">
               <FileText style={{ color: lab.accentColor }} /> README.md
             </h3>
-            <span className="text-xs font-mono opacity-40">JSON STUB</span>
           </div>
 
           <div className="space-y-8">
@@ -256,25 +265,26 @@ const LabDetail = () => {
         </div>
 
         {/* Getting Started */}
-        <div className="mt-12 glass-theme rounded-[32px] p-8 border border-white/5">
-            <h3 className="text-2xl font-bold text-high mb-6 flex items-center gap-3">
-              <Rocket className="text-adaptiv-orange" /> Getting Started
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="flex flex-col gap-3">
-                <span className="font-black text-2xl opacity-60 italic font-comfortaa" style={{ color: lab.accentColor }}>01.</span>
-                <p className="text-sm text-high leading-relaxed">Click the <b>"Launch Lab Console"</b> button to open the WebContainer environment.</p>
+        {lab.gettingStarted && (
+          <div className="mt-12 glass-theme rounded-[32px] p-8 border border-white/5">
+              <h3 className="text-2xl font-bold text-high mb-6 flex items-center gap-3">
+                <Rocket className="text-adaptiv-orange" style={{ color: lab.accentColor }} /> Getting Started
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {lab.gettingStarted.map((step, idx) => (
+                  <div key={idx} className="flex flex-col gap-3">
+                    <span className="font-black text-2xl opacity-60 italic font-comfortaa" style={{ color: lab.accentColor }}>
+                      0{idx + 1}.
+                    </span>
+                    <p 
+                      className="text-sm text-high leading-relaxed font-poppins"
+                      dangerouslySetInnerHTML={{ __html: step }}
+                    />
+                  </div>
+                ))}
               </div>
-              <div className="flex flex-col gap-3">
-                <span className="font-black text-2xl opacity-60 italic font-comfortaa" style={{ color: lab.accentColor }}>02.</span>
-                <p className="text-sm text-high leading-relaxed">Wait for the Python environment to boot automatically (Powered by StackBlitz).</p>
-              </div>
-              <div className="flex flex-col gap-3">
-                <span className="font-black text-2xl opacity-60 italic font-comfortaa" style={{ color: lab.accentColor }}>03.</span>
-                <p className="text-sm text-high leading-relaxed">Follow the instructions in the terminal to browse and run your first recipe.</p>
-              </div>
-            </div>
-        </div>
+          </div>
+        )}
       </div>
     </motion.div>
   );
