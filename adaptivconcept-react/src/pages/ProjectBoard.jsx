@@ -69,12 +69,18 @@ const ProjectBoard = () => {
       logo: "/media/pyswissshef_logo.png",
       icon: <Rocket size={24} />,
       status: "Scripting Lab",
-      statusColor: "adaptiv-orange",
-      glowColor: "bg-adaptiv-orange/10",
-      hoverGradient: "linear-gradient(135deg, rgba(255, 145, 0, 0.15) 0%, transparent 60%)",
-      themeColor: "adaptiv-orange",
+      statusColor: "yellow-500",
+      glowColor: "bg-yellow-500/10",
+      hoverGradient: "linear-gradient(135deg, rgba(234, 179, 8, 0.15) 0%, transparent 60%)",
+      themeColor: "yellow-500",
       path: "/labs/pyswissshef",
-      shadowColor: "shadow-adaptiv-orange/20",
+      shadowColor: "shadow-yellow-500/20",
+      logoBg: "rgba(234, 179, 8, 0.2)",
+      logoColor: "#eab308",
+      badgeBg: "rgba(234, 179, 8, 0.2)",
+      badgeColor: "#eab308",
+      badgeBorder: "rgba(234, 179, 8, 0.3)",
+      hoverBorderClass: "hover:border-yellow-500/30",
       brands: [
         "python",
         "javascript",
@@ -90,16 +96,22 @@ const ProjectBoard = () => {
       id: "aicodex",
       title: "AICodex Lab",
       description:
-        "Advanced agentic orchestration and real-time reasoning portal. Connected to LPU-speed inference.",
+        "Advanced agentic orchestration and real-time reasoning portal. Powered by local OllamaOpt and BYOK cloud keys.",
       logo: "/media/spirit_bird_aicodex_half.png",
       icon: <Cpu size={24} />,
       status: "Agentic Lab",
-      statusColor: "purple",
-      glowColor: "bg-purple-500/10",
-      hoverGradient: "linear-gradient(135deg, rgba(168, 85, 247, 0.15) 0%, transparent 60%)",
-      themeColor: "purple-500",
+      statusColor: "adaptiv-orange",
+      glowColor: "bg-adaptiv-orange/10",
+      hoverGradient: "linear-gradient(135deg, rgba(255, 145, 0, 0.15) 0%, transparent 60%)",
+      themeColor: "adaptiv-orange",
       path: "/labs/aicodex",
-      shadowColor: "shadow-purple-500/20",
+      shadowColor: "shadow-adaptiv-orange/20",
+      logoBg: "rgba(255, 145, 0, 0.2)",
+      logoColor: "var(--adaptiv-orange)",
+      badgeBg: "rgba(255, 145, 0, 0.2)",
+      badgeColor: "var(--adaptiv-orange)",
+      badgeBorder: "rgba(255, 145, 0, 0.3)",
+      hoverBorderClass: "hover:border-adaptiv-orange/30",
       brands: [
         "react",
         "groq",
@@ -173,7 +185,7 @@ const ProjectBoard = () => {
                 whileHover={{ y: -8 }}
                 className="min-w-[300px] md:min-w-[400px] snap-start"
               >
-                <div className="glass-theme rounded-[32px] p-8 h-full border border-white/5 relative overflow-hidden group transition-all duration-500 hover:border-adaptiv-orange/30 flex flex-col">
+                <div className={`glass-theme rounded-[32px] p-8 h-full border border-white/5 relative overflow-hidden group transition-all duration-500 ${lab.hoverBorderClass} flex flex-col`}>
                   {/* Hover Gradient Overlay */}
                   <div 
                     className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
@@ -189,8 +201,8 @@ const ProjectBoard = () => {
                       <div 
                         className="w-16 h-16 rounded-2xl flex items-center justify-center transition-transform duration-500 group-hover:scale-110 shadow-lg overflow-hidden"
                         style={{ 
-                          backgroundColor: lab.themeColor === "adaptiv-orange" ? "rgba(255, 145, 0, 0.2)" : "rgba(168, 85, 247, 0.2)",
-                          color: lab.themeColor === "adaptiv-orange" ? "var(--adaptiv-orange)" : "#a855f7" 
+                          backgroundColor: lab.logoBg,
+                          color: lab.logoColor
                         }}
                       >
                         {lab.logo ? (
@@ -200,11 +212,11 @@ const ProjectBoard = () => {
                         )}
                       </div>
                       <span
-                        className={`px-3 py-1 rounded-full text-[10px] font-black tracking-tighter uppercase border transition-all duration-300`}
+                        className="px-3 py-1 rounded-full text-[10px] font-black tracking-tighter uppercase border transition-all duration-300"
                         style={{
-                          backgroundColor: lab.statusColor === "green" ? "rgba(34, 197, 94, 0.2)" : "rgba(247, 177, 85, 0.2)",
-                          color: lab.statusColor === "green" ? "#4ade80" : "#f7b155",
-                          borderColor: lab.statusColor === "green" ? "rgba(34, 197, 94, 0.3)" : "rgba(168, 85, 247, 0.3)"
+                          backgroundColor: lab.badgeBg,
+                          color: lab.badgeColor,
+                          borderColor: lab.badgeBorder
                         }}
                       >
                         {lab.status}

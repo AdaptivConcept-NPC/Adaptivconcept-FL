@@ -29,7 +29,7 @@ const labsData = {
     ],
     stackblitzUrl: "https://stackblitz.com/~/github/iarxii/PySwissShef",
     replitUrl: "https://py-portfolio-lab--thabangmposula.replit.app",
-    accentColor: "#f97316", // adaptiv-orange
+    accentColor: "#eab308", // yellow-500
     icon: Terminal
   },
   "aicodex": {
@@ -53,7 +53,7 @@ const labsData = {
       "Interact with the agent interface and view real-time planning, graph visualization, and telemetry logs."
     ],
     portalUrl: routeMap.frontend_url,
-    accentColor: "#a855f7", // purple-500
+    accentColor: "#f97316", // adaptiv-orange
     icon: Cpu
   }
 };
