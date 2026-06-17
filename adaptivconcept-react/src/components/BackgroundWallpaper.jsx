@@ -10,9 +10,13 @@ const BackgroundWallpaper = () => {
   
   // Wallpapers list for loop
   const loopWallpapers = [
+    '/media/my-profile-pic-microsoft-vector.png',
     '/media/thabang_vector_wallpaper_1.png',
-    '/media/thabang_vector_wallpaper_avatar.png',
     '/media/thabang_vector_wallpaper_3.png',
+    '/media/thabang_vector_wallpaper_avatar_2.png',
+    '/media/thabang_vector_wallpaper_avatar_1.png',
+    '/media/thabang_vector_wallpaper_avatar_3.png',
+    '/media/opportunity_board_avatar.png',
   ];
 
   // Specific static wallpaper for the resume page
