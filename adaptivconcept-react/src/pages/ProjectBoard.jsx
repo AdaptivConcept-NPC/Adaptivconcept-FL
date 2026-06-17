@@ -187,14 +187,14 @@ const ProjectBoard = () => {
                   <div className="relative z-10 flex flex-col h-full">
                     <div className="flex items-center justify-between mb-6">
                       <div 
-                        className="p-3 rounded-2xl flex items-center justify-center transition-transform duration-500 group-hover:scale-110 shadow-lg overflow-hidden"
+                        className="w-16 h-16 rounded-2xl flex items-center justify-center transition-transform duration-500 group-hover:scale-110 shadow-lg overflow-hidden"
                         style={{ 
                           backgroundColor: lab.themeColor === "adaptiv-orange" ? "rgba(255, 145, 0, 0.2)" : "rgba(168, 85, 247, 0.2)",
                           color: lab.themeColor === "adaptiv-orange" ? "var(--adaptiv-orange)" : "#a855f7" 
                         }}
                       >
                         {lab.logo ? (
-                          <img src={lab.logo} alt={lab.title} className="w-6 h-6 object-contain" />
+                          <img src={lab.logo} alt={lab.title} className="w-full h-full object-cover" />
                         ) : (
                           lab.icon
                         )}
@@ -253,7 +253,7 @@ const ProjectBoard = () => {
 
                 <div className="relative z-10 flex flex-col h-full">
                   <div className="flex items-center justify-between mb-6">
-                    <div className="p-3 rounded-2xl bg-adaptiv-orange/20 text-adaptiv-orange shadow-inner">
+                    <div className="w-16 h-16 rounded-2xl bg-adaptiv-orange/20 text-adaptiv-orange shadow-inner flex items-center justify-center">
                       <PlusCircle size={24} />
                     </div>
                     <span className="px-3 py-1 rounded-full bg-white/5 text-low text-[10px] font-black tracking-tighter uppercase border border-white/10">
