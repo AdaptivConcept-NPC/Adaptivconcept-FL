@@ -5,7 +5,7 @@ import { useTheme } from "../../context/ThemeContext";
 import { useArcade } from "../../context/ArcadeContext";
 
 // Local Subcomponents
-import LogicGridHeader from "../../components/games/logicgrid/LogicGridHeader";
+import GameHeader from "../../components/games/GameHeader";
 import LogicGridMatrix from "../../components/games/logicgrid/LogicGridMatrix";
 import CluesPanel from "../../components/games/logicgrid/CluesPanel";
 
@@ -309,9 +309,11 @@ const LogicGrid = () => {
         />
       ) : (
         <>
-          <LogicGridHeader
+          <GameHeader
+            title="LogicGrid Solver Console"
+            emoji="🧠"
+            themeColor="#00f2ff"
             currentLevelIndex={currentLevel}
-            totalLevels={LEVELS.length}
             levels={LEVELS}
             onOpenAuth={() => setIsAuthOpen(true)}
             onOpenSettings={() => setIsSettingsOpen(true)}

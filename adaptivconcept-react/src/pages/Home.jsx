@@ -11,6 +11,7 @@ import {
 import { useTheme } from "../context/ThemeContext";
 import projectsDataLocal from "../data/projects.json";
 import { getProjects } from "../utils/dataStore";
+import { submitToNetlify } from "../utils/form";
 import FLFontCarousel from "../components/FLFontCarousel";
 import HighlightCarousel from "../components/HighlightCarousel";
 import VideoIntroPreview from "../components/VideoIntroPreview";
@@ -101,23 +102,11 @@ const Home = () => {
     setFormState((prev) => ({ ...prev, [name]: value }));
   };
 
-  const encode = (data) => {
-    return Object.keys(data)
-      .map(
-        (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]),
-      )
-      .join("&");
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     setStatus("submitting");
 
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({ "form-name": "contact", ...formState }),
-    })
+    submitToNetlify("contact", formState)
       .then(() => {
         setStatus("success");
         setFormState({ name: "", email: "", message: "" });

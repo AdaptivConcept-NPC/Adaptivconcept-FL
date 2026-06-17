@@ -5,7 +5,7 @@ import { useTheme } from "../../context/ThemeContext";
 import { useArcade } from "../../context/ArcadeContext";
 
 // Subcomponents
-import DigiArchHeader from "../../components/games/digiarch/DigiArchHeader";
+import GameHeader from "../../components/games/GameHeader";
 import DigiArchStage from "../../components/games/digiarch/DigiArchStage";
 import ControlPanel from "../../components/games/digiarch/ControlPanel";
 import PowerUpHUD from "../../components/games/digiarch/PowerUpHUD";
@@ -216,12 +216,13 @@ const DigiArch = () => {
         />
       ) : (
         <>
-          <DigiArchHeader
+          <GameHeader
+            themeColor="#39ff14"
             currentLevelIndex={currentLevel}
-            totalLevels={LEVELS.length}
             levels={LEVELS}
             onOpenAuth={() => setIsAuthOpen(true)}
             onOpenSettings={() => setIsSettingsOpen(true)}
+            isClassicLayout={false}
           />
 
           {/* Level Title & Instruction */}

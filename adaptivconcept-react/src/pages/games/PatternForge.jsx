@@ -5,7 +5,7 @@ import { useTheme } from "../../context/ThemeContext";
 import { useArcade } from "../../context/ArcadeContext";
 
 // Local Subcomponents
-import PatternForgeHeader from "../../components/games/patternforge/PatternForgeHeader";
+import GameHeader from "../../components/games/GameHeader";
 import { LEVELS } from "../../components/games/patternforge/levels";
 import "./PatternForge.css";
 
@@ -243,9 +243,11 @@ const PatternForge = () => {
         />
       ) : (
         <>
-          <PatternForgeHeader
+          <GameHeader
+            title="PatternForge Sequence Decoder"
+            emoji="⚙️"
+            themeColor="#fd3b12"
             currentLevelIndex={currentLevel}
-            totalLevels={LEVELS.length}
             levels={LEVELS}
             onOpenAuth={() => setIsAuthOpen(true)}
             onOpenSettings={() => setIsSettingsOpen(true)}

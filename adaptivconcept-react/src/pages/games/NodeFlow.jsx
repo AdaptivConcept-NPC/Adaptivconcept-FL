@@ -5,7 +5,7 @@ import { useTheme } from "../../context/ThemeContext";
 import { useArcade } from "../../context/ArcadeContext";
 
 // Local Subcomponents & levels
-import NodeFlowHeader from "../../components/games/nodeflow/NodeFlowHeader";
+import GameHeader from "../../components/games/GameHeader";
 import { LEVELS } from "../../components/games/nodeflow/levels";
 import "./NodeFlow.css";
 
@@ -324,9 +324,11 @@ const NodeFlow = () => {
         />
       ) : (
         <>
-          <NodeFlowHeader
+          <GameHeader
+            title="NodeFlow Graph Pathfinder"
+            emoji="🕸️"
+            themeColor="#00ff88"
             currentLevelIndex={currentLevel}
-            totalLevels={LEVELS.length}
             levels={LEVELS}
             onOpenAuth={() => setIsAuthOpen(true)}
             onOpenSettings={() => setIsSettingsOpen(true)}

@@ -5,7 +5,7 @@ import { useTheme } from "../../context/ThemeContext";
 import { useArcade } from "../../context/ArcadeContext";
 
 // Local Subcomponents
-import ChromaSyncHeader from "../../components/games/chromasync/ChromaSyncHeader";
+import GameHeader from "../../components/games/GameHeader";
 import ColorSlider from "../../components/games/chromasync/ColorSlider";
 import HarmonyGuide from "../../components/games/chromasync/HarmonyGuide";
 
@@ -232,9 +232,11 @@ const ChromaSync = () => {
         />
       ) : (
         <>
-          <ChromaSyncHeader
+          <GameHeader
+            title="ChromaSync Spectrum Harmonizer"
+            emoji="🎨"
+            themeColor="#bc13fe"
             currentLevelIndex={currentLevel}
-            totalLevels={LEVELS.length}
             levels={LEVELS}
             onOpenAuth={() => setIsAuthOpen(true)}
             onOpenSettings={() => setIsSettingsOpen(true)}
