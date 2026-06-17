@@ -27,7 +27,7 @@
       },
       {
         "title": "Setup & Local Development",
-        "content": "1. **Backend Setup (Python 3.10+)**:\n   `cd backend && python -m venv .venv`\n   `source .venv/bin/activate` (Windows: `.venv\\Scripts\\activate`)\n   `pip install -r requirements.txt`\n\n2. **Frontend Setup**:\n   `cd client && npm install`\n\n3. **Running the App (OllamaOpt / Local Focus)**:\n   Run `./start_website_dev.bat --aicodex --local` to start both services with a single command."
+        "content": "1. **Project Setup**:\n   Run `./setup.sh` to install backend virtual environment, install client node packages, and verify directories.\n\n2. **Running the App**:\n   Run `./start-services.sh` to initialize Postgres Docker containers, start the FastAPI backend, and launch the React dev client."
       }
     ]
   }
