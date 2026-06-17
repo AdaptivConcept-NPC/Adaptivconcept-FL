@@ -66,6 +66,7 @@ const ProjectBoard = () => {
       title: "PySwissShef Lab",
       description:
         "Interactive Python & Shell catalogue hosted on StackBlitz. Test automation recipes instantly.",
+      logo: "/media/pyswissshef_logo.png",
       icon: <Rocket size={24} />,
       status: "Scripting Lab",
       statusColor: "adaptiv-orange",
@@ -90,6 +91,7 @@ const ProjectBoard = () => {
       title: "AICodex Lab",
       description:
         "Advanced agentic orchestration and real-time reasoning portal. Connected to LPU-speed inference.",
+      logo: "/media/spirit_bird_aicodex_half.png",
       icon: <Cpu size={24} />,
       status: "Agentic Lab",
       statusColor: "purple",
@@ -185,13 +187,17 @@ const ProjectBoard = () => {
                   <div className="relative z-10 flex flex-col h-full">
                     <div className="flex items-center justify-between mb-6">
                       <div 
-                        className="p-3 rounded-2xl flex items-center justify-center transition-transform duration-500 group-hover:scale-110 shadow-lg"
+                        className="p-3 rounded-2xl flex items-center justify-center transition-transform duration-500 group-hover:scale-110 shadow-lg overflow-hidden"
                         style={{ 
                           backgroundColor: lab.themeColor === "adaptiv-orange" ? "rgba(255, 145, 0, 0.2)" : "rgba(168, 85, 247, 0.2)",
                           color: lab.themeColor === "adaptiv-orange" ? "var(--adaptiv-orange)" : "#a855f7" 
                         }}
                       >
-                        {lab.icon}
+                        {lab.logo ? (
+                          <img src={lab.logo} alt={lab.title} className="w-6 h-6 object-contain" />
+                        ) : (
+                          lab.icon
+                        )}
                       </div>
                       <span
                         className={`px-3 py-1 rounded-full text-[10px] font-black tracking-tighter uppercase border transition-all duration-300`}
