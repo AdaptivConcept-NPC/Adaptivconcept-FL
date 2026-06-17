@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ChevronLeft, Rocket, Terminal, Cpu, CheckCircle2, AlertCircle, ExternalLink } from "lucide-react";
+import { ChevronLeft, Rocket, Terminal, Cpu, CheckCircle2, AlertCircle, ExternalLink, FileText } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
 import routeMap from "../data/route_map.json";
+import labReadmes from "../data/lab_readmes.json";
 
 const labsData = {
   "pyswissshef": {
@@ -192,6 +193,65 @@ const LabDetail = () => {
                 </li>
               ))}
             </ul>
+          </div>
+        </div>
+
+        {/* README.md Section */}
+        <div className="mt-12 w-full glass-theme rounded-[32px] p-8 border border-white/5 relative overflow-hidden">
+          <div className="flex items-center justify-between mb-6 border-b border-white/10 pb-4">
+            <h3 className="text-2xl font-bold text-high flex items-center gap-3">
+              <FileText style={{ color: lab.accentColor }} /> README.md
+            </h3>
+            <span className="text-xs font-mono opacity-40">JSON STUB</span>
+          </div>
+
+          <div className="space-y-8">
+            {labReadmes[id]?.sections?.map((section, sIdx) => (
+              <div key={sIdx} className="border-l-2 pl-6" style={{ borderColor: `${lab.accentColor}33` }}>
+                <h4 className="text-lg font-bold text-high mb-3 uppercase tracking-wider font-comfortaa" style={{ color: lab.accentColor }}>
+                  {section.title}
+                </h4>
+                <div className="text-sm font-poppins">
+                  {section.content.split("\n").map((line, idx) => {
+                    const parts = line.split(/(`[^`]+`)/g);
+                    const isBullet = line.trim().startsWith("•");
+
+                    const formattedContent = parts.map((part, pIdx) => {
+                      if (part.startsWith("`") && part.endsWith("`")) {
+                        return (
+                          <code key={pIdx} className="px-1.5 py-0.5 mx-0.5 rounded bg-white/10 font-mono text-xs border border-white/5" style={{ color: lab.accentColor }}>
+                            {part.slice(1, -1)}
+                          </code>
+                        );
+                      }
+                      
+                      const boldParts = part.split(/(\*\*[^*]+\*\*)/g);
+                      return boldParts.map((bPart, bIdx) => {
+                        if (bPart.startsWith("**") && bPart.endsWith("**")) {
+                          return <strong key={bIdx} className="font-bold text-high">{bPart.slice(2, -2)}</strong>;
+                        }
+                        return bPart;
+                      });
+                    });
+
+                    if (isBullet) {
+                      return (
+                        <div key={idx} className="flex items-start gap-2 mb-2 leading-relaxed text-high/80">
+                          <span className="text-xs mt-1.5">•</span>
+                          <span>{formattedContent}</span>
+                        </div>
+                      );
+                    }
+
+                    return (
+                      <p key={idx} className="text-high/80 mb-3 leading-relaxed">
+                        {formattedContent}
+                      </p>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 

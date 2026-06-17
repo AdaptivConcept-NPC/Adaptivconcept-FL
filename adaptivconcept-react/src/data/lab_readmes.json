@@ -1,0 +1,34 @@
+{
+  "pyswissshef": {
+    "sections": [
+      {
+        "title": "Overview",
+        "content": "PySwissShef is a collection of automation scripts designed to handle various helper duties, local script runners, and developer pipelines. The web lab executes these directly within StackBlitz's WebContainers technology, spinning up a Node.js process and Pyodide/Python environment in the browser."
+      },
+      {
+        "title": "Local Installation",
+        "content": "To run this locally, clone the repository and run: \n\n`git clone https://github.com/iarxii/PySwissShef.git` \n`cd PySwissShef` \n`pip install -r requirements.txt`"
+      },
+      {
+        "title": "Available Kitchen Recipes",
+        "content": "• `chef-lint`: Automatically formats Python code using Ruff.\n• `chef-test`: Runs the unit test suites with coverage reports.\n• `chef-serve`: Launches local demo environments."
+      }
+    ]
+  },
+  "aicodex": {
+    "sections": [
+      {
+        "title": "Overview",
+        "content": "AICodex is an agentic interface designed to demonstrate real-time planning, reflection, and tools orchestration. Under the hood, it utilizes LangGraph and Groq's high-speed LPU inference to achieve latency under 200ms per agent step."
+      },
+      {
+        "title": "Capabilities",
+        "content": "• **Dual-Agent Dialogue**: Multi-agent consensus finding and task delegation.\n• **Dynamic Tools Usage**: Real-time tool-calling logic and runtime execution logs.\n• **Strict Type Enforcement**: TypeScript-first structure ensuring type-safe agent payloads."
+      },
+      {
+        "title": "Configuration & Keys",
+        "content": "The sandbox operates with pre-configured developer API tokens. For full access to custom LLM endpoints, click settings within the portal to input your own OpenAI, Anthropic, or Groq API keys."
+      }
+    ]
+  }
+}
