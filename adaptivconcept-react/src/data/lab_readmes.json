@@ -2,16 +2,16 @@
   "pyswissshef": {
     "sections": [
       {
-        "title": "Overview",
-        "content": "PySwissShef is a collection of automation scripts designed to handle various helper duties, local script runners, and developer pipelines. The web lab executes these directly within StackBlitz's WebContainers technology, spinning up a Node.js process and Pyodide/Python environment in the browser."
+        "title": "Welcome to PySwissChef",
+        "content": "PySwissChef is a Django-powered automation showcase platform designed to elegantly present and execute Python scripts. It features an administrative portal for managing scripts and is also equipped with a guest-friendly interface for public interaction."
       },
       {
-        "title": "Local Installation",
-        "content": "To run this locally, clone the repository and run: \n\n`git clone https://github.com/iarxii/PySwissShef.git` \n`cd PySwissShef` \n`pip install -r requirements.txt`"
+        "title": "Features",
+        "content": "• **Gourmet UI**: Premium glassmorphism driven by `lab_theme.css`.\n• **Recipe Catalogue**: Categorized automation scripts with detailed gourmet stories.\n• **Safety First**: One-time security disclaimer and environment-aware execution.\n• **In-Process Engine**: Refactored to run seamlessly in WASM/Browser environments."
       },
       {
-        "title": "Available Kitchen Recipes",
-        "content": "• `chef-lint`: Automatically formats Python code using Ruff.\n• `chef-test`: Runs the unit test suites with coverage reports.\n• `chef-serve`: Launches local demo environments."
+        "title": "Local Kitchen Setup",
+        "content": "1. **Clone & Enter**:\n   `git clone https://github.com/iarxii/PySwissShef.git` \n   `cd PySwissShef`\n\n2. **Fire up the Stove**:\n   - Windows: Run `./start_dev.bat`\n   - Linux/Mac: \n     `python3 -m venv venv && source venv/bin/activate`\n     `pip install -r requirements.txt`\n     `python main.py --web`\n\n3. **Taste the Results**: Access the portal at `http://127.0.0.1:8000`."
       }
     ]
   },
@@ -19,15 +19,15 @@
     "sections": [
       {
         "title": "Overview",
-        "content": "AICodex is an agentic interface designed to demonstrate real-time planning, reflection, and tools orchestration. Under the hood, it utilizes LangGraph and Groq's high-speed LPU inference to achieve latency under 200ms per agent step."
+        "content": "AdaptivIntelligenceCodex (AICodex) is a comprehensive knowledge base and code generation pipeline for Senior Agentic AI Engineers, designed for rapid prototyping and architecture mapping. It features a local-first agentic oversight engine that prioritizes local offline inference via our optimized **OllamaOpt** pipeline, complemented by Bring-Your-Own-Key (BYOK) cloud provider routing."
       },
       {
-        "title": "Capabilities",
-        "content": "• **Dual-Agent Dialogue**: Multi-agent consensus finding and task delegation.\n• **Dynamic Tools Usage**: Real-time tool-calling logic and runtime execution logs.\n• **Strict Type Enforcement**: TypeScript-first structure ensuring type-safe agent payloads."
+        "title": "Core Capabilities",
+        "content": "• **OllamaOpt Inference**: High-performance local LLM execution via Ollama or Llama.cpp with optimized context window management and token stream caching.\n• **BYOK Cloud Integration**: Multi-provider cloud routing supporting OpenAI (GPT-4o), Google Gemini, Anthropic, and OpenRouter using your own developer keys.\n• **Neural Analytics**: Real-time hardware telemetry (NPU/GPU/CPU) tracking.\n• **Graphify Knowledge Graph**: Interactive structural codebase mapping and cross-project intelligence."
       },
       {
-        "title": "Configuration & Keys",
-        "content": "The sandbox operates with pre-configured developer API tokens. For full access to custom LLM endpoints, click settings within the portal to input your own OpenAI, Anthropic, or Groq API keys."
+        "title": "Setup & Local Development",
+        "content": "1. **Backend Setup (Python 3.10+)**:\n   `cd backend && python -m venv .venv`\n   `source .venv/bin/activate` (Windows: `.venv\\Scripts\\activate`)\n   `pip install -r requirements.txt`\n\n2. **Frontend Setup**:\n   `cd client && npm install`\n\n3. **Running the App (OllamaOpt / Local Focus)**:\n   Run `./start_website_dev.bat --aicodex --local` to start both services with a single command."
       }
     ]
   }

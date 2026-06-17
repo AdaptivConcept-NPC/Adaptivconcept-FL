@@ -30,16 +30,16 @@ const labsData = {
   "aicodex": {
     title: "AICodex Lab",
     subtitle: "Agentic Orchestration & Reasoning",
-    description: "Advanced agentic orchestration and real-time reasoning portal. Connected to LPU-speed inference for near-instant response cycles.",
+    description: "Advanced agentic orchestration and real-time reasoning portal. Powered by our OllamaOpt local inference pipeline for offline execution and flexible BYOK cloud provider integration.",
     prerequisites: [
       { item: "React / Vite", status: "Modern Browser" },
-      { item: "Agentic Access", status: "Token Required" },
-      { item: "High-Speed Inference", status: "Groq Connected" }
+      { item: "Agentic Access", status: "Local/BYOK Config" },
+      { item: "Ollama / Llama.cpp", status: "Highly Recommended" }
     ],
     features: [
       "Real-time reasoning visualization",
       "Agentic tool orchestration",
-      "LPU-speed Groq inference",
+      "OllamaOpt local execution",
       "Persistent session context"
     ],
     portalUrl: routeMap.frontend_url,
