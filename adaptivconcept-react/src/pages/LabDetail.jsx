@@ -39,7 +39,7 @@ const labsData = {
     prerequisites: [
       { item: "React / Vite", status: "Modern Browser" },
       { item: "Agentic Access", status: "Local/BYOK Config" },
-      { item: "Ollama / Llama.cpp", status: "Highly Recommended" }
+      { item: "Ollama App / Llama.cpp via OllamaOpt", status: "Highly Recommended" }
     ],
     features: [
       "Real-time reasoning visualization",
