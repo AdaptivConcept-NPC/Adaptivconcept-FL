@@ -15,6 +15,18 @@ import GlobalFAB from './components/layout/GlobalFAB';
 // context
 import { ThemeProvider } from './context/ThemeContext';
 import { ArcadeProvider } from './context/ArcadeContext';
+import InvoiceAuthProvider from './context/InvoiceAuthContext';
+
+// Protected route guard
+import ProtectedRoute from './components/ProtectedRoute';
+
+// Invoicing pages
+import InvoiceLogin from './pages/invoicing/InvoiceLogin';
+import InvoiceDashboard from './pages/invoicing/InvoiceDashboard';
+import ClientManager from './pages/invoicing/ClientManager';
+import InvoiceEditor from './pages/invoicing/InvoiceEditor';
+import InvoiceDetail from './pages/invoicing/InvoiceDetail';
+import InvoicePublicView from './pages/invoicing/InvoicePublicView';
 
 // Pages
 import Home from './pages/Home';
@@ -42,6 +54,7 @@ function App() {
   return (
     <ArcadeProvider>
       <ThemeProvider>
+        <InvoiceAuthProvider>
         <Router>
           <ScrollToTop />
           <div className="App noselect h-screen overflow-y-scroll">
@@ -85,6 +98,17 @@ function App() {
                 <Route path="/arcade/nodeflow" element={<NodeFlow />} />
                 <Route path="/contact" element={<Contact />} />
 
+                {/* --- Invoicing module --- */}
+                {/* Public routes (no auth) */}
+                <Route path="/invoicing/login" element={<InvoiceLogin />} />
+                <Route path="/invoicing/share/:token" element={<InvoicePublicView />} />
+                {/* Protected routes */}
+                <Route path="/invoicing" element={<ProtectedRoute><InvoiceDashboard /></ProtectedRoute>} />
+                <Route path="/invoicing/clients" element={<ProtectedRoute><ClientManager /></ProtectedRoute>} />
+                <Route path="/invoicing/new" element={<ProtectedRoute><InvoiceEditor /></ProtectedRoute>} />
+                <Route path="/invoicing/:id/edit" element={<ProtectedRoute><InvoiceEditor /></ProtectedRoute>} />
+                <Route path="/invoicing/:id" element={<ProtectedRoute><InvoiceDetail /></ProtectedRoute>} />
+
               </Routes>
             </AnimatePresence>
           </main>
@@ -93,6 +117,7 @@ function App() {
           <GlobalFAB />
         </div>
       </Router>
+        </InvoiceAuthProvider>
       </ThemeProvider>
     </ArcadeProvider>
   );
