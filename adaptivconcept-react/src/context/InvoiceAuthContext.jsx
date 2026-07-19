@@ -69,10 +69,15 @@ export function InvoiceAuthProvider({ children }) {
   const login = useCallback(async (username, password) => {
     setAuthError(null);
     try {
+      // OAuth2PasswordRequestForm expects form-encoded data, not JSON
+      const formData = new URLSearchParams();
+      formData.append("username", username);
+      formData.append("password", password);
+
       const res = await fetch(`${API_BASE}/auth/login`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password }),
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: formData.toString(),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.detail || "Login failed");
