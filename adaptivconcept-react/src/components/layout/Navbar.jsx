@@ -50,7 +50,7 @@ const Navbar = () => {
             auto_awesome
           </span> */}
             <img
-              src="media/Adaptiv Media Concept Logo.png"
+              src="/media/Adaptiv Media Concept Logo.png"
               alt="Adaptivconcept FL Logo"
               className="navbar-logo cursor-pointer"
               onClick={(e) => {
