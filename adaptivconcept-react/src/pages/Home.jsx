@@ -11,6 +11,7 @@ import {
 import { useTheme } from "../context/ThemeContext";
 import projectsDataLocal from "../data/projects.json";
 import { getProjects } from "../utils/dataStore";
+import { getProjectImage } from "../utils/projectMedia";
 import { submitToNetlify } from "../utils/form";
 import FLFontCarousel from "../components/FLFontCarousel";
 import HighlightCarousel from "../components/HighlightCarousel";
@@ -65,7 +66,7 @@ const ParallaxSection = ({ children, index, total }) => {
 };
 
 const Home = () => {
-  const { themeColor, currentFont, activeFontFamily, activeFontScale } =
+  const { themeColor, activeFontFamily, activeFontScale } =
     useTheme();
 
   const isHighContrast =
@@ -595,6 +596,15 @@ const Home = () => {
                     <p className="text-low text-sm leading-relaxed mb-8 flex-grow line-clamp-3">
                       {project.description}
                     </p>
+
+                    <div className="mb-6 overflow-hidden rounded-2xl border border-theme bg-black/10 aspect-[16/9]">
+                      <img
+                        src={getProjectImage(project)}
+                        alt={`${project.title} preview`}
+                        className="h-full w-full object-cover object-center"
+                        loading="lazy"
+                      />
+                    </div>
 
                     {/* Tags */}
                     <div className="flex flex-wrap gap-2 mb-8">

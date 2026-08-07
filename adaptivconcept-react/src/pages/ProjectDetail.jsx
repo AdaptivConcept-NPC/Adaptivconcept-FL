@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { ChevronLeft, Globe, Info } from 'lucide-react';
 import projectsDataLocal from '../data/projects.json';
 import { getProjects } from '../utils/dataStore';
+import { getProjectImage } from '../utils/projectMedia';
 
 
 const ProjectDetail = () => {
@@ -51,16 +52,21 @@ const ProjectDetail = () => {
         {/* Project Visual Section */}
         <div className="lg:col-span-7">
           <div className="glass-theme rounded-[24px] md:rounded-[40px] overflow-hidden relative group aspect-video lg:aspect-auto lg:h-[500px]">
-            <div className="w-full h-full flex flex-col items-center justify-center bg-black/40">
-              <div className="text-center">
-                 <div className="text-adaptiv-orange mb-6 flex justify-center">
-                    <span className="material-icons-round text-[120px] select-none">
-                      {project.category === 'Game Dev' ? 'sports_esports' : 
-                       project.category === 'Automation' ? 'terminal' : 'layers'}
-                    </span>
-                 </div>
-                 <h2 className="text-xl md:text-3xl font-comfortaa font-bold text-high opacity-50">{project.title}</h2>
-              </div>
+            <img
+              src={getProjectImage(project)}
+              alt={`${project.title} hero preview`}
+              className="h-full w-full object-cover object-center"
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-black/20 via-black/10 to-black/60"></div>
+            <div className="absolute inset-x-0 top-0 p-6 md:p-8 bg-gradient-to-b from-black/60 to-transparent">
+              <h2 className="text-xl md:text-3xl font-comfortaa font-bold text-white/85">
+                {project.title}
+              </h2>
+              {project.subtitle && (
+                <p className="mt-2 text-xs md:text-sm font-bold uppercase tracking-[0.25em] text-white/60">
+                  {project.subtitle}
+                </p>
+              )}
             </div>
             
             <div className="absolute bottom-0 left-0 w-full p-6 md:p-8 bg-gradient-to-t from-black/80 to-transparent">

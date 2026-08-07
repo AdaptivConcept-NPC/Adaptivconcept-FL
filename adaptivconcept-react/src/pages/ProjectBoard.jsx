@@ -19,8 +19,8 @@ import BrandIcon from "../components/BrandIcon";
 import { useTheme } from "../context/ThemeContext";
 import { Link } from "react-router-dom";
 import projectsDataLocal from "../data/projects.json";
-import routeMap from "../data/route_map.json";
 import { getProjects } from "../utils/dataStore";
+import { getProjectImage } from "../utils/projectMedia";
 
 const ProjectBoard = () => {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -30,7 +30,6 @@ const ProjectBoard = () => {
   const {
     themeColor,
     activeFontFamily,
-    activeFontScale,
     isOverkillEnabled,
     setIsOverkillEnabled,
   } = useTheme();
@@ -359,47 +358,49 @@ const ProjectBoard = () => {
 
       {/* Filters & Search */}
       <div className="max-w-5xl mx-auto mb-20">
-        <div className="glass-theme rounded-[24px] md:rounded-[32px] p-3 md:p-4 flex flex-col lg:flex-row items-center gap-4 md:gap-6 shadow-2xl">
-          <div className="w-full lg:flex-grow relative group">
-            <Search
-              className="absolute left-5 top-1/2 -translate-y-1/2 text-low group-focus-within:text-adaptiv-orange transition-colors"
-              size={20}
-            />
-            <input
-              type="text"
-              className="w-full border border-theme text-high pl-14 pr-6 py-4 rounded-2xl focus:outline-none focus:border-adaptiv-orange/40 transition-all font-poppins placeholder:text-low/60"
-              placeholder="Search by tech stack or name..."
-              style={{ backgroundColor: "var(--input-bg)" }}
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-          </div>
-          <div className="flex flex-wrap justify-center gap-2">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`px-5 py-2.5 rounded-xl text-sm font-bold transition-all ${
-                  activeCategory === cat
-                    ? "shadow-lg shadow-adaptiv-orange/20"
-                    : "glass-theme text-low hover:text-high transition-all"
-                }`}
-                style={
-                  activeCategory === cat
-                    ? {
-                        backgroundColor: "var(--theme-color)",
-                        color: "contrast-color(var(--theme-color))",
-                      }
-                    : {}
-                }
-              >
-                {cat}
-              </button>
-            ))}
+        <div className="glass-theme rounded-[24px] md:rounded-[32px] p-3 md:p-4 flex flex-col lg:flex-row lg:items-start gap-4 md:gap-6 shadow-2xl">
+          <div className="w-full lg:flex-grow flex flex-col gap-3">
+            <div className="w-full relative group">
+              <Search
+                className="absolute left-5 top-1/2 -translate-y-1/2 text-low group-focus-within:text-adaptiv-orange transition-colors"
+                size={20}
+              />
+              <input
+                type="text"
+                className="w-full border border-theme text-high pl-14 pr-6 py-4 rounded-2xl focus:outline-none focus:border-adaptiv-orange/40 transition-all font-poppins placeholder:text-low/60"
+                placeholder="Search by tech stack or name..."
+                style={{ backgroundColor: "var(--input-bg)" }}
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setActiveCategory(cat)}
+                  className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
+                    activeCategory === cat
+                      ? "shadow-lg shadow-adaptiv-orange/20"
+                      : "glass-theme text-low hover:text-high transition-all"
+                  }`}
+                  style={
+                    activeCategory === cat
+                      ? {
+                          backgroundColor: "var(--theme-color)",
+                          color: "contrast-color(var(--theme-color))",
+                        }
+                      : {}
+                  }
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
           </div>
 
           {/* Overkill Toggle */}
-          <div className="flex items-center gap-3 pl-4 border-l border-theme/20 h-10 ml-auto">
+          <div className="flex justify-end lg:justify-start lg:pl-4 lg:border-l lg:border-theme/20 lg:min-h-[88px] lg:items-start ml-auto">
             <button
               onClick={() => setIsOverkillEnabled(!isOverkillEnabled)}
               className={`p-2.5 rounded-xl flex items-center gap-2 transition-all ${
@@ -463,6 +464,15 @@ const ProjectBoard = () => {
                 <p className="text-low text-sm leading-relaxed mb-8 flex-grow">
                   {project.description}
                 </p>
+
+                <div className="mb-6 overflow-hidden rounded-2xl border border-theme bg-black/10 aspect-[16/9]">
+                  <img
+                    src={getProjectImage(project)}
+                    alt={`${project.title} preview`}
+                    className="h-full w-full object-cover object-center"
+                    loading="lazy"
+                  />
+                </div>
 
                 <div className="flex flex-wrap gap-2 mb-8">
                   {project.tags.map((tag) => (
