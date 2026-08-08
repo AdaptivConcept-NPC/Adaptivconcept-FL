@@ -2,6 +2,14 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 
 const ThemeContext = createContext();
 
+const defaultRetroDitherSettings = {
+  enabled: true,
+  strength: 0.75,
+  pixelSize: 2.5,
+  scanlines: 0.3,
+  clickWave: 0.8,
+};
+
 const fonts = [
   { id: 1, fontname: "StormGust", scale: 1.6 }, // good
   { id: 2, fontname: "BigPartyBlue", scale: 1.8 }, // good
@@ -97,6 +105,31 @@ export const ThemeProvider = ({ children }) => {
     },
   );
 
+  const [isRetroDitherEnabled, setIsRetroDitherEnabled] = useState(() => {
+    const saved = localStorage.getItem("adaptiv_retro_dither_enabled");
+    return saved !== null ? saved === "true" : defaultRetroDitherSettings.enabled;
+  });
+
+  const [retroDitherStrength, setRetroDitherStrength] = useState(() => {
+    const saved = localStorage.getItem("adaptiv_retro_dither_strength");
+    return saved !== null ? Number(saved) : defaultRetroDitherSettings.strength;
+  });
+
+  const [retroDitherPixelSize, setRetroDitherPixelSize] = useState(() => {
+    const saved = localStorage.getItem("adaptiv_retro_dither_pixel_size");
+    return saved !== null ? Number(saved) : defaultRetroDitherSettings.pixelSize;
+  });
+
+  const [retroDitherScanlines, setRetroDitherScanlines] = useState(() => {
+    const saved = localStorage.getItem("adaptiv_retro_dither_scanlines");
+    return saved !== null ? Number(saved) : defaultRetroDitherSettings.scanlines;
+  });
+
+  const [retroDitherClickWave, setRetroDitherClickWave] = useState(() => {
+    const saved = localStorage.getItem("adaptiv_retro_dither_click_wave");
+    return saved !== null ? Number(saved) : defaultRetroDitherSettings.clickWave;
+  });
+
   // Combined font queue
   const activeFonts = isOverkillEnabled ? [...fonts, ...overkillFonts] : fonts;
 
@@ -150,6 +183,14 @@ export const ThemeProvider = ({ children }) => {
   }, [isInstantReadabilityEnabled]);
 
   useEffect(() => {
+    localStorage.setItem("adaptiv_retro_dither_enabled", isRetroDitherEnabled);
+    localStorage.setItem("adaptiv_retro_dither_strength", retroDitherStrength);
+    localStorage.setItem("adaptiv_retro_dither_pixel_size", retroDitherPixelSize);
+    localStorage.setItem("adaptiv_retro_dither_scanlines", retroDitherScanlines);
+    localStorage.setItem("adaptiv_retro_dither_click_wave", retroDitherClickWave);
+  }, [isRetroDitherEnabled, retroDitherStrength, retroDitherPixelSize, retroDitherScanlines, retroDitherClickWave]);
+
+  useEffect(() => {
     const root = document.documentElement;
 
     // Helper to convert hex to RGB
@@ -164,6 +205,7 @@ export const ThemeProvider = ({ children }) => {
 
     root.style.setProperty("--theme-color", themeColor.value);
     root.style.setProperty("--theme-color-rgb", rgb);
+    root.style.setProperty("--text-on-dark", "#f8f9fa");
 
     // High intensity version for UI elements
     root.style.setProperty("--theme-color-glow", `rgba(${rgb}, 0.4)`);
@@ -334,6 +376,14 @@ export const ThemeProvider = ({ children }) => {
     });
   };
 
+  const resetRetroDitherSettings = () => {
+    setIsRetroDitherEnabled(defaultRetroDitherSettings.enabled);
+    setRetroDitherStrength(defaultRetroDitherSettings.strength);
+    setRetroDitherPixelSize(defaultRetroDitherSettings.pixelSize);
+    setRetroDitherScanlines(defaultRetroDitherSettings.scanlines);
+    setRetroDitherClickWave(defaultRetroDitherSettings.clickWave);
+  };
+
   const activeFontFamily = isFontLocked
     ? activeFonts[currentFontIndex].fontname
     : "GrindyBrush";
@@ -359,6 +409,17 @@ export const ThemeProvider = ({ children }) => {
         setThemeColor,
         isInstantReadabilityEnabled,
         setIsInstantReadabilityEnabled,
+        isRetroDitherEnabled,
+        setIsRetroDitherEnabled,
+        retroDitherStrength,
+        setRetroDitherStrength,
+        retroDitherPixelSize,
+        setRetroDitherPixelSize,
+        retroDitherScanlines,
+        setRetroDitherScanlines,
+        retroDitherClickWave,
+        setRetroDitherClickWave,
+        resetRetroDitherSettings,
         activeFontFamily,
         activeFontScale,
       }}

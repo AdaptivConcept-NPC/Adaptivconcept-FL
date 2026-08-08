@@ -56,7 +56,7 @@ const ParallaxSection = ({ children, index, total }) => {
             scale,
             opacity,
           }}
-          className="w-full h-full flex items-center justify-center pt-20"
+          className="w-full h-full flex items-center justify-center pt-20z"
         >
           {children}
         </motion.div>
@@ -136,7 +136,7 @@ const Home = () => {
       ></div>
 
       {/* spacer / Intro Section */}
-      <div className="min-h-screen flex flex-col items-center justify-center p-8 md:p-20 relative overflow-hidden">
+      <div className="main-hero min-h-screen flex flex-col items-center justify-center p-8 md:p-20 relative overflow-hidden">
         {/* Large Central Font Carousel */}
         {/* <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full pointer-events-none opacity-10 select-none">
           <FLFontCarousel
@@ -147,42 +147,110 @@ const Home = () => {
           />
         </div> */}
 
-        <div className="relative z-10 w-full flex flex-col items-center gap-12 md:gap-16 md:pt-10">
+        <div className="relative z-10 w-full flex flex-col items-center gap-6 md:gap-12 md:pt-10">
+          {/* Hide until proper video content is available
+          
           <VideoIntroPreview 
             videoSrc="/media/sample_promo_vid_aigen.mp4"
             className="w-full max-w-5xl shadow-[0_40px_100px_-20px_rgba(0,0,0,0.8)] mt-10 md:mt-20" 
-          />
+          /> */}
 
-          <div className="w-full max-w-4xl flex items-center justify-center pb-24">
-            <HighlightCarousel />
+          <div className="relative flex flex-col items-center justify-end mt-24" style={{ height: "80vh", width: "100%" }}>
+            <h1
+              className="text-4xl sm:text-5xl md:text-6xl font-comfortaa font-bold mb-10 tracking-tight leading-tight"
+              style={{ color: "var(--text-on-dark)" }}
+            >
+              <u>S</u>enior<FLFontCarousel size="text-4xl sm:text-5xl md:text-6xl" className="inline-flex align-middle leading-none mx-1" />{" "}
+              {/* <span 
+                className="italic transition-all duration-500 inline-block"
+                style={{
+                  fontFamily: activeFontFamily,
+                  color: "var(--text-on-dark)",
+                  textShadow: "var(--heading-shadow)",
+                  fontSize: `${activeFontScale}em`,
+                  lineHeight: 1,
+                }}
+              >
+                Agentic AI Engineer
+              </span>{" "} */}
+              <span
+                className="italic transition-all duration-500 inline-block"
+                style={{
+                  fontFamily: activeFontFamily,
+                  color: "var(--text-on-dark)",
+                  textShadow: "var(--heading-shadow)",
+                  fontSize: `${activeFontScale}em`,
+                  lineHeight: 1,
+                }}
+              >
+                Agentic AI Engineer
+              </span>
+              <br />
+              <span className="relative inline-block">
+                <span
+                  aria-hidden="true"
+                  className="absolute -top-5 -left-8 text-[0.72em] leading-none opacity-80"
+                  style={{
+                    color: "var(--text-on-dark)",
+                    fontFamily: activeFontFamily,
+                    textShadow: "var(--heading-shadow)",
+                  }}
+                >
+                  &amp;
+                </span>
+                <span
+                  className="italic transition-all duration-500 inline-block"
+                  style={{
+                    fontFamily: activeFontFamily,
+                    color: "var(--text-on-dark)",
+                    textShadow: "var(--heading-shadow)",
+                    fontSize: `${activeFontScale}em`,
+                    lineHeight: 1,
+                    marginLeft: "-10px",
+                  }}
+                >
+                  Digital Architect
+                </span>
+              </span>
+            </h1>
+            <p
+              className="text-base sm:text-lg md:text-2xl font-poppins mb-14 max-w-3xl me-auto leading-relaxed"
+              style={{ color: "var(--text)" }}
+            >
+              Engineering high-performance intelligence pipelines and
+              interactive 3D ecosystems. Converting complex legacy
+              infrastructure into automated future-states.
+            </p>
+
+            {/* Scroll Action */}
+            <motion.button
+              onClick={scrollToHero}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1, duration: 1 }}
+              className="flex flex-col items-center gap-3 group cursor-pointer z-20"
+            >
+              <div className="w-9 h-14 rounded-full border-2 border-theme flex justify-center p-1.5 group-hover:border-adaptiv-orange transition-colors">
+                <motion.div
+                  animate={{ y: [0, 16, 0] }}
+                  transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+                  className="w-1.5 h-1.5 rounded-full bg-adaptiv-orange shadow-[0_0_8px_#ff4d00]"
+                />
+              </div>
+              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-low group-hover:text-adaptiv-orange transition-colors">
+                Enter Portfolio
+              </span>
+            </motion.button>
           </div>
+
         </div>
 
-        {/* Scroll Action */}
-        <motion.button
-          onClick={scrollToHero}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1, duration: 1 }}
-          className="absolute bottom-8 flex flex-col items-center gap-3 group cursor-pointer z-20"
-        >
-          <div className="w-9 h-14 rounded-full border-2 border-theme flex justify-center p-1.5 group-hover:border-adaptiv-orange transition-colors">
-            <motion.div
-              animate={{ y: [0, 16, 0] }}
-              transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-              className="w-1.5 h-1.5 rounded-full bg-adaptiv-orange shadow-[0_0_8px_#ff4d00]"
-            />
-          </div>
-          <span className="text-[10px] font-black uppercase tracking-[0.4em] text-low group-hover:text-adaptiv-orange transition-colors">
-            Enter Portfolio
-          </span>
-        </motion.button>
       </div>
 
       {/* Section 1: Hero */}
       <div ref={heroRef}>
         <ParallaxSection index={0} total={sectionsCount}>
-          <div className="py-10">
+          <div className="container mx-auto px-6 py-10 py-10Z">
             <div
               className="max-w-5xl px-6 text-center glass-theme rounded-[32px] md:rounded-[60px] p-6 md:p-20 relative"
               style={{ opacity: 1 }}
@@ -192,52 +260,19 @@ const Home = () => {
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.2, duration: 0.8 }}
               >
-                <span className="inline-flex items-center gap-2 px-6 py-2 rounded-full glass-theme text-high text-sm font-vietnam mb-10">
+                {/* <span className="inline- flex flex-col items-center gap-2 px-6 py-2 rounded-full glass-theme text-high text-sm font-vietnam mb-10">
                   <span
                     className="w-2.5 h-2.5 rounded-full animate-pulse"
                     style={{ backgroundColor: themeColor.value }}
                   ></span>
-                  Available for Strategic Collaboration
-                </span>
-                <h1
-                  className="text-4xl sm:text-5xl md:text-6xl font-comfortaa font-bold mb-10 tracking-tight leading-tight"
-                  style={{ color: "var(--text-h)" }}
-                >
-                  Senior{" "}
-                  <span
-                    className="italic transition-all duration-500 inline-block"
-                    style={{
-                      fontFamily: activeFontFamily,
-                      color: "var(--heading-color)",
-                      textShadow: "var(--heading-shadow)",
-                      fontSize: `${activeFontScale}em`,
-                      lineHeight: 1,
-                    }}
-                  >
-                    Agentic AI Engineer
-                  </span>{" "}
-                  & <br />
-                  <span
-                    className="italic transition-all duration-500 inline-block"
-                    style={{
-                      fontFamily: activeFontFamily,
-                      color: "var(--heading-color)",
-                      textShadow: "var(--heading-shadow)",
-                      fontSize: `${activeFontScale}em`,
-                      lineHeight: 1,
-                    }}
-                  >
-                    Digital Architect
-                  </span>
-                </h1>
-                <p
-                  className="text-base sm:text-lg md:text-2xl font-poppins mb-14 max-w-3xl mx-auto leading-relaxed"
-                  style={{ color: "var(--text)" }}
-                >
-                  Engineering high-performance intelligence pipelines and
-                  interactive 3D ecosystems. Converting complex legacy
-                  infrastructure into automated future-states.
-                </p>
+                  Hi, My name is <span>Thabang</span> I'm available for <br/>Strategic Collaboration.
+                </span> */}
+
+
+                <div className="w-full max-w-4xl flex items-center justify-center pb-2">
+                  <HighlightCarousel />
+                </div>
+
                 <div className="flex flex-wrap justify-center gap-6">
                   <button
                     onClick={scrollToContact}
@@ -271,7 +306,7 @@ const Home = () => {
       <ParallaxSection index={1} total={sectionsCount}>
         <div ref={contactRef} className="container mx-auto px-6 py-10">
           <div
-            className="glass-theme rounded-[32px] md:rounded-[60px] p-6 md:p-20 relative overflow-hidden group"
+            className="glass-theme rounded-[32px] md:rounded-[60px] p-6 md:pt-20 md:ps-20 md:pe-6 relative overflow-hidden group"
             style={{ opacity: 1 }}
           >
             {/* Subtle glow effect */}
@@ -443,11 +478,10 @@ const Home = () => {
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                         disabled={status === "submitting"}
-                        className={`w-full py-4 md:py-5 rounded-xl md:rounded-2xl font-bold text-lg hover:shadow-2xl hover:shadow-adaptiv-orange/30 btn-adaptive-hover transition-all flex items-center justify-center gap-3 mt-4 ${
-                          status === "submitting"
-                            ? "opacity-70 cursor-not-allowed"
-                            : ""
-                        }`}
+                        className={`w-full py-4 md:py-5 rounded-xl md:rounded-2xl font-bold text-lg hover:shadow-2xl hover:shadow-adaptiv-orange/30 btn-adaptive-hover transition-all flex items-center justify-center gap-3 mt-4 ${status === "submitting"
+                          ? "opacity-70 cursor-not-allowed"
+                          : ""
+                          }`}
                         style={{
                           backgroundColor: themeColor.value,
                           color: isHighContrast
@@ -576,13 +610,12 @@ const Home = () => {
                     </div>
 
                     {/* Title */}
-                    <h4 className={`text-2xl font-comfortaa font-bold text-high mb-3 transition-colors ${
-                      themeColor.washType === "coal" 
-                        ? "group-hover:text-white" 
-                        : themeColor.washType === "light" 
-                          ? "group-hover:text-black" 
-                          : "group-hover:text-adaptiv-orange"
-                    }`}>
+                    <h4 className={`text-2xl font-comfortaa font-bold text-high mb-3 transition-colors ${themeColor.washType === "coal"
+                      ? "group-hover:text-white"
+                      : themeColor.washType === "light"
+                        ? "group-hover:text-black"
+                        : "group-hover:text-adaptiv-orange"
+                      }`}>
                       {project.title}
                     </h4>
 

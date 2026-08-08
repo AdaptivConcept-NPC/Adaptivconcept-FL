@@ -10,6 +10,7 @@ import Navbar from './components/layout/Navbar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import GeometricBackground from './components/GeometricBackground';
+import RetroDitherOverlay from './components/RetroDitherOverlay';
 import GlobalFAB from './components/layout/GlobalFAB';
 
 // context
@@ -75,6 +76,7 @@ function App() {
           )}
 
           <GeometricBackground />
+          <RetroDitherOverlay />
           
           <Navbar />
 

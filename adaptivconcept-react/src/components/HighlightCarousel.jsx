@@ -228,6 +228,25 @@ const HighlightCarousel = ({ className = "" }) => {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="flex flex-col items-center gap-4 cursor-grab active:cursor-grabbing touch-none"
           >
+            <h3
+              className={`text-2xl sm:text-4xl md:text-6xl font-bold tracking-tight uppercase select-none my-4 transition-all duration-500 responsive-heading-scale`}
+              style={{
+                textShadow: "var(--heading-shadow)",
+                WebkitTextStroke: themeColor.washType === "coal"
+                    ? "0.1px #ffffff"
+                    : themeColor.washType === "light"
+                      ? "0.1px #000000"
+                      : "0.15px #000000",
+                color: "var(--heading-color)",
+                fontFamily: activeFontFamily,
+                // Provide the active font scale to the CSS utility via a CSS variable
+                ["--heading-scale"]: activeFontScale,
+                lineHeight: "0.9",
+              }}
+            >
+              {current.title}
+            </h3>
+
             {/* Stack-aware Tech Icons with Wave Animation */}
             <div
               className="p-1 md:p-2 rounded-full shadow-2xl bg-white border-b-4 cursor-pointer hover:scale-105 transition-transform group/icons"
@@ -235,6 +254,8 @@ const HighlightCarousel = ({ className = "" }) => {
               onClick={handleTechClick}
               title="View Wall of Stacked-Tech🔥"
             >
+              
+              {/* Tech Icons */}
               <motion.div
                 variants={containerVariants}
                 initial="initial"
@@ -266,24 +287,6 @@ const HighlightCarousel = ({ className = "" }) => {
               </div>
             </div>
 
-            <h3
-              className={`text-2xl sm:text-4xl md:text-6xl font-bold tracking-tight uppercase select-none mt-4 transition-all duration-500 responsive-heading-scale`}
-              style={{
-                textShadow: "var(--heading-shadow)",
-                WebkitTextStroke: themeColor.washType === "coal"
-                    ? "0.1px #ffffff"
-                    : themeColor.washType === "light"
-                      ? "0.1px #000000"
-                      : "0.15px #000000",
-                color: "var(--heading-color)",
-                fontFamily: activeFontFamily,
-                // Provide the active font scale to the CSS utility via a CSS variable
-                ["--heading-scale"]: activeFontScale,
-                lineHeight: "0.9",
-              }}
-            >
-              {current.title}
-            </h3>
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}

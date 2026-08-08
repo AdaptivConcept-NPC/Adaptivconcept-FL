@@ -45,7 +45,10 @@ const BackgroundWallpaper = () => {
   };
 
   return (
-    <div className="fixed top-0 left-0 w-full h-full -z-10 overflow-hidden">
+    <div
+      className="fixed top-0 left-0 w-full h-full -z-10 overflow-hidden"
+      data-wallpaper-source={isResumePage ? resumeWallpaper : loopWallpapers[currentIndex]}
+    >
       {/* Loop Wallpapers */}
       {loopWallpapers.map((url, index) => {
         const isActive = !isResumePage && index === currentIndex;

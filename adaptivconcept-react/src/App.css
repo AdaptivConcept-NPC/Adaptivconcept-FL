@@ -29,6 +29,19 @@
   --glass-border-width: 1px;
 }
 
+.main-hero {
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.main-hero::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  background: #fd3b12;
+  height: 5vh;
+  width: 100%;
+}
+
 /* Glass Theme - for large sections and containers */
 .glass-theme, .glass-panel {
   background-color: var(--glass-bg);
