@@ -357,7 +357,7 @@ const ProjectBoard = () => {
       </div>
 
       {/* Filters & Search */}
-      <div className="max-w-5xl mx-auto mb-20">
+      <div className="max-w-5xl mx-auto mb-10">
         <div className="glass-theme rounded-[24px] md:rounded-[32px] p-3 md:p-4 flex flex-col lg:flex-row lg:items-start gap-4 md:gap-6 shadow-2xl">
           <div className="w-full lg:flex-grow flex flex-col gap-3">
             <div className="w-full relative group">
