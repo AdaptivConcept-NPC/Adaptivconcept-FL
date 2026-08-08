@@ -94,12 +94,12 @@ const Navbar = () => {
           {/* Navigation Links Container */}
           <div
             className={`
-              ${isMenuOpen ? "flex" : "hidden"} 
-              xl:flex flex-col xl:flex-row items-center absolute xl:static top-full left-0 w-full xl:w-auto 
+              ${isMenuOpen ? "grid" : "hidden"} 
+              xl:flex grid-cols-1 sm:grid-cols-2 xl:flex-row items-start xl:items-center absolute xl:static top-full left-0 w-full xl:w-auto 
               transition-all duration-500
               xl:bg-transparent backdrop-blur-3xl xl:backdrop-blur-none 
-              p-8 xl:p-0 gap-8 xl:gap-10 border-b xl:border-none border-theme
-              no-scrollbar overflow-x-auto z-50
+              p-4 sm:p-6 xl:p-0 gap-4 sm:gap-6 xl:gap-10 border-b xl:border-none border-theme
+              no-scrollbar max-h-[calc(100dvh-5rem)] overflow-y-auto overflow-x-hidden xl:max-h-none xl:overflow-visible z-50
             `}
             style={{
               backgroundColor:
@@ -111,7 +111,7 @@ const Navbar = () => {
             }}
           >
             {/* Main Links */}
-            <ul className="flex flex-col xl:flex-row items-center gap-8 m-0 p-0 w-full xl:w-auto">
+            <ul className="flex flex-col items-stretch xl:flex-row xl:items-center gap-3 sm:gap-5 xl:gap-8 m-0 p-0 min-w-0 w-full xl:w-auto">
               {[
                 { path: "/", label: "Home", icon: Home },
                 { path: "/projects", label: "Project Board", icon: FolderKanban },
@@ -126,7 +126,7 @@ const Navbar = () => {
                       onClick={() => setIsMenuOpen(false)}
                       className={`flex items-center gap-2 text-sm font-medium transition-all hover:text-high ${
                         link.isArcade 
-                          ? `px-3 py-1.5 rounded-xl border border-transparent hover:border-glass-border hover:bg-white/5 ${isActive(link.path) ? "font-bold text-high bg-white/10 border-glass-border shadow-lg shadow-adaptiv-orange/10" : ""}`
+                          ? `w-full xl:w-auto justify-center px-4 py-2.5 rounded-xl border border-adaptiv-orange/40 bg-adaptiv-orange/10 hover:border-adaptiv-orange hover:bg-adaptiv-orange/20 shadow-lg shadow-adaptiv-orange/10 ${isActive(link.path) ? "font-bold text-high border-adaptiv-orange bg-adaptiv-orange/20" : ""}`
                           : isActive(link.path) ? "font-bold" : ""
                       }`}
                       style={{
@@ -134,7 +134,7 @@ const Navbar = () => {
                       }}
                     >
                       {isMenuOpen ? (
-                        <div className="flex items-center gap-4 w-full">
+                        <div className={`flex items-center gap-4 w-full ${link.isArcade ? "justify-center" : ""}`}>
                           {link.isArcade ? (
                             <span className="p-2 rounded-xl bg-adaptiv-orange/20 text-adaptiv-orange flex items-center justify-center">
                               <link.icon size={24} />
@@ -160,7 +160,7 @@ const Navbar = () => {
                   </li>
                   {index < 4 && (
                     isMenuOpen ? (
-                      <div className="w-1/3 mx-auto h-px bg-white/10 my-1" />
+                      <div className="w-full h-px bg-white/10 my-0.5" />
                     ) : (
                       <span className="my-auto opacity-30 hidden xl:block">|</span>
                     )
@@ -171,23 +171,21 @@ const Navbar = () => {
 
             {/* Desktop Divider between links and buttons */}
             {!isMenuOpen && <span className="my-auto opacity-30 hidden xl:block">|</span>}
-            {isMenuOpen && <div className="w-1/3 mx-auto h-px bg-white/10 my-1 xl:hidden" />}
-
             {/* Actions (Resume & Hire Me) */}
-            <div className="flex flex-col xl:flex-row items-center gap-3 w-full xl:w-auto">
+            <div className="flex flex-col items-stretch xl:flex-row xl:items-center gap-3 w-full min-w-0 xl:w-auto">
               <Link
                 to="/resume"
                 onClick={() => setIsMenuOpen(false)}
-                className="px-5 py-2.5 rounded-xl border-2 font-medium btn-adaptive-hover transition-all flex items-center gap-2 w-full xl:w-auto justify-center"
+                className="px-3 py-3 sm:px-4 rounded-xl border-2 font-medium btn-adaptive-hover transition-all flex items-center gap-2 w-full xl:w-auto justify-center"
                 style={{
                   borderColor: "var(--glass-border)",
                   color: "var(--text-h)",
                 }}
               >
                 {isMenuOpen ? (
-                  <div className="flex items-center gap-4 w-full px-2">
-                    <FileUser size={24} />
-                    <span className="text-lg font-semibold">Résumé</span>
+                  <div className="flex items-center gap-2 sm:gap-3 w-full">
+                    <FileUser size={20} />
+                    <span className="text-sm sm:text-base font-semibold">Résumé</span>
                   </div>
                 ) : (
                   <>
@@ -210,7 +208,7 @@ const Navbar = () => {
               >
                 <Link
                   to="/contact"
-                  className="px-8 py-3.5 rounded-2xl font-black btn-adaptive-hover transition-all xl:ml-2 cta-shimmer speech-bubble-cta w-full xl:w-auto flex items-center justify-center"
+                  className="px-3 py-3 sm:px-4 rounded-xl xl:rounded-2xl font-black btn-adaptive-hover transition-all xl:ml-2 cta-shimmer speech-bubble-cta w-full xl:w-auto flex items-center justify-center"
                   onClick={() => setIsMenuOpen(false)}
                   style={{
                     gap: 10,
@@ -223,9 +221,9 @@ const Navbar = () => {
                 >
                   <div className="shimmer-layer"></div>
                   {isMenuOpen ? (
-                    <div className="flex items-center gap-4">
-                      <span className="text-xl font-black">Hire Me</span>
-                      <Handshake size={32} className="relative z-10" />
+                    <div className="flex items-center gap-2 sm:gap-3">
+                      <span className="text-sm sm:text-base font-black">Hire Me</span>
+                      <Handshake size={22} className="relative z-10" />
                     </div>
                   ) : (
                     <>

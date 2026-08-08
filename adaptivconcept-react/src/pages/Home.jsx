@@ -219,9 +219,10 @@ const Home = () => {
               <span className="relative inline-block">
                 <span
                   aria-hidden="true"
-                  className="absolute -top-5 -left-8 text-[0.72em] leading-none opacity-80"
+                  className="absolute -top-1 -left-8 text-[0.72em] leading-none opacity-80"
                   style={{
-                    color: "var(--text-on-dark)",
+                    // color: "var(--text-on-dark)",
+                    color: "var(--theme-color)",
                     fontFamily: activeFontFamily,
                     textShadow: "var(--heading-shadow)",
                   }}
