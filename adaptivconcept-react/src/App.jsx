@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import './App.css';
@@ -12,6 +12,7 @@ import ScrollToTop from './components/ScrollToTop';
 import GeometricBackground from './components/GeometricBackground';
 import RetroDitherOverlay from './components/RetroDitherOverlay';
 import GlobalFAB from './components/layout/GlobalFAB';
+import SettingsModal from './components/layout/SettingsModal';
 
 // context
 import { ThemeProvider } from './context/ThemeContext';
@@ -51,6 +52,8 @@ import NodeFlow from './pages/games/NodeFlow';
 
 function App() {
   const useVideoBackground = false; // Toggle this to switch between video and static wallpaper
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const openSettings = () => setIsSettingsOpen(true);
 
   return (
     <ArcadeProvider>
@@ -78,7 +81,7 @@ function App() {
           <GeometricBackground />
           <RetroDitherOverlay />
           
-          <Navbar />
+          <Navbar onOpenSettings={openSettings} />
 
           <main className="content-wrapper">
             <AnimatePresence mode="wait">
@@ -116,7 +119,11 @@ function App() {
           </main>
 
           <Footer />
-          <GlobalFAB />
+          <GlobalFAB onOpenSettings={openSettings} />
+          <SettingsModal
+            isOpen={isSettingsOpen}
+            onClose={() => setIsSettingsOpen(false)}
+          />
         </div>
       </Router>
         </InvoiceAuthProvider>

@@ -1,10 +1,13 @@
 import React, { useEffect, useRef } from "react";
 import p5 from "p5";
+import { useTheme } from "../context/ThemeContext";
 
 const GeometricBackground = () => {
+  const { isP5AnimatedEnabled } = useTheme();
   const containerRef = useRef(null);
 
   useEffect(() => {
+    if (!isP5AnimatedEnabled) return undefined;
     let p5Instance;
 
     const sketch = (p) => {
@@ -133,7 +136,9 @@ const GeometricBackground = () => {
     return () => {
       p5Instance.remove();
     };
-  }, []);
+  }, [isP5AnimatedEnabled]);
+
+  if (!isP5AnimatedEnabled) return null;
 
   return (
     <div

@@ -3,7 +3,7 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 const ThemeContext = createContext();
 
 const defaultRetroDitherSettings = {
-  enabled: true,
+  enabled: false,
   strength: 0.75,
   pixelSize: 2.5,
   scanlines: 0.3,
@@ -110,6 +110,11 @@ export const ThemeProvider = ({ children }) => {
     return saved !== null ? saved === "true" : defaultRetroDitherSettings.enabled;
   });
 
+  const [isP5AnimatedEnabled, setIsP5AnimatedEnabled] = useState(() => {
+    const saved = localStorage.getItem("adaptiv_p5_animated_enabled");
+    return saved !== null ? saved === "true" : true;
+  });
+
   const [retroDitherStrength, setRetroDitherStrength] = useState(() => {
     const saved = localStorage.getItem("adaptiv_retro_dither_strength");
     return saved !== null ? Number(saved) : defaultRetroDitherSettings.strength;
@@ -189,6 +194,10 @@ export const ThemeProvider = ({ children }) => {
     localStorage.setItem("adaptiv_retro_dither_scanlines", retroDitherScanlines);
     localStorage.setItem("adaptiv_retro_dither_click_wave", retroDitherClickWave);
   }, [isRetroDitherEnabled, retroDitherStrength, retroDitherPixelSize, retroDitherScanlines, retroDitherClickWave]);
+
+  useEffect(() => {
+    localStorage.setItem("adaptiv_p5_animated_enabled", isP5AnimatedEnabled);
+  }, [isP5AnimatedEnabled]);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -411,6 +420,8 @@ export const ThemeProvider = ({ children }) => {
         setIsInstantReadabilityEnabled,
         isRetroDitherEnabled,
         setIsRetroDitherEnabled,
+        isP5AnimatedEnabled,
+        setIsP5AnimatedEnabled,
         retroDitherStrength,
         setRetroDitherStrength,
         retroDitherPixelSize,

@@ -10,6 +10,7 @@ import {
   Palette,
   RotateCcw,
   Gauge,
+  Layers,
 } from "lucide-react";
 import { useTheme } from "../../context/ThemeContext";
 
@@ -18,6 +19,8 @@ const SettingsModal = ({ isOpen, onClose }) => {
     isInstantReadabilityEnabled,
     setIsInstantReadabilityEnabled,
     themeColor,
+    isP5AnimatedEnabled,
+    setIsP5AnimatedEnabled,
     isRetroDitherEnabled,
     setIsRetroDitherEnabled,
     retroDitherStrength,
@@ -151,6 +154,44 @@ const SettingsModal = ({ isOpen, onClose }) => {
                   </span>
                   <Palette size={20} style={{ color: themeColor.value }} />
                 </button>
+              </section>
+
+              {/* P5 Animation Layer */}
+              <section>
+                <div className="flex items-center gap-2 mb-4 opacity-60">
+                  <Layers size={16} />
+                  <h3 className="text-xs font-black uppercase tracking-widest">
+                    P5 Animation Layer
+                  </h3>
+                </div>
+
+                <div className="glass-card p-4 flex items-center justify-between group cursor-pointer hover:bg-white/5 transition-colors" onClick={() => setIsP5AnimatedEnabled(!isP5AnimatedEnabled)}>
+                  <div className="flex items-center gap-4">
+                    <div className="p-2 rounded-lg bg-white/5 text-mid group-hover:text-high transition-colors">
+                      <Sparkles size={20} />
+                    </div>
+                    <div>
+                      <p className="font-bold text-high">Geometric Background FX</p>
+                      <p className="text-xs text-low">
+                        Animated geometric particle overlay behind the site
+                      </p>
+                    </div>
+                  </div>
+
+                  <button
+                    className="relative w-12 h-6 rounded-full transition-colors duration-300 pointer-events-none"
+                    style={{
+                      backgroundColor: isP5AnimatedEnabled
+                        ? themeColor.value
+                        : "rgba(255,255,255,0.1)",
+                    }}
+                  >
+                    <motion.div
+                      animate={{ x: isP5AnimatedEnabled ? 26 : 4 }}
+                      className="absolute top-1 left-0 w-4 h-4 bg-white rounded-full shadow-lg"
+                    />
+                  </button>
+                </div>
               </section>
 
               {/* Canvas UI Effects Section */}

@@ -177,7 +177,7 @@ const Home = () => {
           />
         </div> */}
 
-        <div className="relative z-10 w-full flex flex-col items-center gap-6 md:gap-12 md:pt-10">
+        <div className="relative z-10 w-full flex flex-col items-center gap-6 md:gap-12 pt-10 md:pt-20">
           {/* Hide until proper video content is available
           
           <VideoIntroPreview 
@@ -187,10 +187,10 @@ const Home = () => {
 
           <div className="relative flex flex-col items-center justify-end mt-24" style={{ height: "80vh", width: "100%" }}>
             <h1
-              className="text-4xl sm:text-5xl md:text-6xl font-comfortaa font-bold mb-10 tracking-tight leading-tight"
+              className="text-4xl sm:text-5xl md:text-6xl font-comfortaa font-bold mb-10 tracking-tight me-auto leading-tight"
               style={{ color: "var(--text-on-dark)" }}
             >
-              <u>S</u>enior<FLFontCarousel size="text-4xl sm:text-5xl md:text-6xl" className="inline-flex align-middle leading-none mx-1" />{" "}
+              <u>S</u>enior<FLFontCarousel size="text-4xl sm:text-5xl md:text-6xl" className="inline-flex align-middle leading-none mx-1" />{" "}<br />
               {/* <span 
                 className="italic transition-all duration-500 inline-block"
                 style={{
@@ -202,7 +202,7 @@ const Home = () => {
                 }}
               >
                 Agentic AI Engineer
-              </span>{" "} */}
+              </span> */}
               <span
                 className="italic transition-all duration-500 inline-block"
                 style={{
@@ -291,13 +291,13 @@ const Home = () => {
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.2, duration: 0.8 }}
               >
-                {/* <span className="inline- flex flex-col items-center gap-2 px-6 py-2 rounded-full glass-theme text-high text-sm font-vietnam mb-10">
-                  <span
+                <span className="inline- flexz flex-colz items-center gap-2 px-6 py-2 rounded-full glass-theme text-high text-sm font-vietnam mb-10">
+                  {/* <span
                     className="w-2.5 h-2.5 rounded-full animate-pulse"
                     style={{ backgroundColor: themeColor.value }}
-                  ></span>
-                  Hi, My name is <span>Thabang</span> I'm available for <br/>Strategic Collaboration.
-                </span> */}
+                  ></span> */}
+                  Hi, my name is <b>Thabang Mposula</b>, and I am an Agentic AI Systems Developer.
+                </span>
 
 
                 <div className="w-full max-w-4xl flex items-center justify-center pb-2">

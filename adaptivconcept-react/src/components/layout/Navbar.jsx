@@ -17,15 +17,13 @@ import { motion } from "framer-motion";
 import { useTheme } from "../../context/ThemeContext";
 import FLFontCarousel from "../FLFontCarousel";
 import UISettingsButton from "./UISettingsButton";
-import SettingsModal from "./SettingsModal";
 import "./Navbar.css";
 import "../../pages/GamingArcade.css";
 
-const Navbar = () => {
+const Navbar = ({ onOpenSettings }) => {
   const { themeColor, nextColor } = useTheme();
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const isActive = (path) => location.pathname === path;
 
   return (
@@ -117,7 +115,6 @@ const Navbar = () => {
                 { path: "/projects", label: "Project Board", icon: FolderKanban },
                 { path: "/blog", label: "Blog", icon: Newspaper },
                 { path: "/contact", label: "Contact", icon: Mail },
-                { path: "/arcade", label: "Dev Arcade", icon: Gamepad2, isArcade: true },
               ].map((link, index) => (
                 <React.Fragment key={link.path}>
                   <li>
@@ -125,40 +122,26 @@ const Navbar = () => {
                       to={link.path}
                       onClick={() => setIsMenuOpen(false)}
                       className={`flex items-center gap-2 text-sm font-medium transition-all hover:text-high ${
-                        link.isArcade 
-                          ? `w-full xl:w-auto justify-center px-4 py-2.5 rounded-xl border border-adaptiv-orange/40 bg-adaptiv-orange/10 hover:border-adaptiv-orange hover:bg-adaptiv-orange/20 shadow-lg shadow-adaptiv-orange/10 ${isActive(link.path) ? "font-bold text-high border-adaptiv-orange bg-adaptiv-orange/20" : ""}`
-                          : isActive(link.path) ? "font-bold" : ""
+                        isActive(link.path) ? "font-bold" : ""
                       }`}
                       style={{
                         color: isActive(link.path) ? "var(--text-h)" : "var(--text)",
                       }}
                     >
                       {isMenuOpen ? (
-                        <div className={`flex items-center gap-4 w-full ${link.isArcade ? "justify-center" : ""}`}>
-                          {link.isArcade ? (
-                            <span className="p-2 rounded-xl bg-adaptiv-orange/20 text-adaptiv-orange flex items-center justify-center">
-                              <link.icon size={24} />
-                            </span>
-                          ) : (
-                            <link.icon size={24} />
-                          )}
+                        <div className="flex items-center gap-4 w-full">
+                          <link.icon size={24} />
                           <span className="text-lg font-semibold">{link.label}</span>
                         </div>
                       ) : (
                         <>
-                          {link.isArcade ? (
-                            <span className="p-1.5 rounded-lg bg-adaptiv-orange/20 text-adaptiv-orange flex items-center justify-center">
-                              <link.icon size={18} />
-                            </span>
-                          ) : (
-                            <link.icon size={18} />
-                          )}
+                          <link.icon size={18} />
                           <p className="truncate">{link.label}</p>
                         </>
                       )}
                     </Link>
                   </li>
-                  {index < 4 && (
+                  {index < 3 && (
                     isMenuOpen ? (
                       <div className="w-full h-px bg-white/10 my-0.5" />
                     ) : (
@@ -171,7 +154,7 @@ const Navbar = () => {
 
             {/* Desktop Divider between links and buttons */}
             {!isMenuOpen && <span className="my-auto opacity-30 hidden xl:block">|</span>}
-            {/* Actions (Resume & Hire Me) */}
+            {/* Actions (Resume, Dev Arcade & Hire Me) */}
             <div className="flex flex-col items-stretch xl:flex-row xl:items-center gap-3 w-full min-w-0 xl:w-auto">
               <Link
                 to="/resume"
@@ -190,6 +173,31 @@ const Navbar = () => {
                 ) : (
                   <>
                     <FileUser size={16} /> <p className="truncate">Résumé</p>
+                  </>
+                )}
+              </Link>
+
+              <Link
+                to="/arcade"
+                onClick={() => setIsMenuOpen(false)}
+                className={`px-3 py-3 sm:px-4 rounded-xl border-2 font-medium btn-adaptive-hover transition-all flex items-center gap-2 w-full xl:w-auto justify-center border-adaptiv-orange/50 bg-adaptiv-orange/10 hover:border-adaptiv-orange hover:bg-adaptiv-orange/20 shadow-lg shadow-adaptiv-orange/10 ${
+                  isActive("/arcade") ? "font-bold text-high border-adaptiv-orange bg-adaptiv-orange/20" : ""
+                }`}
+                style={{ color: "var(--text-h)" }}
+              >
+                {isMenuOpen ? (
+                  <div className="flex items-center gap-2 sm:gap-3 w-full justify-center">
+                    <span className="p-2 rounded-xl bg-adaptiv-orange/20 text-adaptiv-orange flex items-center justify-center">
+                      <Gamepad2 size={24} />
+                    </span>
+                    <span className="text-sm sm:text-base font-semibold">Dev Arcade</span>
+                  </div>
+                ) : (
+                  <>
+                    <span className="p-1.5 rounded-lg bg-adaptiv-orange/20 text-adaptiv-orange flex items-center justify-center">
+                      <Gamepad2 size={18} />
+                    </span>
+                    <p className="truncate">Dev Arcade</p>
                   </>
                 )}
               </Link>
@@ -239,15 +247,10 @@ const Navbar = () => {
 
         {/* Hanging UI Settings Button */}
         <UISettingsButton
-          onClick={() => setIsSettingsOpen(true)}
+          onClick={onOpenSettings}
           className="absolute top-full right-8 shadow-lg shadow-black/20"
         />
       </nav>
-
-      <SettingsModal
-        isOpen={isSettingsOpen}
-        onClose={() => setIsSettingsOpen(false)}
-      />
     </>
   );
 };
