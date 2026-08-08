@@ -15,6 +15,7 @@ import { getProjectImage } from "../utils/projectMedia";
 import { submitToNetlify } from "../utils/form";
 import FLFontCarousel from "../components/FLFontCarousel";
 import HighlightCarousel from "../components/HighlightCarousel";
+import ProfilePersonasHero from "../components/ProfilePersonasHero";
 import VideoIntroPreview from "../components/VideoIntroPreview";
 import { ChevronDown } from "lucide-react";
 
@@ -76,10 +77,35 @@ const Home = () => {
   const navigate = useNavigate();
   const contactRef = useRef(null);
   const heroRef = useRef(null);
+  const introRef = useRef(null);
+  const hasLeftIntroRef = useRef(false);
   const [projectsData, setProjectsData] = useState(projectsDataLocal);
+  const [personaResetKey, setPersonaResetKey] = useState(0);
 
   useEffect(() => {
     getProjects().then(setProjectsData);
+  }, []);
+
+  useEffect(() => {
+    const scrollContainer = document.querySelector(".App");
+
+    const resetPersonasAfterIntro = () => {
+      const hasLeftIntro = introRef.current?.getBoundingClientRect().bottom <= 0;
+
+      if (hasLeftIntro && !hasLeftIntroRef.current) {
+        hasLeftIntroRef.current = true;
+        setPersonaResetKey((previous) => previous + 1);
+      } else if (!hasLeftIntro) {
+        hasLeftIntroRef.current = false;
+      }
+    };
+
+    scrollContainer?.addEventListener("scroll", resetPersonasAfterIntro, {
+      passive: true,
+    });
+    resetPersonasAfterIntro();
+
+    return () => scrollContainer?.removeEventListener("scroll", resetPersonasAfterIntro);
   }, []);
 
   const scrollToContact = () => {
@@ -136,7 +162,11 @@ const Home = () => {
       ></div>
 
       {/* spacer / Intro Section */}
-      <div className="main-hero min-h-screen flex flex-col items-center justify-center p-8 md:p-20 relative overflow-hidden">
+      <div
+        ref={introRef}
+        className="main-hero min-h-screen flex flex-col items-center justify-center p-8 md:p-20 relative overflow-hidden"
+      >
+        <ProfilePersonasHero resetKey={personaResetKey} />
         {/* Large Central Font Carousel */}
         {/* <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full pointer-events-none opacity-10 select-none">
           <FLFontCarousel
@@ -215,7 +245,7 @@ const Home = () => {
             </h1>
             <p
               className="text-base sm:text-lg md:text-2xl font-poppins mb-14 max-w-3xl me-auto leading-relaxed"
-              style={{ color: "var(--text)" }}
+              style={{ color: "var(--text-on-dark)" }}
             >
               Engineering high-performance intelligence pipelines and
               interactive 3D ecosystems. Converting complex legacy
