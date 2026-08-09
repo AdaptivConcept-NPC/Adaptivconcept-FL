@@ -271,9 +271,8 @@ const DigiArch = () => {
                   color:
                     result === "win"
                       ? "#000"
-                      : themeColor.washType === "light"
-                        ? "#000"
-                        : "#fff",
+                      : themeColor.onColor ||
+                        (themeColor.washType === "light" ? "#000" : "#fff"),
                 }}
               >
                 {result === "win" ? (

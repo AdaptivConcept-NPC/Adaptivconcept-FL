@@ -92,7 +92,7 @@ export default function InvoiceLogin() {
             type="submit"
             disabled={busy}
             className="w-full py-3 font-bold rounded-2xl transition-all disabled:opacity-50"
-            style={{ background: "var(--theme-color)", color: "#fff" }}
+            style={{ background: "var(--theme-color)", color: "var(--on-theme-text, #ffffff)" }}
           >
             {busy ? "Authenticating…" : "Access Portal"}
           </button>

@@ -85,7 +85,7 @@ export default function InvoiceDashboard() {
           <Link
             to="/invoicing/new"
             className="flex items-center gap-2 px-5 py-2 rounded-xl text-white text-sm font-bold transition-all hover:opacity-90"
-            style={{ background: "var(--theme-color)" }}
+            style={{ background: "var(--theme-color)", color: "var(--on-theme-text, #ffffff)" }}
           >
             <Plus size={16} /> New Invoice
           </Link>
@@ -154,7 +154,7 @@ export default function InvoiceDashboard() {
             <Link
               to="/invoicing/new"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl text-white font-bold text-sm"
-              style={{ background: "var(--theme-color)" }}
+              style={{ background: "var(--theme-color)", color: "var(--on-theme-text, #ffffff)" }}
             >
               <Plus size={16} /> Create First Invoice
             </Link>

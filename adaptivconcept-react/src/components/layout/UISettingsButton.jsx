@@ -7,6 +7,7 @@ const UISettingsButton = ({ style, className, onClick }) => {
   const { themeColor } = useTheme();
 
   const accentColor = themeColor.washType === "light" ? "#000" : "#fff";
+  const onThemeColor = themeColor.onColor || accentColor;
 
   return (
     <motion.button
@@ -21,11 +22,11 @@ const UISettingsButton = ({ style, className, onClick }) => {
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
       style={{
         backgroundColor: themeColor.value,
-        color: accentColor,
+        color: onThemeColor,
         borderRadius: "0 0 16px 16px",
-        borderLeft: `2px solid ${accentColor}`,
-        borderRight: `2px solid ${accentColor}`,
-        borderBottom: `2px solid ${accentColor}`,
+        borderLeft: `2px solid ${onThemeColor}`,
+        borderRight: `2px solid ${onThemeColor}`,
+        borderBottom: `2px solid ${onThemeColor}`,
         borderTop: "none",
         padding: "12px 6px",
         width: "42px",

@@ -103,7 +103,7 @@ const getSlotTarget = (slot) => {
   const { horizontalStep, verticalStep, isMobile } = getDeckMetrics();
   const mid = (TOTAL - 1) / 2;
   return {
-    x: -Math.round(slot * horizontalStep),
+    x: Math.round(slot * horizontalStep),
     y: Math.round(slot * verticalStep),
     rotate: Math.round((slot - mid) * (isMobile ? -0.8 : -1)),
     scale: 1,
@@ -129,13 +129,23 @@ const PersonaCard = ({
   slot,
   deckActive,
   selected,
-  isPivot,
+  isHovered,
+  onHoverClaim,
+  onHoverRelease,
   onSelect,
   onCycleComplete,
 }) => {
   const controls = useAnimationControls();
   const buttonRef = useRef(null);
   const flightAbortRef = useRef(0);
+  const hoverTimerRef = useRef(null);
+  const isPivot = deckActive && slot === TOTAL - 1;
+
+  useEffect(() => {
+    return () => {
+      if (hoverTimerRef.current) window.clearTimeout(hoverTimerRef.current);
+    };
+  }, []);
 
   useEffect(() => {
     if (selected) {
@@ -159,6 +169,12 @@ const PersonaCard = ({
         zIndex: 100,
         transition: { type: "spring", stiffness: 210, damping: 20, mass: 1 },
       });
+    } else if (deckActive && isHovered) {
+      controls.start({
+        ...getHoverTarget(slot),
+        opacity: 1,
+        transition: { type: "spring", stiffness: 220, damping: 16, mass: 0.8 },
+      });
     } else if (deckActive) {
       const target = getSlotTarget(slot);
       controls.start({
@@ -177,7 +193,7 @@ const PersonaCard = ({
         transition: { duration: 0.25 },
       });
     }
-  }, [deckActive, isPivot, selected, slot, controls]);
+  }, [deckActive, isHovered, selected, slot, controls]);
 
   useEffect(() => {
     if (!deckActive || selected || !isPivot) return undefined;
@@ -201,18 +217,26 @@ const PersonaCard = ({
             transition: { duration: 0.01 },
           },
           {
-            x: sx + (isMobile ? 48 : 76),
-            y: sy + (isMobile ? 30 : 48),
-            rotate: 12,
-            scale: 1.12,
+            x: sx + (isMobile ? 18 : 24),
+            y: sy + (isMobile ? 20 : 30),
+            rotate: 10,
+            scale: 1.14,
             zIndex: 2,
-            transition: { duration: 0.42, ease: "easeOut" },
+            transition: { duration: 0.4, ease: "easeOut" },
           },
           {
-            x: tx - (isMobile ? 40 : 64),
-            y: ty - (isMobile ? 34 : 56),
-            rotate: -7,
-            scale: 1.06,
+            x: sx - (isMobile ? 30 : 46),
+            y: ty - (isMobile ? 42 : 70),
+            rotate: 8,
+            scale: 1.08,
+            zIndex: 60,
+            transition: { duration: 0.44, ease: "easeInOut" },
+          },
+          {
+            x: tx - (isMobile ? 46 : 70),
+            y: ty - (isMobile ? 64 : 118),
+            rotate: -8,
+            scale: 1.05,
             zIndex: 60,
             transition: { duration: 0.42, ease: "easeInOut" },
           },
@@ -239,6 +263,19 @@ const PersonaCard = ({
     };
   }, [isPivot, deckActive, selected, slot, controls, onCycleComplete]);
 
+  const handleHoverStart = () => {
+    if (selected || isPivot || !deckActive) return;
+    if (hoverTimerRef.current) window.clearTimeout(hoverTimerRef.current);
+    hoverTimerRef.current = window.setTimeout(() => onHoverClaim(persona.id), 110);
+  };
+
+  const handleHoverEnd = () => {
+    if (hoverTimerRef.current) window.clearTimeout(hoverTimerRef.current);
+    onHoverRelease(persona.id);
+  };
+
+  const { horizontalStep } = getDeckMetrics();
+
   return (
     <motion.button
       ref={buttonRef}
@@ -251,19 +288,13 @@ const PersonaCard = ({
         event.stopPropagation();
         onSelect(persona.id);
       }}
-      onHoverStart={() => {
-        if (selected) return;
-        controls.start({
-          ...getHoverTarget(slot),
-          transition: { type: "spring", stiffness: 220, damping: 16, mass: 0.8 },
-        });
-      }}
-      onHoverEnd={() => {
-        if (selected) return;
-        controls.start(getSlotTarget(slot));
-      }}
+      onHoverStart={handleHoverStart}
+      onHoverEnd={handleHoverEnd}
       className="absolute w-32 h-44 sm:w-44 sm:h-56 md:w-52 md:h-64 rounded-2xl border-2 border-white bg-white p-2 pb-8 shadow-[0_18px_35px_rgba(0,0,0,0.48)] cursor-pointer touch-manipulation pointer-events-auto focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
-      style={{ top: "clamp(6.5rem, 10vw, 8rem)", right: "clamp(1.25rem, 4vw, 2rem)" }}
+      style={{
+        top: "clamp(6.5rem, 10vw, 8rem)",
+        right: `calc(clamp(1.25rem, 4vw, 2rem) + ${(TOTAL - 1) * horizontalStep}px)`,
+      }}
     >
       <img
         src={persona.src}
@@ -294,6 +325,7 @@ const PersonaCard = ({
 const ProfilePersonasHero = () => {
   const [rotation, setRotation] = useState(0);
   const [selectedPersonaId, setSelectedPersonaId] = useState(null);
+  const [hoveredPersonaId, setHoveredPersonaId] = useState(null);
   const rootRef = useRef(null);
 
   useEffect(() => {
@@ -313,7 +345,16 @@ const ProfilePersonasHero = () => {
 
   const handleSelect = (id) => {
     setSelectedPersonaId((current) => (current === id ? null : id));
+    setHoveredPersonaId(null);
     setRotation(0);
+  };
+
+  const handleHoverClaim = (id) => {
+    setHoveredPersonaId(id);
+  };
+
+  const handleHoverRelease = (id) => {
+    setHoveredPersonaId((current) => (current === id ? null : current));
   };
 
   const handleCycleComplete = useCallback(() => {
@@ -324,7 +365,6 @@ const ProfilePersonasHero = () => {
     <div ref={rootRef} className="absolute inset-0 z-20 pointer-events-none" aria-label="Profile personas">
       {personas.map((persona, index) => {
         const slot = (rotation + index) % TOTAL;
-        const isPivot = deckActive && slot === TOTAL - 1;
         return (
           <PersonaCard
             key={persona.id}
@@ -332,7 +372,9 @@ const ProfilePersonasHero = () => {
             slot={slot}
             deckActive={deckActive}
             selected={selectedPersonaId === persona.id}
-            isPivot={isPivot}
+            isHovered={hoveredPersonaId === persona.id}
+            onHoverClaim={handleHoverClaim}
+            onHoverRelease={handleHoverRelease}
             onSelect={handleSelect}
             onCycleComplete={handleCycleComplete}
           />

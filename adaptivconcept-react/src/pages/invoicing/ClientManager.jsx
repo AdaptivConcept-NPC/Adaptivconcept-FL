@@ -111,7 +111,7 @@ function ClientModal({ client, onSave, onClose }) {
               type="submit"
               disabled={busy}
               className="flex-1 py-3 rounded-2xl text-white font-bold text-sm disabled:opacity-50 transition-all"
-              style={{ background: "var(--theme-color)" }}
+              style={{ background: "var(--theme-color)", color: "var(--on-theme-text, #ffffff)" }}
             >
               {busy ? "Saving…" : "Save Client"}
             </button>
@@ -176,7 +176,7 @@ export default function ClientManager() {
         <button
           onClick={() => setModal("new")}
           className="flex items-center gap-2 px-5 py-2 rounded-xl text-white text-sm font-bold transition-all hover:opacity-90"
-          style={{ background: "var(--theme-color)" }}
+          style={{ background: "var(--theme-color)", color: "var(--on-theme-text, #ffffff)" }}
         >
           <Plus size={16} /> Add Client
         </button>
@@ -197,7 +197,7 @@ export default function ClientManager() {
           <button
             onClick={() => setModal("new")}
             className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl text-white font-bold text-sm"
-            style={{ background: "var(--theme-color)" }}
+            style={{ background: "var(--theme-color)", color: "var(--on-theme-text, #ffffff)" }}
           >
             <Plus size={16} /> Add First Client
           </button>

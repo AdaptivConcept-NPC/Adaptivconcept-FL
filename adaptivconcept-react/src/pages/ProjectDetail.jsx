@@ -23,7 +23,7 @@ const ProjectDetail = () => {
       <div className="container mx-auto px-6 py-20 text-center min-h-screen flex flex-col items-center justify-center">
         <h2 className="text-2xl md:text-4xl font-comfortaa font-bold text-high mb-6">Project Not Found</h2>
         <Link to="/projects" className="px-8 py-3 rounded-xl font-bold btn-adaptive-hover transition-all"
-          style={{ backgroundColor: 'var(--theme-color)', color: '#ffffff' }}
+          style={{ backgroundColor: 'var(--theme-color)', color: 'var(--on-theme-text, #ffffff)' }}
         >
           Back to Board
         </Link>
@@ -87,8 +87,11 @@ const ProjectDetail = () => {
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-grow py-3.5 rounded-xl text-white font-bold flex items-center justify-center gap-3 btn-adaptive-hover transition-all shadow-lg shadow-adaptiv-orange/10"
-                  style={{ backgroundColor: 'var(--theme-color)' }}
+                  className="flex-grow py-3.5 rounded-xl font-bold flex items-center justify-center gap-3 btn-adaptive-hover transition-all shadow-lg shadow-adaptiv-orange/10"
+                  style={{
+                    backgroundColor: 'var(--theme-color)',
+                    color: 'var(--on-theme-text, #ffffff)',
+                  }}
                 >
                   <i className="bi bi-github text-xl"></i> View Repository
                 </a>

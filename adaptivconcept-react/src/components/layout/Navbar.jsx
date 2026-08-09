@@ -221,7 +221,9 @@ const Navbar = ({ onOpenSettings }) => {
                   style={{
                     gap: 10,
                     backgroundColor: themeColor.value,
-                    color: themeColor.washType === "light" ? "#111111" : "#fff",
+                    color:
+                      themeColor.onColor ||
+                      (themeColor.washType === "light" ? "#111111" : "#fff"),
                     fontSize: "1.1rem",
                     "--cta-color": themeColor.value,
                     position: "relative",

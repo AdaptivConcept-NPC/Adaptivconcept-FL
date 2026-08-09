@@ -93,7 +93,7 @@ export default function InvoicePublicView() {
             <button
               onClick={handleDownloadPdf}
               className="flex items-center gap-2 px-5 py-2.5 rounded-2xl text-white text-sm font-bold transition-all hover:opacity-90 flex-shrink-0"
-              style={{ background: "var(--theme-color)" }}
+              style={{ background: "var(--theme-color)", color: "var(--on-theme-text, #ffffff)" }}
             >
               <Download size={16} /> Download PDF
             </button>

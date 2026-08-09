@@ -70,7 +70,7 @@ const heroTickerLabels = [
   "Systems Development",
   "Business Analysis",
   "AI & Data Intelligence Workflows",
-  "Frontend Web UX/UI",
+  "Frontend Web UI/UX",
   "Secure Backend Business Logic",
   "API Design",
   "CI/CD DevOps",
@@ -176,7 +176,7 @@ const Home = () => {
       {/* spacer / Intro Section */}
       <div
         ref={introRef}
-        className="main-hero min-h-screen flex flex-col items-center justify-center p-8 md:p-20 relative overflow-hidden"
+        className="main-hero min-h-screen flex flex-col items-center justify-center p-10 md:p-20 relative overflow-hidden"
       >
         <ProfilePersonasHero key={personaResetKey} />
         {/* Large Central Font Carousel */}
@@ -189,7 +189,7 @@ const Home = () => {
           />
         </div> */}
 
-        <div className="relative z-10 w-full flex flex-col items-center gap-6 md:gap-12 pt-10 md:pt-20">
+        <div className="relative z-10 w-full flex flex-col items-center gap-6 md:gap-12 mt-10 pt-10 md:pt-20">
           {/* Hide until proper video content is available
           
           <VideoIntroPreview 
@@ -202,7 +202,15 @@ const Home = () => {
               className="text-4xl sm:text-5xl md:text-6xl font-comfortaa font-bold mb-10 tracking-tight me-auto leading-tight"
               style={{ color: "var(--text-on-dark)" }}
             >
-              <u>S</u>enior<FLFontCarousel size="text-4xl sm:text-5xl md:text-6xl" className="inline-flex align-middle leading-none mx-1" />{" "}<br />
+              {/* <span aria-hidden="true"
+                className="absolute-top-1-left-8-z text-[0.72em] leading-none opacity-80 font-comfortaa"
+                style={{
+                  // color: "var(--text-on-dark)",
+                  color: "var(--theme-color)",
+                  // fontFamily: activeFontFamily,
+                  textShadow: "var(--heading-shadow)",
+                }}>&gt;</span>  */}
+              <span className="terminal-cursor" aria-hidden="true"><span>S</span><span className="term-cursor-block" /></span>enior<FLFontCarousel size="text-4xl sm:text-5xl md:text-6xl" className="inline-flex align-middle leading-none mx-1" />{" "}<br />
               {/* <span 
                 className="italic transition-all duration-500 inline-block"
                 style={{
@@ -347,11 +355,13 @@ const Home = () => {
                     style={{
                       backgroundColor: themeColor.value,
                       boxShadow: `0 10px 30px -10px ${themeColor.value}4d`,
-                      color: isHighContrast
-                        ? themeColor.washType === "light"
-                          ? "#000000"
-                          : "#ffffff"
-                        : "#ffffff",
+                      color: themeColor.onColor
+                        ? themeColor.onColor
+                        : isHighContrast
+                          ? themeColor.washType === "light"
+                            ? "#000000"
+                            : "#ffffff"
+                          : "#ffffff",
                     }}
                   >
                     Let's Talk <ChevronRight size={22} />
@@ -552,11 +562,13 @@ const Home = () => {
                           }`}
                         style={{
                           backgroundColor: themeColor.value,
-                          color: isHighContrast
-                            ? themeColor.washType === "light"
-                              ? "#000000"
-                              : "#ffffff"
-                            : "#ffffff",
+                          color: themeColor.onColor
+                            ? themeColor.onColor
+                            : isHighContrast
+                              ? themeColor.washType === "light"
+                                ? "#000000"
+                                : "#ffffff"
+                              : "#ffffff",
                         }}
                       >
                         {status === "idle" && (
@@ -725,7 +737,7 @@ const Home = () => {
                       className="w-full py-3.5 rounded-xl border border-theme text-high font-bold flex items-center justify-center gap-2 btn-adaptive-hover transition-all"
                       style={{
                         backgroundColor: "var(--theme-color)",
-                        color: "contrast-color(var(--theme-color))",
+                        color: "var(--on-theme-text, #ffffff)",
                         borderColor: "transparent",
                       }}
                     >

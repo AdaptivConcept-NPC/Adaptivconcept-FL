@@ -102,7 +102,7 @@ function PaymentModal({ invoice, onClose, onPaid }) {
             <button type="button" onClick={onClose} className="flex-1 py-3 bg-white/5 border border-white/10 rounded-2xl text-gray-400 text-sm hover:bg-white/10 transition-all">
               Cancel
             </button>
-            <button type="submit" disabled={busy} className="flex-1 py-3 rounded-2xl text-white font-bold text-sm disabled:opacity-50 transition-all" style={{ background: "var(--theme-color)" }}>
+            <button type="submit" disabled={busy} className="flex-1 py-3 rounded-2xl text-white font-bold text-sm disabled:opacity-50 transition-all" style={{ background: "var(--theme-color)", color: "var(--on-theme-text, #ffffff)" }}>
               {busy ? "Recording…" : "Record Payment"}
             </button>
           </div>
@@ -215,7 +215,7 @@ export default function InvoiceDetail() {
                 onClick={handleSend}
                 disabled={busy}
                 className="px-4 py-2 rounded-xl text-white text-sm font-bold transition-all disabled:opacity-50"
-                style={{ background: "var(--theme-color)" }}
+                style={{ background: "var(--theme-color)", color: "var(--on-theme-text, #ffffff)" }}
               >
                 Mark Sent
               </button>
@@ -225,7 +225,7 @@ export default function InvoiceDetail() {
             <button
               onClick={() => setPayModal(true)}
               className="flex items-center gap-2 px-4 py-2 rounded-xl text-white text-sm font-bold transition-all hover:opacity-90"
-              style={{ background: "var(--theme-color)" }}
+              style={{ background: "var(--theme-color)", color: "var(--on-theme-text, #ffffff)" }}
             >
               <Banknote size={16} /> Record Payment
             </button>

@@ -170,7 +170,7 @@ const BlogDetail = () => {
         <Link
           to="/blog"
           className="px-8 py-3 rounded-xl font-bold btn-adaptive-hover transition-all"
-          style={{ backgroundColor: 'var(--theme-color)', color: '#ffffff' }}
+          style={{ backgroundColor: 'var(--theme-color)', color: 'var(--on-theme-text, #ffffff)' }}
         >
           Back to Blog
         </Link>

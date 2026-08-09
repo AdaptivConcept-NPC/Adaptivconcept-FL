@@ -363,7 +363,7 @@ export default function InvoiceEditor() {
             onClick={() => handleSave(true)}
             disabled={busy}
             className="px-8 py-3 rounded-2xl text-white font-bold text-sm disabled:opacity-50 transition-all"
-            style={{ background: "var(--theme-color)" }}
+            style={{ background: "var(--theme-color)", color: "var(--on-theme-text, #ffffff)" }}
           >
             {busy ? "Saving…" : isEdit ? "Save Changes" : "Create Invoice"}
           </button>

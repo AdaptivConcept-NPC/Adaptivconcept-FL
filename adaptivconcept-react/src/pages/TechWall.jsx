@@ -175,11 +175,12 @@ const TechWall = () => {
                     ? "#000000"
                     : themeColor.value,
               color:
-                themeColor.washType === "coal"
+                themeColor.onColor ||
+                (themeColor.washType === "coal"
                   ? "#000000"
                   : themeColor.washType === "light"
                     ? "#ffffff"
-                    : "#ffffff",
+                    : "#ffffff"),
             }}
             onClick={() => navigate("/projects")}
           >

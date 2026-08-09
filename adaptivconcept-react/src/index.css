@@ -138,3 +138,30 @@ code {
     font-size: calc(4rem * var(--heading-scale));
   }
 }
+
+/* Terminal-style block cursor: a box that blinks around a letter,
+   with mix-blend-mode so the letter appears as a cut-out while on. */
+.terminal-cursor {
+  position: relative;
+  display: inline-block;
+}
+
+.terminal-cursor > .term-cursor-block {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: var(--text-on-dark);
+  mix-blend-mode: difference;
+  animation: terminal-cursor-blink 1s step-end infinite;
+}
+
+@keyframes terminal-cursor-blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  50.01%,
+  100% {
+    opacity: 0;
+  }
+}

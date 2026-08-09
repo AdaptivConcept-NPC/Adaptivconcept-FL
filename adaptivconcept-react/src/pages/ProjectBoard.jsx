@@ -240,7 +240,7 @@ const ProjectBoard = () => {
                       className={`flex items-center justify-center gap-2 w-full py-3 mt-auto rounded-xl font-bold btn-adaptive-hover transition-all shadow-lg ${lab.shadowColor}`}
                       style={{
                         backgroundColor: "var(--theme-color)",
-                        color: "contrast-color(var(--theme-color))",
+                        color: "var(--on-theme-text, #ffffff)",
                       }}
                     >
                       Enter Lab <ChevronRight size={18} />
@@ -341,7 +341,7 @@ const ProjectBoard = () => {
                           className="flex items-center justify-center gap-2 w-full py-3 mt-auto rounded-xl font-bold btn-adaptive-hover transition-all shadow-lg shadow-adaptiv-orange/20"
                           style={{
                             backgroundColor: "var(--theme-color)",
-                            color: "contrast-color(var(--theme-color))",
+                            color: "var(--on-theme-text, #ffffff)",
                           }}
                         >
                           Deploy Request <Send size={18} />
@@ -388,7 +388,7 @@ const ProjectBoard = () => {
                     activeCategory === cat
                       ? {
                           backgroundColor: "var(--theme-color)",
-                          color: "contrast-color(var(--theme-color))",
+                          color: "var(--on-theme-text, #ffffff)",
                         }
                       : {}
                   }
@@ -490,7 +490,7 @@ const ProjectBoard = () => {
                   className="w-full py-3.5 rounded-xl border border-theme text-high font-bold flex items-center justify-center gap-2 btn-adaptive-hover transition-all"
                   style={{
                     backgroundColor: "var(--theme-color)",
-                    color: "contrast-color(var(--theme-color))",
+                    color: "var(--on-theme-text, #ffffff)",
                     borderColor: "transparent",
                   }}
                 >

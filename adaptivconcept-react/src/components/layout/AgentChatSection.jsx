@@ -117,7 +117,7 @@ const AgentChatSection = ({ accentColor, onMessage }) => {
           disabled={!input.trim()}
           aria-label="Send message"
           className="p-2.5 rounded-lg text-white transition-opacity disabled:opacity-40 hover:opacity-90"
-          style={{ backgroundColor: accentColor }}
+          style={{ backgroundColor: accentColor, color: "var(--on-theme-text, #ffffff)" }}
         >
           <Send size={16} />
         </button>

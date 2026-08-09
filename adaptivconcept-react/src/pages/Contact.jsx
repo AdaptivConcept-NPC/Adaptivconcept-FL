@@ -274,7 +274,7 @@ const Contact = () => {
                     }`}
                     style={{ 
                       backgroundColor: themeColor.value,
-                      color: themeColor.washType === "light" ? "#111111" : "#ffffff",
+                      color: themeColor.onColor || (themeColor.washType === "light" ? "#111111" : "#ffffff"),
                       boxShadow: `0 20px 40px -10px ${themeColor.value}4d`
                     }}
                   >

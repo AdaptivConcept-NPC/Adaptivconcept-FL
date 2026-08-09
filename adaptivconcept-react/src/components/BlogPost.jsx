@@ -86,7 +86,7 @@ const BlogPost = ({ post, index = 0 }) => {
               className="flex-grow py-3.5 rounded-xl border border-theme text-high font-bold flex items-center justify-center gap-2 btn-adaptive-hover transition-all text-sm"
               style={{
                 backgroundColor: 'var(--theme-color)',
-                color: 'contrast-color(var(--theme-color))',
+                color: 'var(--on-theme-text, #ffffff)',
                 borderColor: 'transparent',
               }}
             >

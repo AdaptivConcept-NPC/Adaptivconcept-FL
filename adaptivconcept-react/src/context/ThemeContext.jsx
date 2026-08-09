@@ -52,12 +52,14 @@ const colors = [
     value: "#00f2ff",
     class: "text-adaptiv-blue",
     washType: "white",
+    onColor: "#0a0a0a",
   },
   {
     name: "Cyber Green",
     value: "#39ff14",
     class: "text-adaptiv-green",
     washType: "white",
+    onColor: "#0a0a0a",
   },
   {
     name: "Vibrant Purple",
@@ -216,6 +218,19 @@ export const ThemeProvider = ({ children }) => {
     root.style.setProperty("--theme-color-rgb", rgb);
     root.style.setProperty("--text-on-dark", "#f8f9fa");
 
+    // Text color that sits ON the theme color (button labels etc).
+    // Neon Blue / Cyber Green are bright, so text over the theme color
+    // must be dark for contrast; Silver uses dark text on its light theme
+    // color; every other theme keeps white.
+    root.style.setProperty(
+      "--on-theme-text",
+      themeColor.onColor
+        ? themeColor.onColor
+        : themeColor.washType === "light"
+          ? "#0a0a0a"
+          : "#ffffff",
+    );
+
     // High intensity version for UI elements
     root.style.setProperty("--theme-color-glow", `rgba(${rgb}, 0.4)`);
 
@@ -355,7 +370,7 @@ export const ThemeProvider = ({ children }) => {
       );
       root.style.setProperty("--glass-glow", "none");
       root.style.setProperty("--btn-hover-bg", "var(--theme-color)");
-      root.style.setProperty("--btn-hover-text", "#ffffff");
+      root.style.setProperty("--btn-hover-text", "var(--on-theme-text, #ffffff)");
       root.style.setProperty("--input-bg", "rgba(255, 255, 255, 0.05)");
     }
   }, [themeColor]);
