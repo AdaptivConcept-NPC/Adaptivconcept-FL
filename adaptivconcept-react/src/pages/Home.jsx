@@ -178,7 +178,7 @@ const Home = () => {
         ref={introRef}
         className="main-hero min-h-screen flex flex-col items-center justify-center p-8 md:p-20 relative overflow-hidden"
       >
-        <ProfilePersonasHero resetKey={personaResetKey} />
+        <ProfilePersonasHero key={personaResetKey} />
         {/* Large Central Font Carousel */}
         {/* <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full pointer-events-none opacity-10 select-none">
           <FLFontCarousel
