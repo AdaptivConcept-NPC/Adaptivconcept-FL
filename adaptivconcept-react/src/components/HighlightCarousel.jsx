@@ -184,7 +184,7 @@ const HighlightCarousel = ({ className = "" }) => {
 
   return (
     <div
-      className={`relative w-full flex flex-col items-center justify-center text-center px-4 py-8 group/carousel ${className}`}
+      className={`relative w-full flex flex-col items-center justify-center text-center px-4 pt-4 pb-8 group/carousel ${className}`}
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       onTouchStart={() => setIsPaused(true)}
@@ -307,10 +307,11 @@ const HighlightCarousel = ({ className = "" }) => {
             key={i}
             onClick={() => setIndex(i)}
             className={`h-1.5 rounded-full transition-all duration-500 ${
-              i === index ? "w-10" : "bg-gray-800/50 w-5"
+              i === index ? "w-10" : "w-5"
             }`}
             style={{
-              backgroundColor: i === index ? themeColor.value : undefined,
+              backgroundColor: i === index ? themeColor.value : "var(--text)",
+              opacity: i === index ? 1 : 0.5,
               boxShadow: i === index ? `0 0 10px ${themeColor.value}80` : "none",
             }}
             aria-label={`Go to slide ${i + 1}`}

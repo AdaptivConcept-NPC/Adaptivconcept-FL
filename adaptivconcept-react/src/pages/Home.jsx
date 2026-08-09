@@ -66,6 +66,18 @@ const ParallaxSection = ({ children, index, total }) => {
   );
 };
 
+const heroTickerLabels = [
+  "Systems Development",
+  "Business Analysis",
+  "AI & Data Intelligence Workflows",
+  "Frontend Web UX/UI",
+  "Secure Backend Business Logic",
+  "API Design",
+  "CI/CD DevOps",
+  "Microsoft 365 & Power Platform",
+  "Github Project Management",
+];
+
 const Home = () => {
   const { themeColor, activeFontFamily, activeFontScale } =
     useTheme();
@@ -213,7 +225,7 @@ const Home = () => {
                   lineHeight: 1,
                 }}
               >
-                Agentic AI Engineer
+                Agentic AI <br/>Engineer
               </span>
               <br />
               <span className="relative inline-block">
@@ -240,7 +252,7 @@ const Home = () => {
                     marginLeft: "-10px",
                   }}
                 >
-                  Digital Architect
+                  Digital <br/>Architect
                 </span>
               </span>
             </h1>
@@ -248,9 +260,9 @@ const Home = () => {
               className="text-base sm:text-lg md:text-2xl font-poppins mb-14 max-w-3xl me-auto leading-relaxed"
               style={{ color: "var(--text-on-dark)" }}
             >
-              Engineering high-performance intelligence pipelines and
-              interactive 3D ecosystems. Converting complex legacy
-              infrastructure into automated future-states.
+              I engineer high-performance automated intelligence pipelines, 
+              interactive workflows &amp; digital ecosystems. I can help you convert complex legacy
+              code &amp; infrastructure into automated future-states.
             </p>
 
             {/* Scroll Action */}
@@ -259,7 +271,7 @@ const Home = () => {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1, duration: 1 }}
-              className="flex flex-col items-center gap-3 group cursor-pointer z-20"
+              className="flex flex-col items-center gap-3 group cursor-pointer z-20 mb-10"
             >
               <div className="w-9 h-14 rounded-full border-2 border-theme flex justify-center p-1.5 group-hover:border-adaptiv-orange transition-colors">
                 <motion.div
@@ -274,6 +286,24 @@ const Home = () => {
             </motion.button>
           </div>
 
+        </div>
+
+        {/* Scrolling expertise ticker strip */}
+        <div className="absolute bottom-0 left-0 w-full pointer-events-none select-none" style={{ color: contrastColor }}>
+          <div className="expertise-ticker overflow-hidden w-full">
+            <div className="expertise-ticker-track flex items-center whitespace-nowrap">
+              {[...Array(2)].map((_, dup) => (
+                <div key={dup} className="flex items-center shrink-0">
+                  {heroTickerLabels.map((label, i) => (
+                    <span key={`${dup}-${i}`} className="expertise-ticker-item">
+                      <span className="expertise-ticker-label">{label}</span>
+                      <span className="expertise-ticker-sep">✦</span>
+                    </span>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
       </div>
@@ -291,13 +321,19 @@ const Home = () => {
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.2, duration: 0.8 }}
               >
-                <span className="inline- flexz flex-colz items-center gap-2 px-6 py-2 rounded-full glass-theme text-high text-sm font-vietnam mb-10">
-                  {/* <span
-                    className="w-2.5 h-2.5 rounded-full animate-pulse"
-                    style={{ backgroundColor: themeColor.value }}
-                  ></span> */}
-                  Hi, my name is <b>Thabang Mposula</b>, and I am an Agentic AI Systems Developer.
-                </span>
+                <div className="flex flex-col items-center justify-center gap-3">
+                  <div className="inline-block p-4 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-xl mb-6 mx-auto">
+                    {/* <User size={48} style={{ color: themeColor.value }} /> */}
+                    <img
+                      src="/media/my-profile-pic-linkedin.jpg"
+                      alt="LinkedIn Profile Picture - Thabang Mposula"
+                      className="w-48 h-48 rounded-full"
+                    />
+                  </div>
+                  <span className="inline- flexz flex-colz items-center gap-2 px-6 py-2 rounded-full glass-theme text-high text-sm font-vietnam mb-2">
+                    Hi, my name is <b>Thabang Mposula</b>, and I am an Agentic AI Systems Developer.
+                  </span>
+                </div>
 
 
                 <div className="w-full max-w-4xl flex items-center justify-center pb-2">
@@ -337,13 +373,13 @@ const Home = () => {
       <ParallaxSection index={1} total={sectionsCount}>
         <div ref={contactRef} className="container mx-auto px-6 py-10">
           <div
-            className="glass-theme rounded-[32px] md:rounded-[60px] p-6 md:pt-20 md:ps-20 md:pe-6 relative overflow-hidden group"
+            className="glass-theme rounded-[32px] md:rounded-[60px] p-6 md:py-20 md:ps-20 md:pe-6 relative overflow-hidden group"
             style={{ opacity: 1 }}
           >
             {/* Subtle glow effect */}
             <div className="absolute -top-24 -right-24 w-[500px] h-[500px] bg-adaptiv-orange/5 blur-[120px] rounded-full group-hover:bg-adaptiv-orange/10 transition-colors duration-1000"></div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
               <div>
                 <h2
                   className="text-3xl sm:text-4xl md:text-6xl font-bold mb-10 leading-tight transition-all duration-500"
@@ -413,17 +449,18 @@ const Home = () => {
                   initial={{ opacity: 0, x: 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  className="rounded-[32px] md:rounded-[60px] glass-theme p-6 md:p-14 relative group overflow-hidden "
+                  className="rounded-[32px] md:rounded-[60px] glass-theme p-6 md:p-10 relative group overflow-hidden "
                 >
                   <div className="absolute -bottom-24 -left-24 w-[300px] h-[300px] bg-adaptiv-orange/5 blur-[80px] rounded-full group-hover:bg-adaptiv-orange/10 transition-all duration-1000"></div>
 
                   <div className="relative z-10">
                     <h3
-                      className="text-2xl md:text-3xl font-comfortaa font-bold text-high mb-2"
+                      className="text-2xlmd:text-3xl font-comfortaa font-bold text-highz mb-2"
                       style={{
                         fontFamily: activeFontFamily,
                         textShadow: "var(--heading-shadow)",
-                        fontSize: `calc(2rem * ${activeFontScale})`,
+                        // fontSize: `calc(0.2rem * ${activeFontScale})`,
+                        fontSize: "calc(2.4rem)",
                         lineHeight: 1,
                       }}
                     >
@@ -554,7 +591,7 @@ const Home = () => {
       <ParallaxSection index={2} total={sectionsCount}>
         <div className="py-10">
           <div
-            className="container mx-auto px-6 rounded-[32px] md:rounded-[60px] p-6 md:p-20 relative glass-theme"
+            className="container mx-auto px-6 rounded-[32px] md:rounded-[60px] p-6 md:px-10 md:py-20 relative glass-theme"
             style={{ opacity: 1 }}
           >
             <div className="flex flex-col md:flex-row justify-between items-end gap-10 mb-16">

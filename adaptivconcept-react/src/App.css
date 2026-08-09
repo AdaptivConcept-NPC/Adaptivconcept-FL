@@ -33,13 +33,57 @@
   background: rgba(0, 0, 0, 0.55);
 }
 
-.main-hero::after {
+/* .main-hero::after {
   content: "";
   position: absolute;
   bottom: 0;
   background: var(--theme-color);
   height: 5vh;
   width: 100%;
+} */
+
+/* Scrolling expertise ticker strip replacing the hero bottom accent */
+.expertise-ticker {
+  width: 100%;
+  height: 5vh;
+  min-height: 2.25rem;
+  background: var(--theme-color);
+  overflow: hidden;
+}
+
+.expertise-ticker-track {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  white-space: nowrap;
+  will-change: transform;
+  animation: expertise-scroll 30s linear infinite;
+}
+
+.expertise-ticker-item {
+  display: inline-flex;
+  align-items: center;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.expertise-ticker-label {
+  padding: 0 1.25rem;
+  text-transform: uppercase;
+}
+
+.expertise-ticker-sep {
+  padding: 0 0.25rem;
+  opacity: 0.4;
+}
+
+@keyframes expertise-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .expertise-ticker-track { animation: none; }
 }
 
 /* Glass Theme - for large sections and containers */
