@@ -2,13 +2,13 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import { motion, useAnimationControls } from "framer-motion";
 
 const personas = [
-  {
-    id: 1,
-    src: "/media/profile_images/" + encodeURIComponent("thabang_mp (2).jpg"),
-    label: "Professional Systems Developer",
-    description:
-      "Reliable systems delivery grounded in enterprise architecture, thoughtful engineering patterns, and maintainable implementation.",
-  },
+//   {
+//     id: 1,
+//     src: "/media/profile_images/" + encodeURIComponent("thabang_mp (2).jpg"),
+//     label: "Professional Systems Developer",
+//     description:
+//       "Reliable systems delivery grounded in enterprise architecture, thoughtful engineering patterns, and maintainable implementation.",
+//   },
   {
     id: 2,
     src: "/media/profile_images/" + encodeURIComponent("thabang_mp (4).jpg"),
@@ -23,13 +23,13 @@ const personas = [
     description:
       "A practical builder who sweats the details that make products resilient, usable, and ready for real teams.",
   },
-  {
-    id: 4,
-    src: "/media/profile_images/" + encodeURIComponent("thabang_mp (6).jpg"),
-    label: "The Tech Vector",
-    description:
-      "An experimental lens on open source, local AI tooling, and rapid paths from idea to working software.",
-  },
+//   {
+//     id: 4,
+//     src: "/media/profile_images/" + encodeURIComponent("thabang_mp (6).jpg"),
+//     label: "The Tech Vector",
+//     description:
+//       "An experimental lens on open source, local AI tooling, and rapid paths from idea to working software.",
+//   },
   {
     id: 5,
     src: "/media/profile_images/" + encodeURIComponent("thabang_mp (7).jpg"),
@@ -108,6 +108,19 @@ const getSlotTarget = (slot) => {
     rotate: Math.round((slot - mid) * (isMobile ? -0.8 : -1)),
     scale: 1,
     zIndex: TOTAL - slot,
+  };
+};
+
+const getHoverTarget = (slot) => {
+  const target = getSlotTarget(slot);
+  const { isMobile } = getDeckMetrics();
+  return {
+    ...target,
+    x: target.x - (isMobile ? 26 : 44),
+    y: target.y - (isMobile ? 26 : 18),
+    rotate: target.rotate - (isMobile ? 14 : 16),
+    scale: isMobile ? 1.08 : 1.05,
+    zIndex: TOTAL + 5,
   };
 };
 
@@ -238,8 +251,17 @@ const PersonaCard = ({
         event.stopPropagation();
         onSelect(persona.id);
       }}
-      onHoverStart={() => !selected && controls.start({ scale: 1.03, y: getSlotTarget(slot).y - (isPivot ? 8 : 4) })}
-      onHoverEnd={() => !selected && controls.start(getSlotTarget(slot))}
+      onHoverStart={() => {
+        if (selected) return;
+        controls.start({
+          ...getHoverTarget(slot),
+          transition: { type: "spring", stiffness: 220, damping: 16, mass: 0.8 },
+        });
+      }}
+      onHoverEnd={() => {
+        if (selected) return;
+        controls.start(getSlotTarget(slot));
+      }}
       className="absolute w-32 h-44 sm:w-44 sm:h-56 md:w-52 md:h-64 rounded-2xl border-2 border-white bg-white p-2 pb-8 shadow-[0_18px_35px_rgba(0,0,0,0.48)] cursor-pointer touch-manipulation pointer-events-auto focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
       style={{ top: "clamp(6.5rem, 10vw, 8rem)", right: "clamp(1.25rem, 4vw, 2rem)" }}
     >
