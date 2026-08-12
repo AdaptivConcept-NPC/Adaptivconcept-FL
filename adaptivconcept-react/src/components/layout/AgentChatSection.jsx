@@ -108,7 +108,7 @@ const AgentChatSection = ({ accentColor, onMessage }) => {
           }}
           placeholder="Ask the agent..."
           aria-label="Agent chat message input"
-          className="flex-1 px-3 py-2 rounded border bg-black/50 text-white text-sm placeholder:text-white/40 focus:outline-none"
+          className="flex-1 px-3 py-2 rounded border bg-black/50 text-white text-sm placeholder:text-white/40 focus:outline-none chat-input"
           style={{ borderColor: "var(--glass-border)" }}
         />
         <button

@@ -4,6 +4,7 @@ import { Mail, Bot, X, ChevronRight, MessageCircle, Zap, Settings2 } from "lucid
 import { useTheme } from "../../context/ThemeContext";
 import AccordionSection from "./AccordionSection";
 import AgentChatSection from "./AgentChatSection";
+import "./GlobalFAB.css";
 
 const FAB_PRIMARY = "#fd3b12";
 
@@ -18,10 +19,16 @@ const FAB_PRIMARY = "#fd3b12";
 const GlobalFAB = ({ show = true, customActions = [], onOpenSettings }) => {
   const { themeColor } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
+  const [openSection, setOpenSection] = useState(null);
 
   if (!show) return null;
 
   const accentColor = themeColor.value;
+
+  // Only one accordion section is expanded at a time.
+  const toggleSection = (id) => {
+    setOpenSection((prev) => (prev === id ? null : id));
+  };
 
   const defaultActions = [
     {
@@ -66,10 +73,10 @@ const GlobalFAB = ({ show = true, customActions = [], onOpenSettings }) => {
             animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
             exit={{ opacity: 0, y: 24, scale: 0.9, filter: "blur(10px)" }}
             transition={{ type: "spring", damping: 26, stiffness: 260 }}
-            className="w-[320px] max-w-[calc(100vw-4rem)] pointer-events-auto glass-panel rounded-2xl overflow-hidden"
+            className="w-[320px] max-w-[calc(100vw-4rem)] pointer-events-auto glass-panel rounded-2xl overflow-hidden fab-white-panel"
             style={{
-              borderColor: "var(--glass-border)",
-              backgroundColor: "var(--glass-bg)",
+              borderColor: "var(--theme-color)",
+              backgroundColor: "#fff",
             }}
             role="region"
             aria-label="Assistant menu"
@@ -81,9 +88,15 @@ const GlobalFAB = ({ show = true, customActions = [], onOpenSettings }) => {
                   className="w-8 h-8 rounded-full flex items-center justify-center"
                   style={{ backgroundColor: `${accentColor}33`, color: accentColor }}
                 >
-                  <MessageCircle size={18} />
+                  {/* <MessageCircle size={18} /> */}
+                  <img
+                    src="/media/aicodex-spirit-bird.svg"
+                    alt="Spirit Bird Logo"
+                    className="w-[34px] h-[34px] p-1.5 object-contain"
+                    draggable={false}
+                  />
                 </span>
-                <span className="text-high font-bold text-sm">Assistant</span>
+                <span className="text-high font-bold text-sm">Spirit Bird Assistant</span>
               </span>
               <button
                 type="button"
@@ -95,12 +108,15 @@ const GlobalFAB = ({ show = true, customActions = [], onOpenSettings }) => {
               </button>
             </div>
 
-            <div className="p-3 space-y-3 max-h-[60vh] overflow-y-auto no-scrollbar">
+            <div className="p-3 space-y-2 max-h-[60vh] overflow-y-auto no-scrollbar">
               {/* 1. Agent Chat Section */}
               <AccordionSection
-                title="Spirit Bird Chat"
+                title="Spirit Book Chat"
                 icon={<Bot size={16} />}
                 accentColor={accentColor}
+                className="fab-accordion"
+                isOpen={openSection === "chat"}
+                onToggle={() => toggleSection("chat")}
               >
                 <AgentChatSection
                   accentColor={accentColor}
@@ -113,6 +129,9 @@ const GlobalFAB = ({ show = true, customActions = [], onOpenSettings }) => {
                 title="Quick Actions"
                 icon={<Zap size={16} />}
                 accentColor={accentColor}
+                className="fab-accordion"
+                isOpen={openSection === "actions"}
+                onToggle={() => toggleSection("actions")}
               >
                 <div className="space-y-2">
                   {actions.map((action) => (
@@ -123,7 +142,7 @@ const GlobalFAB = ({ show = true, customActions = [], onOpenSettings }) => {
                       className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/5 transition-colors text-left group"
                     >
                       <span
-                        className="w-8 h-8 rounded-full flex items-center justify-center text-white shrink-0 transition-transform group-hover:scale-105"
+                        className="w-8 h-8 rounded-full flex items-center justify-center text-white shrink-0 transition-transform group-hover:scale-105 icon-badge"
                         style={{
                           backgroundColor: action.color || accentColor,
                           boxShadow: `0 4px 10px -4px ${action.color || accentColor}66`,
@@ -146,6 +165,9 @@ const GlobalFAB = ({ show = true, customActions = [], onOpenSettings }) => {
                 title="Settings"
                 icon={<Settings2 size={16} />}
                 accentColor={accentColor}
+                className="fab-accordion"
+                isOpen={openSection === "settings"}
+                onToggle={() => toggleSection("settings")}
               >
                 <div className="space-y-2">
                   <button

@@ -1,32 +1,36 @@
-import React, { useState } from "react";
+import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronUp, ChevronDown } from "lucide-react";
 
 /**
- * AccordionSection - A reusable collapsible section for the GlobalFAB menu
+ * AccordionSection - A reusable collapsible section for the GlobalFAB menu.
+ * Controlled: the parent owns `isOpen`/`onToggle` so multiple sections can be
+ * made mutually exclusive (only one expanded at a time).
  * @param {ReactNode} title - Section title
  * @param {ReactNode} icon - Leading icon node
- * @param {boolean} defaultOpen - Whether the section starts expanded
+ * @param {boolean} isOpen - Whether the section is expanded
+ * @param {Function} onToggle - Called when the header is clicked
  * @param {string} accentColor - Theme color for active styling
  * @param {ReactNode} children - Body content
  */
 const AccordionSection = ({
   title,
   icon,
-  defaultOpen = false,
+  isOpen,
+  onToggle,
   accentColor,
+  className = "",
   children,
 }) => {
-  const [isOpen, setIsOpen] = useState(defaultOpen);
 
   return (
     <div
-      className="overflow-hidden rounded-xl border border-white/10"
+      className={`overflow-hidden rounded-xl border border-white/10 ${className}`}
       style={{ backgroundColor: "var(--glass-bg)" }}
     >
       <button
         type="button"
-        onClick={() => setIsOpen((prev) => !prev)}
+        onClick={onToggle}
         aria-expanded={isOpen}
         className="w-full flex items-center justify-between gap-3 px-4 py-3 hover:bg-white/5 transition-colors text-left"
       >

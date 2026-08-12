@@ -1,0 +1,75 @@
+/* GlobalFAB - Floating Action Button white-panel styles.
+   The expanded menu panel is hard-coded to a white surface, so all
+   text/icon/surfaces inside it must be dark for contrast on EVERY theme
+   (decoupled from the dark/light CSS variables driven by ThemeContext). */
+
+.fab-white-panel {
+  color: #0a0a0a;
+  border-color: var(--theme-color) !important;
+  background-color: #ffffff;
+}
+
+/* Primary text inside the white panel */
+.fab-white-panel .text-high,
+.fab-white-panel .text-mid {
+  color: #0a0a0a;
+}
+
+.fab-white-panel .text-low {
+  color: #4b5563;
+}
+
+/* Header icon chip and misc accent-tinted blocks keep the theme color;
+   nothing to force here because they already carry an explicit tint. */
+
+/* Glass panels/cards nested inside the white panel must flip to light */
+.fab-white-panel .glass-panel,
+.fab-white-panel .glass-card,
+.fab-white-panel .glass-theme {
+  background-color: rgba(10, 10, 10, 0.04) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06) !important;
+}
+
+.fab-white-panel .glass-panel:hover,
+.fab-white-panel .glass-card:hover,
+.fab-white-panel .glass-theme:hover,
+.fab-white-panel .glass-theme-hover:hover {
+  background-color: rgba(10, 10, 10, 0.06) !important;
+}
+
+/* Accordion sections are nested glass surfaces -> light */
+.fab-white-panel .fab-accordion {
+  background-color: rgba(10, 10, 10, 0.04) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* All light-hover utility tints inside the white panel become dark-tinted */
+.fab-white-panel .hover\:bg-white\/5:hover,
+.fab-white-panel .hover\:bg-white\/10:hover {
+  background-color: rgba(0, 0, 0, 0.06) !important;
+}
+
+.fab-white-panel .bg-white\/5 {
+  background-color: rgba(0, 0, 0, 0.04) !important;
+}
+
+.fab-white-panel .bg-white\/10 {
+  background-color: rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Icon badges that sit on colored circles: keep the theme->dark contrast */
+.fab-white-panel .icon-badge {
+  color: var(--on-theme-text, #ffffff) !important;
+}
+
+/* Chat input keeps a dark field so white text still reads inside it */
+.fab-white-panel .chat-input {
+  background-color: rgba(10, 10, 10, 0.9) !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.fab-white-panel .chat-input::placeholder {
+  color: rgba(255, 255, 255, 0.45) !important;
+}

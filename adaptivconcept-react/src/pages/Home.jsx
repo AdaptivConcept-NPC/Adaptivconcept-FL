@@ -321,7 +321,7 @@ const Home = () => {
         <ParallaxSection index={0} total={sectionsCount}>
           <div className="container mx-auto px-6 py-10 py-10Z">
             <div
-              className="max-w-5xl px-6 text-center glass-theme rounded-[32px] md:rounded-[60px] p-6 md:p-20 relative"
+              className="max-w-5xl px-6 mx-auto text-center glass-theme rounded-[32px] md:rounded-[60px] p-6 md:p-20 relative"
               style={{ opacity: 1 }}
             >
               <motion.div
