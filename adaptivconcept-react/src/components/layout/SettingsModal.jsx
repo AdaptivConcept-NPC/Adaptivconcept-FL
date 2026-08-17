@@ -11,6 +11,7 @@ import {
   RotateCcw,
   Gauge,
   Layers,
+  Zap,
 } from "lucide-react";
 import { useTheme } from "../../context/ThemeContext";
 
@@ -32,6 +33,13 @@ const SettingsModal = ({ isOpen, onClose }) => {
     retroDitherClickWave,
     setRetroDitherClickWave,
     resetRetroDitherSettings,
+    isGlitchEnabled,
+    setIsGlitchEnabled,
+    glitchIntensity,
+    setGlitchIntensity,
+    glitchRotation,
+    setGlitchRotation,
+    resetGlitchSettings,
     nextColor,
   } = useTheme();
   const [ditherFps, setDitherFps] = useState(0);
@@ -201,6 +209,76 @@ const SettingsModal = ({ isOpen, onClose }) => {
                   <h3 className="text-xs font-black uppercase tracking-widest">
                     Canvas UI Effects
                   </h3>
+                </div>
+
+                <div className="glass-card p-4 space-y-4 mb-4">
+                  <div className="flex items-center justify-between group cursor-pointer hover:bg-white/5 transition-colors" onClick={(e) => { setIsGlitchEnabled(!isGlitchEnabled); e.stopPropagation(); }}>
+                    <div className="flex items-center gap-4">
+                      <div className="p-2 rounded-lg bg-white/5 text-mid group-hover:text-high transition-colors">
+                        <Zap size={20} />
+                      </div>
+                      <div>
+                        <p className="font-bold text-high">Hero Glitch</p>
+                        <p className="text-xs text-low">
+                          RGB-split glitch bursts on the hero headline
+                        </p>
+                      </div>
+                    </div>
+
+                    <button
+                      className="relative w-12 h-6 rounded-full transition-colors duration-300 pointer-events-none"
+                      style={{
+                        backgroundColor: isGlitchEnabled
+                          ? themeColor.value
+                          : "rgba(255,255,255,0.1)",
+                      }}
+                    >
+                      <motion.div
+                        animate={{ x: isGlitchEnabled ? 26 : 4 }}
+                        className="absolute top-1 left-0 w-4 h-4 bg-white rounded-full shadow-lg"
+                      />
+                    </button>
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="flex items-center justify-between text-xs font-bold uppercase tracking-[0.2em] text-low">
+                      <span>Burst strength</span>
+                      <span>{glitchIntensity.toFixed(2)}</span>
+                    </label>
+                    <input
+                      type="range"
+                      min="0"
+                      max="2"
+                      step="0.01"
+                      value={glitchIntensity}
+                      onChange={(e) => setGlitchIntensity(Number(e.target.value))}
+                      className="w-full accent-[var(--theme-color)]"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="flex items-center justify-between text-xs font-bold uppercase tracking-[0.2em] text-low">
+                      <span>Rotation</span>
+                      <span>{glitchRotation}°</span>
+                    </label>
+                    <input
+                      type="range"
+                      min="-80"
+                      max="0"
+                      step="1"
+                      value={glitchRotation}
+                      onChange={(e) => setGlitchRotation(Number(e.target.value))}
+                      className="w-full accent-[var(--theme-color)]"
+                    />
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={resetGlitchSettings}
+                    className="w-full flex items-center justify-center gap-2 border border-theme py-2.5 text-xs font-bold uppercase tracking-[0.16em] text-high hover:bg-white/10 transition-colors"
+                  >
+                    <RotateCcw size={15} /> Reset effect defaults
+                  </button>
                 </div>
 
                 <div className="glass-card p-4 space-y-4">

@@ -10,6 +10,12 @@ const defaultRetroDitherSettings = {
   clickWave: 0.8,
 };
 
+const defaultGlitchSettings = {
+  enabled: true,
+  intensity: 0.5,
+  rotation: -40,
+};
+
 const fonts = [
   { id: 1, fontname: "StormGust", scale: 1.6 }, // good
   { id: 2, fontname: "BigPartyBlue", scale: 1.8 }, // good
@@ -117,6 +123,21 @@ export const ThemeProvider = ({ children }) => {
     return saved !== null ? saved === "true" : true;
   });
 
+  const [isGlitchEnabled, setIsGlitchEnabled] = useState(() => {
+    const saved = localStorage.getItem("adaptiv_glitch_enabled");
+    return saved !== null ? saved === "true" : defaultGlitchSettings.enabled;
+  });
+
+  const [glitchIntensity, setGlitchIntensity] = useState(() => {
+    const saved = localStorage.getItem("adaptiv_glitch_intensity");
+    return saved !== null ? Number(saved) : defaultGlitchSettings.intensity;
+  });
+
+  const [glitchRotation, setGlitchRotation] = useState(() => {
+    const saved = localStorage.getItem("adaptiv_glitch_rotation");
+    return saved !== null ? Number(saved) : defaultGlitchSettings.rotation;
+  });
+
   const [retroDitherStrength, setRetroDitherStrength] = useState(() => {
     const saved = localStorage.getItem("adaptiv_retro_dither_strength");
     return saved !== null ? Number(saved) : defaultRetroDitherSettings.strength;
@@ -200,6 +221,12 @@ export const ThemeProvider = ({ children }) => {
   useEffect(() => {
     localStorage.setItem("adaptiv_p5_animated_enabled", isP5AnimatedEnabled);
   }, [isP5AnimatedEnabled]);
+
+  useEffect(() => {
+    localStorage.setItem("adaptiv_glitch_enabled", isGlitchEnabled);
+    localStorage.setItem("adaptiv_glitch_intensity", glitchIntensity);
+    localStorage.setItem("adaptiv_glitch_rotation", glitchRotation);
+  }, [isGlitchEnabled, glitchIntensity, glitchRotation]);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -408,6 +435,12 @@ export const ThemeProvider = ({ children }) => {
     setRetroDitherClickWave(defaultRetroDitherSettings.clickWave);
   };
 
+  const resetGlitchSettings = () => {
+    setIsGlitchEnabled(defaultGlitchSettings.enabled);
+    setGlitchIntensity(defaultGlitchSettings.intensity);
+    setGlitchRotation(defaultGlitchSettings.rotation);
+  };
+
   const activeFontFamily = isFontLocked
     ? activeFonts[currentFontIndex].fontname
     : "GrindyBrush";
@@ -437,6 +470,13 @@ export const ThemeProvider = ({ children }) => {
         setIsRetroDitherEnabled,
         isP5AnimatedEnabled,
         setIsP5AnimatedEnabled,
+        isGlitchEnabled,
+        setIsGlitchEnabled,
+        glitchIntensity,
+        setGlitchIntensity,
+        glitchRotation,
+        setGlitchRotation,
+        resetGlitchSettings,
         retroDitherStrength,
         setRetroDitherStrength,
         retroDitherPixelSize,

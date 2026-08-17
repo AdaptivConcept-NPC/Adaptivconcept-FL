@@ -17,6 +17,7 @@ import FLFontCarousel from "../components/FLFontCarousel";
 import HighlightCarousel from "../components/HighlightCarousel";
 import ProfilePersonasHero from "../components/ProfilePersonasHero";
 import VideoIntroPreview from "../components/VideoIntroPreview";
+import Glitch from "../components/Glitch";
 import { ChevronDown } from "lucide-react";
 
 const ParallaxSection = ({ children, index, total }) => {
@@ -79,8 +80,14 @@ const heroTickerLabels = [
 ];
 
 const Home = () => {
-  const { themeColor, activeFontFamily, activeFontScale } =
-    useTheme();
+  const {
+    themeColor,
+    activeFontFamily,
+    activeFontScale,
+    isGlitchEnabled,
+    glitchIntensity,
+    glitchRotation,
+  } = useTheme();
 
   const isHighContrast =
     themeColor.washType === "coal" || themeColor.washType === "light";
@@ -93,6 +100,12 @@ const Home = () => {
   const hasLeftIntroRef = useRef(false);
   const [projectsData, setProjectsData] = useState(projectsDataLocal);
   const [personaResetKey, setPersonaResetKey] = useState(0);
+  const [isTyping, setIsTyping] = useState(false);
+  const [typedLength, setTypedLength] = useState(0);
+  const typingRef = useRef(null);
+  const typingStartedRef = useRef(false);
+  const introText =
+    "I engineer high-performance automated intelligence pipelines, interactive workflows & digital ecosystems. I can help you convert complex legacy code & infrastructure into automated future-states.";
 
   useEffect(() => {
     getProjects().then(setProjectsData);
@@ -118,6 +131,61 @@ const Home = () => {
     resetPersonasAfterIntro();
 
     return () => scrollContainer?.removeEventListener("scroll", resetPersonasAfterIntro);
+  }, []);
+
+  // Typing animation effect
+  useEffect(() => {
+    const paragraph = typingRef.current;
+    if (!paragraph) return;
+
+    const startTyping = () => {
+      if (typingStartedRef.current) return;
+      typingStartedRef.current = true;
+      setIsTyping(true);
+      const text = introText;
+      const delay = 14; // ms per character
+      let i = 0;
+      const interval = setInterval(() => {
+        if (i < text.length) {
+          setTypedLength((prev) => prev + 1);
+          i++;
+        } else {
+          clearInterval(interval);
+          setIsTyping(false);
+          setTypedLength(text.length);
+        }
+      }, delay);
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          startTyping();
+          observer.disconnect();
+        }
+      },
+      { root: document.querySelector(".App") }
+    );
+    observer.observe(paragraph);
+
+    const isVisibleNow = () => {
+      const rect = paragraph.getBoundingClientRect();
+      const root = document.querySelector(".App");
+      const top = root ? root.getBoundingClientRect().top : 0;
+      const bottom = root ? root.getBoundingClientRect().bottom : window.innerHeight;
+      return rect.top < bottom && rect.bottom > top;
+    };
+
+    if (isVisibleNow()) startTyping();
+
+    const fallback = setTimeout(() => {
+      if (!typingStartedRef.current) startTyping();
+    }, 3000);
+
+    return () => {
+      observer.disconnect();
+      clearTimeout(fallback);
+    };
   }, []);
 
   const scrollToContact = () => {
@@ -160,6 +228,45 @@ const Home = () => {
   const heroProjects = projectsData.filter((p) => p.isHero);
   const sectionsCount = 3;
 
+  const heroPhraseStyle = {
+    fontFamily: activeFontFamily,
+    color: "var(--text-on-dark)",
+    textShadow: "var(--heading-shadow)",
+    fontSize: `${activeFontScale}em`,
+    lineHeight: 1,
+  };
+
+  const heroPhrase = (
+    <span className="inline-block pl-8">
+      <span
+        className="italic transition-all duration-500 inline-block"
+        style={heroPhraseStyle}
+      >
+        Agentic AI <br />Engineer
+      </span>
+      <br />
+      <span className="relative inline-block">
+        <span
+          aria-hidden="true"
+          className="absolute -top-1 -left-8 text-[0.72em] leading-none opacity-80"
+          style={{
+            color: "var(--theme-color)",
+            fontFamily: activeFontFamily,
+            textShadow: "var(--heading-shadow)",
+          }}
+        >
+          &amp;
+        </span>
+        <span
+          className="italic transition-all duration-500 inline-block"
+          style={{ ...heroPhraseStyle, marginLeft: "-10px" }}
+        >
+          Digital <br />Architect
+        </span>
+      </span>
+    </span>
+  );
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -197,7 +304,7 @@ const Home = () => {
             className="w-full max-w-5xl shadow-[0_40px_100px_-20px_rgba(0,0,0,0.8)] mt-10 md:mt-20" 
           /> */}
 
-          <div className="relative flex flex-col items-center justify-end mt-24" style={{ height: "80vh", width: "100%" }}>
+          <div className="relative flex flex-col items-center justify-end mt-24" style={{ width: "80%" }}>
             <h1
               className="text-4xl sm:text-5xl md:text-6xl font-comfortaa font-bold mb-10 tracking-tight me-auto leading-tight"
               style={{ color: "var(--text-on-dark)" }}
@@ -223,54 +330,50 @@ const Home = () => {
               >
                 Agentic AI Engineer
               </span> */}
-              <span
-                className="italic transition-all duration-500 inline-block"
-                style={{
-                  fontFamily: activeFontFamily,
-                  color: "var(--text-on-dark)",
-                  textShadow: "var(--heading-shadow)",
-                  fontSize: `${activeFontScale}em`,
-                  lineHeight: 1,
-                }}
-              >
-                Agentic AI <br/>Engineer
-              </span>
-              <br />
-              <span className="relative inline-block">
+              {isGlitchEnabled ? (
                 <span
-                  aria-hidden="true"
-                  className="absolute -top-1 -left-8 text-[0.72em] leading-none opacity-80"
-                  style={{
-                    // color: "var(--text-on-dark)",
-                    color: "var(--theme-color)",
-                    fontFamily: activeFontFamily,
-                    textShadow: "var(--heading-shadow)",
-                  }}
+                  className="relative inline-block -ml-8"
+                  aria-label="Agentic AI Engineer and Digital Architect"
                 >
-                  &amp;
+                  <span aria-hidden="true" className="invisible pointer-events-none">
+                    {heroPhrase}
+                  </span>
+                  <Glitch
+                    intensity={glitchIntensity}
+                    rotation={glitchRotation}
+                    interval={2.4}
+                    duration={0.33}
+                    slices={18}
+                    shift={18}
+                    rgbShift={3}
+                    blocks={0.3}
+                    noise={0.22}
+                    style={{ position: "absolute", inset: 0 }}
+                  >
+                    {heroPhrase}
+                  </Glitch>
                 </span>
-                <span
-                  className="italic transition-all duration-500 inline-block"
-                  style={{
-                    fontFamily: activeFontFamily,
-                    color: "var(--text-on-dark)",
-                    textShadow: "var(--heading-shadow)",
-                    fontSize: `${activeFontScale}em`,
-                    lineHeight: 1,
-                    marginLeft: "-10px",
-                  }}
-                >
-                  Digital <br/>Architect
+              ) : (
+                <span className="relative inline-block -ml-8">
+                  {heroPhrase}
                 </span>
-              </span>
+              )}
             </h1>
             <p
+              ref={typingRef}
               className="text-base sm:text-lg md:text-2xl font-poppins mb-14 max-w-3xl me-auto leading-relaxed"
               style={{ color: "var(--text-on-dark)" }}
             >
-              I engineer high-performance automated intelligence pipelines, 
-              interactive workflows &amp; digital ecosystems. I can help you convert complex legacy
-              code &amp; infrastructure into automated future-states.
+              {introText.slice(0, typedLength)}
+              <span
+                className="ml-1 inline-block w-[3px] h-[1.15em] align-middle rounded-[1px]"
+                style={{
+                  backgroundColor: "var(--theme-color)",
+                  boxShadow: "0 0 8px var(--theme-color-glow, rgba(255,102,0,0.6))",
+                  animation: "blink 1s step-end infinite",
+                }}
+                aria-hidden="true"
+              />
             </p>
 
             {/* Scroll Action */}
