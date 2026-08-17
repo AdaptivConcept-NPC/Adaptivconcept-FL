@@ -335,7 +335,7 @@ const Home = () => {
                     <img
                       src="/media/my-profile-pic-linkedin.jpg"
                       alt="LinkedIn Profile Picture - Thabang Mposula"
-                      className="w-48 h-48 rounded-full"
+                      className="w-100 h-100 rounded-full"
                     />
                   </div>
                   <span className="inline- flexz flex-colz items-center gap-2 px-6 py-2 rounded-full glass-theme text-high text-sm font-vietnam mb-2">
