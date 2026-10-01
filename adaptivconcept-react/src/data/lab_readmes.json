@@ -30,5 +30,21 @@
         "content": "1. **Project Setup**:\n   Run `./setup.sh` to install backend virtual environment, install client node packages, and verify directories.\n\n2. **Running the App**:\n   Run `./start-services.sh` to initialize Postgres Docker containers, start the FastAPI backend, and launch the React dev client."
       }
     ]
+  },
+  "prismfintech": {
+    "sections": [
+      {
+        "title": "Overview",
+        "content": "AdaptivIntelligenceCodex (AICodex) is a comprehensive knowledge base and code generation pipeline for Senior Agentic AI Engineers, designed for rapid prototyping and architecture mapping. It features a local-first agentic oversight engine that prioritizes local offline inference via our optimized **OllamaOpt** pipeline, complemented by Bring-Your-Own-Key (BYOK) cloud provider routing."
+      },
+      {
+        "title": "Core Capabilities",
+        "content": "• **OllamaOpt Inference**: High-performance local LLM execution via Ollama or Llama.cpp with optimized context window management and token stream caching.\n• **BYOK Cloud Integration**: Multi-provider cloud routing supporting OpenAI (GPT-4o), Google Gemini, Anthropic, and OpenRouter using your own developer keys.\n• **Neural Analytics**: Real-time hardware telemetry (NPU/GPU/CPU) tracking.\n• **Graphify Knowledge Graph**: Interactive structural codebase mapping and cross-project intelligence."
+      },
+      {
+        "title": "Setup & Local Development",
+        "content": "1. **Project Setup**:\n   Run `./setup.sh` to install backend virtual environment, install client node packages, and verify directories.\n\n2. **Running the App**:\n   Run `./start-services.sh` to initialize Postgres Docker containers, start the FastAPI backend, and launch the React dev client."
+      }
+    ]
   }
 }

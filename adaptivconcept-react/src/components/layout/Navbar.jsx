@@ -115,6 +115,7 @@ const Navbar = ({ onOpenSettings }) => {
                 { path: "/projects", label: "Project Board", icon: FolderKanban },
                 { path: "/blog", label: "Blog", icon: Newspaper },
                 { path: "/contact", label: "Contact", icon: Mail },
+                { path: "/arcade", label: "Dev Arcade", icon: Gamepad2 },
               ].map((link, index) => (
                 <React.Fragment key={link.path}>
                   <li>
@@ -141,7 +142,7 @@ const Navbar = ({ onOpenSettings }) => {
                       )}
                     </Link>
                   </li>
-                  {index < 3 && (
+                  {index < 4 && (
                     isMenuOpen ? (
                       <div className="w-full h-px bg-white/10 my-0.5" />
                     ) : (
@@ -156,31 +157,10 @@ const Navbar = ({ onOpenSettings }) => {
             {!isMenuOpen && <span className="my-auto opacity-30 hidden xl:block">|</span>}
             {/* Actions (Resume, Dev Arcade & Hire Me) */}
             <div className="flex flex-col items-stretch xl:flex-row xl:items-center gap-3 w-full min-w-0 xl:w-auto">
-              <Link
-                to="/resume"
-                onClick={() => setIsMenuOpen(false)}
-                className="px-3 py-3 sm:px-4 rounded-xl border-2 font-medium btn-adaptive-hover transition-all flex items-center gap-2 w-full xl:w-auto justify-center"
-                style={{
-                  borderColor: "var(--glass-border)",
-                  color: "var(--text-h)",
-                }}
-              >
-                {isMenuOpen ? (
-                  <div className="flex items-center gap-2 sm:gap-3 w-full">
-                    <FileUser size={20} />
-                    <span className="text-sm sm:text-base font-semibold">Résumé</span>
-                  </div>
-                ) : (
-                  <>
-                    <FileUser size={16} /> <p className="truncate">Résumé</p>
-                  </>
-                )}
-              </Link>
-
-              <Link
+             {/*  <Link
                 to="/arcade"
                 onClick={() => setIsMenuOpen(false)}
-                className={`px-3 py-3 sm:px-4 rounded-xl border-2 font-medium btn-adaptive-hover transition-all flex items-center gap-2 w-full xl:w-auto justify-center border-adaptiv-orange/50 bg-adaptiv-orange/10 hover:border-adaptiv-orange hover:bg-adaptiv-orange/20 shadow-lg shadow-adaptiv-orange/10 ${
+                className={`h-full px-3 py-3 sm:px-4 rounded-xl border-2 font-medium btn-adaptive-hover transition-all flex items-center gap-2 w-full xl:w-auto justify-center border-adaptiv-orange/50 bg-adaptiv-orange/10 hover:border-adaptiv-orange hover:bg-adaptiv-orange/20 shadow-lg shadow-adaptiv-orange/10 ${
                   isActive("/arcade") ? "font-bold text-high border-adaptiv-orange bg-adaptiv-orange/20" : ""
                 }`}
                 style={{ color: "var(--text-h)" }}
@@ -200,8 +180,35 @@ const Navbar = ({ onOpenSettings }) => {
                     <p className="truncate">Dev Arcade</p>
                   </>
                 )}
+              </Link> */}
+              
+              <Link
+                to="/resume"
+                onClick={() => setIsMenuOpen(false)}
+                className={`h-full px-3 py-3 sm:px-4 rounded-xl border-2 font-medium btn-adaptive-hover transition-all flex items-center gap-2 w-full xl:w-auto justify-center border-adaptiv-orange/50 bg-adaptiv-orange/10 hover:border-adaptiv-orange hover:bg-adaptiv-orange/20 shadow-lg shadow-adaptiv-orange/10 ${
+                  isActive("/resume") ? "font-bold text-high border-adaptiv-orange bg-adaptiv-orange/20" : ""
+                }`}
+                style={{
+                  color: "var(--text-h)",
+                }}
+              >
+                {isMenuOpen ? (
+                  <div className="flex items-center gap-2 sm:gap-3 w-full">
+                    <span className="p-2 rounded-xl bg-adaptiv-orange/20 text-adaptiv-orange flex items-center justify-center">
+                      <FileUser size={20} />
+                    </span>
+                    <span className="text-sm sm:text-base font-semibold">Résumé</span>
+                  </div>
+                ) : (
+                  <>
+                    <span className="p-1.5 rounded-lg bg-adaptiv-orange/20 text-adaptiv-orange flex items-center justify-center">
+                      <FileUser size={20} />
+                    </span>
+                    <p className="truncate">Résumé</p>
+                  </>
+                )}
               </Link>
-
+              
               <motion.div
                 animate={{
                   scale: [1, 1.05, 1],

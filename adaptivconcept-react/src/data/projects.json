@@ -5,7 +5,7 @@
     "subtitle": "Unified Intel AI PC Optimizer",
     "description": "Unified Intel AI Optimizer for local LLMs. Multi-tier acceleration strategy leveraging NPU, GPU, and CPU for maximum throughput.",
     "category": "Automation",
-    "image": "/media/GGI_22p0pt22p0pt22p0.png",
+    "image": "/media/project_images/ollamaopt/ollamaopt_banner.png",
     "tags": [
       "Python",
       "Intel AI",
@@ -20,11 +20,11 @@
   },
   {
     "id": "ai-codex",
-    "title": "AICodex",
+    "title": "Spirit Bird AICodex",
     "subtitle": "AdaptivIntelligenceCodex",
     "description": "Comprehensive knowledge base and code generation pipeline for Senior Agentic AI Engineers. Features a range of specialized Agentic CodexSpaces to power your workflows and AI generated content.",
     "category": "Automation",
-    "image": "/media/GGI_22p0pt22p0pt22p0.png",
+    "image": "/media/project_images/aicodex/aicodex_landing.png",
     "tags": [
       "Node.js",
       "GPT-4",
@@ -34,7 +34,7 @@
     ],
     "isHero": true,
     "githubUrl": "https://github.com/iarxii/AI_Codex",
-    "liveUrl": "#",
+    "liveUrl": "https://aicodex-lab-1096425756328.us-central1.run.app/login",
     "detailedStory": "AICodex serves as the orchestration brain for AI-driven development. It integrates multi-provider LLM support (OpenAI/Gemini) for specialized data analysis and rapid architecture prototyping."
   },
   {
@@ -43,7 +43,7 @@
     "subtitle": "Interactive Pharmacy Ops Simulator",
     "description": "A fun & interactive pharmacy simulation game leveraging Redux Saga for complex state orchestration. Experience the high-pressure workflow of a community pharmacist.",
     "category": "Game Dev",
-    "image": "/media/GGI_22p0pt22p0pt22p0.png",
+    "image": "/media/project_images/medimixdash/mmds_landing.png",
     "tags": [
       "React",
       "Redux Saga",
@@ -61,7 +61,7 @@
     "subtitle": "Hazard Wave Battle",
     "description": "Fast-paced top-down wave shooter built with React, Three.js, and Vite. Repel waves of mutagens and viruses as healthcare heroes using unique abilities.",
     "category": "Game Dev",
-    "image": "/media/GGI_22p0pt22p0pt22p0.png",
+    "image": "/media/project_images/healthcareheroes/healthcareheroes_landing.png",
     "tags": [
       "React",
       "Three.js",
@@ -80,7 +80,7 @@
     "subtitle": "Digital Health Coordination",
     "description": "An ICD-10 and ICD-11 mapping tool that can be used by Public and Private Sector Health Clinicians to identify surgical procedures for pending medical procedures in Theatres.",
     "category": "Fullstack",
-    "image": "/media/GGI_22p0pt22p0pt22p0.png",
+    "image": "/media/project_images/surgicalpla/surgicalpla_search.png",
     "tags": [
       "Laravel",
       "React",
@@ -98,7 +98,7 @@
     "subtitle": "Premium Cleaning Solutions",
     "description": "eCommerce Site Showcase: Modern e-commerce platform for curated cleaning solutions and detergents. Features a rewards system and integrated ordering.",
     "category": "AdaptivConcept™",
-    "image": "/media/GGI_22p0pt22p0pt22p0.png",
+    "image": "/media/project_images/bubbli/bubbli_landing.png",
     "tags": [
       "React",
       "E-commerce",
@@ -152,7 +152,7 @@
     "subtitle": "Python & Shell Automation Catalogue",
     "description": "A \"Python & Shell Swiss Knife\" for automation. Unifying cross-platform scripting workflows into a reusable, web-ready catalogue.",
     "category": "Automation",
-    "image": "/media/GGI_22p0pt22p0pt22p0.png",
+    "image": "/media/project_images/pyswissshef/pyswiss_vault.png",
     "tags": [
       "Python",
       "Bash",
@@ -160,9 +160,9 @@
       "Automation",
       "StackBlitz"
     ],
-    "isHero": false,
+    "isHero": true,
     "githubUrl": "https://github.com/iarxii/PySwissShef",
-    "liveUrl": "/labs/pyswissshef",
+    "liveUrl": "https://stackblitz.com/~/github.com/iarxii/PySwissShef",
     "detailedStory": "Formerly PySwissChef, this project was rebranded to emphasize its dual-power nature in Python and Shell scripting. It serves as a centralized hub for managing automation recipes that can be executed in sandboxed labs."
   },
   {
@@ -205,7 +205,7 @@
     "subtitle": "Premium Professional Showcase",
     "description": "Professional website design for a car wash business, focusing on high-fidelity UI and smooth user experience.",
     "category": "Design",
-    "image": "/media/GGI_22p0pt22p0pt22p0.png",
+    "image": "/media/project_images/manzini/manzini_hero.png",
     "tags": [
       "UI/UX",
       "Web Design",
@@ -310,7 +310,7 @@
     "subtitle": "Entrepreneurial Financial Management",
     "description": "Fully fledged ERP Financial System offering Ledger, PoS, Executive Account Management and APIs.",
     "category": "Fullstack",
-    "image": "/media/GGI_22p0pt22p0pt22p0.png",
+    "image": "/media/project_images/prismfintech/prismfintech_dashboard.png",
     "tags": [
       "React",
       "Business Management",
@@ -320,7 +320,7 @@
     ],
     "isHero": true,
     "githubUrl": "",
-    "liveUrl": "#",
+    "liveUrl": "/lab/prismfintech",
     "detailedStory": ""
   }
 ]

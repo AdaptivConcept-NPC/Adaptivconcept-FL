@@ -14,14 +14,14 @@ const personas = [
     src: "/media/profile_images/" + encodeURIComponent("thabang_mp (4).jpg"),
     label: "The Strategy Vector",
     description:
-      "A strategic view of digital transformation, translating organisational goals into clear technical direction.",
+      "I provide strategic views for digital transformation, translating organisational goals into clear technical direction.",
   },
   {
     id: 3,
     src: "/media/profile_images/" + encodeURIComponent("thabang_mp (5).jpg"),
     label: "Seasoned Developer",
     description:
-      "A practical builder who sweats the details that make products resilient, usable, and ready for real teams.",
+      "I am a practical builder who sweats the details that make products resilient, usable, and ready for real teams.",
   },
 //   {
 //     id: 4,
@@ -35,56 +35,56 @@ const personas = [
     src: "/media/profile_images/" + encodeURIComponent("thabang_mp (7).jpg"),
     label: "Cloud & Platform Builder",
     description:
-      "Designs dependable cloud foundations, CI/CD pipelines, and platform runtimes that keep delivery fast and safe.",
+      "I design dependable cloud foundations, CI/CD pipelines, and platform runtimes that keep delivery fast and safe.",
   },
   {
     id: 6,
     src: "/media/profile_images/" + encodeURIComponent("thabang_mp (10).jpg"),
-    label: "Diagnostic Engineer",
+    label: "Quality Assurer",
     description:
-      "A root-cause finder that strips noisy problems down to the essentials and turns them into clean, lasting fixes.",
+      "I am a root-cause finder that strips noisy problems down to the essentials and turns them into clean, lasting fixes.",
   },
   {
     id: 7,
     src: "/media/profile_images/" + encodeURIComponent("thabang_mp (11).jpg"),
     label: "AI Experimenter",
     description:
-      "Explores local AI tooling and honest novelty, turning what is new into what is genuinely useful.",
+      "I explores local AI tooling and honest novelty, turning what is new into what is genuinely useful for the AI-Enabled Future.",
   },
   {
     id: 8,
     src: "/media/profile_images/" + encodeURIComponent("thabang_mp (12).jpg"),
     label: "Systems Integrator",
     description:
-      "Bridges ERP landscapes and modern products through careful APIs, migrations, and reversible architecture.",
+      "I am able to gridge ERP landscapes and modern products through careful APIs, migrations, and reversible architecture.",
   },
   {
     id: 9,
     src: "/media/profile_images/" + encodeURIComponent("thabang_mp (13).jpg"),
     label: "Team Multiplier",
     description:
-      "Raises the whole team through clear patterns, readable code, and mentoring everyone can safely build on.",
+      "I raise the whole team through clear patterns, readable code, and can provide mentoring everyone can safely build on.",
   },
   {
     id: 10,
     src: "/media/profile_images/" + encodeURIComponent("thabang_mp (16).jpg"),
     label: "Consulting Mind",
     description:
-      "Holds the wider context: stakeholders, trade-offs, and the shortest path from roadmap to shipped outcome.",
+      "I hold the wider context: stakeholders, trade-offs, and the shortest path from roadmap to shipped outcome.",
   },
   {
     id: 11,
     src: "/media/profile_images/" + encodeURIComponent("thabang_mp (17).jpg"),
     label: "Craft-Focused Coder",
     description:
-      "Writes code the next person can trust: named intentions, typed modules, and tests that keep their promises.",
+      "I write code the next person can trust: named intentions, typed modules, and tests that keep their promises.",
   },
   {
     id: 12,
     src: "/media/profile_images/" + encodeURIComponent("thabang_mp (18).jpg"),
     label: "Fearless Learner",
     description:
-      "Constantly picks up new tools and disciplines, and adapts the promising ones into real day-to-day leverage.",
+      "I am constantly picking up new tools and disciplines, and I adapt the promising ones into real day-to-day leverage.",
   },
 ];
 
@@ -128,6 +128,7 @@ const PersonaCard = ({
   persona,
   slot,
   deckActive,
+  hasSelection,
   selected,
   isHovered,
   onHoverClaim,
@@ -175,7 +176,7 @@ const PersonaCard = ({
         opacity: 1,
         transition: { type: "spring", stiffness: 220, damping: 16, mass: 0.8 },
       });
-    } else if (deckActive) {
+    } else if (deckActive || hasSelection) {
       const target = getSlotTarget(slot);
       controls.start({
         ...target,
@@ -193,7 +194,7 @@ const PersonaCard = ({
         transition: { duration: 0.25 },
       });
     }
-  }, [deckActive, isHovered, selected, slot, controls]);
+  }, [deckActive, hasSelection, isHovered, selected, slot, controls]);
 
   useEffect(() => {
     if (!deckActive || selected || !isPivot) return undefined;
@@ -304,7 +305,7 @@ const PersonaCard = ({
         }`}
       />
       {selected ? (
-        <span className="absolute inset-x-3 bottom-3 top-[53%] flex flex-col justify-between text-left text-neutral-800">
+        <span className="absolute inset-x-3 bottom-3 flex flex-col justify-between text-left text-neutral-800">
           <span>
             <span className="block text-[9px] font-black uppercase tracking-[0.1em] sm:text-[10px]">
               {persona.label}
@@ -313,9 +314,6 @@ const PersonaCard = ({
               {persona.description}
             </span>
           </span>
-          <span className="text-[7px] font-bold uppercase tracking-[0.12em] text-neutral-500">
-            Click outside to reset
-          </span>
         </span>
       ) : null}
     </motion.button>
@@ -323,7 +321,9 @@ const PersonaCard = ({
 };
 
 const ProfilePersonasHero = () => {
-  const [rotation, setRotation] = useState(0);
+  const [deckOrder, setDeckOrder] = useState(() =>
+    personas.map((persona) => persona.id),
+  );
   const [selectedPersonaId, setSelectedPersonaId] = useState(null);
   const [hoveredPersonaId, setHoveredPersonaId] = useState(null);
   const rootRef = useRef(null);
@@ -334,7 +334,6 @@ const ProfilePersonasHero = () => {
       const clickedPersona = event.target.closest("[data-profile-persona-card]");
       if (hero?.contains(event.target) && !clickedPersona) {
         setSelectedPersonaId(null);
-        setRotation(0);
       }
     };
     window.addEventListener("click", handleClickAway);
@@ -344,9 +343,20 @@ const ProfilePersonasHero = () => {
   const deckActive = selectedPersonaId === null;
 
   const handleSelect = (id) => {
+    if (selectedPersonaId !== id) {
+      setDeckOrder((order) => {
+        const remaining = order.filter(
+          (personaId) => personaId !== id && personaId !== selectedPersonaId,
+        );
+        return [
+          id,
+          ...remaining,
+          ...(selectedPersonaId === null ? [] : [selectedPersonaId]),
+        ];
+      });
+    }
     setSelectedPersonaId((current) => (current === id ? null : id));
     setHoveredPersonaId(null);
-    setRotation(0);
   };
 
   const handleHoverClaim = (id) => {
@@ -358,19 +368,24 @@ const ProfilePersonasHero = () => {
   };
 
   const handleCycleComplete = useCallback(() => {
-    setRotation((r) => (r + 1) % TOTAL);
+    setDeckOrder((order) => [order[TOTAL - 1], ...order.slice(0, TOTAL - 1)]);
   }, []);
+
+  const visibleOrder = selectedPersonaId === null
+    ? deckOrder
+    : deckOrder.filter((id) => id !== selectedPersonaId);
 
   return (
     <div ref={rootRef} className="absolute inset-0 z-20 pointer-events-none" aria-label="Profile personas">
-      {personas.map((persona, index) => {
-        const slot = (rotation + index) % TOTAL;
+      {personas.map((persona) => {
+        const slot = visibleOrder.indexOf(persona.id);
         return (
           <PersonaCard
             key={persona.id}
             persona={persona}
             slot={slot}
             deckActive={deckActive}
+            hasSelection={selectedPersonaId !== null}
             selected={selectedPersonaId === persona.id}
             isHovered={hoveredPersonaId === persona.id}
             onHoverClaim={handleHoverClaim}

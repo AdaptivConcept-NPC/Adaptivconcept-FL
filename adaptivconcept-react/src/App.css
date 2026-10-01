@@ -63,7 +63,9 @@
   height: 100%;
   white-space: nowrap;
   will-change: transform;
-  animation: expertise-scroll 30s linear infinite;
+  /* size to its own content so -50% always lands exactly on one duplicated set, not the viewport width */
+  width: fit-content;
+  animation: expertise-scroll 24s linear infinite;
 }
 
 .expertise-ticker-item {

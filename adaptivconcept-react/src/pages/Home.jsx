@@ -7,6 +7,7 @@ import {
   Rocket,
   ChevronRight,
   ExternalLink,
+  FolderGit2,
 } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
 import projectsDataLocal from "../data/projects.json";
@@ -16,12 +17,17 @@ import { submitToNetlify } from "../utils/form";
 import FLFontCarousel from "../components/FLFontCarousel";
 import HighlightCarousel from "../components/HighlightCarousel";
 import ProfilePersonasHero from "../components/ProfilePersonasHero";
-import VideoIntroPreview from "../components/VideoIntroPreview";
+// import VideoIntroPreview from "../components/VideoIntroPreview";
 import Glitch from "../components/Glitch";
-import { ChevronDown } from "lucide-react";
+// import { ChevronDown } from "lucide-react";
 
-const ParallaxSection = ({ children, index, total }) => {
+const ParallaxSection = React.forwardRef(({ children, index, total }, forwardedRef) => {
   const container = useRef(null);
+  const setRefs = (node) => {
+    container.current = node;
+    if (typeof forwardedRef === "function") forwardedRef(node);
+    else if (forwardedRef) forwardedRef.current = node;
+  };
 
   // Track scroll progress of this section relative to the viewport
   // offset: ["start start", "end start"] means progress goes from 0 to 1
@@ -48,7 +54,7 @@ const ParallaxSection = ({ children, index, total }) => {
 
   return (
     <div
-      ref={container}
+      ref={setRefs}
       className="relative min-h-screen"
       style={{ zIndex: index + 10 }}
     >
@@ -65,7 +71,7 @@ const ParallaxSection = ({ children, index, total }) => {
       </div>
     </div>
   );
-};
+});
 
 const heroTickerLabels = [
   "Systems Development",
@@ -242,7 +248,7 @@ const Home = () => {
         className="italic transition-all duration-500 inline-block"
         style={heroPhraseStyle}
       >
-        Agentic AI <br />Engineer
+        Systems <br />Developer
       </span>
       <br />
       <span className="relative inline-block">
@@ -261,7 +267,7 @@ const Home = () => {
           className="italic transition-all duration-500 inline-block"
           style={{ ...heroPhraseStyle, marginLeft: "-10px" }}
         >
-          Digital <br />Architect
+          Design <br />Engineer
         </span>
       </span>
     </span>
@@ -286,50 +292,17 @@ const Home = () => {
         className="main-hero min-h-screen flex flex-col items-center justify-center p-10 md:p-20 relative overflow-hidden"
       >
         <ProfilePersonasHero key={personaResetKey} />
-        {/* Large Central Font Carousel */}
-        {/* <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full pointer-events-none opacity-10 select-none">
-          <FLFontCarousel
-            size="text-[15vw]"
-            className="font-black"
-            useFullText={false}
-            speed={40}
-          />
-        </div> */}
 
         <div className="relative z-10 w-full flex flex-col items-center gap-6 md:gap-12 mt-10 pt-10 md:pt-20">
-          {/* Hide until proper video content is available
-          
-          <VideoIntroPreview 
-            videoSrc="/media/sample_promo_vid_aigen.mp4"
-            className="w-full max-w-5xl shadow-[0_40px_100px_-20px_rgba(0,0,0,0.8)] mt-10 md:mt-20" 
-          /> */}
+
 
           <div className="relative flex flex-col items-center justify-end mt-24" style={{ width: "80%" }}>
             <h1
               className="text-4xl sm:text-5xl md:text-6xl font-comfortaa font-bold mb-10 tracking-tight me-auto leading-tight"
               style={{ color: "var(--text-on-dark)" }}
             >
-              {/* <span aria-hidden="true"
-                className="absolute-top-1-left-8-z text-[0.72em] leading-none opacity-80 font-comfortaa"
-                style={{
-                  // color: "var(--text-on-dark)",
-                  color: "var(--theme-color)",
-                  // fontFamily: activeFontFamily,
-                  textShadow: "var(--heading-shadow)",
-                }}>&gt;</span>  */}
-              <span className="terminal-cursor" aria-hidden="true"><span>S</span><span className="term-cursor-block" /></span>enior<FLFontCarousel size="text-4xl sm:text-5xl md:text-6xl" className="inline-flex align-middle leading-none mx-1" />{" "}<br />
-              {/* <span 
-                className="italic transition-all duration-500 inline-block"
-                style={{
-                  fontFamily: activeFontFamily,
-                  color: "var(--text-on-dark)",
-                  textShadow: "var(--heading-shadow)",
-                  fontSize: `${activeFontScale}em`,
-                  lineHeight: 1,
-                }}
-              >
-                Agentic AI Engineer
-              </span> */}
+              <span className="terminal-cursor" aria-hidden="true"><span>F</span><span className="term-cursor-block" /></span>reelance<FLFontCarousel size="text-4xl sm:text-5xl md:text-6xl" className="inline-flex align-middle leading-none mx-1" />{" "}<br />
+
               {isGlitchEnabled ? (
                 <span
                   className="relative inline-block -ml-8"
@@ -420,7 +393,7 @@ const Home = () => {
       </div>
 
       {/* Section 1: Hero */}
-      <div ref={heroRef}>
+      <div>
         <ParallaxSection index={0} total={sectionsCount}>
           <div className="container mx-auto px-6 py-10 py-10Z">
             <div
@@ -442,7 +415,7 @@ const Home = () => {
                     />
                   </div>
                   <span className="inline- flexz flex-colz items-center gap-2 px-6 py-2 rounded-full glass-theme text-high text-sm font-vietnam mb-2">
-                    Hi, my name is <b>Thabang Mposula</b>, and I am an Agentic AI Systems Developer.
+                    Hi, my name is <b>Thabang Mposula</b>, and I am a <b>Systems Developer</b> specializing in Full-Stack Web Design, Business Intelligence, Workflow Automation and Agentic AI.
                   </span>
                 </div>
 
@@ -471,9 +444,10 @@ const Home = () => {
                   </button>
                   <button
                     onClick={() => navigate("/projects")}
-                    className="px-6 py-4 md:px-10 md:py-5 rounded-xl md:rounded-2xl border-2 border-theme text-high text-base md:text-lg font-bold btn-adaptive-hover transition-all backdrop-blur-sm"
+                    className="px-6 py-4 md:px-10 md:py-5 rounded-xl md:rounded-2xl border-2 theme text-high text-base md:text-lg font-bold hover:scale-105 btn-adaptive-hover transition-all backdrop-blur-sm flex items-center gap-3"
+                    style={{ borderColor: themeColor.value}}
                   >
-                    Project Catalog
+                    My Projects <FolderGit2 size={22} />
                   </button>
                 </div>
               </motion.div>
@@ -514,7 +488,7 @@ const Home = () => {
                     Transformation
                   </span>
                 </h2>
-                <p className="text-base md:text-lg text-low font-poppins mb-16 leading-relaxed max-w-xl">
+                <p className="text-base md:text-lg text-white font-poppins mb-16 leading-relaxed max-w-xl">
                   Leveraging deep expertise in public sector innovation and AI
                   research to help forward-thinking teams skip the prototype
                   phase and build production-ready systems.
@@ -524,32 +498,32 @@ const Home = () => {
                   {[
                     {
                       icon: <Terminal size={28} />,
-                      title: "Intelligence & LLM OPS",
-                      desc: "Production-grade RAG and agentic workflows.",
+                      title: "Business Intelligence & LLM OPS",
+                      desc: "Production-grade Graph, RAG and Agentic workflows for Management & Stategic Planning.",
                     },
                     {
                       icon: <Cpu size={28} />,
-                      title: "Core Architecture",
-                      desc: "Scalable React & Cloud-First infrastructures.",
+                      title: "Business Core Architecture",
+                      desc: "Scalable React,ASP.Net, Laravel Web Applications & Cloud-First CI/CD Infrastructure.",
                     },
                     {
                       icon: <Rocket size={28} />,
-                      title: "Visual Frontiers",
-                      desc: "Immersive WebGL and high-fidelity user experiences.",
+                      title: "Crafted Visual Frontiers",
+                      desc: "Building immersive WebGL and high-fidelity user experiences for your business platform.",
                     },
                   ].map((service, i) => (
                     <div key={i} className="flex gap-8 group/item">
                       <div
-                        className="w-16 h-16 rounded-[22px] glass-theme glass-theme-hover flex items-center justify-center transition-all duration-500 shadow-inner"
+                        className="w-24 h-16 rounded-[22px] glass-theme glass-theme-hover flex items-center justify-center transition-all duration-500 shadow-inner"
                         style={{ color: accentColor }}
                       >
                         {service.icon}
                       </div>
                       <div>
-                        <h6 className="text-2xl font-bold text-high mb-2 tracking-tight group-hover/item:text-adaptiv-orange transition-colors">
+                        <h6 className="text-2xl font-bold text-white mb-2 tracking-tight group-hover/item:text-adaptiv-orange transition-colors">
                           {service.title}
                         </h6>
-                        <p className="text-low font-poppins">{service.desc}</p>
+                        <p className="text-white font-poppins">{service.desc}</p>
                       </div>
                     </div>
                   ))}
@@ -703,7 +677,7 @@ const Home = () => {
       </ParallaxSection>
 
       {/* Section 3: Github Projects Grid */}
-      <ParallaxSection index={2} total={sectionsCount}>
+      <ParallaxSection ref={heroRef} index={2} total={sectionsCount}>
         <div className="py-10">
           <div
             className="container mx-auto px-6 rounded-[32px] md:rounded-[60px] p-6 md:px-10 md:py-20 relative glass-theme"
@@ -726,14 +700,15 @@ const Home = () => {
                   </div>{" "}
                   Masterpieces
                 </h3>
-                <p className="text-lg md:text-2xl text-low font-comfortaa">
+                <p className="text-lg md:text-2xl text-white font-comfortaa">
                   Selected engineering feats and design systems.
                 </p>
               </div>
               <button
                 onClick={() => navigate("/projects")}
-                className="group flex items-center gap-3 font-bold text-xl transition-colors duration-300 hover:text-hover-bg"
-                style={{ color: accentColor }}
+                className="p-4 bg-white rounded-xl text-white font-bold hover:scale-105 hover:shadow-2xl btn-adaptive-hover transition-all flex items-center gap-3"
+                // className="group flex items-center gap-3 font-bold text-xl transition-colors duration-300 hover:text-hover-bg"
+                style={{ color: accentColor, fontSize: "14px" }}
               >
                 Explore Full Lab{" "}
                 <ChevronRight
@@ -809,7 +784,7 @@ const Home = () => {
                     )}
 
                     {/* Description */}
-                    <p className="text-low text-sm leading-relaxed mb-8 flex-grow line-clamp-3">
+                    <p className="text-white text-sm leading-relaxed mb-8 flex-grow line-clamp-3">
                       {project.description}
                     </p>
 
@@ -827,7 +802,7 @@ const Home = () => {
                       {project.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="px-3 py-1 rounded-lg bg-white/5 border border-theme text-[11px] text-low font-medium"
+                          className="px-3 py-1 rounded-lg bg-white/5 border border-theme text-[11px] text-high font-medium"
                         >
                           {tag}
                         </span>
